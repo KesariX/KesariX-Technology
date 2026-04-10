@@ -93,8 +93,8 @@ export default function Hero() {
             </motion.p>
 
             <motion.div variants={itemVariants} className="kx-hero__actions">
-              <a href="#work" className="hero-cta btn-primary kx-hero__primary-btn">Explore Our Work</a>
-              <a href="#services" className="hero-cta btn-ghost kx-hero__ghost-btn">See Service Blueprint</a>
+              <a href="#work" className="hero-cta btn-primary kx-hero__primary-btn" aria-label="Explore our project portfolio">Explore Our Work</a>
+              <a href="#services" className="hero-cta btn-ghost kx-hero__ghost-btn" aria-label="View our digital service blueprint">See Service Blueprint</a>
             </motion.div>
 
             <motion.div variants={itemVariants} className="kx-hero__trust">

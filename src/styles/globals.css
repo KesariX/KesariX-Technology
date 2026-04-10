@@ -293,30 +293,7 @@
 }
 
 
-/* ══════════════════════════════════════════════════
-   CUSTOM CURSOR
-   ══════════════════════════════════════════════════ */
-.cursor-dot {
-  position: fixed;
-  width: 10px;
-  height: 10px;
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-  border-radius: 100%;
-  pointer-events: none;
-  z-index: 9999;
-  box-shadow: 0 0 20px rgba(217, 119, 6, 0.4);
-}
-
-.cursor-ring {
-  position: fixed;
-  width: 34px;
-  height: 34px;
-  border: 1px solid rgba(217, 119, 6, 0.45);
-  border-radius: 100%;
-  pointer-events: none;
-  z-index: 9999;
-  backdrop-filter: blur(2px);
-}
+/* Custom Cursor moved to specialized component styles */
 
 
 /* ══════════════════════════════════════════════════
