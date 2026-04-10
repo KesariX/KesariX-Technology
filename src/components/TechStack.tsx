@@ -47,8 +47,8 @@ export default function TechStack() {
           </motion.span>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, delay: 0.1 }}
+            whileInView={{ opacity: 1, y: 0, transition: { delay: 0.1 } }}
+            viewport={{ once: true }}
             className="kx-techstack__title"
           >
             Technology We Master
