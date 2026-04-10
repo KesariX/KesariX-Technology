@@ -1,0 +1,600 @@
+Advanced Design & Content Prompt
+🏢 Company Identity
+text
+
+Company Name: NexCore Solutions
+Tagline: "We Engineer What's Next."
+Sub-tagline: "Intelligent Systems. Scalable Products. Real Results."
+Logo: [Provided custom logo image]
+Industry: AI Solutions | IT Services | Software Development
+🎨 Design System & Theme
+text
+
+THEME: Light Theme — Crisp, Airy, Premium Feel
+
+PRIMARY PALETTE:
+  - Background Base:     #F8F9FF  (soft white-blue tint)
+  - Surface Cards:       #FFFFFF
+  - Accent Primary:      #4F46E5  (electric indigo)
+  - Accent Secondary:    #06B6D4  (cyan blue)
+  - Accent Glow:         #818CF8  (soft purple glow)
+  - Dark Text:           #0F0F1A
+  - Mid Text:            #4B5563
+  - Muted Text:          #9CA3AF
+  - Border Lines:        #E5E7EB
+  - Highlight Gradient:  linear-gradient(135deg, #4F46E5, #06B6D4)
+
+TYPOGRAPHY SYSTEM (Google Fonts / Adobe Fonts):
+  - Display Font:        "Clash Display"  (headings, hero)
+  - Body Font:           "General Sans"   (paragraphs, UI)
+  - Mono/Label Font:     "JetBrains Mono" (tags, counters, code snippets)
+  - Accent Font:         "Satoshi"        (subheadings, nav)
+
+FONT SIZES:
+  - Hero H1:     96px / 800 weight / tight letter-spacing -2px
+  - Section H2:  56px / 700 weight
+  - Card H3:     28px / 600 weight
+  - Body:        17px / 400 weight / line-height 1.75
+  - Label/Tag:   12px / 500 weight / uppercase / 2px letter-spacing
+🧱 Website Sections (Full Structure)
+SECTION 1 — Navigation (Sticky + Animated)
+text
+
+LAYOUT: Full-width sticky navbar, frosted glass effect on scroll
+  backdrop-filter: blur(20px)
+  background: rgba(248, 249, 255, 0.85)
+  border-bottom: 1px solid rgba(79, 70, 229, 0.08)
+
+LEFT:   Logo image (provided) — animate on load with GSAP scale + fade
+CENTER: Nav Links → Home | Services | Work | About | Blog
+RIGHT:  "Get in Touch" CTA button — pill shape, gradient fill with shimmer
+        hover animation: gradient shift + subtle shadow lift
+
+ANIMATION (GSAP):
+  - staggered nav items drop-in on page load (y: -20 → 0, opacity 0 → 1)
+  - active link indicator: animated underline that slides between items
+  - on scroll: nav shrinks height smoothly (80px → 60px)
+  
+MOBILE: Hamburger → fullscreen overlay menu with Framer Motion slide-in
+SECTION 2 — Hero Section
+text
+
+LAYOUT: Full viewport height, two-column (60/40 split)
+
+LEFT COLUMN — CONTENT:
+  Eyebrow label: 
+    [ ● LIVE — Trusted by 120+ Companies Worldwide ]
+    → small pill badge, blinking dot animation (anime.js pulse)
+
+  H1 Headline (Clash Display, 96px):
+    "We Build
+     Intelligent
+     Systems."
+    
+    → each word animates in with GSAP SplitText — 
+      characters fall from top with staggered timing
+    → "Intelligent" word gets gradient color sweep animation on loop
+
+  Sub-headline (General Sans, 19px, #4B5563):
+    "From AI-powered agents to enterprise web platforms —
+     NexCore turns complex ideas into elegant, scalable digital products."
+
+  CTA ROW:
+    [→ Explore Our Work]  — filled gradient button, magnetic hover effect
+    [▷ Watch Overview]    — ghost button with play icon, 
+                            ripple animation on click (anime.js)
+
+  TRUST BADGES ROW (below CTA):
+    Logo strips of 5 dummy client logos (greyscale, opacity 0.4)
+    Text: "Trusted by teams at →  Versa AI  |  StackFlow  |  Nexlify  |  Orbito  |  DataSync"
+
+RIGHT COLUMN — VISUAL:
+  3D floating dashboard mockup (use premium Figma/Craftwork style UI mockup image)
+  → Framer Motion: floating Y-axis loop animation (up/down slowly)
+  → GSAP: soft shadow pulse beneath it
+  → Decorative elements behind it:
+      - Large blurred indigo circle (#4F46E5, opacity 0.08, blur 80px)
+      - Small grid dot pattern (CSS background)
+      - Floating stat cards orbiting the mockup:
+          Card 1: "98% Client Satisfaction" 
+          Card 2: "50+ AI Models Deployed"
+          Card 3: "4.9★ on Clutch"
+      → Each card: anime.js float with different timing offsets
+
+BACKGROUND ELEMENTS:
+  - Faint grid lines (CSS, 1px, #E5E7EB, opacity 0.5)
+  - Large gradient blob top-right (#818CF8, very low opacity, blur 120px)
+  - Animated noise texture overlay (subtle, CSS filter)
+
+SCROLL INDICATOR:
+  Bottom center: animated mouse scroll icon + "Scroll to explore" 
+  → anime.js bounce animation
+SECTION 3 — Marquee / Social Proof Strip
+text
+
+LAYOUT: Full-width horizontal scrolling strip
+Background: #0F0F1A (dark contrast break — one dark strip in light page)
+Content: Infinite auto-scroll marquee (GSAP ticker)
+
+Text alternating with star icons:
+  ✦ AI Solutions  ✦ Web Development  ✦ Automation Systems  
+  ✦ Cloud Architecture  ✦ AI Agents  ✦ IT Infrastructure  
+  ✦ Mobile Apps  ✦ Data Engineering  ✦ API Development  
+
+Font: Clash Display, 18px, white
+Speed: Slow, smooth, pauseable on hover
+SECTION 4 — Services Section
+text
+
+SECTION LABEL: "WHAT WE DO"
+H2: "End-to-End Digital
+     Engineering"
+
+LAYOUT: Bento-grid style card layout (not boring equal grid)
+  - 2 large cards (top row, spanning different widths)
+  - 3 medium cards (bottom row)
+  
+Each card has:
+  - Icon (custom SVG or Lucide, indigo colored)
+  - Service name
+  - 1-line description
+  - Hover: card lifts (translateY -8px), border color shifts to gradient,
+           background gets subtle radial gradient reveal from cursor position
+           (mousemove event → CSS custom property → radial gradient)
+
+CARDS CONTENT:
+
+  [CARD 1 — LARGE] 
+  Icon: Brain circuit
+  Title: "AI Solutions & Machine Learning"
+  Desc: "We design and deploy custom AI models, LLM integrations, 
+         computer vision pipelines, and intelligent automation systems 
+         tailored to your business logic."
+  Tag: [ Most Popular ]
+  Visual: Subtle animated neural network SVG in background (anime.js draw paths)
+
+  [CARD 2 — LARGE]
+  Icon: Code brackets
+  Title: "Software & Web Development"
+  Desc: "Full-stack applications built with React, Next.js, Node.js, 
+         and modern cloud-native architectures. Pixel-perfect, 
+         performance-obsessed, and built to scale."
+  Visual: Code editor snippet mockup image
+
+  [CARD 3 — MEDIUM]
+  Icon: Robot/Agent
+  Title: "AI Agents & Chatbots"
+  Desc: "Autonomous multi-step agents powered by GPT-4, Claude, 
+         and custom-trained models that work 24/7 for your workflows."
+
+  [CARD 4 — MEDIUM]
+  Icon: Settings/Gear
+  Title: "IT Services & Infrastructure"
+  Desc: "Cloud setup, DevOps pipelines, system migrations, 
+         and end-to-end IT management for growing companies."
+
+  [CARD 5 — MEDIUM]
+  Icon: Lightning bolt
+  Title: "Process Automation"
+  Desc: "Replace manual bottlenecks with intelligent RPA workflows, 
+         API integrations, and no-code/low-code automation systems."
+
+ANIMATION (GSAP ScrollTrigger):
+  Cards animate in from bottom with stagger as section enters viewport
+  Each card has a counter animation on the icon area showing micro-stats
+SECTION 5 — Featured Work / Projects
+text
+
+SECTION LABEL: "SELECTED WORK"
+H2: "Products That
+     Make an Impact"
+
+LAYOUT: Horizontal scroll snap gallery (mouse drag / scroll wheel)
+  Custom cursor changes to "DRAG →" on hover over this section
+
+PROJECT CARDS (Full dummy data):
+
+  [PROJECT 1]
+  Image: Premium dashboard UI screenshot (use unDraw / Craftwork / Storyset)
+  Tag: AI Solution
+  Title: "VersaBot — Enterprise AI Assistant"
+  Client: Versa Technologies
+  Description: "Built a multi-model AI assistant for internal knowledge 
+                management, reducing support tickets by 67% in 3 months."
+  Stack: GPT-4 · LangChain · React · FastAPI · PostgreSQL
+  Stats: 67% ↓ Support Load | 40K+ Daily Queries | 3 Month Build
+  Color accent: Indigo
+
+  [PROJECT 2]
+  Image: E-commerce analytics platform
+  Tag: Web Application
+  Title: "StackFlow — Real-Time Analytics Platform"
+  Client: StackFlow Inc.
+  Description: "Engineered a real-time business intelligence platform 
+                handling 2M+ daily events with live dashboard rendering."
+  Stack: Next.js · Kafka · Redis · ClickHouse · D3.js
+  Stats: 2M+ Daily Events | 99.98% Uptime | 180ms Avg Load
+  Color accent: Cyan
+
+  [PROJECT 3]
+  Image: Mobile health app UI
+  Tag: Mobile + AI
+  Title: "MediTrack — AI-Powered Health Platform"
+  Client: NexHealth Group
+  Description: "Cross-platform health monitoring app with an AI symptom 
+                checker used by 50,000+ patients across 12 hospitals."
+  Stack: React Native · Python · TensorFlow · AWS · Firebase
+  Stats: 50K+ Users | 12 Hospitals | 94% AI Accuracy
+  Color accent: Emerald
+
+  [PROJECT 4]
+  Image: Automation workflow UI
+  Tag: Automation System
+  Title: "AutoSync — HR Workflow Automation"
+  Client: Orbito Corp
+  Description: "Fully automated the employee onboarding and payroll 
+                pipeline, reducing manual HR workload by 80%."
+  Stack: Node.js · Zapier API · Airtable · Twilio · Docker
+  Stats: 80% Time Saved | 500+ Employees | ROI in 6 Weeks
+  Color accent: Amber
+
+  [PROJECT 5]
+  Image: Cloud infrastructure diagram
+  Tag: IT Infrastructure
+  Title: "DataSync Cloud — Migration & DevOps"
+  Client: DataSync Solutions
+  Description: "Migrated legacy on-premise infrastructure to AWS with 
+                zero downtime, cutting server costs by 55%."
+  Stack: AWS · Terraform · Kubernetes · CI/CD · CloudWatch
+  Stats: 55% Cost Reduction | 0 Downtime | 14 Days Migration
+  Color accent: Rose
+
+ANIMATIONS:
+  - GSAP horizontal scroll pin
+  - Framer Motion: card hover = image zoom + info slide up overlay
+  - Cursor glow follows mouse over section
+  - Project number counter (01, 02, 03...) in large faded background text
+SECTION 6 — Process / How We Work
+text
+
+SECTION LABEL: "OUR PROCESS"
+H2: "From Idea to
+     Launched Product"
+
+LAYOUT: Vertical timeline with alternating left-right content
+        Connected by an animated SVG path line that draws as you scroll
+        (GSAP ScrollTrigger + SVG stroke-dashoffset animation)
+
+STEPS:
+
+  Step 01 — Discovery & Strategy
+  "We deep-dive into your goals, users, and technical requirements to 
+   define a product roadmap built for results — not assumptions."
+  Icon: Compass
+  Duration label: "Week 1-2"
+
+  Step 02 — Architecture & Design
+  "Our designers craft pixel-perfect interfaces while engineers design 
+   the system architecture — both working in parallel from day one."
+  Icon: Pen tool / Layers
+  Duration label: "Week 2-4"
+
+  Step 03 — Development Sprint
+  "Agile 2-week sprints, daily standups, live previews. You're always 
+   in the loop. No black boxes, no surprises."
+  Icon: Code
+  Duration label: "Week 4-12"
+
+  Step 04 — QA & Performance
+  "Rigorous testing across devices, load tests, accessibility audits, 
+   and performance optimization before a single user sees it."
+  Icon: Shield check
+  Duration label: "Week 12-14"
+
+  Step 05 — Launch & Scale
+  "We deploy, monitor, and stay by your side post-launch. 
+   Your growth is our growth."
+  Icon: Rocket
+  Duration label: "Ongoing"
+
+ANIMATION (GSAP ScrollTrigger):
+  - SVG path draws from top to bottom as user scrolls
+  - Each step card fades in + slides in from its respective side
+  - Step numbers count up with anime.js when in view
+SECTION 7 — Stats / Impact Numbers
+text
+
+LAYOUT: Full-width, dark background section (#0F0F1A)
+        Contrasting dark strip with glowing numbers
+
+STATS (4 columns):
+
+  120+          50+           98%           $12M+
+  Projects      AI Systems    Satisfaction  Revenue Generated
+  Delivered     Deployed      Rate          for Clients
+
+ANIMATIONS:
+  - anime.js countUp animation triggered on scroll enter
+  - Each number has a gradient color + subtle glow
+  - Background: animated gradient mesh (very slow movement)
+  - Decorative: faint circuit board pattern overlay
+SECTION 8 — Testimonials
+text
+
+SECTION LABEL: "CLIENT VOICES"
+H2: "What Our Clients
+     Actually Say"
+
+LAYOUT: 3-column card grid + auto-rotating featured quote above
+
+FEATURED QUOTE (Large, centered above grid):
+  Large decorative quotation mark (gradient colored)
+  Quote text in Clash Display, 32px
+  "NexCore didn't just build our product — they 
+   completely changed how we think about technology."
+  — Sarah Mitchell, CTO at Versa Technologies
+
+TESTIMONIAL CARDS:
+
+  Card 1:
+  Name: James Rodriguez | CEO, StackFlow Inc.
+  Avatar: Premium avatar image
+  Stars: ★★★★★
+  Text: "The team delivered our analytics platform 2 weeks 
+         ahead of schedule. The quality was exceptional."
+
+  Card 2:
+  Name: Priya Sharma | Head of Product, NexHealth
+  Avatar: Premium avatar image  
+  Stars: ★★★★★
+  Text: "Their AI team understood our domain immediately. 
+         The symptom checker accuracy exceeded all benchmarks."
+
+  Card 3:
+  Name: Tom Hargrove | IT Director, Orbito Corp
+  Avatar: Premium avatar image
+  Stars: ★★★★★
+  Text: "Automation that actually works. Our HR team 
+         saved 30 hours every single week."
+
+  Card 4:
+  Name: Liu Wei | Founder, DataSync Solutions
+  Avatar: Premium avatar image
+  Stars: ★★★★★
+  Text: "Zero downtime migration. I didn't think it was 
+         possible until NexCore made it happen."
+
+ANIMATION:
+  - Framer Motion: cards appear with stagger from bottom
+  - Auto-scroll carousel on mobile
+  - Hover: card slightly lifts, border glows
+SECTION 9 — Team Section
+text
+
+SECTION LABEL: "THE MINDS BEHIND IT"
+H2: "Built by People Who
+     Give a Damn"
+
+LAYOUT: 4 team member cards in a row
+
+TEAM MEMBERS (Dummy):
+
+  Alex Turner — CEO & Co-Founder
+  "10+ years building AI products at scale."
+  Expertise: AI Strategy, Product Vision
+  LinkedIn icon
+
+  Maya Chen — Lead AI Engineer
+  "Former ML researcher turned startup builder."
+  Expertise: LLMs, Computer Vision, MLOps
+  LinkedIn icon
+
+  Ryan Brooks — Head of Engineering
+  "Full-stack architect obsessed with performance."
+  Expertise: React, Node.js, Cloud Architecture
+  LinkedIn icon
+
+  Leila Nour — Creative Director
+  "Design systems that feel as good as they look."
+  Expertise: UI/UX, Brand, Design Systems
+  LinkedIn icon
+
+CARD DESIGN:
+  - Grayscale photo, colorizes on hover
+  - Role tag in monospace font
+  - Hover: card flips or expands with micro-detail
+  - GSAP: staggered slide-up animation on scroll
+SECTION 10 — Tech Stack
+text
+
+SECTION LABEL: "OUR ARSENAL"
+H2: "Technology We
+     Master"
+
+LAYOUT: Infinite scrolling logo row (2 rows, opposite directions)
+         + Below: categorized tech pills
+
+ROW 1 (left scroll):  React | Next.js | Node.js | Python | FastAPI | PostgreSQL | MongoDB
+
+ROW 2 (right scroll): AWS | Docker | Kubernetes | TensorFlow | LangChain | GPT-4 | Figma
+
+CATEGORY PILLS below:
+  [Frontend]  [Backend]  [AI/ML]  [DevOps]  [Mobile]  [Design]
+  Click to filter/highlight relevant logos
+
+ANIMATION:
+  - GSAP ticker for infinite scroll rows
+  - Each logo grayscale → color on hover
+  - Framer Motion filter tabs with sliding indicator
+SECTION 11 — CTA Section
+text
+
+LAYOUT: Full-width, centered, high-impact
+
+BACKGROUND: 
+  Gradient: linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%)
+  Layered animated particle/dot field (anime.js random float)
+  Subtle noise texture overlay
+
+CONTENT:
+  Eyebrow: "READY TO BUILD?"
+  
+  H2 (white, Clash Display, 64px):
+  "Let's Turn Your Idea
+   Into a Product."
+
+  Sub-text (white, 80% opacity):
+  "Whether you're a startup with a napkin sketch or an enterprise 
+   needing serious engineering — we're your team."
+
+  CTA BUTTONS:
+  [→ Start a Project]   — White filled, dark text, magnetic hover
+  [↗ View Case Studies] — Transparent, white border, ghost style
+
+  Below buttons:
+  ✓ Free discovery call  ✓ Response within 24h  ✓ NDA on request
+
+ANIMATION:
+  - GSAP: headline word-by-word reveal on scroll
+  - anime.js: floating particle dots in background
+  - Button: magnetic cursor effect (GSAP quickSetter)
+  - Background gradient slowly animates (CSS @keyframes)
+SECTION 12 — Footer
+text
+
+LAYOUT: 4-column grid
+Background: #0A0A14 (very dark)
+Top border: 1px gradient line
+
+COLUMN 1 — Brand:
+  Logo (white version)
+  Tagline: "We Engineer What's Next."
+  Social icons: LinkedIn | GitHub | Twitter | Dribbble
+  Copyright: © 2025 NexCore Solutions. All rights reserved.
+
+COLUMN 2 — Services:
+  AI Solutions
+  Web Development
+  IT Services
+  AI Agents
+  Process Automation
+  Mobile Apps
+
+COLUMN 3 — Company:
+  About Us
+  Our Work
+  Blog
+  Careers → [We're Hiring badge]
+  Press Kit
+
+COLUMN 4 — Contact:
+  hello@nexcore.io
+  +1 (555) 294-8810
+  San Francisco, CA
+  [→ Book a Free Call] — gradient button
+
+FOOTER ANIMATION:
+  - GSAP: large faded watermark text "NEXCORE" in background
+  - Framer Motion: footer links underline on hover with slide animation
+  - Social icons: scale + glow on hover
+⚡ Global Animations Reference
+text
+
+PAGE LOAD SEQUENCE (GSAP Timeline):
+  1. Loader screen: Logo draws/morphs in → fades out (0.8s)
+  2. Nav items stagger drop in
+  3. Hero headline SplitText character reveal
+  4. Hero image scale up from 0.9 → 1
+  5. CTA buttons fade + slide up
+  6. Scroll unlock
+
+SCROLL ANIMATIONS (GSAP ScrollTrigger):
+  - All section headings: SplitText line-by-line reveal
+  - Cards: stagger fade + translateY from 40px
+  - SVG path drawing (Process section)
+  - Parallax on hero background elements
+  - Horizontal pinned scroll (Projects section)
+  - Counter animations (Stats section)
+
+CURSOR (Custom):
+  - Default: small white dot + larger ring follower
+  - On CTA buttons: expands + shows label
+  - On project cards: transforms to "VIEW →"
+  - On drag section: transforms to "DRAG"
+
+HOVER MICRO-INTERACTIONS (Framer Motion):
+  - Buttons: spring physics, scale 0.97 on press
+  - Cards: translateY(-8px), shadow deepen
+  - Nav links: magnetic pull effect
+  - Images: subtle scale(1.03) zoom
+
+ANIME.JS USES:
+  - Hero badge blinking dot
+  - Floating stat cards
+  - Particle background (CTA section)
+  - Number countUp animations
+  - SVG icon line draw on section entry
+  - Marquee acceleration/deceleration
+🖼️ Image Strategy
+text
+
+SOURCE SUGGESTIONS (All free/premium):
+  - unDraw.co         → Custom colored SVG illustrations
+  - Craftwork.design  → Premium UI mockup images
+  - Storyset.com      → Animated illustrations
+  - Pexels/Unsplash   → Team, office, lifestyle photos
+  - Heroicons/Lucide  → Icons
+
+KEY IMAGES NEEDED:
+  1. Hero: 3D Dashboard UI mockup (floating device mockup)
+  2. Projects: 5 app/platform screenshot mockups
+  3. Team: 4 professional headshots (diverse)
+  4. Client logos: 5 simple wordmark logos (create as SVG text)
+  5. Tech logos: all major framework/tool logos (SVG from SVGL.app)
+  6. About: Office/team working photo (wide, bright)
+  7. CTA section background: abstract gradient or particle image
+
+MOCKUP STYLE: 
+  Browser window frames or device frames around screenshots
+  Use Figma Mockup or Shots.so to wrap UI screenshots
+📁 Suggested Folder Structure
+text
+
+/src
+  /components
+    /Navbar
+    /Hero
+    /Marquee
+    /Services
+    /Projects
+    /Process
+    /Stats
+    /Testimonials
+    /Team
+    /TechStack
+    /CTA
+    /Footer
+    /ui
+      /Button
+      /Card
+      /Badge
+      /CustomCursor
+  /animations
+    gsap.config.js
+    anime.config.js
+    variants.js  ← Framer Motion variants
+  /styles
+    globals.css
+    variables.css   ← CSS custom properties
+    typography.css
+    animations.css
+  /assets
+    /images
+    /icons
+    /fonts
+  /data
+    projects.js     ← All dummy project data
+    testimonials.js
+    team.js
+    services.js
+💡 Design Philosophy Note: Every section should feel like it was considered individually — different layout rhythms, varying background treatments (light/dark alternating sections for contrast breathing), and no two sections using identical card styles. The animations should feel earned, not decorative — they guide the eye and reward curiosity. The site should feel fast, confident, and crafted.

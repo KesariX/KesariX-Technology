@@ -1,0 +1,175 @@
+/* ══════════════════════════════════════════════════
+   TECH STACK — KesariX Technology
+   ══════════════════════════════════════════════════ */
+
+.kx-techstack {
+  position: relative;
+  background-color: var(--bg-base); /* Start with light clean base */
+  padding-bottom: 0; /* Remove bottom padding to force massive layout */
+}
+
+/* ── Header ────────────────────────────────────── */
+.kx-techstack__header-area {
+  margin-bottom: 5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.kx-techstack__eyebrow {
+  display: inline-block;
+  margin-bottom: 1.25rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  background: rgba(217, 119, 6, 0.08);
+  border: 1px solid rgba(217, 119, 6, 0.15);
+  padding: 0.4rem 1.25rem;
+  border-radius: 999px;
+}
+
+.kx-techstack__title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--text-dark);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+/* ── Giant Expanding Accordion ─────────────────── */
+.kx-techstack__accordion {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-top: 2px solid rgba(0, 0, 0, 0.05); /* clean boundary */
+}
+
+.kx-techstack__row {
+  width: 100%;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+  background: var(--bg-base);
+  color: var(--text-dark);
+  overflow: hidden;
+  transition: background-color 500ms ease, color 500ms ease;
+}
+
+/* Color Inversion on Hover / Active */
+.kx-techstack__row:hover,
+.kx-techstack__row--active {
+  background: #0b0f19; /* Massive dark slab shift */
+  color: #ffffff;
+}
+
+/* Row Header Geometry */
+.kx-techstack__row-header {
+  display: flex;
+  align-items: center;
+  padding: 3rem 0;
+  cursor: pointer;
+  transition: padding 500ms ease;
+}
+
+/* Top margin expands slightly when active to give focus */
+.kx-techstack__row--active .kx-techstack__row-header {
+  padding-top: 4.5rem;
+  padding-bottom: 2rem;
+}
+
+.kx-techstack__row-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: 700;
+  color: var(--accent-primary);
+  width: 10%;
+  min-width: 60px;
+}
+
+.kx-techstack__row-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 800;
+  margin: 0;
+  text-transform: uppercase;
+  flex: 1;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  transition: transform 500ms ease;
+}
+
+.kx-techstack__row--active .kx-techstack__row-title {
+  transform: translateX(20px); /* text physically slides right */
+}
+
+.kx-techstack__row-icon {
+  opacity: 0;
+  color: var(--accent-primary);
+  transform: translateX(-40px) rotate(-45deg);
+  transition: all 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.kx-techstack__row--active .kx-techstack__row-icon {
+  opacity: 1;
+  transform: translateX(0) rotate(0);
+}
+
+@media (max-width: 767px) {
+  .kx-techstack__row-icon {
+    display: none; /* Hide huge icon on mobile */
+  }
+}
+
+/* ── Content Dropdown Magic ────────────────────── */
+.kx-techstack__row-content-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.kx-techstack__row--active .kx-techstack__row-content-wrap {
+  grid-template-rows: 1fr;
+}
+
+.kx-techstack__row-content {
+  overflow: hidden;
+}
+
+/* The Pills that render inside the black box */
+.kx-techstack__tech-list {
+  padding-bottom: 4.5rem;
+  padding-left: 10%; /* align perfectly to the right of the tag */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+@media (max-width: 767px) {
+  .kx-techstack__tech-list {
+    padding-left: 0; /* Reset alignment on narrow mobile */
+  }
+}
+
+/* Massive Premium Bubble Tiles */
+.kx-techstack__tech-item {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 500;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 1rem 2rem;
+  border-radius: 999px;
+  cursor: default;
+  transition: background 300ms ease, border-color 300ms ease;
+  backdrop-filter: blur(8px);
+}
+
+.kx-techstack__tech-item:hover {
+  background: rgba(217, 119, 6, 0.15); /* amber glow */
+  border-color: rgba(217, 119, 6, 0.5);
+}

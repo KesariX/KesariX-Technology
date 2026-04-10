@@ -1,0 +1,185 @@
+/* ══════════════════════════════════════════════════
+   STATS — KesariX Technology
+   ══════════════════════════════════════════════════ */
+
+.kx-stats {
+  position: relative;
+  background-color: var(--text-dark); /* Extends dark theme */
+  overflow: hidden;
+}
+
+/* ── Header ────────────────────────────────────── */
+.kx-stats__header {
+  margin-bottom: 5rem;
+  max-width: 600px;
+}
+
+.kx-stats__eyebrow {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  background: rgba(217, 119, 6, 0.08); /* Amber tag background */
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(217, 119, 6, 0.15);
+}
+
+.kx-stats__title {
+  font-family: 'Outfit', sans-serif;
+  color: #ffffff;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+/* ── Bento Grid ────────────────────────────────── */
+.kx-stats__bento {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .kx-stats__bento {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .kx-stats__bento {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(320px, auto);
+  }
+  .kx-stats__card--span-2 {
+    grid-column: span 2;
+  }
+}
+
+/* ── Card ──────────────────────────────────────── */
+.kx-stats__card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02); /* Glassy dark overlay */
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 28px;
+  overflow: hidden;
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 280px;
+  transition: transform 350ms ease, border-color 350ms ease, box-shadow 350ms ease;
+  cursor: default;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.kx-stats__card:hover {
+  border-color: rgba(217, 119, 6, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(217, 119, 6, 0.1);
+}
+
+/* Custom glowing overlay driven by JS mouse coords */
+.kx-stats__card-glow {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 350ms ease;
+  pointer-events: none;
+  background: radial-gradient(
+    800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(217, 119, 6, 0.08),
+    transparent 40%
+  );
+  z-index: 1;
+}
+
+.kx-stats__card:hover .kx-stats__card-glow {
+  opacity: 1;
+}
+
+/* Inner content */
+.kx-stats__card-inner {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.kx-stats__card-top {
+  display: flex;
+  justify-content: flex-end; /* Push icon to the right elegantlry */
+}
+
+/* Mini icon */
+.kx-stats__card-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(217, 119, 6, 0.1), rgba(245, 158, 11, 0.05));
+  color: var(--accent-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(217, 119, 6, 0.2);
+  transition: transform 350ms ease;
+}
+
+.kx-stats__card:hover .kx-stats__card-icon {
+  transform: scale(1.1) rotate(5deg);
+  background: linear-gradient(135deg, rgba(217, 119, 6, 0.2), rgba(245, 158, 11, 0.1));
+}
+
+/* Bottom data stack */
+.kx-stats__card-bottom {
+  margin-top: 3rem;
+}
+
+.kx-stats__number-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.kx-stats__prefix,
+.kx-stats__suffix {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--accent-primary);
+}
+
+.kx-stats__number-val {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(3.5rem, 6vw, 5rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.kx-stats__label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 0.75rem;
+}
+
+.kx-stats__desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+  line-height: 1.6;
+  max-width: 95%;
+}

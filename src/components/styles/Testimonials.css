@@ -1,0 +1,255 @@
+/* ══════════════════════════════════════════════════
+   TESTIMONIALS — KesariX Technology
+   ══════════════════════════════════════════════════ */
+
+.kx-testimonials {
+  position: relative;
+  background-color: #0b0f19; /* Extremely deep blue/black slate */
+  overflow: hidden;
+  padding: 10rem 0;
+}
+
+/* ── Ambient Background Glow ───────────────────── */
+.kx-testimonials__bg-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 80vh;
+  background: radial-gradient(
+    circle, 
+    rgba(217, 119, 6, 0.08) 0%, 
+    transparent 60%
+  );
+  filter: blur(80px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ── Header ────────────────────────────────────── */
+.kx-testimonials__header {
+  text-align: center;
+  margin-bottom: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.kx-testimonials__eyebrow {
+  display: inline-block;
+  margin-bottom: 1.25rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  background: rgba(217, 119, 6, 0.1);
+  border: 1px solid rgba(217, 119, 6, 0.15);
+  padding: 0.4rem 1.25rem;
+  border-radius: 999px;
+}
+
+.kx-testimonials__title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+/* ── Carousel Container ────────────────────────── */
+.kx-testimonials__carousel {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.kx-testimonials__watermark-icon {
+  color: rgba(217, 119, 6, 0.08); /* Faint amber */
+  margin-bottom: -4rem; /* Tuck it beautifully behind the text */
+  margin-left: -20rem; /* Offset structurally */
+  z-index: 0;
+}
+
+@media (max-width: 767px) {
+  .kx-testimonials__watermark-icon {
+    margin-bottom: -2rem;
+    margin-left: 0;
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* Viewport for slider height constraint */
+.kx-testimonials__slider-viewport {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  min-height: 380px; /* guarantees layout stability during crossfades */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 767px) {
+  .kx-testimonials__slider-viewport {
+    min-height: 480px; /* Text taller on mobile */
+  }
+}
+
+.kx-testimonials__slide-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+/* ── Slider Content Details ────────────────────── */
+.kx-testimonials__slider-stars {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 2rem;
+  background: rgba(217, 119, 6, 0.05); /* very faint ring */
+  padding: 0.5rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid rgba(217, 119, 6, 0.1);
+}
+
+.kx-testimonials__star {
+  color: #F59E0B;
+  fill: #F59E0B;
+}
+
+.kx-testimonials__slider-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.5rem, 3.5vw, 2.75rem);
+  font-weight: 500;
+  line-height: 1.3;
+  color: #ffffff;
+  margin: 0 0 3rem;
+  letter-spacing: -0.01em;
+  max-width: 850px;
+}
+
+/* Author block */
+.kx-testimonials__slider-author {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.kx-testimonials__avatar {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-primary), #FBBF24);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.375rem;
+  font-weight: 800;
+  color: #ffffff;
+  box-shadow: 0 8px 30px rgba(217, 119, 6, 0.3);
+}
+
+.kx-testimonials__author-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.kx-testimonials__name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.kx-testimonials__role {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+/* ── Navigation Controls ───────────────────────── */
+.kx-testimonials__nav {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 2rem;
+  position: relative;
+  z-index: 5;
+}
+
+.kx-testimonials__nav-dot {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 300ms ease, transform 300ms ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kx-testimonials__nav-dot:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.2);
+}
+
+.kx-testimonials__nav-dot--active {
+  background: transparent;
+}
+
+.kx-testimonials__nav-dot--active:hover {
+  transform: none; /* controlled by SVG */
+}
+
+/* SVG Circular Timer logic */
+.kx-testimonials__progress-ring {
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: 30px;
+  height: 30px;
+  transform: rotate(-90deg);
+}
+
+.kx-testimonials__progress-circle {
+  fill: none;
+  stroke: var(--accent-primary);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+/* Adds a tiny dot indicator in the absolute center of the active ring */
+.kx-testimonials__nav-dot--active::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--accent-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(217, 119, 6, 0.5);
+}

@@ -1,0 +1,153 @@
+lead-generation IT agency website.
+
+This is the exact structural decomposition of the website — no guessing, purely extracted + organized.
+
+🧱 1. HEADER / NAVBAR
+Logo
+Navigation links (Services, About, Contact, etc.)
+CTA (optional)
+
+👉 Purpose: Navigation + brand identity
+
+🚀 2. HERO SECTION (Above the fold)
+Headline: “Let’s turn your ideas into reality”
+Email input field
+CTA button (Consultation / Submit)
+Social proof: “Trusted by 100+ clients”
+
+👉 Function:
+
+Immediate lead capture
+First impression
+🧩 3. SERVICES / WHAT WE OFFER
+Service categories:
+Offshore IT Staffing
+IT Services & Solutions
+
+Each includes:
+
+Tech stack tags (React, Node, AWS, etc.)
+“Details” CTA
+
+👉 Function:
+
+Show capability breadth
+Build technical credibility
+⚙️ 4. WORKING PROCESS SECTION
+
+Steps:
+
+Requirement Understanding
+Brainstorming & Analysis
+Development & Testing
+Launching Projects
+
+👉 Function:
+
+Reduce uncertainty
+Show structured workflow
+🏆 5. WHY CHOOSE US (VALUE PROPOSITION)
+
+Core points:
+
+Client-first ideology
+Reliable professional team
+Quality-focused approach
+
+👉 Function:
+
+Objection handling
+Trust building
+📊 6. CASE STUDIES / PROJECTS
+
+Examples:
+
+University Payroll System
+Corporate Training Simulation
+Marketing Automation
+
+👉 Function:
+
+Proof of work
+Demonstrate real-world impact
+🧪 7. UPCOMING PRODUCTS
+Placeholder cards (“Revealing Soon”)
+
+👉 Function:
+
+Future vision
+Innovation positioning
+🌍 8. GLOBAL PRESENCE
+
+Regions:
+
+Asia
+Europe
+North America
+Africa
+
+👉 Function:
+
+Authority + global trust
+💬 9. TESTIMONIALS
+Client reviews with roles (CEO, Founder, etc.)
+Real project-based feedback
+
+👉 Function:
+
+Social proof (critical for conversion)
+📰 10. BLOG / INSIGHTS SECTION
+
+Topics:
+
+AI solutions
+Software development
+Digital marketing
+SEO guides
+
+👉 Function:
+
+SEO traffic
+Thought leadership
+📞 11. CONTACT + FOOTER
+
+Includes:
+
+Phone number
+Email
+Office address
+Services list
+Social links
+
+👉 Function:
+
+Final conversion point
+Information hub
+📄 12. ABOUT PAGE (Separate but important)
+
+Contains:
+
+Company intro
+Mission & Vision
+Services breakdown
+Testimonials
+Newsletter subscription
+🧠 FINAL STRUCTURE (Clean Hierarchy)
+1. Header
+2. Hero (Lead Capture)
+3. Services
+4. Process
+5. Why Choose Us
+6. Case Studies
+7. Upcoming Products
+8. Global Presence
+9. Testimonials
+10. Blog
+11. Footer
+(+ About Page separately)
+⚠️ CRITICAL INSIGHT (what most people miss)
+
+This site is built on a conversion funnel logic, not design:
+
+Flow:
+Attention → Services → Trust → Proof → Authority → Conversion

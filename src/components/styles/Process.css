@@ -1,0 +1,289 @@
+/* ══════════════════════════════════════════════════
+   PROCESS — KesariX Technology
+   ══════════════════════════════════════════════════ */
+
+.kx-process {
+  position: relative;
+  background-color: var(--bg-base);
+  overflow: hidden;
+}
+
+/* ── Header ────────────────────────────────────── */
+.kx-process__header {
+  margin-bottom: 6rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.kx-process__eyebrow {
+  display: inline-block;
+  margin-bottom: 0.875rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  background: rgba(217, 119, 6, 0.08); /* faint amber tag styles match brand */
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+}
+
+.kx-process__title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--text-dark);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+/* ── Interactive Timeline Wrap ─────────────────── */
+.kx-process__timeline-wrap {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* Center tracking line */
+.kx-process__line-bg {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(0, 0, 0, 0.06);
+  transform: translateX(-50%);
+}
+
+/* Animated Golden Fill Line */
+.kx-process__line-fill {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(to bottom, var(--accent-primary), #FBBF24);
+  transform: translateX(-50%);
+  border-radius: 4px;
+  z-index: 1;
+  box-shadow: 0 0 20px rgba(217, 119, 6, 0.5);
+}
+
+/* ── Steps ─────────────────────────────────────── */
+.kx-process__steps {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.kx-process__step {
+  position: relative;
+  width: 100%;
+  display: flex;
+}
+
+.kx-process__step--left {
+  justify-content: flex-start;
+}
+
+.kx-process__step--right {
+  justify-content: flex-end;
+}
+
+/* Center Timeline Dot Indicator */
+.kx-process__dot {
+  position: absolute;
+  left: 50%;
+  top: 2.5rem; /* align carefully with the card header flow */
+  transform: translateX(-50%);
+  width: 1.75rem;
+  height: 1.75rem;
+  background: #ffffff;
+  border: 4px solid var(--accent-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  box-shadow: 0 0 0 6px rgba(217, 119, 6, 0.15);
+  transition: transform 300ms ease;
+}
+
+.kx-process__dot-inner {
+  width: 0.5rem;
+  height: 0.5rem;
+  background: var(--accent-primary);
+  border-radius: 50%;
+}
+
+.kx-process__step:hover .kx-process__dot {
+  transform: translateX(-50%) scale(1.2);
+}
+
+/* ── Timeline Card ─────────────────────────────── */
+.kx-process__card {
+  width: calc(50% - 4rem); /* 50% minus the distance from the dot */
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 2.5rem 3rem;
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
+  transition: transform 350ms ease, border-color 350ms ease, box-shadow 350ms ease;
+}
+
+.kx-process__card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(217, 119, 6, 0.3);
+  box-shadow: 0 24px 50px -12px rgba(217, 119, 6, 0.08);
+}
+
+/* Faint giant background watermark numbers (01, 02...) */
+.kx-process__card-bg-num {
+  position: absolute;
+  top: -1.5rem;
+  right: 0rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 10rem;
+  font-weight: 800;
+  color: rgba(26, 26, 46, 0.02);
+  line-height: 1;
+  pointer-events: none;
+  z-index: 1;
+  transition: color 350ms ease, transform 350ms ease;
+}
+
+.kx-process__card:hover .kx-process__card-bg-num {
+  color: rgba(217, 119, 6, 0.04);
+  transform: scale(1.05) translate(-10px, 10px);
+}
+
+/* Inner glow interaction mechanic */
+.kx-process__card-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    600px circle at bottom right,
+    rgba(217, 119, 6, 0.04),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 350ms ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.kx-process__card:hover .kx-process__card-glow {
+  opacity: 1;
+}
+
+/* ── Card Content Internal Hierarchy ───────────── */
+.kx-process__step-header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.kx-process__step-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #D97706, #F59E0B);
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(217, 119, 6, 0.25);
+}
+
+.kx-process__step-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.kx-process__step-duration {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  background: rgba(217, 119, 6, 0.08); /* Amber tag background */
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(217, 119, 6, 0.15);
+}
+
+.kx-process__step-title {
+  position: relative;
+  z-index: 2;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0 0 1rem;
+  line-height: 1.3;
+}
+
+.kx-process__step-desc {
+  position: relative;
+  z-index: 2;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-mid);
+  margin: 0;
+}
+
+/* ── Mobile Layout Adjustments ─────────────────── */
+/* Below 1024px we shift the line entirely to the left for a neat left-aligned mobile timeline */
+@media (max-width: 1023px) {
+  .kx-process__header {
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .kx-process__line-bg {
+    left: 1.5rem;
+    transform: none;
+  }
+
+  .kx-process__line-fill {
+    left: calc(1.5rem - 1px);
+    transform: none;
+  }
+
+  .kx-process__dot {
+    left: 1.5rem;
+    transform: translateX(-50%);
+  }
+  
+  .kx-process__step:hover .kx-process__dot {
+    transform: translateX(-50%) scale(1.1);
+  }
+
+  .kx-process__step--left,
+  .kx-process__step--right {
+    justify-content: flex-end; /* All cards push to the right */
+  }
+
+  .kx-process__card {
+    width: calc(100% - 4rem);
+    padding: 2rem 1.75rem;
+  }
+  
+  .kx-process__step-header {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
