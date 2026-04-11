@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { ChevronDown, Activity, Terminal, Globe } from 'lucide-react'
+import { Activity, Terminal, Globe } from 'lucide-react'
 import gsap from 'gsap'
 import './styles/Hero.css'
 
@@ -227,14 +227,6 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="kx-hero__scroll-hint"
-        >
-          <p className="kx-hero__scroll-text">Scroll to explore</p>
-          <ChevronDown size={20} />
-        </motion.div>
       </div>
     </section>
   )

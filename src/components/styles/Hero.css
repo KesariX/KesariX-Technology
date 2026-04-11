@@ -501,23 +501,7 @@
   color: #10b981;
 }
 
-/* ── Scroll hint ───────────────────────────────── */
-.kx-hero__scroll-hint {
-  position: absolute;
-  left: 50%;
-  bottom: -0.5rem;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: var(--text-muted);
-}
 
-.kx-hero__scroll-text {
-  margin: 0;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
-}
 
 /* ── Responsive Refinements ─────────────────────── */
 @media (min-width: 768px) {
