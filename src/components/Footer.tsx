@@ -131,11 +131,9 @@ export default function Footer() {
             © {currentYear} KesariX Technology. All rights reserved.
           </p>
           <div className="kx-footer__legal">
-            {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map((link) => (
-              <a key={link} href="#" className="kx-footer__legal-link">
-                {link}
-              </a>
-            ))}
+            <Link to="/legal/privacy" className="kx-footer__legal-link">Privacy Policy</Link>
+            <Link to="/legal/terms" className="kx-footer__legal-link">Terms of Service</Link>
+            <Link to="/legal/cookies" className="kx-footer__legal-link">Cookie Policy</Link>
           </div>
         </motion.div>
       </div>

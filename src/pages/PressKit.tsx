@@ -3,137 +3,169 @@ import { motion } from 'framer-motion'
 import { DownloadCloud, ExternalLink } from 'lucide-react'
 import './styles/PressKit.css'
 
+const colors = [
+  { name: 'Kesari Amber', hex: '#D97706', rgb: '217, 119, 6', bg: '#D97706' },
+  { name: 'Accent Gold', hex: '#F59E0B', rgb: '245, 158, 11', bg: '#F59E0B' },
+  { name: 'Glow Yellow', hex: '#FBBF24', rgb: '251, 191, 36', bg: '#FBBF24' },
+  { name: 'Enterprise Dark', hex: '#1A1A2E', rgb: '26, 26, 46', bg: '#1A1A2E' },
+  { name: 'Surface White', hex: '#FAFAF8', rgb: '250, 250, 248', bg: '#FAFAF8', border: true },
+  { name: 'Border Gray', hex: '#E5E7EB', rgb: '229, 231, 235', bg: '#E5E7EB' }
+]
+
+const logos = [
+  { variant: 'Light Background', previewClass: 'press-logo-preview--light', markClass: 'press-logo-mark--dark' },
+  { variant: 'Dark Background', previewClass: 'press-logo-preview--dark', markClass: 'press-logo-mark--light' },
+  { variant: 'Amber Gradient', previewClass: 'press-logo-preview--amber', markClass: 'press-logo-mark--white' }
+]
+
+const facts = [
+  { key: 'Legal Name', val: 'KesariX Technology Pvt. Ltd.' },
+  { key: 'Founded', val: '2019' },
+  { key: 'Headquarters', val: 'India (Remote-First)' },
+  { key: 'Focus Area', val: 'B2B Enterprise Software Engineering & AI' },
+  { key: 'Total Projects', val: '120+ across 14 countries' },
+  { key: 'Press Contact', val: 'press@kesarix.com', mono: true },
+  { key: 'Website', val: 'https://kesarix.com', mono: true }
+]
+
 export default function PressKit() {
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+  useEffect(() => { window.scrollTo(0, 0) }, [])
 
   return (
     <div className="press-page">
-      
-      {/* ── HERO ──────────────── */}
+      {/* ── HERO ── */}
       <section className="press-hero">
-        <div className="section-container relative z-10 max-w-4xl mx-auto flex flex-col items-center">
-          <div className="text-[var(--text-muted)] mb-6 font-bold tracking-widest uppercase text-sm px-4 py-2 bg-[var(--surface-soft)] rounded-full border border-[var(--border)] shadow-sm">
-             Brand Assets & PR
-          </div>
-          
-          <h1 className="section-title mb-6" style={{ fontSize: 'clamp(3rem, 6vw, 4.5rem)', lineHeight: '1.1' }}>
-            The KesariX <br/>
-            <span className="gradient-text">Press Kit.</span>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="press-hero__label">Brand Assets & PR</div>
+          <h1 className="press-hero__title">
+            The KesariX<br /><em>Press Kit.</em>
           </h1>
-          
-          <p className="text-xl md:text-2xl text-[var(--text-mid)] mb-10 leading-relaxed font-medium">
-            Official logos, brand colors, typography guidelines, and company information for media and press usage.
+          <p className="press-hero__desc">
+            Official logos, brand colors, typography guidelines, and company information for media, press, and partner usage.
           </p>
-          
-          <a href="#" className="btn-primary flex items-center gap-2">
-            Download Full Kit (ZIP) <DownloadCloud size={20} />
+          <a href="/assets/KesariX_PressKit.zip" download className="btn-primary">
+            <DownloadCloud size={18} /> Download Full Kit (.zip)
           </a>
-        </div>
+        </motion.div>
       </section>
 
-      {/* ── LOGOS ──────────────── */}
-      <section className="section-padding bg-[var(--surface-soft)] text-center">
-        <div className="section-container max-w-5xl">
-          <span className="section-eyebrow mb-4">Identity</span>
-          <h2 className="section-title mb-12">Logomarks</h2>
-          
-          <div className="press-section-grid">
-            <motion.div 
+      {/* ── LOGOS ── */}
+      <section className="press-section">
+        <h2 className="press-section__title">Logomarks</h2>
+        <p className="press-section__subtitle">
+          Available in SVG, PNG (transparent), and PDF formats. Always maintain minimum clear space equal to the height of the "K" character on all sides.
+        </p>
+        <div className="press-logo-grid">
+          {logos.map((l, i) => (
+            <motion.div
+              key={i}
+              className="press-logo-card"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="press-asset-card press-logo-dark"
+              transition={{ duration: 0.5, delay: i * 0.12 }}
             >
-              <div className="press-logo-demo">
-                Kesari<span className="highlight">X</span>
+              <div className={`press-logo-preview ${l.previewClass}`}>
+                <span className={`press-logo-mark ${l.markClass}`}>
+                  Kesari<span className="press-logo-accent">X</span>
+                </span>
               </div>
-              <button className="press-download-btn"><DownloadCloud size={16} /> SVG & PNG</button>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, delay: 0.1 }}
-              className="press-asset-card press-logo-light"
-            >
-              <div className="press-logo-demo">
-                Kesari<span className="highlight">X</span>
+              <div className="press-logo-actions">
+                <span className="press-logo-variant">{l.variant}</span>
+                <button className="press-download-btn">
+                  <DownloadCloud size={14} /> SVG & PNG
+                </button>
               </div>
-              <button className="press-download-btn"><DownloadCloud size={16} /> SVG & PNG</button>
             </motion.div>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* ── COLORS ──────────────── */}
-      <section className="section-padding bg-white border-y border-[var(--border)]">
-        <div className="section-container max-w-5xl">
-          <span className="section-eyebrow mb-4">Palette</span>
-          <h2 className="section-title mb-12">Brand Colors</h2>
-          
-          <p className="text-[var(--text-mid)] leading-relaxed max-w-3xl mb-8">
-            The KesariX brand relies on stark contrast. We utilize deep enterprise darks, stark whites, and our signature technical Amber to highlight interactive logic.
-          </p>
-
-          <div className="press-color-grid">
-            {[
-              { name: "Kesari Amber", hex: "#D97706", rgb: "217, 119, 6", bg: "bg-[#D97706]" },
-              { name: "Core White", hex: "#FFFFFF", rgb: "255, 255, 255", bg: "bg-[#FFFFFF]" },
-              { name: "Base Gray", hex: "#F9FAFB", rgb: "249, 250, 251", bg: "bg-[#F9FAFB]" },
-              { name: "Enterprise Dark", hex: "#0A0A0B", rgb: "10, 10, 11", bg: "bg-[#0A0A0B]" },
-            ].map((color, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="press-color-block"
-              >
-                <div className={`press-color-swatch ${color.bg}`} />
-                <div className="press-color-meta">
-                  <span>{color.name}</span>
-                  {color.hex} <br/>
-                  RGB {color.rgb}
-                </div>
-              </motion.div>
-            ))}
-          </div>
+      {/* ── COLORS ── */}
+      <section className="press-section">
+        <h2 className="press-section__title">Brand Colors</h2>
+        <p className="press-section__subtitle">
+          The KesariX palette uses stark enterprise darks and our signature technical Amber to communicate precision, speed, and reliability.
+        </p>
+        <div className="press-colors">
+          {colors.map((c, i) => (
+            <motion.div
+              key={i}
+              className="press-color-item"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.08 }}
+            >
+              <div
+                className="press-color-swatch"
+                style={{ background: c.bg, border: c.border ? '1px solid #E5E7EB' : undefined }}
+              />
+              <div className="press-color-name">{c.name}</div>
+              <div className="press-color-codes">
+                HEX {c.hex}<br />
+                RGB ({c.rgb})
+              </div>
+            </motion.div>
+          ))}
         </div>
       </section>
 
-      {/* ── COMPANY INFO ──────────────── */}
-      <section className="py-24 bg-[var(--surface-soft)]">
-        <div className="section-container max-w-3xl premium-card p-12 bg-white">
-          <h3 className="text-2xl font-bold mb-6 font-['Outfit']">Company Fact Sheet</h3>
-          
-          <ul className="space-y-4 mb-8">
-            <li className="flex justify-between py-3 border-b border-[var(--border)]">
-              <span className="font-bold text-[var(--text-dark)]">Founded</span>
-              <span className="text-[var(--text-muted)]">2019</span>
-            </li>
-            <li className="flex justify-between py-3 border-b border-[var(--border)]">
-              <span className="font-bold text-[var(--text-dark)]">Headquarters</span>
-              <span className="text-[var(--text-muted)]">India</span>
-            </li>
-            <li className="flex justify-between py-3 border-b border-[var(--border)]">
-              <span className="font-bold text-[var(--text-dark)]">Sector</span>
-              <span className="text-[var(--text-muted)]">B2B Software Engineering</span>
-            </li>
-            <li className="flex justify-between py-3 border-b border-[var(--border)]">
-              <span className="font-bold text-[var(--text-dark)]">Contact</span>
-              <span className="text-[var(--text-muted)] font-mono">press@kesarix.com</span>
-            </li>
-          </ul>
+      {/* ── TYPOGRAPHY ── */}
+      <section className="press-section">
+        <h2 className="press-section__title">Typography</h2>
+        <p className="press-section__subtitle">
+          Two typefaces define the KesariX voice: Outfit for expressive headings and Inter for readable body copy. JetBrains Mono is reserved for code and metadata.
+        </p>
+        <div className="press-type-specimens">
+          {[
+            { label: 'Outfit', role: 'Display / Headings', weight: '700 – 900', style: { fontFamily: "'Outfit', sans-serif", fontWeight: 900, fontSize: '2.5rem', color: 'var(--text-dark)', letterSpacing: '-0.03em', lineHeight: 1.1 }, sample: 'We Engineer What\'s Next.' },
+            { label: 'Inter', role: 'Body / UI Text', weight: '400 – 600', style: { fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: '1.0625rem', color: 'var(--text-mid)', lineHeight: 1.75 }, sample: 'A collective of systems architects building uncompromising digital platforms.' },
+            { label: 'JetBrains Mono', role: 'Code / Labels', weight: '500 – 700', style: { fontFamily: "'JetBrains Mono', monospace", fontWeight: 600, fontSize: '0.875rem', color: 'var(--accent-primary)', letterSpacing: '0.1em', textTransform: 'uppercase' }, sample: 'SYSTEM · ARCHITECTURE · API_GATEWAY · 2026' }
+          ].map((t, i) => (
+            <div key={i} className="press-type-row">
+              <div className="press-type-meta">
+                <strong>{t.label}</strong>
+                Role: {t.role}<br />
+                Weight: {t.weight}
+              </div>
+              <span style={t.style}>{t.sample}</span>
+            </div>
+          ))}
+        </div>
+      </section>
 
-          <a href="/contact" className="text-[var(--accent-primary)] font-bold flex items-center gap-2 hover:underline">
-             Contact Media Relations <ExternalLink size={16} />
+      {/* ── FACT SHEET ── */}
+      <section className="press-facts">
+        <h2 className="press-section__title">Company Fact Sheet</h2>
+        <p className="press-section__subtitle">Key information for editorial and press reference.</p>
+
+        <div className="press-fact-table">
+          {facts.map((f, i) => (
+            <motion.div
+              key={i}
+              className="press-fact-row"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.06 }}
+            >
+              <div className="press-fact-key">{f.key}</div>
+              <div className={`press-fact-val ${f.mono ? 'mono' : ''}`}>{f.val}</div>
+            </motion.div>
+          ))}
+        </div>
+
+        <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+          <a href="mailto:press@kesarix.com" className="btn-primary">
+            Contact Media Relations <ExternalLink size={16} />
           </a>
         </div>
       </section>
-
     </div>
   )
 }

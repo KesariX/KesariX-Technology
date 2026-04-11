@@ -53,15 +53,15 @@ export default function WebDevelopment() {
 
   return (
     <div className="bg-[var(--bg-base)]">
-      
+
       {/* ── ISOMETRIC HERO SECTION ──────────────── */}
       <section className="relative w-full pt-[120px] pb-16 md:pt-[160px] md:pb-32 overflow-hidden border-b border-[var(--border)]">
         {/* Background Grid */}
         <div className="absolute inset-0 z-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, var(--accent-primary) 1px, transparent 0)', backgroundSize: '40px 40px' }} />
-        
+
         <div className="section-container relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -75,11 +75,11 @@ export default function WebDevelopment() {
               We Build <br />
               <span className="gradient-text">Web Platforms.</span>
             </h1>
-            
+
             <p className="section-subtitle max-w-lg mb-10">
               Stop relying on templates. We architect custom, high-performance web applications designed to dominate search rankings and convert traffic effortlessly.
             </p>
-            
+
             <div className="flex flex-wrap items-center gap-4">
               <Link to="/contact" className="btn-primary group">
                 Deploy A Project <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
@@ -92,71 +92,71 @@ export default function WebDevelopment() {
 
           {/* Right Floating Browser Cards */}
           <motion.div
-             initial={{ opacity: 0 }}
-             animate={{ opacity: 1 }}
-             transition={{ duration: 1, delay: 0.2 }}
-             className="relative h-[500px] w-full hidden lg:block perspective-[1000px]"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="relative h-[500px] w-full hidden lg:block perspective-[1000px]"
           >
-             {/* Back/Bottom Browser */}
-             <motion.div 
-               animate={{ y: [0, 10, 0] }}
-               transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-               className="absolute top-20 right-0 w-[400px] h-[250px] bg-white border border-[var(--border)] rounded-2xl shadow-xl overflow-hidden -rotate-6 scale-90 opacity-60"
-             >
-                {/* Browser Top Bar */}
-                <div className="w-full h-8 bg-gray-50 border-b border-[var(--border)] flex items-center px-4 gap-2">
-                  <div className="w-2.5 h-2.5 rounded-full bg-red-400" /><div className="w-2.5 h-2.5 rounded-full bg-yellow-400" /><div className="w-2.5 h-2.5 rounded-full bg-green-400" />
-                </div>
-                <div className="p-4 grid grid-cols-3 gap-4">
-                  <div className="h-20 bg-gray-100 rounded-lg col-span-3" />
-                  <div className="h-24 bg-gray-100 rounded-lg col-span-1" />
-                  <div className="h-24 bg-gray-100 rounded-lg col-span-2" />
-                </div>
-             </motion.div>
+            {/* Back/Bottom Browser */}
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+              className="absolute top-20 right-0 w-[400px] h-[250px] bg-white border border-[var(--border)] rounded-2xl shadow-xl overflow-hidden -rotate-6 scale-90 opacity-60"
+            >
+              {/* Browser Top Bar */}
+              <div className="w-full h-8 bg-gray-50 border-b border-[var(--border)] flex items-center px-4 gap-2">
+                <div className="w-2.5 h-2.5 rounded-full bg-red-400" /><div className="w-2.5 h-2.5 rounded-full bg-yellow-400" /><div className="w-2.5 h-2.5 rounded-full bg-green-400" />
+              </div>
+              <div className="p-4 grid grid-cols-3 gap-4">
+                <div className="h-20 bg-gray-100 rounded-lg col-span-3" />
+                <div className="h-24 bg-gray-100 rounded-lg col-span-1" />
+                <div className="h-24 bg-gray-100 rounded-lg col-span-2" />
+              </div>
+            </motion.div>
 
-             {/* Middle Browser */}
-             <motion.div 
-               animate={{ y: [0, -15, 0] }}
-               transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-               className="absolute top-10 left-10 w-[450px] h-[280px] bg-white border border-[var(--border)] rounded-2xl shadow-2xl overflow-hidden z-10"
-             >
-                <div className="w-full h-8 bg-gray-50 border-b border-[var(--border)] flex items-center px-4 gap-2">
-                  <div className="w-2.5 h-2.5 rounded-full bg-red-400" /><div className="w-2.5 h-2.5 rounded-full bg-yellow-400" /><div className="w-2.5 h-2.5 rounded-full bg-green-400" />
+            {/* Middle Browser */}
+            <motion.div
+              animate={{ y: [0, -15, 0] }}
+              transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+              className="absolute top-10 left-10 w-[450px] h-[280px] bg-white border border-[var(--border)] rounded-2xl shadow-2xl overflow-hidden z-10"
+            >
+              <div className="w-full h-8 bg-gray-50 border-b border-[var(--border)] flex items-center px-4 gap-2">
+                <div className="w-2.5 h-2.5 rounded-full bg-red-400" /><div className="w-2.5 h-2.5 rounded-full bg-yellow-400" /><div className="w-2.5 h-2.5 rounded-full bg-green-400" />
+              </div>
+              <div className="p-6">
+                <div className="w-32 h-6 bg-[var(--accent-primary)]/20 rounded-md mb-6" />
+                <div className="space-y-3">
+                  <div className="w-full h-4 bg-gray-100 rounded-full" />
+                  <div className="w-[80%] h-4 bg-gray-100 rounded-full" />
+                  <div className="w-[90%] h-4 bg-gray-100 rounded-full" />
                 </div>
-                <div className="p-6">
-                  <div className="w-32 h-6 bg-[var(--accent-primary)]/20 rounded-md mb-6" />
-                  <div className="space-y-3">
-                    <div className="w-full h-4 bg-gray-100 rounded-full" />
-                    <div className="w-[80%] h-4 bg-gray-100 rounded-full" />
-                    <div className="w-[90%] h-4 bg-gray-100 rounded-full" />
-                  </div>
-                </div>
-             </motion.div>
+              </div>
+            </motion.div>
 
-             {/* Front Feature/Metric Card */}
-             <motion.div 
-               animate={{ y: [0, 8, 0] }}
-               transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-               className="absolute bottom-10 right-20 w-[240px] premium-card p-6 shadow-[0_20px_40px_rgba(0,0,0,0.1)] z-20"
-             >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
-                    <Zap size={20} />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-sm text-[var(--text-dark)]">Lighthouse Score</h4>
-                    <p className="text-xs text-[var(--text-muted)]">Perfect 100/100</p>
-                  </div>
+            {/* Front Feature/Metric Card */}
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+              className="absolute bottom-10 right-20 w-[240px] premium-card p-6 shadow-[0_20px_40px_rgba(0,0,0,0.1)] z-20"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
+                  <Zap size={20} />
                 </div>
-                <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
-                  <motion.div 
-                    initial={{ width: 0 }}
-                    animate={{ width: '100%' }}
-                    transition={{ duration: 2, delay: 1 }}
-                    className="h-full bg-emerald-500" 
-                  />
+                <div>
+                  <h4 className="font-bold text-sm text-[var(--text-dark)]">Lighthouse Score</h4>
+                  <p className="text-xs text-[var(--text-muted)]">Perfect 100/100</p>
                 </div>
-             </motion.div>
+              </div>
+              <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: '100%' }}
+                  transition={{ duration: 2, delay: 1 }}
+                  className="h-full bg-emerald-500"
+                />
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -167,7 +167,7 @@ export default function WebDevelopment() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-[var(--border)]">
             {metrics.map((metric, i) => (
               <div key={i} className={`flex flex-col items-center justify-center ${i !== 0 ? 'pl-8' : ''}`}>
-                <motion.div 
+                <motion.div
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
                   viewport={{ once: true }}
@@ -190,24 +190,23 @@ export default function WebDevelopment() {
       <section className="section-padding bg-[var(--surface-soft)]">
         <div className="section-container max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
-            
+
             <div className="lg:col-span-6">
               <span className="section-eyebrow mb-4">Architecture Deep Dive</span>
-              <h2 className="section-title mb-6">Modern Stack. <br/><span className="gradient-text">Infinite Scale.</span></h2>
+              <h2 className="section-title mb-6">Modern Stack. <br /><span className="gradient-text">Infinite Scale.</span></h2>
               <p className="text-lg text-[var(--text-mid)] mb-10">
                 We use the exact same technology stacks powering Silicon Valley's top tech giants. Your application will be incredibly fast, natively SEO optimized, and mathematically secure.
               </p>
 
               <div className="space-y-4">
                 {architectureStack.map((layer, idx) => (
-                  <div 
+                  <div
                     key={idx}
                     onClick={() => setActiveTab(idx)}
-                    className={`p-6 rounded-2xl cursor-pointer transition-all duration-300 border ${
-                      activeTab === idx 
-                        ? 'bg-white border-[var(--accent-primary)]/50 shadow-lg scale-[1.02]' 
+                    className={`p-6 rounded-2xl cursor-pointer transition-all duration-300 border ${activeTab === idx
+                        ? 'bg-white border-[var(--accent-primary)]/50 shadow-lg scale-[1.02]'
                         : 'bg-transparent border-transparent hover:border-[var(--border)] hover:bg-white/50'
-                    }`}
+                      }`}
                   >
                     <div className="flex items-start gap-4">
                       <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 ${layer.bg} ${layer.color}`}>
@@ -232,7 +231,7 @@ export default function WebDevelopment() {
 
             <div className="lg:col-span-6">
               {/* Dynamic Code Editor Mockup */}
-              <motion.div 
+              <motion.div
                 className="premium-card p-0 rounded-2xl overflow-hidden bg-[#1D1F23] shadow-2xl relative border-none"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -249,7 +248,7 @@ export default function WebDevelopment() {
                     <Terminal size={14} /> architecture.ts
                   </div>
                 </div>
-                
+
                 {/* Editor Body */}
                 <div className="p-6 font-mono text-sm leading-relaxed overflow-hidden h-[340px]">
                   <AnimatePresence mode="wait">
@@ -279,9 +278,9 @@ export default function WebDevelopment() {
                       </pre>
                     </motion.div>
                   </AnimatePresence>
-                  
+
                   {/* Blinking cursor */}
-                  <motion.div 
+                  <motion.div
                     animate={{ opacity: [1, 0] }}
                     transition={{ repeat: Infinity, duration: 0.8 }}
                     className="w-2 h-4 bg-[#61AFEF] mt-4 ml-8"
@@ -301,14 +300,14 @@ export default function WebDevelopment() {
           <h2 className="section-title mb-16">Why Standard Development Fails.</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="premium-card p-10 bg-gray-50 border-gray-200"
             >
               <div className="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center text-red-600 mx-auto mb-6">
-                 <div className="text-xl font-bold">X</div>
+                <div className="text-xl font-bold">X</div>
               </div>
               <h3 className="text-2xl font-bold mb-4 font-['Outfit']">Generic Web Agencies</h3>
               <ul className="space-y-4 text-left text-[var(--text-mid)]">
@@ -319,7 +318,7 @@ export default function WebDevelopment() {
               </ul>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, delay: 0.2 }}
@@ -327,7 +326,7 @@ export default function WebDevelopment() {
             >
               <div className="absolute inset-0 bg-gradient-to-b from-[var(--accent-primary)]/5 to-transparent pointer-events-none" />
               <div className="w-16 h-16 rounded-full bg-[var(--accent-primary)]/10 flex items-center justify-center text-[var(--accent-primary)] mx-auto mb-6 relative z-10">
-                 <CheckCircle2 size={30} />
+                <CheckCircle2 size={30} />
               </div>
               <h3 className="text-2xl font-bold mb-4 font-['Outfit'] relative z-10">KesariX Engineering</h3>
               <ul className="space-y-4 text-left text-[var(--text-dark)] font-medium relative z-10">
@@ -344,7 +343,7 @@ export default function WebDevelopment() {
       {/* ── ELEGANT THEMED CTA ────────────────────────────── */}
       <section className="py-24 md:py-32 bg-[var(--bg-base)] relative overflow-hidden">
         <div className="section-container relative z-10">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -352,13 +351,13 @@ export default function WebDevelopment() {
           >
             {/* Animated Rings fitting the Light Theme */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] pointer-events-none opacity-50">
-               <motion.div 
-                 animate={{ rotate: 360, scale: [1, 1.05, 1] }} 
-                 transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                 className="absolute inset-0 border-[2px] border-dashed border-[var(--border)] rounded-full mix-blend-multiply"
-               />
+              <motion.div
+                animate={{ rotate: 360, scale: [1, 1.05, 1] }}
+                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-0 border-[2px] border-dashed border-[var(--border)] rounded-full mix-blend-multiply"
+              />
             </div>
-            
+
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[60%] bg-gradient-to-t from-[var(--accent-primary)]/10 to-transparent pointer-events-none blur-[40px]" />
 
             <div className="relative z-20 flex flex-col items-center">
@@ -367,16 +366,16 @@ export default function WebDevelopment() {
                   <Code2 size={40} className="text-[var(--accent-primary)]" />
                 </div>
               </div>
-              
+
               <h2 className="text-4xl md:text-5xl lg:text-7xl font-black mb-8 tracking-tight font-['Outfit'] text-[var(--text-dark)] leading-tight relative">
-                Start Building <br/>
+                Start Building <br />
                 <span className="gradient-text">Your Platform.</span>
               </h2>
-              
+
               <p className="text-xl md:text-2xl text-[var(--text-mid)] mx-auto mb-12 max-w-3xl leading-relaxed">
                 Break away from restrictive templates. We architect platforms designed exactly for your most ambitious technical requirements.
               </p>
-              
+
               <Link to="/contact" className="btn-primary flex items-center justify-center px-10 py-5 text-lg font-bold shadow-[var(--shadow-lift)] overflow-hidden relative">
                 <span className="relative z-10 transition-transform group-hover:-translate-x-1">Launch Project</span>
                 <ArrowRight size={20} className="ml-3 relative z-10 transition-transform group-hover:translate-x-1" />
@@ -394,9 +393,9 @@ export default function WebDevelopment() {
 function Database(props: any) {
   return (
     <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <ellipse cx="12" cy="5" rx="9" ry="3"/>
-      <path d="M3 5V19A9 3 0 0 0 21 19V5"/>
-      <path d="M3 12A9 3 0 0 0 21 12"/>
+      <ellipse cx="12" cy="5" rx="9" ry="3" />
+      <path d="M3 5V19A9 3 0 0 0 21 19V5" />
+      <path d="M3 12A9 3 0 0 0 21 12" />
     </svg>
   )
 }

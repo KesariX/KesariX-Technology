@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Mail, Phone, MapPin, Send, MessageSquare, Clock, Globe } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 export default function ContactUs() {
   useEffect(() => {
@@ -169,7 +170,7 @@ export default function ContactUs() {
                 </motion.button>
 
                 <p className="text-center text-xs text-[var(--text-muted)] mt-6">
-                  By submitting this form, you agree to our <a href="#" className="underline hover:text-[var(--accent-primary)]">Privacy Policy</a> and <a href="#" className="underline hover:text-[var(--accent-primary)]">Terms of Service</a>.
+                  By submitting this form, you agree to our <Link to="/legal/privacy" className="underline hover:text-[var(--accent-primary)]">Privacy Policy</Link> and <Link to="/legal/terms" className="underline hover:text-[var(--accent-primary)]">Terms of Service</Link>.
                 </p>
               </form>
             </div>
@@ -179,7 +180,9 @@ export default function ContactUs() {
               {['Twitter', 'LinkedIn', 'Github', 'Instagram'].map((social) => (
                 <a 
                   key={social} 
-                  href="#" 
+                  href={`https://${social.toLowerCase()}.com/kesarix`}
+                  target="_blank"
+                  rel="noreferrer"
                   className="text-sm font-bold text-[var(--text-muted)] hover:text-[var(--accent-primary)] transition-colors uppercase tracking-widest"
                 >
                   {social}

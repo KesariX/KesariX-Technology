@@ -16,6 +16,10 @@ import Blog from './pages/Blog'
 import Careers from './pages/Careers'
 import PressKit from './pages/PressKit'
 
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import TermsOfService from './pages/TermsOfService'
+import CookiePolicy from './pages/CookiePolicy'
+
 function App() {
   useEffect(() => {
     document.documentElement.classList.add('scroll-smooth')
@@ -40,6 +44,9 @@ function App() {
             <Route path="/company/careers" element={<Careers />} />
             <Route path="/company/press" element={<PressKit />} />
             <Route path="/contact" element={<ContactUs />} />
+            <Route path="/legal/privacy" element={<PrivacyPolicy />} />
+            <Route path="/legal/terms" element={<TermsOfService />} />
+            <Route path="/legal/cookies" element={<CookiePolicy />} />
           </Routes>
         </main>
         <Footer />

@@ -1,0 +1,91 @@
+/* ═══════════════════════════════════════
+   LEGAL PAGES — Privacy, Terms, Cookies
+   Concept: Clean, minimalist reading
+   experience with high emphasis on typography.
+   ═══════════════════════════════════════ */
+
+.legal-page {
+  background: var(--bg-base);
+  min-height: 100vh;
+  padding: 10rem 2rem 6rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.legal-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 4rem;
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.02);
+}
+
+@media (max-width: 768px) {
+  .legal-container { padding: 2.5rem; }
+}
+
+.legal-header {
+  margin-bottom: 4rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 2rem;
+}
+
+.legal-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-primary);
+  margin-bottom: 1rem;
+}
+
+.legal-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: var(--text-dark);
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.legal-updated {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.legal-content h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 2.5rem 0 1rem;
+}
+
+.legal-content p, .legal-content ul {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--text-mid);
+  margin-bottom: 1.5rem;
+}
+
+.legal-content ul {
+  padding-left: 1.5rem;
+  list-style-type: square;
+}
+
+.legal-content ul li {
+  margin-bottom: 0.5rem;
+}
+
+.legal-content a {
+  color: var(--accent-primary);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: text-decoration-color 0.3s;
+}
+
+.legal-content a:hover {
+  text-decoration-color: var(--accent-primary);
+}

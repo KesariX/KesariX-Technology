@@ -8,7 +8,7 @@
   --ai-surface: rgba(20, 20, 25, 0.6);
   --ai-text: #FFFFFF;
   --ai-text-dim: #888899;
-  
+
   background-color: var(--ai-bg);
   color: var(--ai-text);
   font-family: 'Inter', sans-serif;
@@ -40,7 +40,7 @@
   pointer-events: none;
   z-index: 0;
   background-size: 50px 50px;
-  background-image: 
+  background-image:
     linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
   mask-image: radial-gradient(circle at center, black 20%, transparent 80%);
@@ -96,8 +96,15 @@
 }
 
 @keyframes pulse-core {
-  0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.1; }
-  100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.2; }
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.1;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.2;
+  }
 }
 
 .ai-hero-subtitle {
@@ -133,7 +140,10 @@
 .ai-btn-glow::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: var(--ai-primary);
   opacity: 0;
   transition: opacity 0.4s ease;
@@ -290,7 +300,7 @@
   border-radius: 2rem;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 30px 100px rgba(0,0,0, 0.5);
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.5);
 }
 
 .ai-showcase-visual img {
@@ -315,7 +325,7 @@
   backdrop-filter: blur(10px);
   padding: 1rem 1.5rem;
   border-radius: 1rem;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -331,8 +341,17 @@
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.8); }
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
 }
 
 .ai-data-lines {
@@ -421,6 +440,7 @@
   .ai-showcase-inner {
     flex-direction: column;
   }
+
   .ai-stats {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -430,6 +450,7 @@
   .ai-glass-card {
     padding: 2rem;
   }
+
   .ai-stat-box {
     padding: 2rem 0;
   }

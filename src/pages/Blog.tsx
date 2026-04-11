@@ -1,133 +1,188 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowRight, BookOpen } from 'lucide-react'
+import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import './styles/Blog.css'
 
-export default function Blog() {
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+const featured = {
+  title: "Why 'Prompt Engineering' is Dead (And What Replaced It)",
+  excerpt: "The era of guessing magic words for LLMs is over. Welcome to deterministic reasoning frameworks, constrained outputs, and programmatic prompt compilation — the new standard for enterprise AI.",
+  category: "AI Engineering",
+  date: "Oct 24, 2024",
+  author: "Arjun Mehta",
+  image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1200&auto=format&fit=crop"
+}
 
-  const articles = [
-    {
-      title: "Why 'Prompt Engineering' is Dead (And What Replaced It)",
-      desc: "The era of guessing magic words for LLMs is over. Welcome to deterministic reasoning frameworks, constrained outputs, and programmatic prompt compilation.",
-      category: "AI Engineering",
-      date: "Oct 24, 2024",
-      image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1000&auto=format&fit=crop",
-      author: "Arjun Mehta"
-    },
-    {
-      title: "Migrating from Vercel to Custom Bare-Metal K8s",
-      desc: "A technical deep-dive into how we cut hosting costs by 85% for a massive e-commerce client while simultaneously improving response times across the globe.",
-      category: "Infrastructure",
-      date: "Oct 12, 2024",
-      image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000&auto=format&fit=crop",
-      author: "Priya Sharma"
-    },
-    {
-      title: "Stop Building Wrappers. Start Building Engines.",
-      desc: "An architectural guide on moving away from thin API wrappers to building defensible, data-rich AI systems that actually solve deep enterprise problems.",
-      category: "Strategy",
-      date: "Sep 28, 2024",
-      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1000&auto=format&fit=crop",
-      author: "Vikram Patil"
-    },
-    {
-      title: "Zero-Trust Security in the Age of Co-Pilots",
-      desc: "How to safely deploy code-writing AI inside your enterprise without risking IP leaks, including VPC configurations and local model routing.",
-      category: "Cybersecurity",
-      date: "Sep 15, 2024",
-      image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1000&auto=format&fit=crop",
-      author: "Neha Singh"
-    },
-    {
-      title: "The Reality of RAG: Why Your Vector Search Sucks",
-      desc: "Semantic search alone isn't enough. Exploring hybrid search, metadata filtering, and re-ranking pipelines to achieve 99% accuracy in retrieval.",
-      category: "AI Engineering",
-      date: "Aug 30, 2024",
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000&auto=format&fit=crop",
-      author: "Arjun Mehta"
-    },
-    {
-      title: "Next.js 15: Is It Worth The Upgrade Risk?",
-      desc: "Reviewing the new caching model, turbopack performance, and server actions stability across our internal projects.",
-      category: "Web Development",
-      date: "Aug 14, 2024",
-      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop",
-      author: "Priya Sharma"
-    }
-  ]
+const articles = [
+  {
+    title: "Migrating from Vercel to Custom Bare-Metal K8s",
+    excerpt: "A technical deep-dive into how we cut hosting costs by 85% while simultaneously improving global response times.",
+    category: "Infrastructure",
+    date: "Oct 12, 2024",
+    author: "Priya Sharma",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "Stop Building Wrappers. Start Building Engines.",
+    excerpt: "An architectural guide on moving away from thin API wrappers to building defensible, data-rich AI systems.",
+    category: "Strategy",
+    date: "Sep 28, 2024",
+    author: "Vikram Patil",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "Zero-Trust Security in the Age of AI Co-Pilots",
+    excerpt: "How to safely deploy code-writing AI inside your enterprise without risking IP leaks.",
+    category: "Cybersecurity",
+    date: "Sep 15, 2024",
+    author: "Neha Singh",
+    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "The Reality of RAG: Why Your Vector Search Sucks",
+    excerpt: "Semantic search alone isn't enough. Exploring hybrid search, metadata filtering, and re-ranking pipelines.",
+    category: "AI Engineering",
+    date: "Aug 30, 2024",
+    author: "Arjun Mehta",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "Next.js 15: Is It Worth The Upgrade Risk?",
+    excerpt: "Reviewing the new caching model, Turbopack performance, and server actions stability across our production projects.",
+    category: "Web Dev",
+    date: "Aug 14, 2024",
+    author: "Priya Sharma",
+    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop"
+  }
+]
+
+const categories = ['All', 'AI Engineering', 'Infrastructure', 'Strategy', 'Cybersecurity', 'Web Dev']
+
+export default function Blog() {
+  useEffect(() => { window.scrollTo(0, 0) }, [])
+  const [activeCategory, setActiveCategory] = useState('All')
+
+  const filtered = activeCategory === 'All'
+    ? articles
+    : articles.filter(a => a.category === activeCategory)
 
   return (
     <div className="blog-page">
-      
-      {/* ── HERO ──────────────── */}
+      {/* ── HERO ── */}
       <section className="blog-hero">
-        <div className="section-container relative z-10 max-w-4xl mx-auto flex flex-col items-center">
-          <div className="w-16 h-16 rounded-2xl bg-[var(--surface-soft)] border border-[var(--border)] flex items-center justify-center text-[var(--accent-primary)] mb-8 shadow-sm">
-             <BookOpen size={32} />
+        <div className="blog-hero__inner">
+          <div className="blog-hero__top">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="blog-hero__label">Engineering Blog</div>
+              <h1 className="blog-hero__title">
+                The KesariX<br /><em>Dispatch.</em>
+              </h1>
+            </motion.div>
+            <motion.p
+              className="blog-hero__desc"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              Architectural patterns, deployment post-mortems, and uncensored opinions on modern enterprise technology.
+            </motion.p>
           </div>
-          
-          <h1 className="section-title mb-6" style={{ fontSize: 'clamp(3rem, 6vw, 5rem)', lineHeight: '1.1' }}>
-            The KesariX <br/>
-            <span className="gradient-text">Engineering Blog.</span>
-          </h1>
-          
-          <p className="text-xl md:text-2xl text-[var(--text-mid)] mb-10 leading-relaxed font-medium">
-            Architectural patterns, deployment post-mortems, and uncensored opinions on the state of modern enterprise technology.
-          </p>
+
+          <div className="blog-categories">
+            {categories.map(cat => (
+              <button
+                key={cat}
+                className={`blog-cat-tab ${activeCategory === cat ? 'active' : ''}`}
+                onClick={() => setActiveCategory(cat)}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ── GRID ──────────────── */}
-      <section className="bg-[var(--surface-soft)] overflow-hidden">
-        <div className="section-container blog-grid">
-          
-          {articles.map((article, idx) => (
-            <motion.div 
-              key={idx}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: (idx % 3) * 0.1 }}
-              className="blog-card"
-            >
-              <div className="blog-image-wrap">
-                <img src={article.image} alt={article.title} />
+      {/* ── FEATURED POST ── */}
+      <section className="blog-featured">
+        <motion.div
+          className="blog-featured__inner"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          <div className="blog-featured__image">
+            <img src={featured.image} alt={featured.title} />
+            <span className="blog-featured__badge">Featured</span>
+          </div>
+          <div>
+            <div className="blog-featured__category">{featured.category}</div>
+            <h2 className="blog-featured__title">{featured.title}</h2>
+            <p className="blog-featured__excerpt">{featured.excerpt}</p>
+            <div className="blog-featured__meta">
+              <div className="blog-featured__author-img">
+                <img src={`https://api.dicebear.com/7.x/initials/svg?seed=${featured.author}`} alt="" />
               </div>
-              <div className="blog-content">
-                <div className="blog-meta">
-                  <span className="blog-category">{article.category}</span>
-                  <span className="blog-date">{article.date}</span>
-                </div>
-                <h3 className="blog-title">{article.title}</h3>
-                <p className="blog-desc">{article.desc}</p>
-                <div className="blog-author">
-                  <div className="blog-avatar">
-                     <img src={`https://api.dicebear.com/7.x/initials/svg?seed=${article.author}`} alt={article.author} />
-                  </div>
-                  <span className="text-sm font-bold">{article.author}</span>
+              <div>
+                <div className="blog-featured__author-name">{featured.author}</div>
+                <div className="blog-featured__date">{featured.date}</div>
+              </div>
+              <div style={{ marginLeft: 'auto' }}>
+                <button className="btn-primary" style={{ padding: '0.6rem 1.25rem', fontSize: '0.875rem' }}>
+                  Read More <ArrowUpRight size={16} />
+                </button>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* ── ARTICLE GRID ── */}
+      <section className="blog-grid-section">
+        <h2>Latest Articles</h2>
+        <div className="blog-grid">
+          {filtered.map((a, i) => (
+            <motion.div
+              key={a.title}
+              className="blog-card2"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: (i % 3) * 0.1 }}
+            >
+              <div className="blog-card2__image">
+                <img src={a.image} alt={a.title} />
+              </div>
+              <div className="blog-card2__body">
+                <div className="blog-card2__cat">{a.category}</div>
+                <h3 className="blog-card2__title">{a.title}</h3>
+                <p className="blog-card2__excerpt">{a.excerpt}</p>
+                <div className="blog-card2__footer">
+                  <span>{a.author} · {a.date}</span>
+                  <ArrowUpRight size={16} />
                 </div>
               </div>
             </motion.div>
           ))}
-
         </div>
       </section>
 
-      {/* ── CTA ──────────────── */}
-      <section className="py-24 bg-white text-center border-t border-[var(--border)]">
-        <div className="section-container">
-          <h2 className="text-3xl font-bold mb-4 font-['Outfit'] shadow-sm">Subscribe to the Architecture Email</h2>
-          <p className="mb-8 text-[var(--text-mid)]">One incredibly dense technical post per month. No spam.</p>
-          <div className="max-w-md mx-auto flex gap-4">
-             <input type="email" placeholder="senior.eng@company.com" className="flex-1 px-4 py-3 rounded-lg border border-[var(--border)] focus:outline-none focus:border-[var(--accent-primary)] bg-[var(--surface-soft)]" />
-             <button className="btn-primary">Subscribe</button>
-          </div>
+      {/* ── SUBSCRIBE ── */}
+      <div className="blog-subscribe">
+        <h2 className="section-title" style={{ marginBottom: '0.75rem' }}>
+          Stay <span className="gradient-text">Technically Sharp.</span>
+        </h2>
+        <p style={{ color: 'var(--text-mid)', fontSize: '1.0625rem' }}>
+          One deeply technical post per month. No fluff, no spam.
+        </p>
+        <div className="blog-subscribe__form">
+          <input type="email" className="blog-subscribe__input" placeholder="you@company.com" />
+          <button className="btn-primary">Subscribe</button>
         </div>
-      </section>
-      
+      </div>
     </div>
   )
 }

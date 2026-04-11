@@ -1,251 +1,155 @@
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Bot, Cpu, GitMerge, MessageSquare, Terminal, Zap, ArrowRight, Activity } from 'lucide-react'
+import { Bot, Network, Workflow, BrainCircuit, Activity, Lock, ArrowRight, Database, Terminal, Server, CheckCircle2 } from 'lucide-react'
 import './styles/AiAgents.css'
 
+const capabilities = [
+  { icon: Bot, title: 'Multi-Agent Swarms', desc: 'Deploy highly specialized swarms where individual agents reason, collaborate, and execute complex logic trees in tandem.' },
+  { icon: Network, title: 'API Integration', desc: 'Agents flawlessly interact with your internal CRM, databases, and third-party APIs to read/write deterministic data.' },
+  { icon: Workflow, title: 'Long-Term Memory', desc: 'Vector-backed episodic memory allows agents to recall past interactions and organizational history perfectly.' },
+  { icon: BrainCircuit, title: 'Self-Correction', desc: 'Built-in reflection protocols allow agents to criticize their own outputs and correct errors before delivering final results.' },
+  { icon: Activity, title: 'Background Operations', desc: 'Run unassisted processes that continuously monitor metrics, scrape data, and trigger alerts autonomously.' },
+  { icon: Lock, title: 'Secure Execution', desc: 'Agents run in sandboxed Docker environments isolated entirely within your proprietary network to ensure data security.' }
+]
+
 export default function AiAgents() {
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-  }
+  useEffect(() => { window.scrollTo(0, 0) }, [])
 
   return (
-    <div className="agent-page">
-      
-      {/* ── HERO SECTION ──────────────── */}
-      <section className="agent-hero">
-        <div className="agent-grid-bg" />
+    <div className="agents-page">
+      {/* ── HERO ── */}
+      <section className="agents-hero">
+        <div className="agents-hero-bg" />
         
-        <div className="section-container relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="section-eyebrow mb-6">
-              <Bot size={14} className="text-[var(--accent-primary)]" />
-              Autonomous Workforce
+        <div className="agents-hero-inner">
+          {/* Left Content */}
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+            <div className="agents-hero-eyebrow">
+              <div className="pulse-dot" /> Autonomous Workforce 
             </div>
-
-            <h1 className="section-title mb-6" style={{ fontSize: 'clamp(3.5rem, 6vw, 4.5rem)', lineHeight: '1.05' }}>
-              Deploy Digital <br />
-              <span className="gradient-text">Employees.</span>
+            <h1 className="agents-hero-title">
+              We Engineer<br /><span>Superintelligence.</span>
             </h1>
-            
-            <p className="section-subtitle max-w-lg mb-10">
-              We build specialized AI agents that don't just chat—they execute. Multi-step reasoning, tool usage, and full autonomy to handle your complex operational workflows securely.
+            <p className="agents-hero-desc">
+              Move beyond chatbots. We deploy multi-agent reasoning engines capable of planning, executing, and self-correcting entire operational workflows autonomously.
             </p>
-            
-            <Link to="/contact" className="btn-primary group inline-flex items-center">
-              Build Custom Agent <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </motion.div>
-
-          {/* Right Visual: The 3D Agent Stack */}
-          <motion.div
-             initial={{ opacity: 0 }}
-             animate={{ opacity: 1 }}
-             transition={{ duration: 1, delay: 0.2 }}
-             className="relative w-full hidden lg:block"
-          >
-             <div className="agent-stack-container">
-               
-               {/* Back Layer - Database Agent */}
-               <motion.div 
-                 animate={{ rotateX: 20, rotateY: -15, rotateZ: 5, z: -100, y: -40, x: 40 }}
-                 transition={{ duration: 0 }}
-                 className="agent-layer opacity-40 shadow-none border-gray-200"
-               >
-                 <div className="agent-layer-header">
-                   <div className="agent-avatar text-gray-400"><Database size={18} /></div>
-                   <div className="flex-1">
-                     <p className="text-xs font-bold text-gray-500">Retrieval Agent</p>
-                   </div>
-                 </div>
-                 <div className="agent-log">
-                   <span className="text-blue-400">SELECT</span> * FROM users;<br/>
-                   [Fetched 2,042 rows / 12ms]
-                 </div>
-               </motion.div>
-
-               {/* Middle Layer - Logic Agent */}
-               <motion.div 
-                 animate={{ rotateX: 10, rotateY: -10, rotateZ: 2, z: -50, y: -20, x: 20 }}
-                 transition={{ duration: 0 }}
-                 className="agent-layer opacity-80 shadow-md border-gray-300"
-               >
-                 <div className="agent-layer-header">
-                   <div className="agent-avatar text-blue-500"><Cpu size={18} /></div>
-                   <div className="flex-1">
-                     <p className="text-xs font-bold text-gray-600">Reasoning Agent</p>
-                   </div>
-                   <Activity size={14} className="text-blue-500" />
-                 </div>
-                 <div className="agent-log" style={{ background: '#f0f9ff' }}>
-                   Analyzing DB payload...<br/>
-                   Found 3 anomalies. Triggering webhook.
-                 </div>
-               </motion.div>
-
-               {/* Front Layer - Executor Agent */}
-               <motion.div 
-                 animate={{ rotateX: 0, rotateY: -5, rotateZ: 0, z: 0, y: 0, x: 0 }}
-                 transition={{ duration: 0 }}
-                 className="agent-layer shadow-xl border-[var(--accent-primary)]/50"
-                 style={{ transform: 'rotateX(0deg) rotateY(-5deg) translateZ(0) scale(1.05)', zIndex: 10 }}
-               >
-                 <div className="agent-layer-header">
-                   <div className="agent-avatar text-white bg-[var(--accent-primary)] border-none"><Bot size={18} /></div>
-                   <div className="flex-1">
-                     <p className="text-sm font-bold text-[var(--accent-primary)]">Master Orchestrator</p>
-                   </div>
-                   <div className="agent-pulse-dot" />
-                 </div>
-                 <div className="space-y-3">
-                   <div className="h-2 w-3/4 rounded-full bg-gray-100" />
-                   <div className="h-2 w-1/2 rounded-full bg-gray-100" />
-                   <div className="mt-3 text-xs font-mono font-semibold text-emerald-600 bg-emerald-50 p-2 rounded-md border border-emerald-100 flex items-center gap-2">
-                     <Zap size={14} /> Sequence Successfully Executed
-                   </div>
-                 </div>
-               </motion.div>
-
-             </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── BENTO FEATURES ──────────────── */}
-      <section className="section-padding bg-[var(--surface-soft)]">
-        <div className="section-container">
-          <div className="text-center mb-16">
-            <span className="section-eyebrow mb-4">Agentic Capabilities</span>
-            <h2 className="section-title">Beyond Standard Chatbots.</h2>
-          </div>
-
-          <motion.div 
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-50px' }}
-            className="agent-bento-grid"
-          >
-            <motion.div variants={itemVariants} className="agent-card agent-card-large">
-               <div className="agent-card-icon"><GitMerge size={24} /></div>
-               <h3>Multi-Agent Orchestration</h3>
-               <p>We build systems where multiple specialized AI agents talk to each other. A researcher agent finds data, a reasoning agent processes it, and an executor agent acts on it—all perfectly managed by a core orchestration layer.</p>
-            </motion.div>
-            
-            <motion.div variants={itemVariants} className="agent-card">
-               <div className="agent-card-icon"><Terminal size={24} /></div>
-               <h3>Tool Calling</h3>
-               <p>Give your AI access to the real world. Our agents securely call your internal APIs, query databases, and trigger webhooks to take actual actions.</p>
-            </motion.div>
-            
-            <motion.div variants={itemVariants} className="agent-card">
-               <div className="agent-card-icon"><MessageSquare size={24} /></div>
-               <h3>Memory & Context</h3>
-               <p>Using advanced vector databases, our agents remember past interactions and retain specific user context across infinite sessions.</p>
-            </motion.div>
-
-            <motion.div variants={itemVariants} className="agent-card agent-card-large">
-               <div className="agent-card-icon"><Cpu size={24} /></div>
-               <h3>Deterministic Guardrails</h3>
-               <p>Agents acting wildly destroys business value. We engineer strict logical boundaries ensuring agents fail gracefully to human review rather than hallucinating actions.</p>
-            </motion.div>
-          </motion.div>
-
-        </div>
-      </section>
-
-      {/* ── USE CASES ──────────────── */}
-      <section className="section-padding bg-white relative overflow-hidden border-t border-[var(--border)]">
-        <div className="section-container text-center">
-           <span className="section-eyebrow mb-4">Proven Architectures</span>
-           <h2 className="section-title mb-16">High-ROI Deployments.</h2>
-
-           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-             {[
-               { t: "Automated Lead Qualification", d: "Agents that instantly engage inbound leads, assess criteria via API, and directly book qualified meetings onto your sales team's calendar." },
-               { t: "IT Support Resolution", d: "Tier 1 support replaced. The agent reads the ticket, fetches system logs via tool calling, and attempts safe automated fixes before escalating." },
-               { t: "Data Triage & Routing", d: "Agents constantly monitoring massive inboxes or data streams, tagging urgency, and routing specific issues to the correct human departments." }
-             ].map((useCase, idx) => (
-               <div key={idx} className="p-8 text-left border border-[var(--border)] rounded-3xl hover:border-[var(--accent-primary)] transition-colors">
-                 <div className="text-3xl font-black text-[var(--border)] mb-4 font-['Outfit']">0{idx + 1}</div>
-                 <h4 className="text-xl font-bold mb-3">{useCase.t}</h4>
-                 <p className="text-[var(--text-mid)]">{useCase.d}</p>
-               </div>
-             ))}
-           </div>
-        </div>
-      </section>
-
-      {/* ── ELEGANT THEMED CTA ────────────────────────────── */}
-      <section className="py-24 md:py-32 bg-[var(--bg-base)] relative overflow-hidden border-t border-[var(--border)]">
-        <div className="section-container relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="w-full premium-card rounded-[3rem] p-12 md:p-24 overflow-hidden relative text-center group bg-white shadow-2xl"
-          >
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] pointer-events-none opacity-50">
-               <motion.div 
-                 animate={{ rotate: 360, scale: [1, 1.05, 1] }} 
-                 transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                 className="absolute inset-0 border-[2px] border-dashed border-[var(--border)] rounded-full mix-blend-multiply"
-               />
-            </div>
-            
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[60%] bg-gradient-to-t from-[var(--accent-primary)]/10 to-transparent pointer-events-none blur-[40px]" />
-
-            <div className="relative z-20 flex flex-col items-center">
-              <div className="w-24 h-24 mb-10 rounded-[2rem] bg-gradient-to-tr from-[var(--accent-primary)]/20 to-[var(--accent-primary)]/5 p-[1px]">
-                <div className="w-full h-full bg-white rounded-[2rem] flex items-center justify-center border border-[var(--accent-primary)]/20 shadow-sm transition-transform duration-700 group-hover:scale-110">
-                  <Bot size={40} className="text-[var(--accent-primary)]" />
-                </div>
-              </div>
-              
-              <h2 className="text-4xl md:text-5xl lg:text-7xl font-black mb-8 tracking-tight font-['Outfit'] text-[var(--text-dark)] leading-tight relative">
-                Deploy Your <br/>
-                <span className="gradient-text">First Agent.</span>
-              </h2>
-              
-              <p className="text-xl md:text-2xl text-[var(--text-mid)] mx-auto mb-12 max-w-3xl leading-relaxed">
-                Skip the generic chatbots. Let's architect a highly specialized digital employee to handle your most tedious operational workflows.
-              </p>
-              
-              <Link to="/contact" className="btn-primary flex items-center justify-center px-10 py-5 text-lg font-bold shadow-[var(--shadow-lift)] overflow-hidden relative">
-                <span className="relative z-10 transition-transform group-hover:-translate-x-1">Design Agent Workflow</span>
-                <ArrowRight size={20} className="ml-3 relative z-10 transition-transform group-hover:translate-x-1" />
-                <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity" />
+            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+              <Link to="/contact" className="btn-primary">
+                Deploy Agents <ArrowRight size={18} />
               </Link>
             </div>
           </motion.div>
+
+          {/* Right Floating Cards (Dark Mode style matching User Screenshot) */}
+          <div className="agent-cards-container">
+            <motion.div 
+              className="av-card-base av-card-1"
+              initial={{ opacity: 0, x: 50, y: -20 }}
+              animate={{ opacity: 1, x: 0, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <div className="av-card-1__header">
+                <Activity size={16} color="#FBBF24" /> Agent Throughput
+              </div>
+              <div className="av-card-1__val">4.8M</div>
+              <div style={{ fontSize: '0.875rem', color: '#94A3B8', marginTop: '0.5rem' }}>actions / month</div>
+              {/* Graphic graph line */}
+              <svg width="100%" height="60" style={{ marginTop: '2rem' }} viewBox="0 0 100 40" preserveAspectRatio="none">
+                <path d="M0 40 L0 30 L20 25 L40 35 L60 15 L80 20 L100 5 L100 40 Z" fill="rgba(217,119,6,0.15)" />
+                <path d="M0 30 L20 25 L40 35 L60 15 L80 20 L100 5" fill="none" stroke="#FBBF24" strokeWidth="2" />
+              </svg>
+            </motion.div>
+
+            <motion.div 
+              className="av-card-base av-card-2"
+              initial={{ opacity: 0, x: 30, y: 50 }}
+              animate={{ opacity: 1, x: 0, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              <div className="av-card-2__header">
+                <div className="av-term-dot" style={{ background: '#EF4444' }} />
+                <div className="av-term-dot" style={{ background: '#FBBF24' }} />
+                <div className="av-term-dot" style={{ background: '#10B981' }} />
+                <span style={{ marginLeft: 'auto', fontFamily: 'JetBrains Mono', fontSize: '0.7rem', color: '#64748B' }}>orchestrator.sh &gt;_</span>
+              </div>
+              <div className="av-term-line"><span style={{ color: '#D97706' }}>&gt;</span> initializing cluster core...</div>
+              <div className="av-term-line"><span style={{ color: '#10B981' }}>[OK]</span> Model synced via edge.</div>
+              <div className="av-term-line"><span style={{ color: '#D97706' }}>&gt;</span> rerouting dynamic nodes... <motion.span initial={{opacity:0}} animate={{opacity:1}} transition={{repeat:Infinity, duration: 0.8}} style={{background: 'white', width: 6, height: 12, display: 'inline-block', verticalAlign: 'middle'}}/></div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
-    </div>
-  )
-}
+      {/* ── ARCHITECTURE FLOW DIAGRAM (Light Theme) ── */}
+      <section className="agents-console-wrap">
+        <div className="ac-inner">
+          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+            <h2 className="agents-hero-title" style={{ fontSize: '3rem' }}>Transparent<br />Reasoning.</h2>
+            <p className="agents-hero-desc">
+              Never wonder what your AI is doing. Our architecture clearly visualizes the delegation of tasks. The Orchestrator plans, and specialized agents execute their designated tools precisely.
+            </p>
+          </motion.div>
 
-function Database(props: any) {
-  return (
-    <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <ellipse cx="12" cy="5" rx="9" ry="3"/>
-      <path d="M3 5V19A9 3 0 0 0 21 19V5"/>
-      <path d="M3 12A9 3 0 0 0 21 12"/>
-    </svg>
+          <motion.div className="ac-diagram" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+            <div className="ac-node">
+              <BrainCircuit size={20} color="#D97706" /> Orchestrator Agent <span>[PLANNING]</span>
+            </div>
+            
+            <div className="ac-connector" />
+            
+            <div className="ac-node" style={{ marginLeft: '2rem' }}>
+              <Database size={20} color="#3B82F6" /> Vector Memory <span>[RAG_INDEX]</span>
+            </div>
+
+            <div className="ac-connector" style={{ transform: 'translateY(-1.5rem)' }}/>
+
+            <div className="ac-node" style={{ marginLeft: '2rem' }}>
+              <Terminal size={20} color="#10B981" /> Scraper Agent <span>[EXECUTION]</span>
+            </div>
+
+            <div className="ac-connector" style={{ transform: 'translateY(-1.5rem)' }}/>
+
+            <div className="ac-node" style={{ marginLeft: '2rem' }}>
+              <Server size={20} color="#8B5CF6" /> Webhook Output <span>[POST]</span>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── FEATURES GRID (Light Theme) ── */}
+      <section className="agents-features">
+        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+          <h2 className="agents-hero-title" style={{ fontSize: '2.5rem' }}>Architectural Capabilities.</h2>
+          <p className="agents-hero-desc" style={{ margin: '0 auto' }}>Pre-configured components for enterprise deployment.</p>
+        </div>
+
+        <div className="af-grid">
+          {capabilities.map((cap, i) => (
+            <motion.div 
+              key={i} 
+              className="af-card"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+            >
+              <div className="af-card__icon"><cap.icon size={28} /></div>
+              <h3>{cap.title}</h3>
+              <p>{cap.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── CTA ── */}
+      <section className="agents-bot-cta">
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <h2 className="abc-title">Ready to build your <span>digital workforce?</span></h2>
+          <p className="agents-hero-desc" style={{ margin: '0 auto 2.5rem' }}>Let our engineering team architect an autonomous pipeline for your specific use-case.</p>
+          <Link to="/contact" className="btn-primary border-none">Connect With Us <ArrowRight size={18} /></Link>
+        </motion.div>
+      </section>
+    </div>
   )
 }
