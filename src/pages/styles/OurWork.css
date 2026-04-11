@@ -1,0 +1,138 @@
+/* src/pages/styles/OurWork.css */
+
+.work-page {
+  background-color: var(--bg-base);
+  min-height: 100vh;
+}
+
+.work-hero {
+  position: relative;
+  width: 100%;
+  padding-top: 160px;
+  padding-bottom: 8rem;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  background: white;
+  text-align: center;
+}
+
+.work-case-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+  padding: 6rem 0;
+}
+
+.work-case-study {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .work-case-study {
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+  }
+}
+
+.work-case-image-wrap {
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 2rem;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--border);
+  box-shadow: 0 30px 60px -15px rgba(0,0,0,0.1);
+  transform: perspective(1000px) rotateY(0deg);
+  transition: transform 0.6s ease;
+}
+
+.work-case-study:nth-child(even) .work-case-image-wrap {
+  order: -1;
+}
+
+@media (min-width: 1024px) {
+  .work-case-study:nth-child(even) .work-case-image-wrap {
+    order: 2;
+  }
+}
+
+.work-case-study:hover .work-case-image-wrap {
+  transform: perspective(1000px) rotateY(-5deg) scale(1.02);
+}
+
+.work-case-study:nth-child(even):hover .work-case-image-wrap {
+  transform: perspective(1000px) rotateY(5deg) scale(1.02);
+}
+
+.work-case-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.work-case-study:hover .work-case-image-overlay {
+  opacity: 1;
+}
+
+.work-case-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.work-industry-tag {
+  padding: 0.5rem 1rem;
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-dark);
+}
+
+.work-metric-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px dashed var(--border);
+}
+
+.work-metric {
+  display: flex;
+  flex-direction: column;
+}
+
+.work-metric-val {
+  font-size: 2rem;
+  font-weight: 900;
+  font-family: 'Outfit', sans-serif;
+  color: var(--accent-primary);
+}
+
+.work-metric-lbl {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.work-client-logo {
+  filter: grayscale(100%) opacity(0.5);
+  transition: all 0.4s ease;
+  height: 40px;
+}
+
+.work-case-study:hover .work-client-logo {
+  filter: grayscale(0%) opacity(1);
+}

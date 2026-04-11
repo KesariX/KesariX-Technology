@@ -1,13 +1,26 @@
 import { motion } from 'framer-motion'
 import { Linkedin, Github, Twitter, Send } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import './styles/Footer.css'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   const footerLinks = {
-    Services: ['AI Solutions', 'Web Development', 'IT Services', 'AI Agents', 'Process Automation'],
-    Company: ['About Us', 'Our Work', 'Blog', 'Careers', 'Press Kit'],
+    Services: [
+      { label: 'AI Solutions', path: '/services/ai-solutions' },
+      { label: 'Web Development', path: '/services/web-development' },
+      { label: 'IT Services', path: '/services/it-services' },
+      { label: 'AI Agents', path: '/services/ai-agents' },
+      { label: 'Process Automation', path: '/services/automation' }
+    ],
+    Company: [
+      { label: 'About Us', path: '/company/about' },
+      { label: 'Our Work', path: '/company/work' },
+      { label: 'Blog', path: '/company/blog' },
+      { label: 'Careers', path: '/company/careers' },
+      { label: 'Press Kit', path: '/company/press' }
+    ],
     Contact: ['hello@kesarix.com', '+91 98765 43210', 'India'],
   }
 
@@ -69,8 +82,8 @@ export default function Footer() {
             <h4 className="kx-footer__column-title">Services</h4>
             <ul className="kx-footer__links">
               {footerLinks.Services.map((link) => (
-                <li key={link}>
-                  <a href="#" className="kx-footer__link">{link}</a>
+                <li key={link.label}>
+                  <Link to={link.path} className="kx-footer__link">{link.label}</Link>
                 </li>
               ))}
             </ul>
@@ -81,13 +94,13 @@ export default function Footer() {
             <h4 className="kx-footer__column-title">Company</h4>
             <ul className="kx-footer__links">
               {footerLinks.Company.map((link) => (
-                <li key={link}>
-                  <a href="#" className="kx-footer__link">
-                    {link}
-                    {link === 'Careers' && (
+                <li key={link.label}>
+                  <Link to={link.path} className="kx-footer__link">
+                    {link.label}
+                    {link.label === 'Careers' && (
                       <span className="kx-footer__hiring-badge">Hiring</span>
                     )}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -103,9 +116,9 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-            <button className="kx-footer__book-btn">
+            <Link to="/contact" className="kx-footer__book-btn text-center inline-block">
               Book a Free Call
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
 

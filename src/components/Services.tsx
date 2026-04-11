@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion'
 import { Brain, Code2, Bot, Settings, Zap } from 'lucide-react'
 import { MouseEvent } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './styles/Services.css'
-
 export default function Services() {
+  const navigate = useNavigate()
+
   const services = [
     {
       id: 1,
@@ -14,6 +16,7 @@ export default function Services() {
       tag: 'Most Popular',
       colSpan: 3,
       gradient: 'linear-gradient(135deg, #D97706, #FBBF24)',
+      link: '/services/ai-solutions',
     },
     {
       id: 2,
@@ -23,6 +26,7 @@ export default function Services() {
       description: 'Full-stack applications built with React, Next.js, Node.js, and modern cloud-native architectures. Pixel-perfect, performance-obsessed, and built to scale.',
       colSpan: 3,
       gradient: 'linear-gradient(135deg, #F59E0B, #D97706)',
+      link: '/services/web-development',
     },
     {
       id: 3,
@@ -32,6 +36,7 @@ export default function Services() {
       description: 'Autonomous multi-step agents powered by GPT-4, Claude, and custom-trained models that work 24/7 for your workflows.',
       colSpan: 2,
       gradient: 'linear-gradient(135deg, #D97706, #F59E0B)',
+      link: '/services/ai-agents',
     },
     {
       id: 4,
@@ -41,6 +46,7 @@ export default function Services() {
       description: 'Cloud setup, DevOps pipelines, migrations, and end-to-end IT management for growing companies.',
       colSpan: 2,
       gradient: 'linear-gradient(135deg, #FBBF24, #F59E0B)',
+      link: '/services/it-services',
     },
     {
       id: 5,
@@ -50,6 +56,7 @@ export default function Services() {
       description: 'Replace manual bottlenecks with intelligent RPA workflows, API integrations, and automation systems.',
       colSpan: 2,
       gradient: 'linear-gradient(135deg, #F59E0B, #FBBF24)',
+      link: '/services/automation',
     },
   ]
 
@@ -108,8 +115,9 @@ export default function Services() {
               <motion.div
                 key={service.id}
                 variants={cardVariants}
-                className={`kx-services__card kx-services__card--span-${service.colSpan}`}
+                className={`kx-services__card kx-services__card--span-${service.colSpan} ${service.link ? 'cursor-pointer' : ''}`}
                 onMouseMove={handleMouseMove}
+                onClick={() => service.link && navigate(service.link)}
               >
                 {/* Background Number */}
                 <span className="kx-services__bg-number">{service.number}</span>

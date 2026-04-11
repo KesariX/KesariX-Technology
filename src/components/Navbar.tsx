@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Menu, X } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import './styles/Navbar.css'
 
@@ -44,7 +45,7 @@ export default function Navbar() {
     >
       <div className="section-container kx-navbar__inner">
         <div className="kx-navbar__brand-wrap">
-          <a href="#" className="kx-navbar__brand" aria-label="KesariX Technology home">
+          <a href="/" className="kx-navbar__brand" aria-label="KesariX Technology home">
             <span className="kx-navbar__brand-core">Kesari</span>
             <span className="kx-navbar__brand-accent">X</span>
           </a>
@@ -55,7 +56,7 @@ export default function Navbar() {
           {navLinks.map((link, idx) => (
             <a
               key={idx}
-              href={`#${link.toLowerCase()}`}
+              href={`/#${link.toLowerCase()}`}
               className="nav-link kx-navbar__link"
             >
               {link}
@@ -65,8 +66,8 @@ export default function Navbar() {
         </div>
 
         <div className="kx-navbar__actions">
-          <a href="#contact" className="kx-navbar__ghost-btn">Contact</a>
-          <a href="#contact" className="kx-navbar__cta-btn">Get in Touch</a>
+          <Link to="/contact" className="kx-navbar__ghost-btn">Contact</Link>
+          <Link to="/contact" className="kx-navbar__cta-btn">Get in Touch</Link>
         </div>
 
         <button
@@ -84,7 +85,7 @@ export default function Navbar() {
             {navLinks.map((link, idx) => (
               <a
                 key={idx}
-                href={`#${link.toLowerCase()}`}
+                href={`/#${link.toLowerCase()}`}
                 className="kx-navbar__mobile-link"
                 onClick={() => setMobileOpen(false)}
               >
@@ -92,8 +93,8 @@ export default function Navbar() {
               </a>
             ))}
             <div className="kx-navbar__mobile-actions">
-              <a href="#contact" className="kx-navbar__ghost-btn kx-navbar__mobile-btn">Contact</a>
-              <a href="#contact" className="kx-navbar__cta-btn kx-navbar__mobile-btn">Get in Touch</a>
+              <Link to="/contact" className="kx-navbar__ghost-btn kx-navbar__mobile-btn" onClick={() => setMobileOpen(false)}>Contact</Link>
+              <Link to="/contact" className="kx-navbar__cta-btn kx-navbar__mobile-btn" onClick={() => setMobileOpen(false)}>Get in Touch</Link>
             </div>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import './styles/CTA.css'
 
 export default function CTA() {
@@ -72,9 +73,9 @@ export default function CTA() {
           </p>
           
           <div className="kx-cta__actions">
-            <button className="kx-cta__btn-primary">
+            <Link to="/contact" className="kx-cta__btn-primary">
               Start Your Project <ArrowUpRight size={22} className="kx-cta__btn-icon" />
-            </button>
+            </Link>
           </div>
 
           <div className="kx-cta__trust">

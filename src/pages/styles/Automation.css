@@ -1,0 +1,184 @@
+/* src/pages/styles/Automation.css */
+
+.automation-page {
+  background-color: var(--bg-base);
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.automation-hero {
+  position: relative;
+  width: 100%;
+  padding-top: 120px;
+  padding-bottom: 4rem;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+
+@media (min-width: 768px) {
+  .automation-hero {
+    padding-top: 160px;
+    padding-bottom: 8rem;
+  }
+}
+
+.auto-bg-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(90deg, var(--border) 0px, var(--border) 1px, transparent 1px, transparent 100px);
+  opacity: 0.5;
+  z-index: 0;
+}
+
+.auto-workflow-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  height: 400px;
+}
+
+.auto-workflow-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--border);
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+.auto-workflow-node {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  background: white;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+  box-shadow: var(--shadow-md);
+  color: var(--text-dark);
+}
+
+.auto-workflow-node.primary {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+.auto-moving-data {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  background-color: var(--accent-primary);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  box-shadow: 0 0 15px var(--accent-primary);
+}
+
+.auto-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+}
+
+@media (min-width: 768px) {
+  .auto-metrics-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.auto-metric-box {
+  padding: 3rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  background-color: white;
+  transition: background-color 0.3s ease;
+}
+
+.auto-metric-box:hover {
+  background-color: var(--surface-soft);
+}
+
+.auto-metric-value {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--accent-primary);
+  font-family: 'Outfit', sans-serif;
+  margin-bottom: 0.5rem;
+}
+
+.auto-metric-label {
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+.auto-feature-card {
+  padding: 2.5rem;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.auto-feature-card:hover {
+  border-color: rgba(217, 119, 6, 0.4);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-5px);
+}
+
+.auto-feature-icon-wrap {
+  width: 60px;
+  height: 60px;
+  border-radius: 15px;
+  background: var(--surface-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  transition: background 0.4s ease;
+}
+
+.auto-feature-card:hover .auto-feature-icon-wrap {
+  background: var(--accent-primary);
+  color: white;
+}
+
+/* Infinity scroll strip */
+.auto-scroll-strip {
+  overflow: hidden;
+  white-space: nowrap;
+  background: var(--text-dark);
+  color: white;
+  padding: 1rem 0;
+}
+
+.auto-scroll-content {
+  display: inline-block;
+  padding-left: 100%;
+  animation: scroll-left 15s linear infinite;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+}
+
+@keyframes scroll-left {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-100%, 0); }
+}
