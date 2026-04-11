@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Send, MessageSquare, Clock, Globe } from 'lucide-react'
 import { Link } from 'react-router-dom'
 

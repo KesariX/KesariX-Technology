@@ -1,48 +1,12 @@
-import { useEffect, MouseEvent } from 'react'
+import { useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Brain, Code2, Bot, Settings, Zap, ArrowRight, Network, Database, Cpu, ShieldCheck } from 'lucide-react'
+import { Brain, Code2, Bot, Zap, ArrowRight, Network, Database, Cpu, ShieldCheck } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 export default function AiSolutions() {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
-
-  const capabilities = [
-    {
-      id: 1,
-      title: 'Neural Architecture & LLMs',
-      desc: 'Bespoke large language models fine-tuned on your proprietary enterprise data. Secure, deterministic, and highly accurate.',
-      icon: Network,
-      tag: 'Core Infra',
-      colSpan: 3,
-      gradient: 'linear-gradient(135deg, #D97706, #FBBF24)'
-    },
-    {
-      id: 2,
-      title: 'Retrieval-Augmented Generation',
-      desc: 'Connect your internal databases securely to AI, allowing instantaneous factual querying without hallucination risks.',
-      icon: Database,
-      colSpan: 2,
-      gradient: 'linear-gradient(135deg, #F59E0B, #D97706)'
-    },
-    {
-      id: 3,
-      title: 'Autonomous Agents',
-      desc: 'Multi-step reasoning engines that take over complex, repetitive operations like customer onboarding and data triage.',
-      icon: Bot,
-      colSpan: 2,
-      gradient: 'linear-gradient(135deg, #D97706, #F59E0B)'
-    },
-    {
-      id: 4,
-      title: 'Vision Intelligence',
-      desc: 'Advanced spatial computing and object detection integrated directly into your edge infrastructure and hardware pipelines.',
-      icon: Eye,
-      colSpan: 3,
-      gradient: 'linear-gradient(135deg, #FBBF24, #F59E0B)'
-    }
-  ]
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -52,14 +16,6 @@ export default function AiSolutions() {
   const cardVariants = {
     hidden: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
-  }
-
-  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect()
-    const x = e.clientX - rect.left
-    const y = e.clientY - rect.top
-    e.currentTarget.style.setProperty('--mouse-x', `${x}px`)
-    e.currentTarget.style.setProperty('--mouse-y', `${y}px`)
   }
 
   return (

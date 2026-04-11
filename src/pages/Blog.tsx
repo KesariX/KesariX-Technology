@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowRight, ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import './styles/Blog.css'
 
 const featured = {

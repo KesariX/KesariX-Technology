@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Menu, X, ChevronDown, BrainCircuit, Code2, Server, Bot, Zap, Users, Newspaper, Briefcase, BookOpen, Presentation } from 'lucide-react'
+import { Menu, X, ChevronDown, BrainCircuit, Code2, Server, Bot, Zap, Users, Briefcase, BookOpen, Presentation } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import gsap from 'gsap'

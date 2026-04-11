@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Bot, Network, Workflow, BrainCircuit, Activity, Lock, ArrowRight, Database, Terminal, Server, CheckCircle2 } from 'lucide-react'
+import { Bot, Network, Workflow, BrainCircuit, Activity, Lock, ArrowRight, Database, Terminal, Server } from 'lucide-react'
 import './styles/AiAgents.css'
 
 const capabilities = [

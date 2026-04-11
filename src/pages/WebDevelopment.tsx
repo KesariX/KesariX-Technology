@@ -321,7 +321,8 @@ export default function WebDevelopment() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, delay: 0.2 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
               className="premium-card p-10 border-[var(--accent-primary)]/30 shadow-[0_20px_40px_rgba(217,119,6,0.05)] relative overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-b from-[var(--accent-primary)]/5 to-transparent pointer-events-none" />
