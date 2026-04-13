@@ -1,25 +1,94 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 import './styles/CustomCursor.css'
+
+interface Particle {
+  id: number
+  x: number
+  y: number
+  vx: number
+  vy: number
+  life: number
+}
+
+interface TrailPoint {
+  id: number
+  x: number
+  y: number
+  age: number
+}
 
 export default function CustomCursor() {
   const [isHovering, setIsHovering] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
   const [isClicking, setIsClicking] = useState(false)
+  const [particles, setParticles] = useState<Particle[]>([])
+  const [trail, setTrail] = useState<TrailPoint[]>([])
 
-  // Motion values for smooth tracking
   const mouseX = useMotionValue(-100)
   const mouseY = useMotionValue(-100)
+  const prevMouseX = useRef(-100)
+  const prevMouseY = useRef(-100)
+  const particleIdRef = useRef(0)
+  const trailIdRef = useRef(0)
 
-  // Spring configuration for the outer ring (high quality lag)
-  const springConfig = { damping: 25, stiffness: 200 }
+  // Spring configurations
+  const springConfig = { damping: 28, stiffness: 180 }
   const springX = useSpring(mouseX, springConfig)
   const springY = useSpring(mouseY, springConfig)
 
   useEffect(() => {
     const moveMouse = (e: MouseEvent) => {
-      mouseX.set(e.clientX)
-      mouseY.set(e.clientY)
+      const newX = e.clientX
+      const newY = e.clientY
+
+      // Calculate velocity
+      const vx = newX - prevMouseX.current
+      const vy = newY - prevMouseY.current
+
+      // Spawn trail particles
+      if (Math.random() > 0.6) {
+        setTrail((prev) => {
+          const newTrail = [
+            ...prev,
+            {
+              id: trailIdRef.current++,
+              x: newX,
+              y: newY,
+              age: 0,
+            },
+          ]
+          return newTrail.length > 15 ? newTrail.slice(-15) : newTrail
+        })
+      }
+
+      // Spawn movement particles occasionally
+      if (Math.random() > 0.75) {
+        const angle = Math.atan2(vy, vx)
+        const speed = Math.sqrt(vx * vx + vy * vy)
+        const numParticles = Math.min(3, Math.floor(speed / 2))
+
+        for (let i = 0; i < numParticles; i++) {
+          const spreadAngle = angle + (Math.random() - 0.5) * Math.PI
+          const spreadSpeed = 2 + Math.random() * 3
+          setParticles((prev) => [
+            ...prev,
+            {
+              id: particleIdRef.current++,
+              x: newX,
+              y: newY,
+              vx: Math.cos(spreadAngle) * spreadSpeed,
+              vy: Math.sin(spreadAngle) * spreadSpeed,
+              life: 1,
+            },
+          ])
+        }
+      }
+
+      prevMouseX.current = newX
+      prevMouseY.current = newY
+      mouseX.set(newX)
+      mouseY.set(newY)
       if (!isVisible) setIsVisible(true)
     }
 
@@ -33,17 +102,40 @@ export default function CustomCursor() {
     window.addEventListener('mousedown', onMouseDown)
     window.addEventListener('mouseup', onMouseUp)
 
-    // Add listeners to all interactive elements
     const interactiveElements = document.querySelectorAll('a, button, [role="button"], input, textarea')
     interactiveElements.forEach((el) => {
       el.addEventListener('mouseenter', handleHoverEnter)
       el.addEventListener('mouseleave', handleHoverLeave)
     })
 
-    // Hide the real cursor
     document.body.style.cursor = 'none'
 
+    // Particle animation loop
+    const animationInterval = setInterval(() => {
+      setParticles((prev) =>
+        prev
+          .map((p) => ({
+            ...p,
+            x: p.x + p.vx,
+            y: p.y + p.vy,
+            vy: p.vy + 0.1, // gravity
+            life: p.life - 0.02,
+          }))
+          .filter((p) => p.life > 0),
+      )
+
+      setTrail((prev) =>
+        prev
+          .map((t) => ({
+            ...t,
+            age: t.age + 1,
+          }))
+          .filter((t) => t.age < 30),
+      )
+    }, 16)
+
     return () => {
+      clearInterval(animationInterval)
       window.removeEventListener('mousemove', moveMouse)
       window.removeEventListener('mousedown', onMouseDown)
       window.removeEventListener('mouseup', onMouseUp)
@@ -53,22 +145,48 @@ export default function CustomCursor() {
       })
       document.body.style.cursor = 'auto'
     }
-  }, [isVisible])
+  }, [isVisible, mouseX, mouseY])
 
   return (
     <div className={`kx-cursor-system ${isVisible ? 'visible' : ''}`}>
-      {/* 1. The Inner Dot (Fast, zero lag) */}
-      <motion.div
-        className="kx-cursor-dot"
-        style={{
-          x: mouseX,
-          y: mouseY,
-          translateX: '-50%',
-          translateY: '-50%',
-        }}
-      />
+      {/* Trail effect */}
+      <svg className="kx-cursor-trail" width="100%" height="100%" viewBox={`0 0 ${window.innerWidth} ${window.innerHeight}`}>
+        {trail.map((point, idx) => {
+          const nextPoint = trail[idx + 1]
+          if (!nextPoint) return null
 
-      {/* 2. The Outer Ring (Spring physics, beautiful lag) */}
+          const opacity = 1 - point.age / 30
+          const strokeWidth = 2 * opacity
+
+          return (
+            <line
+              key={point.id}
+              x1={point.x}
+              y1={point.y}
+              x2={nextPoint.x}
+              y2={nextPoint.y}
+              stroke={`rgba(217, 119, 6, ${opacity * 0.6})`}
+              strokeWidth={strokeWidth}
+              strokeLinecap="round"
+            />
+          )
+        })}
+      </svg>
+
+      {/* Particles */}
+      {particles.map((particle) => (
+        <motion.div
+          key={particle.id}
+          className="kx-cursor-particle"
+          style={{
+            left: particle.x,
+            top: particle.y,
+            opacity: particle.life,
+          }}
+        />
+      ))}
+
+      {/* Main cursor ring with morphing effect */}
       <motion.div
         className={`kx-cursor-ring ${isHovering ? 'hovering' : ''} ${isClicking ? 'clicking' : ''}`}
         style={{
@@ -78,8 +196,40 @@ export default function CustomCursor() {
           translateY: '-50%',
         }}
       >
+        <div className="kx-cursor-ring__outer" />
+        <div className="kx-cursor-ring__middle" />
         <div className="kx-cursor-ring__inner" />
       </motion.div>
+
+      {/* Core dot with glow */}
+      <motion.div
+        className="kx-cursor-dot"
+        style={{
+          x: mouseX,
+          y: mouseY,
+          translateX: '-50%',
+          translateY: '-50%',
+        }}
+      >
+        <div className="kx-cursor-dot__core" />
+        <div className="kx-cursor-dot__glow" />
+      </motion.div>
+
+      {/* Click ripple effect */}
+      {isClicking && (
+        <motion.div
+          className="kx-cursor-ripple"
+          style={{
+            x: mouseX,
+            y: mouseY,
+            translateX: '-50%',
+            translateY: '-50%',
+          }}
+          initial={{ scale: 0.5, opacity: 1 }}
+          animate={{ scale: 2, opacity: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+        />
+      )}
     </div>
   )
 }

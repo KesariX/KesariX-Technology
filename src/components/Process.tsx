@@ -42,6 +42,53 @@ export default function Process() {
     },
   ]
 
+  // Header animation variants
+  const headerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: 'easeOut' },
+    },
+  }
+
+  const titleVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, ease: 'easeOut', delay: 0.15 },
+    },
+  }
+
+  const eyebrowVariants = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.5, ease: 'easeOut' },
+    },
+  }
+
+  const stepCardVariants = {
+    hidden: { opacity: 0, y: 60 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.23, 1, 0.32, 1],
+      },
+    },
+  }
+
+  const dotVariants = {
+    hover: {
+      scale: 1.25,
+      transition: { type: 'spring', stiffness: 400, damping: 10 },
+    },
+  }
+
   // Reference for the entire timeline container
   const containerRef = useRef<HTMLDivElement>(null)
   
@@ -62,14 +109,51 @@ export default function Process() {
     <section className="kx-process section-padding" id="about">
       <div className="section-container" style={{ position: 'relative' }}>
         {/* Header */}
-        <div className="kx-process__header">
-          <span className="kx-process__eyebrow">Our Process</span>
-          <h2 className="kx-process__title">
-            From Idea to
+        <motion.div
+          className="kx-process__header"
+          variants={headerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-50px' }}
+        >
+          <motion.span
+            className="kx-process__eyebrow"
+            variants={eyebrowVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            Our Process
+          </motion.span>
+          <motion.h2
+            className="kx-process__title"
+            variants={titleVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-50px' }}
+          >
+            <motion.span
+              style={{ display: 'inline-block' }}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
+            >
+              From Idea to
+            </motion.span>
             <br />
-            Launched Product
-          </h2>
-        </div>
+            <motion.span
+              className="gradient-text"
+              style={{ display: 'inline-block' }}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: 'easeOut', delay: 0.25 }}
+            >
+              Launched Product
+            </motion.span>
+          </motion.h2>
+        </motion.div>
 
         {/* Timeline */}
         <div className="kx-process__timeline-wrap" ref={containerRef}>
@@ -82,7 +166,13 @@ export default function Process() {
             style={{ scaleY, originY: 0 }}
           />
 
-          <div className="kx-process__steps">
+          <motion.div
+            className="kx-process__steps"
+            variants={{ visible: { transition: { staggerChildren: 0.15, delayChildren: 0.3 } } }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-100px' }}
+          >
             {steps.map((step, idx) => {
               const Icon = step.icon
               const isEven = idx % 2 !== 0 // idx 1 (02) is even/right side
@@ -90,38 +180,96 @@ export default function Process() {
               return (
                 <motion.div
                   key={step.number}
-                  initial={{ opacity: 0, x: isEven ? 80 : -80, y: 50 }}
-                  whileInView={{ opacity: 1, x: 0, y: 0 }}
-                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                  viewport={{ once: true, margin: "-100px" }}
+                  variants={stepCardVariants}
                   className={`kx-process__step ${isEven ? 'kx-process__step--right' : 'kx-process__step--left'}`}
+                  whileHover={{ y: -5 }}
                 >
                   {/* Center Dot Indicator */}
-                  <div className="kx-process__dot">
-                    <span className="kx-process__dot-inner" />
-                  </div>
+                  <motion.div
+                    className="kx-process__dot"
+                    variants={dotVariants}
+                    whileHover="hover"
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3 + idx * 0.15 }}
+                  >
+                    <motion.span
+                      className="kx-process__dot-inner"
+                      animate={{ scale: [1, 1.2, 1] }}
+                      transition={{ duration: 3, repeat: Infinity, delay: idx * 0.3 }}
+                    />
+                  </motion.div>
 
                   {/* Card Content */}
                   <div className="kx-process__card">
                     {/* Background Number Watermark */}
-                    <span className="kx-process__card-bg-num">{step.number}</span>
+                    <motion.span
+                      className="kx-process__card-bg-num"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 0.02 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.3 + idx * 0.15 }}
+                      whileHover={{ scale: 1.1, opacity: 0.08 }}
+                    >
+                      {step.number}
+                    </motion.span>
                     
-                    <div className="kx-process__card-glow" />
+                    <motion.div
+                      className="kx-process__card-glow"
+                      initial={{ opacity: 0 }}
+                      whileHover={{ opacity: 1 }}
+                    />
 
-                    <div className="kx-process__step-header">
-                      <div className="kx-process__step-icon">
+                    <motion.div
+                      className="kx-process__step-header"
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.35 + idx * 0.15, duration: 0.5 }}
+                    >
+                      <motion.div
+                        className="kx-process__step-icon"
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                      >
                         <Icon />
-                      </div>
-                      <span className="kx-process__step-duration">{step.duration}</span>
-                    </div>
+                      </motion.div>
+                      <motion.span
+                        className="kx-process__step-duration"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.4 + idx * 0.15 }}
+                        whileHover={{ scale: 1.05, backgroundColor: 'rgba(217, 119, 6, 0.15)' }}
+                      >
+                        {step.duration}
+                      </motion.span>
+                    </motion.div>
 
-                    <h3 className="kx-process__step-title">{step.title}</h3>
-                    <p className="kx-process__step-desc">{step.description}</p>
+                    <motion.h3
+                      className="kx-process__step-title"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.37 + idx * 0.15, duration: 0.5 }}
+                    >
+                      {step.title}
+                    </motion.h3>
+                    <motion.p
+                      className="kx-process__step-desc"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.39 + idx * 0.15, duration: 0.6 }}
+                    >
+                      {step.description}
+                    </motion.p>
                   </div>
                 </motion.div>
               )
             })}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

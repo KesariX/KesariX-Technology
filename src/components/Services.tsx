@@ -60,24 +60,59 @@ export default function Services() {
     },
   ]
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  }
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 40 },
+  const headerVariants = {
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
       transition: { duration: 0.6, ease: 'easeOut' },
     },
+  }
+
+  const titleLineVariants = {
+    hidden: { opacity: 0, x: -30 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.7, ease: 'easeOut', delay: 0.1 },
+    },
+  }
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.12,
+        delayChildren: 0.3,
+      },
+    },
+  }
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 60, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.8,
+        ease: [0.23, 1, 0.32, 1], // Custom spring curve
+      },
+    },
+  }
+
+  const iconVariants = {
+    hover: {
+      scale: 1.1,
+      rotate: 5,
+      transition: { type: 'spring', stiffness: 400, damping: 10 },
+    },
+  }
+
+  const arrowVariants = {
+    hidden: { scale: 0.6, opacity: 0, rotate: -45 },
+    visible: { scale: 1, opacity: 1, rotate: 0 },
   }
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
@@ -92,14 +127,51 @@ export default function Services() {
     <section className="kx-services section-padding" id="services">
       <div className="section-container">
         {/* Header */}
-        <div className="kx-services__header">
-          <span className="kx-services__eyebrow">What We Do</span>
-          <h2 className="kx-services__title">
-            End-to-End
+        <motion.div
+          variants={headerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-50px' }}
+          className="kx-services__header"
+        >
+          <motion.span
+            className="kx-services__eyebrow"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.05 }}
+          >
+            What We Do
+          </motion.span>
+          <motion.h2
+            className="kx-services__title"
+            variants={titleLineVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-50px' }}
+          >
+            <motion.span
+              style={{ display: 'inline-block' }}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
+            >
+              End-to-End
+            </motion.span>
             <br />
-            Digital Engineering
-          </h2>
-        </div>
+            <motion.span
+              className="gradient-text"
+              style={{ display: 'inline-block' }}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: 'easeOut', delay: 0.2 }}
+            >
+              Digital Engineering
+            </motion.span>
+          </motion.h2>
+        </motion.div>
 
         {/* Services Grid */}
         <motion.div
@@ -109,7 +181,7 @@ export default function Services() {
           viewport={{ once: true, margin: '-100px' }}
           className="kx-services__grid"
         >
-          {services.map((service) => {
+          {services.map((service, idx) => {
             const Icon = service.icon
             return (
               <motion.div
@@ -118,36 +190,92 @@ export default function Services() {
                 className={`kx-services__card kx-services__card--span-${service.colSpan} ${service.link ? 'cursor-pointer' : ''}`}
                 onMouseMove={handleMouseMove}
                 onClick={() => service.link && navigate(service.link)}
+                whileHover={{ y: -8 }}
               >
                 {/* Background Number */}
-                <span className="kx-services__bg-number">{service.number}</span>
+                <motion.span
+                  className="kx-services__bg-number"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 0.02 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 + idx * 0.08 }}
+                  whileHover={{ scale: 1.08, color: 'rgba(217, 119, 6, 0.08)' }}
+                >
+                  {service.number}
+                </motion.span>
 
                 {/* Hover glow */}
-                <div className="kx-services__card-glow" />
+                <motion.div
+                  className="kx-services__card-glow"
+                  whileHover={{ opacity: 1 }}
+                  initial={{ opacity: 0 }}
+                />
 
                 {/* Content */}
                 <div className="kx-services__card-body">
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                     {/* Icon */}
-                    <div className="kx-services__icon" style={{ background: service.gradient }}>
-                      <Icon />
-                    </div>
+                    <motion.div
+                      className="kx-services__icon"
+                      style={{ background: service.gradient }}
+                      variants={iconVariants}
+                      whileHover="hover"
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <motion.span
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.3 + idx * 0.08 }}
+                        style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                      >
+                        <Icon />
+                      </motion.span>
+                    </motion.div>
                   </div>
 
                   {/* Text */}
                   <div>
-                    <div className="kx-services__card-header">
+                    <motion.div
+                      className="kx-services__card-header"
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.35 + idx * 0.08, duration: 0.5 }}
+                    >
                       <h3 className="kx-services__card-title">{service.title}</h3>
                       {service.tag && (
-                        <span className="kx-services__tag">{service.tag}</span>
+                        <motion.span
+                          className="kx-services__tag"
+                          initial={{ scale: 0.8, opacity: 0 }}
+                          whileInView={{ scale: 1, opacity: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: 0.4 + idx * 0.08 }}
+                        >
+                          {service.tag}
+                        </motion.span>
                       )}
-                    </div>
-                    <p className="kx-services__card-desc">{service.description}</p>
+                    </motion.div>
+                    <motion.p
+                      className="kx-services__card-desc"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.38 + idx * 0.08, duration: 0.6 }}
+                    >
+                      {service.description}
+                    </motion.p>
                   </div>
                 </div>
 
                 {/* Hover indicator */}
-                <div className="kx-services__arrow">→</div>
+                <motion.div
+                  className="kx-services__arrow"
+                  variants={arrowVariants}
+                  whileHover="visible"
+                  initial="hidden"
+                >
+                  →
+                </motion.div>
               </motion.div>
             )
           })}

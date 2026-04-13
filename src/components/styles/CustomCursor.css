@@ -1,6 +1,62 @@
 /* ══════════════════════════════════════════════════
-   CUSTOM CURSOR — Fluid Intelligence System
+   CUSTOM CURSOR — Kinetic Interactive System
    ══════════════════════════════════════════════════ */
+
+@keyframes cursor-dot-glow {
+  0%, 100% {
+    box-shadow: 
+      0 0 8px 2px rgba(217, 119, 6, 0.4),
+      0 0 20px 6px rgba(245, 158, 11, 0.2),
+      0 0 40px 10px rgba(217, 119, 6, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 12px 3px rgba(217, 119, 6, 0.6),
+      0 0 28px 8px rgba(245, 158, 11, 0.3),
+      0 0 50px 14px rgba(217, 119, 6, 0.15);
+  }
+}
+
+@keyframes cursor-ring-grow {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+@keyframes cursor-ring-pulse {
+  0%, 100% {
+    opacity: 0.6;
+    filter: drop-shadow(0 0 8px rgba(217, 119, 6, 0.2));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 16px rgba(217, 119, 6, 0.4));
+  }
+}
+
+@keyframes cursor-morph {
+  0% {
+    border-radius: 50%;
+  }
+  50% {
+    border-radius: 40%;
+  }
+  100% {
+    border-radius: 50%;
+  }
+}
+
+@keyframes cursor-scale-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
 
 .kx-cursor-system {
   position: fixed;
@@ -9,68 +65,204 @@
   z-index: 99999;
   opacity: 0;
   transition: opacity 300ms ease;
+  overflow: hidden;
 }
 
 .kx-cursor-system.visible {
   opacity: 1;
 }
 
-/* ── The Sharp Core ────────────────────────────── */
-.kx-cursor-dot {
+/* ── Trail Effect ──────────────────────────────── */
+.kx-cursor-trail {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 6px;
-  height: 6px;
-  background: var(--accent-primary);
-  border-radius: 50%;
+  inset: 0;
   pointer-events: none;
+  filter: blur(1px);
 }
 
-/* ── The Spring Ring ───────────────────────────── */
+/* ── Particle System ───────────────────────────── */
+.kx-cursor-particle {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(217, 119, 6, 0.8), rgba(245, 158, 11, 0.6));
+  box-shadow: 0 0 8px rgba(217, 119, 6, 0.5);
+}
+
+/* ── Main Cursor Ring ──────────────────────────── */
 .kx-cursor-ring {
   position: fixed;
   top: 0;
   left: 0;
-  width: 34px;
-  height: 34px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 52px;
+  height: 52px;
   pointer-events: none;
-  transition: width 300ms cubic-bezier(0.16, 1, 0.3, 1), 
-              height 300ms cubic-bezier(0.16, 1, 0.3, 1),
-              background-color 300ms ease;
+  transition: width 250ms cubic-bezier(0.34, 1.56, 0.64, 1),
+              height 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.kx-cursor-ring__outer {
+  position: absolute;
+  inset: 0;
+  border: 2px solid rgba(217, 119, 6, 0.3);
+  border-radius: 50%;
+  animation: cursor-ring-grow 12s linear infinite;
+  filter: drop-shadow(0 0 8px rgba(217, 119, 6, 0.15));
+}
+
+.kx-cursor-ring__middle {
+  position: absolute;
+  inset: 6px;
+  border: 1.5px solid rgba(217, 119, 6, 0.25);
+  border-radius: 50%;
+  animation: cursor-ring-grow 8s linear infinite reverse;
+  opacity: 0.7;
+  filter: drop-shadow(0 0 6px rgba(217, 119, 6, 0.1));
 }
 
 .kx-cursor-ring__inner {
-  width: 100%;
-  height: 100%;
-  border: 1px solid rgba(217, 119, 6, 0.4);
-  background: rgba(217, 119, 6, 0.02);
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(245, 158, 11, 0.4);
   border-radius: 50%;
-  transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  background: linear-gradient(
+    135deg,
+    rgba(217, 119, 6, 0.08) 0%,
+    rgba(245, 158, 11, 0.04) 100%
+  );
+  animation: cursor-ring-pulse 2.5s ease-in-out infinite;
 }
 
-/* ── Interaction States ────────────────────────── */
+/* ── Core Dot ──────────────────────────────────── */
+.kx-cursor-dot {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+}
 
-/* Hovering over links/buttons */
+.kx-cursor-dot__core {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    var(--accent-primary) 0%,
+    #F59E0B 50%,
+    rgba(217, 119, 6, 0.8) 100%
+  );
+  border-radius: 50%;
+  box-shadow: 
+    0 0 8px 2px rgba(217, 119, 6, 0.4),
+    0 0 20px 6px rgba(245, 158, 11, 0.2),
+    0 0 40px 10px rgba(217, 119, 6, 0.1),
+    inset -2px -2px 4px rgba(0, 0, 0, 0.2);
+  animation: cursor-dot-glow 1.8s ease-in-out infinite;
+}
+
+.kx-cursor-dot__glow {
+  position: absolute;
+  inset: -6px;
+  border: 1px solid rgba(217, 119, 6, 0.2);
+  border-radius: 50%;
+  box-shadow: 
+    inset 0 0 12px rgba(217, 119, 6, 0.1),
+    0 0 20px rgba(217, 119, 6, 0.15);
+  animation: cursor-scale-pulse 2s ease-in-out infinite;
+}
+
+/* ── Click Ripple ──────────────────────────────── */
+.kx-cursor-ripple {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--accent-primary);
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: 0 0 20px rgba(217, 119, 6, 0.5);
+}
+
+/* ── Hover State ───────────────────────────────── */
 .kx-cursor-ring.hovering {
-  width: 70px;
-  height: 70px;
+  width: 80px;
+  height: 80px;
+}
+
+.kx-cursor-ring.hovering .kx-cursor-ring__outer {
+  border-color: var(--accent-primary);
+  animation: cursor-ring-grow 6s linear infinite;
+  filter: drop-shadow(0 0 16px rgba(217, 119, 6, 0.4));
+}
+
+.kx-cursor-ring.hovering .kx-cursor-ring__middle {
+  border-color: rgba(217, 119, 6, 0.5);
+  animation: cursor-ring-grow 4s linear infinite reverse;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 12px rgba(217, 119, 6, 0.3));
 }
 
 .kx-cursor-ring.hovering .kx-cursor-ring__inner {
-  border: 1px solid rgba(217, 119, 6, 0.8);
-  background: rgba(217, 119, 6, 0.1);
-  scale: 1.1;
+  background: linear-gradient(
+    135deg,
+    rgba(217, 119, 6, 0.2) 0%,
+    rgba(245, 158, 11, 0.12) 100%
+  );
+  border-color: var(--accent-primary);
+  box-shadow: 
+    inset 0 0 16px rgba(217, 119, 6, 0.15),
+    0 0 24px rgba(217, 119, 6, 0.3);
+  animation: cursor-ring-pulse 1.5s ease-in-out infinite;
 }
 
-/* Clicking */
+.kx-cursor-dot.hovering .kx-cursor-dot__core {
+  box-shadow: 
+    0 0 12px 3px rgba(217, 119, 6, 0.6),
+    0 0 28px 8px rgba(245, 158, 11, 0.4),
+    0 0 50px 14px rgba(217, 119, 6, 0.2),
+    inset -2px -2px 4px rgba(0, 0, 0, 0.3);
+  animation: cursor-dot-glow 1s ease-in-out infinite;
+}
+
+.kx-cursor-dot.hovering .kx-cursor-dot__glow {
+  border-color: rgba(217, 119, 6, 0.4);
+  box-shadow: 
+    inset 0 0 16px rgba(217, 119, 6, 0.2),
+    0 0 32px rgba(217, 119, 6, 0.3);
+  animation: cursor-scale-pulse 1s ease-in-out infinite;
+}
+
+/* ── Click State ───────────────────────────────── */
+.kx-cursor-ring.clicking {
+  width: 60px;
+  height: 60px;
+}
+
+.kx-cursor-ring.clicking .kx-cursor-ring__outer {
+  animation: cursor-ring-grow 3s linear infinite;
+  filter: drop-shadow(0 0 20px rgba(217, 119, 6, 0.6));
+}
+
 .kx-cursor-ring.clicking .kx-cursor-ring__inner {
-  scale: 0.85;
-  background: rgba(217, 119, 6, 0.2);
-  border-color: var(--accent-primary);
+  background: linear-gradient(
+    135deg,
+    rgba(217, 119, 6, 0.3) 0%,
+    rgba(245, 158, 11, 0.2) 100%
+  );
+  box-shadow: 
+    inset 0 0 20px rgba(217, 119, 6, 0.25),
+    0 0 32px rgba(217, 119, 6, 0.5);
+}
+
+.kx-cursor-dot.clicking .kx-cursor-dot__core {
+  box-shadow: 
+    0 0 16px 4px rgba(217, 119, 6, 0.8),
+    0 0 36px 10px rgba(245, 158, 11, 0.5),
+    0 0 60px 16px rgba(217, 119, 6, 0.3),
+    inset -2px -2px 4px rgba(0, 0, 0, 0.4);
+  animation: cursor-dot-glow 0.8s ease-in-out infinite;
 }
 
 /* Hide cursor on coarse pointers (touch) */

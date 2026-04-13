@@ -2,6 +2,44 @@
    PROCESS — KesariX Technology
    ══════════════════════════════════════════════════ */
 
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes pulse-dot {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+@keyframes float-up {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 8px 24px rgba(217, 119, 6, 0.25);
+  }
+  50% {
+    box-shadow: 0 8px 24px rgba(217, 119, 6, 0.4);
+  }
+}
+
 .kx-process {
   position: relative;
   background-color: var(--bg-base);
@@ -29,6 +67,13 @@
   background: rgba(217, 119, 6, 0.08); /* faint amber tag styles match brand */
   padding: 0.4rem 1rem;
   border-radius: 999px;
+  border: 1px solid rgba(217, 119, 6, 0.15);
+  transition: all 0.3s ease;
+}
+
+.kx-process__eyebrow:hover {
+  background: rgba(217, 119, 6, 0.12);
+  border-color: rgba(217, 119, 6, 0.3);
 }
 
 .kx-process__title {
@@ -39,6 +84,20 @@
   color: var(--text-dark);
   letter-spacing: -0.02em;
   margin: 0;
+  background: linear-gradient(90deg, var(--text-dark) 0%, #D97706 50%, var(--text-dark) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.kx-process__title .gradient-text {
+  background: linear-gradient(90deg, #D97706 0%, #F59E0B 50%, #D97706 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 3s ease infinite;
 }
 
 /* ── Interactive Timeline Wrap ─────────────────── */
@@ -56,8 +115,9 @@
   top: 0;
   bottom: 0;
   width: 2px;
-  background: rgba(0, 0, 0, 0.06);
+  background: linear-gradient(to bottom, rgba(217, 119, 6, 0.1), rgba(217, 119, 6, 0.05), rgba(217, 119, 6, 0.1));
   transform: translateX(-50%);
+  transition: background 0.3s ease;
 }
 
 /* Animated Golden Fill Line */
@@ -67,11 +127,12 @@
   top: 0;
   bottom: 0;
   width: 4px;
-  background: linear-gradient(to bottom, var(--accent-primary), #FBBF24);
+  background: linear-gradient(to bottom, var(--accent-primary), #FBBF24, var(--accent-primary));
   transform: translateX(-50%);
   border-radius: 4px;
   z-index: 1;
-  box-shadow: 0 0 20px rgba(217, 119, 6, 0.5);
+  box-shadow: 0 0 20px rgba(217, 119, 6, 0.5), 0 0 40px rgba(217, 119, 6, 0.25);
+  filter: drop-shadow(0 0 10px rgba(217, 119, 6, 0.3));
 }
 
 /* ── Steps ─────────────────────────────────────── */
@@ -87,6 +148,7 @@
   position: relative;
   width: 100%;
   display: flex;
+  transition: all 0.3s ease;
 }
 
 .kx-process__step--left {
@@ -100,36 +162,97 @@
 /* Center Timeline Dot Indicator */
 .kx-process__dot {
   position: absolute;
-  left: 50%;
-  top: 2.5rem; /* align carefully with the card header flow */
-  transform: translateX(-50%);
+  left: calc(50% - 0.875rem);
+  top: 1.75rem;
   width: 1.75rem;
   height: 1.75rem;
-  background: #ffffff;
-  border: 4px solid var(--accent-primary);
+  background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.95) 100%);
+  border: 3px solid var(--accent-primary);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 3;
-  box-shadow: 0 0 0 6px rgba(217, 119, 6, 0.15);
-  transition: transform 300ms ease;
+  box-shadow: 
+    0 0 0 4px rgba(217, 119, 6, 0.08),
+    0 0 0 8px rgba(217, 119, 6, 0.04),
+    0 4px 16px rgba(217, 119, 6, 0.3),
+    inset 0 2px 4px rgba(255, 255, 255, 0.8);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+}
+
+.kx-process__dot::before {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  border: 2px solid rgba(217, 119, 6, 0.1);
+  border-radius: 50%;
+  animation: pulse-ring 2.5s ease-out infinite;
+}
+
+.kx-process__dot::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border: 1.5px solid rgba(217, 119, 6, 0.15);
+  border-radius: 50%;
+  animation: none;
 }
 
 .kx-process__dot-inner {
-  width: 0.5rem;
-  height: 0.5rem;
-  background: var(--accent-primary);
+  width: 0.6rem;
+  height: 0.6rem;
+  background: linear-gradient(135deg, var(--accent-primary) 0%, #F59E0B 100%);
   border-radius: 50%;
+  animation: pulse-inner 2s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 8px rgba(217, 119, 6, 0.4);
 }
 
 .kx-process__step:hover .kx-process__dot {
-  transform: translateX(-50%) scale(1.2);
+  transform: scale(1.3);
+  box-shadow: 
+    0 0 0 6px rgba(217, 119, 6, 0.1),
+    0 0 0 12px rgba(217, 119, 6, 0.06),
+    0 8px 28px rgba(217, 119, 6, 0.4),
+    inset 0 2px 4px rgba(255, 255, 255, 0.9);
+  background: linear-gradient(135deg, #ffffff 0%, rgba(217, 119, 6, 0.02) 100%);
+}
+
+.kx-process__step:hover .kx-process__dot-inner {
+  animation: pulse-inner 1s ease-in-out infinite;
+  box-shadow: 0 0 12px rgba(217, 119, 6, 0.6);
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+    border-color: rgba(217, 119, 6, 0.3);
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+    border-color: rgba(217, 119, 6, 0);
+  }
+}
+
+@keyframes pulse-inner {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
 }
 
 /* ── Timeline Card ─────────────────────────────── */
 .kx-process__card {
-  width: calc(50% - 4rem); /* 50% minus the distance from the dot */
+  width: calc(50% - 4rem);
   background: #ffffff;
   border-radius: 20px;
   padding: 2.5rem 3rem;
@@ -137,13 +260,33 @@
   position: relative;
   overflow: hidden;
   box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
-  transition: transform 350ms ease, border-color 350ms ease, box-shadow 350ms ease;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  cursor: pointer;
+  will-change: transform, box-shadow;
+}
+
+.kx-process__card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(217, 119, 6, 0) 0%, rgba(217, 119, 6, 0.02) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .kx-process__card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
   border-color: rgba(217, 119, 6, 0.3);
-  box-shadow: 0 24px 50px -12px rgba(217, 119, 6, 0.08);
+  box-shadow: 0 24px 60px -12px rgba(217, 119, 6, 0.1), 0 0 40px rgba(217, 119, 6, 0.08);
+}
+
+.kx-process__card:hover::before {
+  opacity: 1;
 }
 
 /* Faint giant background watermark numbers (01, 02...) */
@@ -158,12 +301,22 @@
   line-height: 1;
   pointer-events: none;
   z-index: 1;
-  transition: color 350ms ease, transform 350ms ease;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  animation: pulse-subtle 3s ease-in-out infinite;
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 0.02;
+  }
+  50% {
+    opacity: 0.08;
+  }
 }
 
 .kx-process__card:hover .kx-process__card-bg-num {
-  color: rgba(217, 119, 6, 0.04);
-  transform: scale(1.05) translate(-10px, 10px);
+  color: rgba(217, 119, 6, 0.08);
+  transform: scale(1.08) translate(-12px, 12px);
 }
 
 /* Inner glow interaction mechanic */
@@ -172,11 +325,11 @@
   inset: 0;
   background: radial-gradient(
     600px circle at bottom right,
-    rgba(217, 119, 6, 0.04),
+    rgba(217, 119, 6, 0.06),
     transparent 70%
   );
   opacity: 0;
-  transition: opacity 350ms ease;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1;
   pointer-events: none;
 }
@@ -193,6 +346,12 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 2rem;
+  gap: 1rem;
+  transition: all 0.3s ease;
+}
+
+.kx-process__card:hover .kx-process__step-header {
+  transform: translateX(4px);
 }
 
 .kx-process__step-icon {
@@ -206,11 +365,39 @@
   justify-content: center;
   color: #ffffff;
   box-shadow: 0 8px 24px rgba(217, 119, 6, 0.25);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+.kx-process__step-icon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.kx-process__step-icon:hover::before {
+  opacity: 1;
+}
+
+.kx-process__card:hover .kx-process__step-icon {
+  transform: scale(1.12) rotate(5deg);
+  box-shadow: 0 12px 32px rgba(217, 119, 6, 0.35), 0 0 20px rgba(217, 119, 6, 0.2);
 }
 
 .kx-process__step-icon svg {
   width: 100%;
   height: 100%;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.kx-process__card:hover .kx-process__step-icon svg {
+  transform: scale(1.15) rotate(-5deg);
 }
 
 .kx-process__step-duration {
@@ -218,10 +405,20 @@
   font-size: 0.75rem;
   font-weight: 700;
   color: var(--accent-primary);
-  background: rgba(217, 119, 6, 0.08); /* Amber tag background */
+  background: rgba(217, 119, 6, 0.08);
   padding: 0.4rem 1rem;
   border-radius: 999px;
   border: 1px solid rgba(217, 119, 6, 0.15);
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  animation: float-up 2s ease-in-out infinite;
+}
+
+.kx-process__card:hover .kx-process__step-duration {
+  background: rgba(217, 119, 6, 0.15);
+  border-color: rgba(217, 119, 6, 0.3);
+  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.15);
+  transform: scale(1.05);
 }
 
 .kx-process__step-title {
@@ -233,6 +430,17 @@
   color: var(--text-dark);
   margin: 0 0 1rem;
   line-height: 1.3;
+  transition: all 0.3s ease;
+  background: linear-gradient(90deg, var(--text-dark) 0%, #D97706 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-position: 100% 0;
+}
+
+.kx-process__card:hover .kx-process__step-title {
+  background-position: 0% 0;
 }
 
 .kx-process__step-desc {
@@ -243,10 +451,14 @@
   line-height: 1.7;
   color: var(--text-mid);
   margin: 0;
+  transition: all 0.3s ease;
+}
+
+.kx-process__card:hover .kx-process__step-desc {
+  color: var(--text-dark);
 }
 
 /* ── Mobile Layout Adjustments ─────────────────── */
-/* Below 1024px we shift the line entirely to the left for a neat left-aligned mobile timeline */
 @media (max-width: 1023px) {
   .kx-process__header {
     text-align: left;
@@ -264,17 +476,23 @@
   }
 
   .kx-process__dot {
-    left: 1.5rem;
-    transform: translateX(-50%);
+    left: calc(1.5rem - 0.875rem);
+    top: 1.75rem;
+    transform: none;
   }
   
   .kx-process__step:hover .kx-process__dot {
-    transform: translateX(-50%) scale(1.1);
+    transform: scale(1.25);
+    box-shadow: 
+      0 0 0 6px rgba(217, 119, 6, 0.1),
+      0 0 0 12px rgba(217, 119, 6, 0.06),
+      0 8px 28px rgba(217, 119, 6, 0.4),
+      inset 0 2px 4px rgba(255, 255, 255, 0.9);
   }
 
   .kx-process__step--left,
   .kx-process__step--right {
-    justify-content: flex-end; /* All cards push to the right */
+    justify-content: flex-end;
   }
 
   .kx-process__card {
@@ -285,5 +503,80 @@
   .kx-process__step-header {
     flex-wrap: wrap;
     gap: 1rem;
+  }
+
+  .kx-process__step-icon {
+    width: 3rem;
+    height: 3rem;
+    padding: 0.65rem;
+  }
+
+  .kx-process__step-title {
+    font-size: 1.25rem;
+  }
+
+  .kx-process__step-desc {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .kx-process__timeline-wrap {
+    padding: 1rem 0;
+  }
+
+  .kx-process__steps {
+    gap: 2.5rem;
+  }
+
+  .kx-process__line-bg,
+  .kx-process__line-fill {
+    left: 1rem;
+  }
+
+  .kx-process__line-fill {
+    left: calc(1rem - 1px);
+  }
+
+  .kx-process__dot {
+    left: calc(1rem - 0.875rem);
+  }
+
+  .kx-process__step:hover .kx-process__dot {
+    transform: scale(1.2);
+  }
+
+  .kx-process__card {
+    width: calc(100% - 3rem);
+    padding: 1.5rem 1.25rem;
+  }
+
+  .kx-process__step-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .kx-process__step-icon {
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0.6rem;
+  }
+
+  .kx-process__step-duration {
+    font-size: 0.7rem;
+    padding: 0.35rem 0.8rem;
+  }
+
+  .kx-process__step-title {
+    font-size: 1.125rem;
+  }
+
+  .kx-process__step-desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .kx-process__card-bg-num {
+    font-size: 8rem;
   }
 }
