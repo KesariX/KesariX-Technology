@@ -40,7 +40,7 @@
 
 .kx-navbar__brand {
   font-family: 'Outfit', sans-serif;
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   text-decoration: none;
@@ -53,10 +53,33 @@
 .kx-navbar__brand-core { 
   color: var(--text-dark); 
   transition: color 0.3s;
-  font-size: 1.1rem;
-  font-weight: 800;
+  font-size: 1.8rem;
+  font-weight: 900;
+  display: inline;
 }
 .kx-navbar--dark .kx-navbar__brand-core { color: white; }
+
+.kx-navbar--dark .kx-navbar__brand-x {
+  background: linear-gradient(135deg, #FBBF24, #F59E0B, #FBBF24);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.kx-navbar__brand-x {
+  background: linear-gradient(135deg, #F59E0B, #FBBF24, #F59E0B);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 900;
+  opacity: 1;
+  animation: brand-x-glow 2s ease-in-out infinite;
+}
+
+@keyframes brand-x-glow {
+  0%, 100% { filter: drop-shadow(0 0 0px rgba(245, 158, 11, 0)); }
+  50% { filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.6)); }
+}
 
 .kx-navbar__brand-accent {
   background: linear-gradient(to right, #D97706, #F59E0B, #fcd34d, #D97706);
@@ -65,7 +88,7 @@
   background-clip: text;
   color: transparent;
   animation: kx-brand-shimmer 4s linear infinite;
-  font-size: 0.85rem;
+  font-size: 1.3rem;
   font-weight: 600;
 }
 

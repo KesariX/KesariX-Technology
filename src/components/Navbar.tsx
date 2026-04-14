@@ -54,7 +54,7 @@ export default memo(function Navbar() {
       <div className="section-container kx-navbar__inner">
         <div className="kx-navbar__brand-wrap">
           <Link to="/" className="kx-navbar__brand" aria-label="KesariX Technology home">
-            <span className="kx-navbar__brand-core">KesariX</span>
+            <span className="kx-navbar__brand-core">Kesari<span className="kx-navbar__brand-x">X</span></span>
             <span className="kx-navbar__brand-accent">Technology</span>
           </Link>
         </div>
