@@ -25,10 +25,10 @@ const CookiePolicy = lazy(() => import('./pages/CookiePolicy'))
 // Premium page loading fallback
 function PageLoader() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black">
+    <div className="min-h-screen flex items-center justify-center" style={{ background: '#F0EAE0' }}>
       <div className="flex flex-col items-center gap-4">
-        <div className="w-12 h-12 border-4 border-white/10 border-t-white rounded-full animate-spin" />
-        <p className="text-white/50 text-sm font-medium">Loading page...</p>
+        <div className="w-12 h-12 border-4 border-amber-600/20 border-t-amber-600 rounded-full animate-spin" />
+        <p className="text-amber-700/50 text-sm font-medium">Loading page...</p>
       </div>
     </div>
   )
@@ -40,10 +40,10 @@ function App() {
   useEffect(() => {
     document.documentElement.classList.add('scroll-smooth')
     
-    // Hide loading screen after minimum display time
+    // Hide loading screen after 3 seconds (matches LoadingScreen duration)
     const timer = setTimeout(() => {
       setShowLoadingScreen(false)
-    }, 4300) // Slightly after the 4s loading screen completes
+    }, 3300) // 3s loading screen + 300ms fade-out
 
     return () => clearTimeout(timer)
   }, [])

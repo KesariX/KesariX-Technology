@@ -17,11 +17,11 @@ const LoadingScreen = memo(function LoadingScreen() {
       })
     }, 250)
 
-    // Auto-exit after 4 seconds
+    // Auto-exit after 3 seconds
     const exitTimer = setTimeout(() => {
       setProgress(100)
       setTimeout(() => setIsExiting(true), 300)
-    }, 4000)
+    }, 3000)
 
     return () => {
       clearInterval(progressInterval)
@@ -52,10 +52,10 @@ const LoadingScreen = memo(function LoadingScreen() {
   return (
     <motion.div
       className="loading-screen"
-      initial={{ opacity: 1 }}
+      initial={{ opacity: 1, background: '#F0EAE0' }}
       animate={{ opacity: isExiting ? 0 : 1 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
-      style={{ pointerEvents: isExiting ? 'none' : 'auto' }}
+      style={{ pointerEvents: isExiting ? 'none' : 'auto', background: '#F0EAE0' }}
     >
       {/* Animated gradient background */}
       <div className="loading-screen__bg">

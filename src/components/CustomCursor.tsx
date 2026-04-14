@@ -9,6 +9,7 @@ interface Particle {
   vx: number
   vy: number
   life: number
+  size: number
 }
 
 interface TrailPoint {
@@ -32,8 +33,8 @@ export default memo(function CustomCursor() {
   const particleIdRef = useRef(0)
   const trailIdRef = useRef(0)
 
-  // Spring configurations
-  const springConfig = { damping: 28, stiffness: 180 }
+  // Spring configurations - faster for smoother feel
+  const springConfig = { damping: 24, stiffness: 220 }
   const springX = useSpring(mouseX, springConfig)
   const springY = useSpring(mouseY, springConfig)
 
@@ -46,8 +47,8 @@ export default memo(function CustomCursor() {
       const vx = newX - prevMouseX.current
       const vy = newY - prevMouseY.current
 
-      // Spawn trail particles
-      if (Math.random() > 0.6) {
+      // Spawn trail particles with theme colors
+      if (Math.random() > 0.55) {
         setTrail((prev) => {
           const newTrail = [
             ...prev,
@@ -80,6 +81,7 @@ export default memo(function CustomCursor() {
               vx: Math.cos(spreadAngle) * spreadSpeed,
               vy: Math.sin(spreadAngle) * spreadSpeed,
               life: 1,
+              size: 3 + Math.random() * 3,
             },
           ])
         }
@@ -181,6 +183,8 @@ export default memo(function CustomCursor() {
           style={{
             left: particle.x,
             top: particle.y,
+            width: particle.size,
+            height: particle.size,
             opacity: particle.life,
           }}
         />
@@ -203,7 +207,7 @@ export default memo(function CustomCursor() {
 
       {/* Core dot with glow */}
       <motion.div
-        className="kx-cursor-dot"
+        className={`kx-cursor-dot ${isHovering ? 'hovering' : ''} ${isClicking ? 'clicking' : ''}`}
         style={{
           x: mouseX,
           y: mouseY,
