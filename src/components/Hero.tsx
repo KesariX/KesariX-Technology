@@ -1,6 +1,5 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
-import gsap from 'gsap'
 import NeuralNetwork from './3D/NeuralNetwork'
 import './styles/Hero.css'
 
@@ -39,35 +38,7 @@ export default function Hero() {
     y.set(0)
   }
 
-  // Animation setup
-  useEffect(() => {
-    // Badge animation
-    gsap.fromTo(
-      '.hero-badge',
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: 'power2.out',
-      }
-    )
-
-    // CTA buttons
-    gsap.fromTo(
-      '.hero-cta',
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1,
-        y: 0,
-        stagger: 0.1,
-        duration: 0.8,
-        ease: 'power2.out',
-        delay: 0.6,
-      }
-    )
-  }, [])
-
+  // Animation setup - variants defined below
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.3 } },

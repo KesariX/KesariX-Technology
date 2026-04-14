@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef, memo } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 import './styles/CustomCursor.css'
 
@@ -18,7 +18,7 @@ interface TrailPoint {
   age: number
 }
 
-export default function CustomCursor() {
+export default memo(function CustomCursor() {
   const [isHovering, setIsHovering] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
   const [isClicking, setIsClicking] = useState(false)
@@ -232,4 +232,4 @@ export default function CustomCursor() {
       )}
     </div>
   )
-}
+})

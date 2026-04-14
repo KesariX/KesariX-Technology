@@ -1,53 +1,79 @@
-import { useEffect } from 'react'
+import { useEffect, Suspense, lazy, useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import CustomCursor from './components/CustomCursor'
-import Home from './pages/Home'
-import AiSolutions from './pages/AiSolutions'
-import WebDevelopment from './pages/WebDevelopment'
-import Automation from './pages/Automation'
-import AiAgents from './pages/AiAgents'
-import ItServices from './pages/ItServices'
-import ContactUs from './pages/ContactUs'
-import AboutUs from './pages/AboutUs'
-import OurWork from './pages/OurWork'
-import Blog from './pages/Blog'
-import Careers from './pages/Careers'
-import PressKit from './pages/PressKit'
+import LoadingScreen from './components/LoadingScreen'
 
-import PrivacyPolicy from './pages/PrivacyPolicy'
-import TermsOfService from './pages/TermsOfService'
-import CookiePolicy from './pages/CookiePolicy'
+// Lazy-loaded pages for code splitting
+const Home = lazy(() => import('./pages/Home'))
+const AiSolutions = lazy(() => import('./pages/AiSolutions'))
+const WebDevelopment = lazy(() => import('./pages/WebDevelopment'))
+const Automation = lazy(() => import('./pages/Automation'))
+const AiAgents = lazy(() => import('./pages/AiAgents'))
+const ItServices = lazy(() => import('./pages/ItServices'))
+const ContactUs = lazy(() => import('./pages/ContactUs'))
+const AboutUs = lazy(() => import('./pages/AboutUs'))
+const OurWork = lazy(() => import('./pages/OurWork'))
+const Blog = lazy(() => import('./pages/Blog'))
+const Careers = lazy(() => import('./pages/Careers'))
+const PressKit = lazy(() => import('./pages/PressKit'))
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'))
+const TermsOfService = lazy(() => import('./pages/TermsOfService'))
+const CookiePolicy = lazy(() => import('./pages/CookiePolicy'))
+
+// Premium page loading fallback
+function PageLoader() {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-black">
+      <div className="flex flex-col items-center gap-4">
+        <div className="w-12 h-12 border-4 border-white/10 border-t-white rounded-full animate-spin" />
+        <p className="text-white/50 text-sm font-medium">Loading page...</p>
+      </div>
+    </div>
+  )
+}
 
 function App() {
+  const [showLoadingScreen, setShowLoadingScreen] = useState(true)
+
   useEffect(() => {
     document.documentElement.classList.add('scroll-smooth')
+    
+    // Hide loading screen after minimum display time
+    const timer = setTimeout(() => {
+      setShowLoadingScreen(false)
+    }, 4300) // Slightly after the 4s loading screen completes
+
+    return () => clearTimeout(timer)
   }, [])
 
   return (
     <BrowserRouter>
       <div className="kx-app">
+        {showLoadingScreen && <LoadingScreen />}
         <CustomCursor />
         <Navbar />
         <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/services/ai-solutions" element={<AiSolutions />} />
-            <Route path="/services/web-development" element={<WebDevelopment />} />
-            <Route path="/services/automation" element={<Automation />} />
-            <Route path="/services/ai-agents" element={<AiAgents />} />
-            <Route path="/services/it-services" element={<ItServices />} />
-            <Route path="/company/about" element={<AboutUs />} />
-            <Route path="/company/work" element={<OurWork />} />
-            <Route path="/company/blog" element={<Blog />} />
-            <Route path="/company/careers" element={<Careers />} />
-            <Route path="/company/press" element={<PressKit />} />
-            <Route path="/contact" element={<ContactUs />} />
-            <Route path="/legal/privacy" element={<PrivacyPolicy />} />
-            <Route path="/legal/terms" element={<TermsOfService />} />
-            <Route path="/legal/cookies" element={<CookiePolicy />} />
-          </Routes>
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/services/ai-solutions" element={<AiSolutions />} />
+              <Route path="/services/web-development" element={<WebDevelopment />} />
+              <Route path="/services/automation" element={<Automation />} />
+              <Route path="/services/ai-agents" element={<AiAgents />} />
+              <Route path="/services/it-services" element={<ItServices />} />
+              <Route path="/company/about" element={<AboutUs />} />
+              <Route path="/company/work" element={<OurWork />} />
+              <Route path="/company/blog" element={<Blog />} />
+              <Route path="/company/careers" element={<Careers />} />
+              <Route path="/company/press" element={<PressKit />} />
+              <Route path="/contact" element={<ContactUs />} />
+              <Route path="/legal/privacy" element={<PrivacyPolicy />} />
+              <Route path="/legal/terms" element={<TermsOfService />} />
+              <Route path="/legal/cookies" element={<CookiePolicy />} />
+            </Routes>
+          </Suspense>
         </main>
         <Footer />
       </div>

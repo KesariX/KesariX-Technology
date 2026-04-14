@@ -1,11 +1,35 @@
 import { motion } from 'framer-motion'
-import { useEffect, useRef, MouseEvent } from 'react'
-import anime from 'animejs'
+import { useRef, useState, MouseEvent, useEffect } from 'react'
 import { Globe, Cpu, HeartHandshake, TrendingUp } from 'lucide-react'
 import './styles/Stats.css'
 
+// Simple counter component for animated numbers
+function AnimatedNumber({ target, duration = 2500, delay = 0 }: { target: number; duration?: number; delay?: number }) {
+  const [count, setCount] = useState(0)
+  
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const startTime = Date.now()
+      const interval = setInterval(() => {
+        const now = Date.now()
+        const elapsed = now - startTime
+        const progress = Math.min(elapsed / duration, 1)
+        // Easeout expo
+        const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress)
+        setCount(Math.floor(target * eased))
+        if (progress === 1) clearInterval(interval)
+      }, 16)
+      return () => clearInterval(interval)
+    }, delay)
+    return () => clearTimeout(timer)
+  }, [target, duration, delay])
+  
+  return <span>{count}</span>
+}
+
 export default function Stats() {
   const statsRef = useRef<HTMLDivElement>(null)
+  const [inView, setInView] = useState(false)
 
   const stats = [
     { 
@@ -47,24 +71,6 @@ export default function Stats() {
     },
   ]
 
-  useEffect(() => {
-    if (!statsRef.current) return
-
-    const targets = statsRef.current.querySelectorAll('.kx-stats__number-val')
-
-    targets.forEach((target, idx) => {
-      const stat = stats[idx]
-      anime({
-        targets: target,
-        innerHTML: [0, stat.number],
-        round: 1,
-        duration: 2500,
-        easing: 'easeOutExpo',
-        delay: idx * 200,
-      })
-    })
-  }, [])
-
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect()
     const x = e.clientX - rect.left
@@ -104,7 +110,6 @@ export default function Stats() {
           </h2>
         </motion.div>
 
-        {/* Bento Grid */}
         <motion.div
           ref={statsRef}
           variants={containerVariants}
@@ -112,8 +117,9 @@ export default function Stats() {
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
           className="kx-stats__bento"
+          onViewportEnter={() => setInView(true)}
         >
-          {stats.map((stat) => {
+          {stats.map((stat, idx) => {
             const Icon = stat.icon
             return (
               <motion.div
@@ -135,7 +141,9 @@ export default function Stats() {
                   <div className="kx-stats__card-bottom">
                     <div className="kx-stats__number-wrap">
                       {stat.prefix && <span className="kx-stats__prefix">{stat.prefix}</span>}
-                      <span className="kx-stats__number-val">0</span>
+                      <span className="kx-stats__number-val">
+                        {inView ? <AnimatedNumber target={stat.number} delay={idx * 200} /> : 0}
+                      </span>
                       <span className="kx-stats__suffix">{stat.suffix}</span>
                     </div>
                     <div>

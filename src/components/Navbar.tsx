@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, memo } from 'react'
 import { Menu, X, ChevronDown, BrainCircuit, Code2, Server, Bot, Zap, Users, Briefcase, BookOpen, Presentation } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import gsap from 'gsap'
 import './styles/Navbar.css'
 
 const navMenus = {
@@ -20,7 +19,7 @@ const navMenus = {
   ]
 }
 
-export default function Navbar() {
+export default memo(function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [activeMenu, setActiveMenu] = useState<string | null>(null)
@@ -42,26 +41,34 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener('scroll', handleScroll)
-    
-    gsap.fromTo('.kx-navbar', { y: -100, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power2.out' })
-    gsap.fromTo('.nav-link-item', { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: 'power2.out', stagger: 0.1 })
-
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   return (
-    <nav className={`kx-navbar ${scrolled && !mobileOpen ? 'kx-navbar--scrolled' : ''} ${isDarkHero && !mobileOpen ? 'kx-navbar--dark' : ''} ${mobileOpen ? 'kx-navbar--mobile-open' : ''}`}>
+    <motion.nav 
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, ease: 'easeOut' }}
+      className={`kx-navbar ${scrolled && !mobileOpen ? 'kx-navbar--scrolled' : ''} ${isDarkHero && !mobileOpen ? 'kx-navbar--dark' : ''} ${mobileOpen ? 'kx-navbar--mobile-open' : ''}`}
+    >
       <div className="section-container kx-navbar__inner">
         <div className="kx-navbar__brand-wrap">
           <Link to="/" className="kx-navbar__brand" aria-label="KesariX Technology home">
-            <span className="kx-navbar__brand-core">Kesari</span>
-            <span className="kx-navbar__brand-accent">X</span>
+            <span className="kx-navbar__brand-core">KesariX</span>
+            <span className="kx-navbar__brand-accent">Technology</span>
           </Link>
         </div>
 
         <div className="kx-navbar__links">
           {/* Services Dropdown */}
-          <div className="nav-link-wrap nav-link-item" onMouseEnter={() => setActiveMenu('services')} onMouseLeave={() => setActiveMenu(null)}>
+          <motion.div 
+            className="nav-link-wrap nav-link-item" 
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.1, duration: 0.5, ease: 'easeOut' }}
+            onMouseEnter={() => setActiveMenu('services')} 
+            onMouseLeave={() => setActiveMenu(null)}
+          >
             <div className="kx-navbar__link">
               Services <ChevronDown size={14} className="kx-navbar__chevron" />
               <span className="kx-navbar__link-line" />
@@ -87,18 +94,30 @@ export default function Navbar() {
                 </motion.div>
               )}
             </AnimatePresence>
-          </div>
+          </motion.div>
 
           {/* Work Link */}
-          <div className="nav-link-wrap nav-link-item">
+          <motion.div 
+            className="nav-link-wrap nav-link-item"
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.15, duration: 0.5, ease: 'easeOut' }}
+          >
             <Link to="/company/work" className="kx-navbar__link">
               Our Work
               <span className="kx-navbar__link-line" />
             </Link>
-          </div>
+          </motion.div>
 
           {/* Company Dropdown */}
-          <div className="nav-link-wrap nav-link-item" onMouseEnter={() => setActiveMenu('company')} onMouseLeave={() => setActiveMenu(null)}>
+          <motion.div 
+            className="nav-link-wrap nav-link-item" 
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.5, ease: 'easeOut' }}
+            onMouseEnter={() => setActiveMenu('company')} 
+            onMouseLeave={() => setActiveMenu(null)}
+          >
             <div className="kx-navbar__link">
               Company <ChevronDown size={14} className="kx-navbar__chevron" />
               <span className="kx-navbar__link-line" />
@@ -124,15 +143,20 @@ export default function Navbar() {
                 </motion.div>
               )}
             </AnimatePresence>
-          </div>
+          </motion.div>
 
           {/* Blog Link */}
-          <div className="nav-link-wrap nav-link-item">
+          <motion.div 
+            className="nav-link-wrap nav-link-item"
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.25, duration: 0.5, ease: 'easeOut' }}
+          >
             <Link to="/company/blog" className="kx-navbar__link">
               <BookOpen size={16} className="mr-1" style={{ display: 'inline' }} /> Blog
               <span className="kx-navbar__link-line" />
             </Link>
-          </div>
+          </motion.div>
         </div>
 
         <div className="kx-navbar__actions">
@@ -279,6 +303,6 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </motion.nav>
   )
-}
+})

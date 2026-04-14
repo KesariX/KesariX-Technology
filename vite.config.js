@@ -8,5 +8,44 @@ export default defineConfig({
     },
     build: {
         target: 'ES2020',
+        minify: 'terser',
+        terserOptions: {
+            compress: {
+                drop_console: true,
+                drop_debugger: true,
+            },
+        },
+        reportCompressedSize: true,
+        rollupOptions: {
+            output: {
+                manualChunks: function (id) {
+                    // Vendor chunks
+                    if (id.includes('node_modules/react')) {
+                        return 'vendor-react';
+                    }
+                    if (id.includes('node_modules/framer-motion')) {
+                        return 'vendor-framer';
+                    }
+                    if (id.includes('node_modules/three')) {
+                        return 'vendor-three';
+                    }
+                    if (id.includes('node_modules')) {
+                        return 'vendor-other';
+                    }
+                    // Route chunks
+                    if (id.includes('src/pages/')) {
+                        var match = id.match(/src\/pages\/([A-Za-z]+)\.tsx/);
+                        return match ? "page-".concat(match[1].toLowerCase()) : 'pages';
+                    }
+                    // Component chunks
+                    if (id.includes('src/components/')) {
+                        return 'components';
+                    }
+                },
+            },
+        },
+        cssCodeSplit: true,
+        sourcemap: 'hidden',
+        chunkSizeWarningLimit: 1000,
     },
 });

@@ -2,6 +2,15 @@
    MARQUEE — KesariX Technology
    ══════════════════════════════════════════════════ */
 
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50%));
+  }
+}
+
 .kx-marquee {
   position: relative;
   background: var(--text-dark);
@@ -16,6 +25,8 @@
   white-space: nowrap;
   color: #ffffff;
   width: max-content;
+  animation: marquee-scroll 30s linear infinite;
+  will-change: transform;
 }
 
 .kx-marquee__content {

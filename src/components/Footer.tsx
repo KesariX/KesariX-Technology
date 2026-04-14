@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion'
+import { memo } from 'react'
 import { Linkedin, Github, Twitter, Send } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import './styles/Footer.css'
 
-export default function Footer() {
+export default memo(function Footer() {
   const currentYear = new Date().getFullYear()
 
   const footerLinks = {
@@ -139,4 +140,4 @@ export default function Footer() {
       </div>
     </footer>
   )
-}
+})
