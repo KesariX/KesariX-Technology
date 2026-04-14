@@ -30,6 +30,10 @@ export default defineConfig({
           if (id.includes('node_modules/three')) {
             return 'vendor-three'
           }
+          // React-dependent libraries (must be with React)
+          if (id.includes('node_modules/lucide-react') || id.includes('node_modules/react-router')) {
+            return 'vendor-react'
+          }
           if (id.includes('node_modules')) {
             return 'vendor-other'
           }
