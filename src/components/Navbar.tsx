@@ -24,9 +24,20 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [activeMenu, setActiveMenu] = useState<string | null>(null)
+  const [expandedMobileMenu, setExpandedMobileMenu] = useState<string | null>(null)
   const location = useLocation()
 
   const isDarkHero = ['/company/careers'].includes(location.pathname) && !scrolled
+
+  // Prevent scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => { document.body.style.overflow = '' }
+  }, [mobileOpen])
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20)
@@ -39,7 +50,7 @@ export default function Navbar() {
   }, [])
 
   return (
-    <nav className={`kx-navbar ${scrolled ? 'kx-navbar--scrolled' : ''} ${isDarkHero ? 'kx-navbar--dark' : ''}`}>
+    <nav className={`kx-navbar ${scrolled && !mobileOpen ? 'kx-navbar--scrolled' : ''} ${isDarkHero && !mobileOpen ? 'kx-navbar--dark' : ''} ${mobileOpen ? 'kx-navbar--mobile-open' : ''}`}>
       <div className="section-container kx-navbar__inner">
         <div className="kx-navbar__brand-wrap">
           <Link to="/" className="kx-navbar__brand" aria-label="KesariX Technology home">
@@ -128,44 +139,143 @@ export default function Navbar() {
           <Link to="/contact" className="kx-navbar__cta-btn">Start Project</Link>
         </div>
 
-        <button className="kx-navbar__menu-btn" onClick={() => setMobileOpen(!mobileOpen)}>
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+        <button 
+          className="kx-navbar__menu-btn" 
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label="Toggle menu"
+          aria-expanded={mobileOpen}
+        >
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={mobileOpen ? 'close' : 'menu'}
+              initial={{ opacity: 0, rotate: mobileOpen ? -90 : 90, scale: 0.8 }}
+              animate={{ opacity: 1, rotate: 0, scale: 1 }}
+              exit={{ opacity: 0, rotate: mobileOpen ? 90 : -90, scale: 0.8 }}
+              transition={{ duration: 0.2, ease: 'easeInOut' }}
+            >
+              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+            </motion.div>
+          </AnimatePresence>
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Full-Screen Immersive Mobile Menu */}
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div className="kx-navbar__mobile" initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}>
-            <div className="section-container kx-navbar__mobile-inner">
-              <Link to="/" className="kx-navbar__mobile-link" onClick={() => setMobileOpen(false)}>Home</Link>
-              
-              <div style={{ padding: '0.5rem', marginTop: '0.5rem', borderLeft: '2px solid var(--accent-primary)', marginLeft: '0.5rem' }}>
-                <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 700, color: 'var(--accent-primary)', marginBottom: '0.5rem' }}>Services</div>
-                {navMenus.services.map((svc) => (
-                  <Link key={svc.path} to={svc.path} className="kx-navbar__mobile-link" style={{ fontSize: '1rem', border: 'none', padding: '0.5rem 0' }} onClick={() => setMobileOpen(false)}>
-                    {svc.title}
-                  </Link>
-                ))}
-              </div>
+          <motion.div 
+            className="kx-mobile-overlay" 
+            initial={{ opacity: 0, backdropFilter: 'blur(0px)' }} 
+            animate={{ opacity: 1, backdropFilter: 'blur(24px)' }} 
+            exit={{ opacity: 0, backdropFilter: 'blur(0px)', transition: { delay: 0.2, duration: 0.4 } }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {/* Luminous Background Orbs */}
+            <div className="kx-mobile-glow kx-mobile-glow--primary"></div>
+            <div className="kx-mobile-glow kx-mobile-glow--secondary"></div>
 
-              <Link to="/company/work" className="kx-navbar__mobile-link" onClick={() => setMobileOpen(false)}>Our Work</Link>
-              
-              <div style={{ padding: '0.5rem', marginTop: '0.5rem', borderLeft: '2px solid var(--accent-primary)', marginLeft: '0.5rem' }}>
-                <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 700, color: 'var(--accent-primary)', marginBottom: '0.5rem' }}>Company</div>
-                {navMenus.company.map((item) => (
-                  <Link key={item.path} to={item.path} className="kx-navbar__mobile-link" style={{ fontSize: '1rem', border: 'none', padding: '0.5rem 0' }} onClick={() => setMobileOpen(false)}>
-                    {item.title}
+            <motion.div 
+              className="kx-mobile-content"
+              variants={{
+                hidden: { opacity: 0 },
+                show: {
+                  opacity: 1,
+                  transition: { staggerChildren: 0.08, delayChildren: 0.1 }
+                }
+              }}
+              initial="hidden"
+              animate="show"
+              exit="hidden"
+            >
+              <div className="kx-mobile-nav-group section-container">
+                <motion.div variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 24 } } }}>
+                  <Link to="/" className="kx-mobile-link" onClick={() => setMobileOpen(false)}>
+                    <span>Home</span>
                   </Link>
-                ))}
-              </div>
+                </motion.div>
+                
+                <motion.div variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 24 } } }}>
+                  <button
+                    className={`kx-mobile-link kx-mobile-link--accordion ${expandedMobileMenu === 'services' ? 'is-open' : ''}`}
+                    onClick={() => setExpandedMobileMenu(expandedMobileMenu === 'services' ? null : 'services')}
+                  >
+                    <span>Services</span>
+                    <div className="kx-mobile-accordion-icon">
+                      <span /><span />
+                    </div>
+                  </button>
+                  <AnimatePresence>
+                    {expandedMobileMenu === 'services' && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        style={{ overflow: 'hidden' }}
+                      >
+                        <div className="kx-mobile-sublinks-wrap">
+                          {navMenus.services.map((svc) => (
+                            <Link key={svc.path} to={svc.path} className="kx-mobile-sublink" onClick={() => setMobileOpen(false)}>
+                              {svc.title}
+                            </Link>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
 
-              <Link to="/company/blog" className="kx-navbar__mobile-link" onClick={() => setMobileOpen(false)}>Blog</Link>
-              
-              <div className="kx-navbar__mobile-actions">
-                <Link to="/contact" className="kx-navbar__cta-btn kx-navbar__mobile-btn" onClick={() => setMobileOpen(false)}>Start Project</Link>
+                <motion.div variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 24 } } }}>
+                  <Link to="/company/work" className="kx-mobile-link" onClick={() => setMobileOpen(false)}>
+                    <span>Our Work</span>
+                  </Link>
+                </motion.div>
+
+                <motion.div variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 24 } } }}>
+                  <button
+                    className={`kx-mobile-link kx-mobile-link--accordion ${expandedMobileMenu === 'company' ? 'is-open' : ''}`}
+                    onClick={() => setExpandedMobileMenu(expandedMobileMenu === 'company' ? null : 'company')}
+                  >
+                    <span>Company</span>
+                    <div className="kx-mobile-accordion-icon">
+                      <span /><span />
+                    </div>
+                  </button>
+                  <AnimatePresence>
+                    {expandedMobileMenu === 'company' && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        style={{ overflow: 'hidden' }}
+                      >
+                        <div className="kx-mobile-sublinks-wrap">
+                          {navMenus.company.map((item) => (
+                            <Link key={item.path} to={item.path} className="kx-mobile-sublink" onClick={() => setMobileOpen(false)}>
+                              {item.title}
+                            </Link>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+
+                <motion.div variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 24 } } }}>
+                  <Link to="/company/blog" className="kx-mobile-link" onClick={() => setMobileOpen(false)}>
+                    <span>Blog</span>
+                  </Link>
+                </motion.div>
+                
+                <motion.div 
+                  className="kx-mobile-footer"
+                  variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 24 } } }}
+                >
+                  <Link to="/contact" className="kx-mobile-cta" onClick={() => setMobileOpen(false)}>
+                    <span>Start Project</span>
+                    <span className="kx-mobile-cta-arrow">→</span>
+                  </Link>
+                </motion.div>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

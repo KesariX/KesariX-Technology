@@ -1,61 +1,21 @@
 /* ══════════════════════════════════════════════════
-   CUSTOM CURSOR — Kinetic Interactive System
+   CUSTOM CURSOR — Prisma Geometric System
    ══════════════════════════════════════════════════ */
 
-@keyframes cursor-dot-glow {
-  0%, 100% {
-    box-shadow: 
-      0 0 8px 2px rgba(217, 119, 6, 0.4),
-      0 0 20px 6px rgba(245, 158, 11, 0.2),
-      0 0 40px 10px rgba(217, 119, 6, 0.1);
-  }
-  50% {
-    box-shadow: 
-      0 0 12px 3px rgba(217, 119, 6, 0.6),
-      0 0 28px 8px rgba(245, 158, 11, 0.3),
-      0 0 50px 14px rgba(217, 119, 6, 0.15);
-  }
+@keyframes prisma-spin-cw {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-@keyframes cursor-ring-grow {
-  0% {
-    transform: scale(1) rotate(0deg);
-  }
-  100% {
-    transform: scale(1) rotate(360deg);
-  }
+@keyframes prisma-spin-ccw {
+  0% { transform: rotate(45deg); } /* Starts offset to form the 8-point star */
+  100% { transform: rotate(-315deg); }
 }
 
-@keyframes cursor-ring-pulse {
-  0%, 100% {
-    opacity: 0.6;
-    filter: drop-shadow(0 0 8px rgba(217, 119, 6, 0.2));
-  }
-  50% {
-    opacity: 1;
-    filter: drop-shadow(0 0 16px rgba(217, 119, 6, 0.4));
-  }
-}
-
-@keyframes cursor-morph {
-  0% {
-    border-radius: 50%;
-  }
-  50% {
-    border-radius: 40%;
-  }
-  100% {
-    border-radius: 50%;
-  }
-}
-
-@keyframes cursor-scale-pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
+@keyframes prisma-inner-spin {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
 }
 
 .kx-cursor-system {
@@ -64,7 +24,7 @@
   pointer-events: none;
   z-index: 99999;
   opacity: 0;
-  transition: opacity 300ms ease;
+  transition: opacity 400ms ease;
   overflow: hidden;
 }
 
@@ -72,70 +32,69 @@
   opacity: 1;
 }
 
-/* ── Trail Effect ──────────────────────────────── */
+/* ── Trail & Particles ─────────────────────────── */
 .kx-cursor-trail {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  filter: blur(1px);
+  filter: blur(2px);
 }
 
-/* ── Particle System ───────────────────────────── */
 .kx-cursor-particle {
   position: fixed;
-  width: 4px;
-  height: 4px;
+  width: 3px;
+  height: 3px;
   border-radius: 50%;
   pointer-events: none;
-  background: linear-gradient(135deg, rgba(217, 119, 6, 0.8), rgba(245, 158, 11, 0.6));
-  box-shadow: 0 0 8px rgba(217, 119, 6, 0.5);
+  background: #ffffff;
+  box-shadow: 0 0 10px 2px #06b6d4, 0 0 20px #4f46e5;
 }
 
-/* ── Main Cursor Ring ──────────────────────────── */
+/* ── Main Cursor Ring (Prisma) ─────────── */
 .kx-cursor-ring {
   position: fixed;
   top: 0;
   left: 0;
-  width: 52px;
-  height: 52px;
+  width: 36px;
+  height: 36px;
   pointer-events: none;
-  transition: width 250ms cubic-bezier(0.34, 1.56, 0.64, 1),
-              height 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Outer Square 1 */
 .kx-cursor-ring__outer {
   position: absolute;
   inset: 0;
-  border: 2px solid rgba(217, 119, 6, 0.3);
-  border-radius: 50%;
-  animation: cursor-ring-grow 12s linear infinite;
-  filter: drop-shadow(0 0 8px rgba(217, 119, 6, 0.15));
+  border: 1.5px solid rgba(6, 182, 212, 0.7);
+  border-radius: 8px; /* Slightly rounded square */
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.2), inset 0 0 15px rgba(6, 182, 212, 0.2);
+  animation: prisma-spin-cw 10s linear infinite;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Middle Square 2 (Offset by 45deg via animation) */
 .kx-cursor-ring__middle {
   position: absolute;
-  inset: 6px;
-  border: 1.5px solid rgba(217, 119, 6, 0.25);
-  border-radius: 50%;
-  animation: cursor-ring-grow 8s linear infinite reverse;
-  opacity: 0.7;
-  filter: drop-shadow(0 0 6px rgba(217, 119, 6, 0.1));
+  inset: 0;
+  border: 1.5px solid rgba(79, 70, 229, 0.7);
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(79, 70, 229, 0.2), inset 0 0 15px rgba(79, 70, 229, 0.2);
+  animation: prisma-spin-ccw 10s linear infinite;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Inner Target Dot/Ring */
 .kx-cursor-ring__inner {
   position: absolute;
-  inset: 12px;
-  border: 1px solid rgba(245, 158, 11, 0.4);
+  inset: 10px;
+  border: 1px dotted rgba(255, 255, 255, 0.5);
   border-radius: 50%;
-  background: linear-gradient(
-    135deg,
-    rgba(217, 119, 6, 0.08) 0%,
-    rgba(245, 158, 11, 0.04) 100%
-  );
-  animation: cursor-ring-pulse 2.5s ease-in-out infinite;
+  animation: prisma-inner-spin 4s ease-in-out infinite;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ── Core Dot ──────────────────────────────────── */
+/* ── Core Dot (High Contrast Inversion) ────────── */
 .kx-cursor-dot {
   position: fixed;
   width: 12px;
@@ -143,35 +102,25 @@
   pointer-events: none;
   top: 0;
   left: 0;
+  mix-blend-mode: difference;
 }
 
 .kx-cursor-dot__core {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    var(--accent-primary) 0%,
-    #F59E0B 50%,
-    rgba(217, 119, 6, 0.8) 100%
-  );
+  background: #ffffff;
   border-radius: 50%;
-  box-shadow: 
-    0 0 8px 2px rgba(217, 119, 6, 0.4),
-    0 0 20px 6px rgba(245, 158, 11, 0.2),
-    0 0 40px 10px rgba(217, 119, 6, 0.1),
-    inset -2px -2px 4px rgba(0, 0, 0, 0.2);
-  animation: cursor-dot-glow 1.8s ease-in-out infinite;
+  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.6);
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), background 300ms ease;
 }
 
 .kx-cursor-dot__glow {
   position: absolute;
   inset: -6px;
-  border: 1px solid rgba(217, 119, 6, 0.2);
   border-radius: 50%;
-  box-shadow: 
-    inset 0 0 12px rgba(217, 119, 6, 0.1),
-    0 0 20px rgba(217, 119, 6, 0.15);
-  animation: cursor-scale-pulse 2s ease-in-out infinite;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+  filter: blur(3px);
+  transition: inset 0.3s ease;
 }
 
 /* ── Click Ripple ──────────────────────────────── */
@@ -179,90 +128,90 @@
   position: fixed;
   width: 20px;
   height: 20px;
-  border: 2px solid var(--accent-primary);
-  border-radius: 50%;
+  border: 2px solid #06b6d4;
+  border-radius: 8px; /* Matching the geometric theme */
   pointer-events: none;
-  box-shadow: 0 0 20px rgba(217, 119, 6, 0.5);
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.8);
 }
 
-/* ── Hover State ───────────────────────────────── */
+/* ══════════════════════════════════════════════════
+   INTERACTIVE STATES
+   ══════════════════════════════════════════════════ */
+
+/* ── Hovering (Magnetic Lens & Morph to Circle) ──────── */
 .kx-cursor-ring.hovering {
-  width: 80px;
-  height: 80px;
+  width: 72px;
+  height: 72px;
 }
 
 .kx-cursor-ring.hovering .kx-cursor-ring__outer {
-  border-color: var(--accent-primary);
-  animation: cursor-ring-grow 6s linear infinite;
-  filter: drop-shadow(0 0 16px rgba(217, 119, 6, 0.4));
+  border-radius: 50%; /* Morphs square to circle */
+  border-color: rgba(6, 182, 212, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px) brightness(1.1);
+  -webkit-backdrop-filter: blur(6px) brightness(1.1);
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.2), inset 0 0 20px rgba(6, 182, 212, 0.1);
+  animation: prisma-spin-cw 6s linear infinite; /* Speeds up */
 }
 
 .kx-cursor-ring.hovering .kx-cursor-ring__middle {
-  border-color: rgba(217, 119, 6, 0.5);
-  animation: cursor-ring-grow 4s linear infinite reverse;
-  opacity: 0.9;
-  filter: drop-shadow(0 0 12px rgba(217, 119, 6, 0.3));
+  border-radius: 50%; /* Morphs square to circle */
+  inset: -6px; /* Expands outwards slightly */
+  border: 1px dashed rgba(79, 70, 229, 0.6);
+  box-shadow: none;
+  animation: prisma-spin-ccw 8s linear infinite;
 }
 
 .kx-cursor-ring.hovering .kx-cursor-ring__inner {
-  background: linear-gradient(
-    135deg,
-    rgba(217, 119, 6, 0.2) 0%,
-    rgba(245, 158, 11, 0.12) 100%
-  );
-  border-color: var(--accent-primary);
-  box-shadow: 
-    inset 0 0 16px rgba(217, 119, 6, 0.15),
-    0 0 24px rgba(217, 119, 6, 0.3);
-  animation: cursor-ring-pulse 1.5s ease-in-out infinite;
+  inset: 4px;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.2);
+  animation-duration: 2s;
 }
 
 .kx-cursor-dot.hovering .kx-cursor-dot__core {
-  box-shadow: 
-    0 0 12px 3px rgba(217, 119, 6, 0.6),
-    0 0 28px 8px rgba(245, 158, 11, 0.4),
-    0 0 50px 14px rgba(217, 119, 6, 0.2),
-    inset -2px -2px 4px rgba(0, 0, 0, 0.3);
-  animation: cursor-dot-glow 1s ease-in-out infinite;
+  transform: scale(0.4); /* Shrinks down for precision */
 }
 
 .kx-cursor-dot.hovering .kx-cursor-dot__glow {
-  border-color: rgba(217, 119, 6, 0.4);
-  box-shadow: 
-    inset 0 0 16px rgba(217, 119, 6, 0.2),
-    0 0 32px rgba(217, 119, 6, 0.3);
-  animation: cursor-scale-pulse 1s ease-in-out infinite;
+  inset: -8px;
 }
 
-/* ── Click State ───────────────────────────────── */
+/* ── Clicking (Active Geometric Burst) ───────────────────── */
 .kx-cursor-ring.clicking {
-  width: 60px;
-  height: 60px;
+  width: 44px;
+  height: 44px;
 }
 
 .kx-cursor-ring.clicking .kx-cursor-ring__outer {
-  animation: cursor-ring-grow 3s linear infinite;
-  filter: drop-shadow(0 0 20px rgba(217, 119, 6, 0.6));
+  border-radius: 4px; /* Hardens the square */
+  border-width: 2px;
+  border-color: #f59e0b; /* Amber */
+  background: rgba(245, 158, 11, 0.15);
+  box-shadow: 0 0 40px rgba(245, 158, 11, 0.4);
+  animation-duration: 2s;
+}
+
+.kx-cursor-ring.clicking .kx-cursor-ring__middle {
+  border-radius: 4px;
+  inset: -8px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgba(245, 158, 11, 0.6);
+  animation-duration: 2s;
 }
 
 .kx-cursor-ring.clicking .kx-cursor-ring__inner {
-  background: linear-gradient(
-    135deg,
-    rgba(217, 119, 6, 0.3) 0%,
-    rgba(245, 158, 11, 0.2) 100%
-  );
-  box-shadow: 
-    inset 0 0 20px rgba(217, 119, 6, 0.25),
-    0 0 32px rgba(217, 119, 6, 0.5);
+  inset: 14px;
+  background: #f59e0b;
+  border-color: #f59e0b;
+  animation-duration: 0.5s;
 }
 
 .kx-cursor-dot.clicking .kx-cursor-dot__core {
-  box-shadow: 
-    0 0 16px 4px rgba(217, 119, 6, 0.8),
-    0 0 36px 10px rgba(245, 158, 11, 0.5),
-    0 0 60px 16px rgba(217, 119, 6, 0.3),
-    inset -2px -2px 4px rgba(0, 0, 0, 0.4);
-  animation: cursor-dot-glow 0.8s ease-in-out infinite;
+  transform: scale(1.6);
+  background: #f59e0b;
+  box-shadow: 0 0 20px 5px rgba(245, 158, 11, 0.6);
 }
 
 /* Hide cursor on coarse pointers (touch) */
