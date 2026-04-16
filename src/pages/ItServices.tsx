@@ -2,6 +2,8 @@ import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Server, ShieldCheck, Cloud, Network, HeadphonesIcon, Database, ArrowRight, CheckCircle2 } from 'lucide-react'
+import NeuralPulseMatrix from '../components/3D/NeuralPulseMatrix'
+import CTASection from '../components/CTASection'
 import './styles/ItServices.css'
 
 export default function ItServices() {
@@ -25,6 +27,9 @@ export default function ItServices() {
       {/* ── HERO SECTION ──────────────── */}
       <section className="it-hero">
         <div className="it-hero-bg" />
+        <div className="absolute inset-0 z-0 pointer-events-none" style={{ height: '100%' }}>
+          <NeuralPulseMatrix className="opacity-40" />
+        </div>
 
         <div className="section-container relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
@@ -176,49 +181,12 @@ export default function ItServices() {
       </section>
 
       {/* ── ELEGANT THEMED CTA ────────────────────────────── */}
-      <section className="py-24 md:py-32 bg-white relative overflow-hidden border-t border-[var(--border)]">
-        <div className="section-container relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="w-full premium-card rounded-[3rem] p-12 md:p-24 overflow-hidden relative text-center group bg-[#FAFAF8] shadow-xl"
-          >
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] pointer-events-none opacity-50">
-              <motion.div
-                animate={{ rotate: 360, scale: [1, 1.05, 1] }}
-                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 border-[2px] border-dashed border-[var(--border)] rounded-full mix-blend-multiply"
-              />
-            </div>
-
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[60%] bg-gradient-to-t from-[var(--accent-primary)]/10 to-transparent pointer-events-none blur-[40px]" />
-
-            <div className="relative z-20 flex flex-col items-center">
-              <div className="w-24 h-24 mb-10 rounded-[2rem] bg-gradient-to-tr from-[var(--accent-primary)]/20 to-[var(--accent-primary)]/5 p-[1px]">
-                <div className="w-full h-full bg-white rounded-[2rem] flex items-center justify-center border border-[var(--accent-primary)]/20 shadow-sm transition-transform duration-700 group-hover:scale-110">
-                  <ShieldCheck size={40} className="text-[var(--accent-primary)]" />
-                </div>
-              </div>
-
-              <h2 className="text-4xl md:text-5xl lg:text-7xl font-black mb-8 tracking-tight font-['Outfit'] text-[var(--text-dark)] leading-tight relative">
-                Secure Your <br />
-                <span className="gradient-text">Infrastructure.</span>
-              </h2>
-
-              <p className="text-xl md:text-2xl text-[var(--text-mid)] mx-auto mb-12 max-w-3xl leading-relaxed">
-                Connect with our systems engineers to audit your current IT architecture and eliminate critical vulnerabilities.
-              </p>
-
-              <Link to="/contact" className="btn-primary flex items-center justify-center px-10 py-5 text-lg font-bold shadow-[var(--shadow-lift)] overflow-hidden relative">
-                <span className="relative z-10 transition-transform group-hover:-translate-x-1">Speak with an Engineer</span>
-                <ArrowRight size={20} className="ml-3 relative z-10 transition-transform group-hover:translate-x-1" />
-                <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity" />
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <CTASection
+        title={<>Secure Your <br /> <span>Infrastructure.</span></>}
+        subtitle="Connect with our systems engineers to audit your current IT architecture and eliminate critical vulnerabilities."
+        buttonText="Speak with an Engineer"
+        eyebrow="Ready to secure?"
+      />
 
     </div>
   )

@@ -2,6 +2,8 @@ import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Workflow, Database, Layers } from 'lucide-react'
+import NeuralPulseMatrix from '../components/3D/NeuralPulseMatrix'
+import CTASection from '../components/CTASection'
 import './styles/Automation.css'
 
 export default function Automation() {
@@ -10,8 +12,11 @@ export default function Automation() {
   return (
     <div className="auto-page">
       {/* ── HERO ── */}
-      <section className="auto-hero">
-        <div className="auto-hero__inner">
+      <section className="auto-hero" style={{ position: 'relative' }}>
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <NeuralPulseMatrix className="opacity-40" />
+        </div>
+        <div className="auto-hero__inner" style={{ position: 'relative', zIndex: 10 }}>
           <motion.div className="auto-hero__text" initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
             <h1>Hyper-Scale<br /><span>Process Automation.</span></h1>
             <p>We eliminate operational bottlenecks by architecting deterministic logic pipelines that automate complex data extraction, routing, and reporting.</p>
@@ -96,13 +101,12 @@ export default function Automation() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="auto-cta">
-        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          <h2 className="auto-cta__title">Stop acting like a robot.</h2>
-          <p style={{ fontSize: '1.25rem', color: '#64748B', maxWidth: '600px', margin: '0 auto 3rem' }}>Let our engineers build a custom automated pipeline so your team can focus on actual high-impact work.</p>
-          <Link to="/contact" className="btn-primary">Schedule Audit <ArrowRight size={18} /></Link>
-        </motion.div>
-      </section>
+      <CTASection
+        title={<>Stop acting like a <br /> robot.</>}
+        subtitle="Let our engineers build a custom automated pipeline so your team can focus on actual high-impact work."
+        buttonText="Schedule Audit"
+        eyebrow="Ready to automate?"
+      />
     </div>
   )
 }

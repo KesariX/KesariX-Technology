@@ -17,7 +17,6 @@ const AboutUs = lazy(() => import('./pages/AboutUs'))
 const OurWork = lazy(() => import('./pages/OurWork'))
 const Blog = lazy(() => import('./pages/Blog'))
 const Careers = lazy(() => import('./pages/Careers'))
-const PressKit = lazy(() => import('./pages/PressKit'))
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'))
 const TermsOfService = lazy(() => import('./pages/TermsOfService'))
 const CookiePolicy = lazy(() => import('./pages/CookiePolicy'))
@@ -67,7 +66,6 @@ function App() {
               <Route path="/company/work" element={<OurWork />} />
               <Route path="/company/blog" element={<Blog />} />
               <Route path="/company/careers" element={<Careers />} />
-              <Route path="/company/press" element={<PressKit />} />
               <Route path="/contact" element={<ContactUs />} />
               <Route path="/legal/privacy" element={<PrivacyPolicy />} />
               <Route path="/legal/terms" element={<TermsOfService />} />

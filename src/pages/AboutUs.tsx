@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
-import { Target, Shield, Activity, ArrowRight } from 'lucide-react'
+import { Target, Shield, Activity } from 'lucide-react'
+import CTA from '../components/CTA'
 import './styles/AboutUs.css'
 
 export default function AboutUs() {
@@ -26,10 +26,10 @@ export default function AboutUs() {
   ]
 
   const timeline = [
-    { year: '2019', title: 'The Foundation', desc: 'Started as a boutique web engineering studio focusing entirely on React and early Node.js microservice architectures for seed-stage startups.' },
-    { year: '2021', title: 'Enterprise Pivot', desc: 'Expanded into DevOps and IT infrastructure management to support rapidly scaling client platforms under heavy operational load.' },
-    { year: '2023', title: 'The AI Integration', desc: 'Formed a dedicated ML research wing to integrate Large Language Models deterministically into strict enterprise logic flows with zero tolerance for hallucination.' },
-    { year: 'Now', title: 'Global Engineering', desc: 'Serving 120+ product teams globally, providing end-to-end digital engineering from custom web platforms to fully autonomous AI agents.' }
+    { year: '2026', title: 'KesariX Founded', desc: 'From concept to enterprise leader in a single year. Built a world-class AI & digital engineering platform from the ground up with a mission to transform how enterprises build intelligent systems.' },
+    { year: '2026', title: 'Rapid Product Development', desc: 'Shipped 5 production-grade AI agent frameworks, autonomous workflow systems, and custom web platforms. Every product built with zero-tolerance for compromise.' },
+    { year: '2026', title: 'Enterprise Adoption', desc: 'Onboarded 40+ Fortune 500 and fast-growing companies. Architected deterministic AI systems handling millions of transactions daily across critical infrastructure.' },
+    { year: '2026', title: 'Scaling Operations', desc: 'Grew team to 25+ elite engineers, ML researchers, and architects. Established offices in Mumbai & Bangalore. Deployed systems processing 4.8M+ autonomous agent actions monthly.' }
   ]
 
   return (
@@ -52,7 +52,7 @@ export default function AboutUs() {
               A collective of systems architects, deep-learning researchers, and full-stack engineers building uncompromising digital platforms for the enterprise layer.
             </p>
             <div className="about-hero__badges">
-              {['Founded 2019', 'India HQ', '120+ Projects', '99% Retention'].map(b => (
+              {['Founded 2024', 'India Based', '40+ Clients', '98% Satisfaction'].map(b => (
                 <span key={b} className="about-hero__badge">{b}</span>
               ))}
             </div>
@@ -71,10 +71,10 @@ export default function AboutUs() {
             className="about-hero__stat-cluster"
           >
             {[
-              { val: '120+', label: 'Projects Shipped' },
-              { val: '4', label: 'Global Offices' },
-              { val: '99%', label: 'Client Retention' },
-              { val: '24/7', label: 'System Uptime' }
+              { val: '40+', label: 'Enterprise Clients' },
+              { val: '25+', label: 'Team Members' },
+              { val: '98%', label: 'Client Satisfaction' },
+              { val: '2', label: 'Global Offices' }
             ].map((s, i) => (
               <div key={i} className="about-stat-tile">
                 <div className="about-stat-tile__val">{s.val}</div>
@@ -144,26 +144,7 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* ── CTA ────────────────────────────── */}
-      <section className="about-cta">
-        <div className="about-cta__inner">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="section-title" style={{ marginBottom: '1.5rem' }}>
-              Ready to work with<br /><span className="gradient-text">the best engineers?</span>
-            </h2>
-            <p style={{ fontSize: '1.125rem', color: 'var(--text-mid)', marginBottom: '2.5rem' }}>
-              Let's discuss your architecture challenges and build something lasting together.
-            </p>
-            <Link to="/contact" className="btn-primary">
-              Get In Touch <ArrowRight size={18} />
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+      <CTA />
     </div>
   )
 }

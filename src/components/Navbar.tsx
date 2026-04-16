@@ -1,5 +1,5 @@
 import { useEffect, useState, memo } from 'react'
-import { Menu, X, ChevronDown, BrainCircuit, Code2, Server, Bot, Zap, Users, Briefcase, BookOpen, Presentation } from 'lucide-react'
+import { Menu, X, ChevronDown, BrainCircuit, Code2, Server, Bot, Zap, Users, Briefcase, BookOpen } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import './styles/Navbar.css'
@@ -14,8 +14,7 @@ const navMenus = {
   ],
   company: [
     { path: '/company/about', icon: Users, title: 'About KesariX', desc: 'Our history, values, and engineering ethos.' },
-    { path: '/company/careers', icon: Briefcase, title: 'Careers', desc: 'Join the architecture. Open engineering roles.' },
-    { path: '/company/press', icon: Presentation, title: 'Press & Assets', desc: 'Official brand assets, logos, and fact sheets.' }
+    { path: '/company/careers', icon: Briefcase, title: 'Careers', desc: 'Join the architecture. Open engineering roles.' }
   ]
 }
 

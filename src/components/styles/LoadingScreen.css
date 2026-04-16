@@ -118,6 +118,70 @@
 .loading-screen__text-wrapper {
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.loading-screen__logo-frame {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(240px, 42vw, 390px);
+  min-height: clamp(110px, 16vw, 152px);
+  padding: clamp(1rem, 2.8vw, 1.4rem) clamp(1.2rem, 3vw, 1.8rem);
+  border-radius: 32px;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid rgba(217, 119, 6, 0.16);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 248, 235, 0.72)),
+    radial-gradient(circle at top, rgba(251, 191, 36, 0.18), transparent 58%);
+  box-shadow:
+    0 24px 60px rgba(146, 64, 14, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72),
+    inset 0 -1px 0 rgba(217, 119, 6, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.loading-screen__logo-aura {
+  position: absolute;
+  inset: 12% 10%;
+  border-radius: 28px;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.28) 0%, rgba(245, 158, 11, 0.12) 45%, transparent 78%);
+  filter: blur(18px);
+  z-index: 0;
+}
+
+.loading-screen__logo-image {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  object-fit: contain;
+  filter:
+    drop-shadow(0 10px 20px rgba(146, 64, 14, 0.14))
+    drop-shadow(0 0 24px rgba(245, 158, 11, 0.18));
+}
+
+.loading-screen__logo-sheen {
+  position: absolute;
+  inset: -20%;
+  z-index: 1;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.12) 45%,
+    rgba(255, 255, 255, 0.58) 50%,
+    rgba(255, 255, 255, 0.14) 56%,
+    transparent 66%
+  );
+  transform: skewX(-20deg);
+  pointer-events: none;
 }
 
 .loading-screen__text {
@@ -277,8 +341,15 @@
     box-shadow: 0 0 15px rgba(217, 119, 6, 0.15), inset 0 0 15px rgba(245, 158, 11, 0.08);
   }
 
-  .loading-screen__text-main {
-    font-size: clamp(2.5rem, 6vw, 3.5rem);
+  .loading-screen__logo-frame {
+    width: min(82vw, 320px);
+    min-height: 100px;
+    padding: 0.95rem 1.05rem;
+    border-radius: 24px;
+  }
+
+  .loading-screen__logo-image {
+    max-width: 260px;
   }
 
   .loading-screen__progress-track {

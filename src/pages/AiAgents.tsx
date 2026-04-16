@@ -2,6 +2,8 @@ import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Bot, Network, Workflow, BrainCircuit, Activity, Lock, ArrowRight, Database, Terminal, Server } from 'lucide-react'
+import NeuralPulseMatrix from '../components/3D/NeuralPulseMatrix'
+import CTASection from '../components/CTASection'
 import './styles/AiAgents.css'
 
 const capabilities = [
@@ -21,6 +23,9 @@ export default function AiAgents() {
       {/* ── HERO ── */}
       <section className="agents-hero">
         <div className="agents-hero-bg" />
+        <div className="absolute inset-0 z-0 pointer-events-none" style={{ height: '95vh' }}>
+          <NeuralPulseMatrix className="opacity-50" />
+        </div>
         
         <div className="agents-hero-inner">
           {/* Left Content */}
@@ -143,13 +148,12 @@ export default function AiAgents() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="agents-bot-cta">
-        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          <h2 className="abc-title">Ready to build your <span>digital workforce?</span></h2>
-          <p className="agents-hero-desc" style={{ margin: '0 auto 2.5rem' }}>Let our engineering team architect an autonomous pipeline for your specific use-case.</p>
-          <Link to="/contact" className="btn-primary border-none">Connect With Us <ArrowRight size={18} /></Link>
-        </motion.div>
-      </section>
+      <CTASection
+        title={<>Ready to build your <br /> <span>digital workforce?</span></>}
+        subtitle="Let our engineering team architect an autonomous pipeline for your specific use-case."
+        buttonText="Connect With Us"
+        eyebrow="Ready to build?"
+      />
     </div>
   )
 }

@@ -105,16 +105,42 @@ const LoadingScreen = memo(function LoadingScreen() {
             transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
           />
 
-          {/* Brand Text */}
+          {/* Brand Logo */}
           <div className="loading-screen__text-wrapper">
             <motion.div
-              className="loading-screen__text"
-              initial={{ letterSpacing: '-0.05em', opacity: 0, y: 10 }}
-              animate={{ letterSpacing: '0.02em', opacity: 1, y: 0 }}
+              className="loading-screen__logo-frame"
+              initial={{ opacity: 0, y: 10, scale: 0.94 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ delay: 0.4, duration: 0.8, ease: [0.25, 0.1, 0, 1] }}
             >
-              <span className="loading-screen__text-main">KesariX</span>
-              <span className="loading-screen__text-accent">Technology</span>
+              <motion.div
+                className="loading-screen__logo-aura"
+                animate={{
+                  scale: [1, 1.06, 1],
+                  opacity: [0.45, 0.72, 0.45],
+                }}
+                transition={{ duration: 4.8, repeat: Infinity, ease: 'easeInOut' }}
+              />
+              <motion.img
+                className="loading-screen__logo-image"
+                src="/kesariX.png"
+                alt="KesariX Technology"
+                animate={{
+                  y: [0, -4, 0],
+                  scale: [1, 1.015, 1],
+                }}
+                transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
+              />
+              <motion.div
+                className="loading-screen__logo-sheen"
+                animate={{ x: ['-130%', '130%'] }}
+                transition={{
+                  duration: 2.8,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                  repeatDelay: 1.1,
+                }}
+              />
             </motion.div>
 
             {/* Tagline */}

@@ -19,8 +19,7 @@ export default memo(function Footer() {
       { label: 'About Us', path: '/company/about' },
       { label: 'Our Work', path: '/company/work' },
       { label: 'Blog', path: '/company/blog' },
-      { label: 'Careers', path: '/company/careers' },
-      { label: 'Press Kit', path: '/company/press' }
+      { label: 'Careers', path: '/company/careers' }
     ],
     Contact: ['hello@kesarix.com', '+91 98765 43210', 'India'],
   }

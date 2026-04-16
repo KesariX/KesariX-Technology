@@ -485,7 +485,6 @@ COLUMN 3 — Company:
   Our Work
   Blog
   Careers → [We're Hiring badge]
-  Press Kit
 
 COLUMN 4 — Contact:
   hello@nexcore.io

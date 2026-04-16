@@ -4,13 +4,6 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, Code2, Rocket, Trophy, Globe, Heart, Zap } from 'lucide-react'
 import './styles/Careers.css'
 
-const jobs = [
-  { title: 'Senior AI Systems Architect', team: 'Machine Learning', location: 'Remote (Global)', type: 'Full-Time' },
-  { title: 'Lead Full-Stack Engineer (Next.js / Node)', team: 'Web Engineering', location: 'India / Remote', type: 'Full-Time' },
-  { title: 'DevOps & Infrastructure Lead', team: 'IT Services', location: 'Remote (US Timezone)', type: 'Full-Time' },
-  { title: 'B2B Technical Sales Executive', team: 'Growth', location: 'Remote', type: 'Full-Time' }
-]
-
 const perks = [
   { icon: Globe, title: 'Fully Remote', desc: 'Work from anywhere in the world' },
   { icon: Rocket, title: 'Fast Execution', desc: 'Ship real products that matter' },
@@ -99,43 +92,52 @@ export default function Careers() {
               <div className="section-eyebrow" style={{ marginBottom: '0.75rem' }}>Open Positions</div>
               <h2 className="section-title">Join The Architecture.</h2>
             </div>
-            <span style={{ color: 'var(--text-muted)', fontSize: '0.9rem', fontWeight: 600 }}>
-              {jobs.length} open roles
-            </span>
           </div>
 
-          {jobs.map((job, i) => (
-            <motion.div
-              key={i}
-              className="careers-job-item"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-            >
-              <div>
-                <h3>{job.title}</h3>
-                <div className="careers-job-tags">
-                  <span className="careers-job-tag">{job.team}</span>
-                  <span className="careers-job-tag">{job.location}</span>
-                  <span className="careers-job-tag">{job.type}</span>
-                </div>
-              </div>
-              <button className="careers-apply-btn">
-                Apply Now <ArrowRight size={16} />
-              </button>
-            </motion.div>
-          ))}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="careers-no-positions"
+          >
+            <div style={{ textAlign: 'center', padding: '4rem 2rem' }}>
+              <h3 style={{ fontFamily: "'Outfit', sans-serif", fontSize: '1.75rem', fontWeight: 700, marginBottom: '1rem', color: '#FFFFFF' }}>
+                No Positions Available Right Now
+              </h3>
+              <p style={{ color: 'rgba(255, 255, 255, 0.6)', marginBottom: '2rem', maxWidth: '500px', margin: '0 auto 2rem' }}>
+                We're not actively hiring at the moment, but we're always interested in exceptional 10× talent. If you believe you're a great fit for our team, we'd love to hear from you.
+              </p>
+              <Link 
+                to="/contact" 
+                style={{ 
+                  display: 'inline-flex', 
+                  alignItems: 'center', 
+                  gap: '0.5rem',
+                  padding: '0.75rem 1.5rem',
+                  background: '#D97706',
+                  color: 'white',
+                  borderRadius: '8px',
+                  fontWeight: 700,
+                  textDecoration: 'none',
+                  transition: 'all 0.3s ease'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.background = '#B8620A'}
+                onMouseLeave={(e) => e.currentTarget.style.background = '#D97706'}
+              >
+                Send Your Portfolio <ArrowRight size={16} />
+              </Link>
+            </div>
+          </motion.div>
 
           <div className="careers-open-door">
-            <h3 style={{ fontFamily: "'Outfit', sans-serif", fontSize: '1.4rem', fontWeight: 700, marginBottom: '0.75rem', color: 'var(--text-dark)' }}>
-              Don't see your role?
+            <h3 style={{ fontFamily: "'Outfit', sans-serif", fontSize: '1.4rem', fontWeight: 700, marginBottom: '0.75rem', color: 'white' }}>
+              Interested in Working Together?
             </h3>
-            <p style={{ color: 'var(--text-mid)', marginBottom: '1.5rem' }}>
-              We're always looking for exceptional 10× talent, regardless of open postings.
+            <p style={{ color: 'rgba(255, 255, 255, 0.6)', marginBottom: '1.5rem' }}>
+              Tell us about your background, expertise, and what you're working on. We review every submission personally.
             </p>
-            <Link to="/contact" style={{ color: 'var(--accent-primary)', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
-              Send your portfolio <ArrowRight size={16} />
+            <Link to="/contact" style={{ color: '#D97706', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+              Get In Touch <ArrowRight size={16} />
             </Link>
           </div>
         </div>
