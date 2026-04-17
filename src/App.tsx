@@ -37,19 +37,27 @@ function App() {
 
   useEffect(() => {
     document.documentElement.classList.add('scroll-smooth')
-    
-    // Hide loading screen after 3 seconds (matches LoadingScreen duration)
-    const timer = setTimeout(() => {
-      setShowLoadingScreen(false)
-    }, 3300) // 3s loading screen + 300ms fade-out
 
-    return () => clearTimeout(timer)
+    return () => {
+      document.documentElement.classList.remove('scroll-smooth')
+    }
   }, [])
 
   return (
     <BrowserRouter>
-      <div className="kx-app">
-        {showLoadingScreen && <LoadingScreen />}
+      {showLoadingScreen && (
+        <LoadingScreen onComplete={() => setShowLoadingScreen(false)} />
+      )}
+
+      <div
+        className="kx-app"
+        aria-hidden={showLoadingScreen}
+        style={{
+          opacity: showLoadingScreen ? 0 : 1,
+          pointerEvents: showLoadingScreen ? 'none' : 'auto',
+          transition: 'opacity 250ms ease-out',
+        }}
+      >
         <CustomCursor />
         <Navbar />
         <main>

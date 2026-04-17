@@ -2,11 +2,23 @@ import { useEffect, useState, memo } from 'react'
 import { motion } from 'framer-motion'
 import './styles/LoadingScreen.css'
 
-const LoadingScreen = memo(function LoadingScreen() {
+type LoadingScreenProps = {
+  durationMs?: number
+  onComplete?: () => void
+}
+
+const EXIT_ANIMATION_MS = 300
+
+const LoadingScreen = memo(function LoadingScreen({
+  durationMs = 3000,
+  onComplete,
+}: LoadingScreenProps) {
   const [progress, setProgress] = useState(0)
   const [isExiting, setIsExiting] = useState(false)
 
   useEffect(() => {
+    const exitStartMs = Math.max(durationMs - EXIT_ANIMATION_MS, 0)
+
     // Animate progress bar with natural easing, capped at 90%
     const progressInterval = setInterval(() => {
       setProgress((prev) => {
@@ -21,25 +33,24 @@ const LoadingScreen = memo(function LoadingScreen() {
     document.documentElement.style.overflow = 'hidden'
     document.body.style.overflow = 'hidden'
 
-    // Auto-exit after 3 seconds
     const exitTimer = setTimeout(() => {
       setProgress(100)
-      setTimeout(() => {
-        setIsExiting(true)
-        // Re-enable scroll on exit
-        document.documentElement.style.overflow = 'auto'
-        document.body.style.overflow = 'auto'
-      }, 300)
-    }, 3000)
+      setIsExiting(true)
+    }, exitStartMs)
+
+    const completeTimer = setTimeout(() => {
+      onComplete?.()
+    }, durationMs)
 
     return () => {
       clearInterval(progressInterval)
       clearTimeout(exitTimer)
+      clearTimeout(completeTimer)
       // Ensure scroll is re-enabled on unmount
       document.documentElement.style.overflow = 'auto'
       document.body.style.overflow = 'auto'
     }
-  }, [])
+  }, [durationMs, onComplete])
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -66,7 +77,7 @@ const LoadingScreen = memo(function LoadingScreen() {
       className="loading-screen"
       initial={{ opacity: 1 }}
       animate={{ opacity: isExiting ? 0 : 1 }}
-      transition={{ duration: 0.8, ease: 'easeOut' }}
+      transition={{ duration: EXIT_ANIMATION_MS / 1000, ease: 'easeOut' }}
       style={{ pointerEvents: isExiting ? 'none' : 'auto' }}
     >
       {/* Animated gradient background */}
