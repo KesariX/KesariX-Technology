@@ -17,15 +17,27 @@ const LoadingScreen = memo(function LoadingScreen() {
       })
     }, 250)
 
+    // Prevent body scroll while loading screen is active
+    document.documentElement.style.overflow = 'hidden'
+    document.body.style.overflow = 'hidden'
+
     // Auto-exit after 3 seconds
     const exitTimer = setTimeout(() => {
       setProgress(100)
-      setTimeout(() => setIsExiting(true), 300)
+      setTimeout(() => {
+        setIsExiting(true)
+        // Re-enable scroll on exit
+        document.documentElement.style.overflow = 'auto'
+        document.body.style.overflow = 'auto'
+      }, 300)
     }, 3000)
 
     return () => {
       clearInterval(progressInterval)
       clearTimeout(exitTimer)
+      // Ensure scroll is re-enabled on unmount
+      document.documentElement.style.overflow = 'auto'
+      document.body.style.overflow = 'auto'
     }
   }, [])
 
@@ -52,10 +64,10 @@ const LoadingScreen = memo(function LoadingScreen() {
   return (
     <motion.div
       className="loading-screen"
-      initial={{ opacity: 1, background: '#F0EAE0' }}
+      initial={{ opacity: 1 }}
       animate={{ opacity: isExiting ? 0 : 1 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
-      style={{ pointerEvents: isExiting ? 'none' : 'auto', background: '#F0EAE0' }}
+      style={{ pointerEvents: isExiting ? 'none' : 'auto' }}
     >
       {/* Animated gradient background */}
       <div className="loading-screen__bg">

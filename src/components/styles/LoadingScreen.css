@@ -6,13 +6,20 @@
   position: fixed;
   inset: 0;
   z-index: 99999;
-  background: #F0EAE0;
+  background: transparent;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  width: 100vw;
+  height: 100vh;
   font-family: 'Inter', sans-serif;
+}
+
+/* ── Prevent any scrolling ─────────────────────── */
+.loading-screen-active {
+  overflow: hidden !important;
 }
 
 /* ── Background Layers ─────────────────────────── */
@@ -20,6 +27,8 @@
   position: absolute;
   inset: 0;
   overflow: hidden;
+  width: 100%;
+  height: 100%;
 }
 
 .loading-screen__gradient {
@@ -85,10 +94,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
+  justify-content: center;
+  gap: clamp(1.5rem, 5vw, 3rem);
   text-align: center;
   max-width: 500px;
-  padding: 2rem;
+  width: 100%;
+  padding: clamp(1rem, 4vw, 2rem);
+  height: 100vh;
+  box-sizing: border-box;
 }
 
 /* ── Brand Section ─────────────────────────────── */
@@ -135,15 +148,10 @@
   border-radius: 32px;
   overflow: hidden;
   isolation: isolate;
-  border: 1px solid rgba(217, 119, 6, 0.16);
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 248, 235, 0.72)),
-    radial-gradient(circle at top, rgba(251, 191, 36, 0.18), transparent 58%);
-  box-shadow:
-    0 24px 60px rgba(146, 64, 14, 0.14),
-    inset 0 1px 0 rgba(255, 255, 255, 0.72),
-    inset 0 -1px 0 rgba(217, 119, 6, 0.08);
-  backdrop-filter: blur(12px);
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  backdrop-filter: none;
 }
 
 .loading-screen__logo-aura {
