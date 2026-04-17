@@ -89,8 +89,8 @@ export default function Careers() {
         <div className="careers-board__inner">
           <div className="careers-board__header">
             <div>
-              <div className="section-eyebrow" style={{ marginBottom: '0.75rem' }}>Open Positions</div>
-              <h2 className="section-title">Join The Architecture.</h2>
+              <div className="section-eyebrow careers-board__eyebrow" style={{ marginBottom: '0.75rem' }}>Open Positions</div>
+              <h2 className="section-title careers-board__title">Join The Architecture.</h2>
             </div>
           </div>
 
@@ -101,10 +101,10 @@ export default function Careers() {
             className="careers-no-positions"
           >
             <div style={{ textAlign: 'center', padding: '4rem 2rem' }}>
-              <h3 style={{ fontFamily: "'Outfit', sans-serif", fontSize: '1.75rem', fontWeight: 700, marginBottom: '1rem', color: '#FFFFFF' }}>
+              <h3 className="careers-no-positions__title" style={{ fontFamily: "'Outfit', sans-serif", fontSize: '1.75rem', fontWeight: 700, marginBottom: '1rem' }}>
                 No Positions Available Right Now
               </h3>
-              <p style={{ color: 'rgba(255, 255, 255, 0.6)', marginBottom: '2rem', maxWidth: '500px', margin: '0 auto 2rem' }}>
+              <p className="careers-no-positions__text" style={{ marginBottom: '2rem', maxWidth: '500px', margin: '0 auto 2rem' }}>
                 We're not actively hiring at the moment, but we're always interested in exceptional 10× talent. If you believe you're a great fit for our team, we'd love to hear from you.
               </p>
               <Link 
@@ -130,10 +130,10 @@ export default function Careers() {
           </motion.div>
 
           <div className="careers-open-door">
-            <h3 style={{ fontFamily: "'Outfit', sans-serif", fontSize: '1.4rem', fontWeight: 700, marginBottom: '0.75rem', color: 'white' }}>
+            <h3 className="careers-open-door__title" style={{ fontFamily: "'Outfit', sans-serif", fontSize: '1.4rem', fontWeight: 700, marginBottom: '0.75rem' }}>
               Interested in Working Together?
             </h3>
-            <p style={{ color: 'rgba(255, 255, 255, 0.6)', marginBottom: '1.5rem' }}>
+            <p className="careers-open-door__text" style={{ marginBottom: '1.5rem' }}>
               Tell us about your background, expertise, and what you're working on. We review every submission personally.
             </p>
             <Link to="/contact" style={{ color: '#D97706', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>

@@ -201,6 +201,27 @@ const LoadingScreen = memo(function LoadingScreen({
           </motion.p>
         </motion.div>
 
+        {/* Animated dots indicator */}
+        <motion.div
+          className="loading-screen__dots"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+        >
+          {[...Array(3)].map((_, i) => (
+            <motion.span
+              key={i}
+              className="loading-screen__dot"
+              animate={{ scale: [1, 1.5, 1], opacity: [0.4, 1, 0.4] }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                delay: i * 0.2,
+              }}
+            />
+          ))}
+        </motion.div>
+
         {/* Floating Particles */}
         <div className="loading-screen__particles">
           {[...Array(12)].map((_, i) => (
@@ -235,27 +256,6 @@ const LoadingScreen = memo(function LoadingScreen({
             />
           ))}
         </div>
-      </motion.div>
-
-      {/* Animated dots indicator */}
-      <motion.div
-        className="loading-screen__dots"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
-      >
-        {[...Array(3)].map((_, i) => (
-          <motion.span
-            key={i}
-            className="loading-screen__dot"
-            animate={{ scale: [1, 1.5, 1], opacity: [0.4, 1, 0.4] }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-              delay: i * 0.2,
-            }}
-          />
-        ))}
       </motion.div>
     </motion.div>
   )

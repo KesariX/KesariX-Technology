@@ -320,10 +320,10 @@
 
 /* ── Animated Dots ─────────────────────────────── */
 .loading-screen__dots {
-  position: absolute;
-  bottom: 80px;
   display: flex;
   gap: 0.6rem;
+  margin-top: 0.75rem;
+  position: relative;
   z-index: 5;
 }
 
@@ -365,6 +365,6 @@
   }
 
   .loading-screen__dots {
-    bottom: 60px;
+    margin-top: 1rem;
   }
 }
