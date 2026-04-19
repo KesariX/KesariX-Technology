@@ -4,17 +4,22 @@ import './styles/Marquee.css'
 export default function Marquee() {
   const marqueeRef = useRef<HTMLDivElement>(null)
 
-  const items = [
-    'AI Solutions',
-    'Web Development',
-    'Automation Systems',
-    'Cloud Architecture',
-    'AI Agents',
-    'IT Infrastructure',
-    'Mobile Apps',
-    'Data Engineering',
-    'API Development',
-  ]
+const items = [
+  'AI Solutions',
+  'Web Development',
+  'Automation Systems',
+  'Cloud Architecture',
+  'AI Agents',
+  'IT Infrastructure',
+  'Mobile Apps',
+  'Data Engineering',
+  'Digital Marketing',
+  'SEO',
+  'Social Media Marketing',
+  'Paid Ads',
+  'Branding & Content',
+  'API Development',
+]
 
   // Duplicate items for seamless loop
   const displayItems = [...items, ...items]

@@ -127,7 +127,7 @@ export default function Hero() {
             <motion.div variants={itemVariants} className="hero-badge kx-hero__badge">
               <span className="kx-hero__badge-dot" />
               <span className="kx-hero__badge-text">
-                Live delivery partner for 120+ product teams
+                Live delivery partner for 5+ product teams
               </span>
             </motion.div>
 
@@ -207,7 +207,7 @@ export default function Hero() {
             <motion.div variants={itemVariants} className="kx-hero__trust">
               <p className="kx-hero__trust-label">TRUSTED BY TEAMS AT</p>
               <div className="kx-hero__trust-logos">
-                {['Versa AI', 'StackFlow', 'Nexlify', 'Orbito', 'DataSync'].map((company) => (
+                {['Wercatalyst', 'Neha Engineering Works', 'Shiv Krishna Engineers', 'BIT Bharuch', 'chronagen technophant'].map((company) => (
                   <motion.span
                     key={company}
                     className="kx-hero__trust-chip"
