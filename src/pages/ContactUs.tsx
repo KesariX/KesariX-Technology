@@ -1,12 +1,21 @@
-import { useEffect } from 'react'
-import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Send, MessageSquare, Clock, Globe } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { useEffect } from "react";
+import { motion } from "framer-motion";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  MessageSquare,
+  Clock,
+  Globe,
+} from "lucide-react";
+import { Link } from "react-router-dom";
+import emailjs from "emailjs-com";
 
 export default function ContactUs() {
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+    window.scrollTo(0, 0);
+  }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -17,33 +26,71 @@ export default function ContactUs() {
         delayChildren: 0.2,
       },
     },
-  }
+  };
+
+  const socialLinks = {
+    Twitter: "https://x.com/kesarixtech",
+    LinkedIn: "https://www.linkedin.com/company/kesarix-technology",
+    Github: "https://github.com/KesariX",
+    Instagram: "https://www.instagram.com/kesarix_technology",
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-  }
+  };
 
   const contactInfos = [
     {
       icon: Mail,
-      title: 'Email Us',
-      value: 'hello@kesarix.tech',
-      subValue: 'Direct support line',
+      title: "Email Us",
+      value: "info@kesarixtechnology.com",
+      subValue: "Direct support line",
     },
     {
       icon: Phone,
-      title: 'Call Us',
-      value: '+91 (800) 123-4567',
-      subValue: 'Mon-Fri from 9am to 6pm',
+      title: "Call Us",
+      value: "+91 88872 39361",
+      subValue: "Mon-Fri from 9am to 6pm",
     },
     {
       icon: MapPin,
-      title: 'Our Office',
-      value: 'Tech Hub, Silicon Valley',
-      subValue: 'Gujarat, India',
+      title: "Our Office",
+      value: "Tech Hub, Silicon Valley",
+      subValue: "Gujarat, India",
     },
-  ]
+  ];
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const now = new Date();
+
+    const formattedTime = now.toLocaleString("en-IN", {
+      dateStyle: "medium",
+      timeStyle: "short",
+    });
+
+    const formData = {
+      from_name: e.target.from_name.value,
+      from_email: e.target.from_email.value,
+      subject: e.target.subject.value,
+      message: e.target.message.value,
+      time: formattedTime,
+    };
+
+    emailjs
+      .send(
+        "service_l4bouq8",
+        "template_2la7n2s",
+        formData,
+        "wFpFjP1ut2sXe31cx",
+      )
+      .then(
+        () => alert("Message sent!"),
+        (err) => console.error(err),
+      );
+  };
 
   return (
     <div className="min-h-screen pt-24 pb-16 bg-[var(--bg-base)]">
@@ -55,24 +102,34 @@ export default function ContactUs() {
 
       <section className="section-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          
           {/* Left Side: Contact Info & Text */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
-            <motion.span variants={itemVariants} className="section-eyebrow mb-4">Let's Connect</motion.span>
+            <motion.span
+              variants={itemVariants}
+              className="section-eyebrow mb-4"
+            >
+              Let's Connect
+            </motion.span>
             <motion.h1 variants={itemVariants} className="section-title mb-6">
-              Get in Touch with our <span className="gradient-text">Experts</span>
+              Get in Touch with our{" "}
+              <span className="gradient-text">Experts</span>
             </motion.h1>
-            <motion.p variants={itemVariants} className="section-subtitle mb-12">
-              Ready to automate your workflows or build the next big thing? Our team of engineers and AI experts is here to turn your vision into reality.
+            <motion.p
+              variants={itemVariants}
+              className="section-subtitle mb-12"
+            >
+              Ready to automate your workflows or build the next big thing? Our
+              team of engineers and AI experts is here to turn your vision into
+              reality.
             </motion.p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
               {contactInfos.map((info, idx) => {
-                const Icon = info.icon
+                const Icon = info.icon;
                 return (
                   <motion.div
                     key={idx}
@@ -83,24 +140,45 @@ export default function ContactUs() {
                       <Icon size={24} />
                     </div>
                     <div>
-                      <h4 className="font-bold text-[var(--text-dark)]">{info.title}</h4>
-                      <p className="text-[var(--accent-primary)] font-medium text-sm mb-1">{info.value}</p>
-                      <p className="text-xs text-[var(--text-muted)]">{info.subValue}</p>
+                      <h4 className="font-bold text-[var(--text-dark)]">
+                        {info.title}
+                      </h4>
+                      <p className="text-[var(--accent-primary)] font-medium text-sm mb-1 break-all">
+                        {info.value}
+                      </p>
+                      <p className="text-xs text-[var(--text-muted)]">
+                        {info.subValue}
+                      </p>
                     </div>
                   </motion.div>
-                )
+                );
               })}
             </div>
 
             {/* Additional Features */}
-            <motion.div variants={itemVariants} className="space-y-6 border-t border-[var(--border)] pt-8">
+            <motion.div
+              variants={itemVariants}
+              className="space-y-6 border-t border-[var(--border)] pt-8"
+            >
               {[
-                { icon: Clock, text: 'Response time under 24 hours' },
-                { icon: MessageSquare, text: 'Free initial strategy consultation' },
-                { icon: Globe, text: 'Supporting global clients across 5+ timezones' }
+                { icon: Clock, text: "Response time under 24 hours" },
+                {
+                  icon: MessageSquare,
+                  text: "Free initial strategy consultation",
+                },
+                {
+                  icon: Globe,
+                  text: "Supporting global clients across 2+ timezones",
+                },
               ].map((item, i) => (
-                <div key={i} className="flex items-center gap-3 text-[var(--text-mid)]">
-                  <item.icon size={18} className="text-[var(--accent-primary)]" />
+                <div
+                  key={i}
+                  className="flex items-center gap-3 text-[var(--text-mid)]"
+                >
+                  <item.icon
+                    size={18}
+                    className="text-[var(--accent-primary)]"
+                  />
                   <span className="text-sm font-medium">{item.text}</span>
                 </div>
               ))}
@@ -116,26 +194,32 @@ export default function ContactUs() {
             <div className="premium-card p-8 md:p-12 relative overflow-hidden">
               {/* Form Shadow Glow */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-[var(--accent-primary)]/10 blur-3xl -mr-16 -mt-16" />
-              
+
               <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
                 Send us a Message
                 <div className="w-2 h-2 rounded-full bg-[var(--accent-primary)] animate-pulse" />
               </h3>
 
-              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-sm font-semibold text-[var(--text-dark)] ml-1">Full Name</label>
-                    <input 
-                      type="text" 
+                    <label className="text-sm font-semibold text-[var(--text-dark)] ml-1">
+                      Full Name
+                    </label>
+                    <input
+                      type="text"
+                      name="from_name"
                       placeholder="John Doe"
                       className="w-full px-5 py-4 rounded-xl bg-[var(--bg-base)] border border-[var(--border)] focus:border-[var(--accent-primary)] focus:ring-4 focus:ring-[var(--accent-primary)]/5 outline-none transition-all"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-semibold text-[var(--text-dark)] ml-1">Work Email</label>
-                    <input 
-                      type="email" 
+                    <label className="text-sm font-semibold text-[var(--text-dark)] ml-1">
+                      Work Email
+                    </label>
+                    <input
+                      type="email"
+                      name="from_email"
                       placeholder="john@company.com"
                       className="w-full px-5 py-4 rounded-xl bg-[var(--bg-base)] border border-[var(--border)] focus:border-[var(--accent-primary)] focus:ring-4 focus:ring-[var(--accent-primary)]/5 outline-none transition-all"
                     />
@@ -143,8 +227,13 @@ export default function ContactUs() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-semibold text-[var(--text-dark)] ml-1">Subject</label>
-                  <select className="w-full px-5 py-4 rounded-xl bg-[var(--bg-base)] border border-[var(--border)] focus:border-[var(--accent-primary)] outline-none transition-all appearance-none cursor-pointer">
+                  <label className="text-sm font-semibold text-[var(--text-dark)] ml-1">
+                    Subject
+                  </label>
+                  <select
+                    name="subject"
+                    className="w-full px-5 py-4 rounded-xl bg-[var(--bg-base)] border border-[var(--border)] focus:border-[var(--accent-primary)] outline-none transition-all appearance-none cursor-pointer"
+                  >
                     <option>Software Development</option>
                     <option>AI & Machine Learning</option>
                     <option>Cloud Infrastructure</option>
@@ -153,9 +242,12 @@ export default function ContactUs() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-semibold text-[var(--text-dark)] ml-1">Project Details</label>
-                  <textarea 
-                    rows={4} 
+                  <label className="text-sm font-semibold text-[var(--text-dark)] ml-1">
+                    Project Details
+                  </label>
+                  <textarea
+                    name="message"
+                    rows={4}
                     placeholder="Tell us about your project or inquiry..."
                     className="w-full px-5 py-4 rounded-xl bg-[var(--bg-base)] border border-[var(--border)] focus:border-[var(--accent-primary)] focus:ring-4 focus:ring-[var(--accent-primary)]/5 outline-none transition-all resize-none"
                   ></textarea>
@@ -170,34 +262,47 @@ export default function ContactUs() {
                 </motion.button>
 
                 <p className="text-center text-xs text-[var(--text-muted)] mt-6">
-                  By submitting this form, you agree to our <Link to="/legal/privacy" className="underline hover:text-[var(--accent-primary)]">Privacy Policy</Link> and <Link to="/legal/terms" className="underline hover:text-[var(--accent-primary)]">Terms of Service</Link>.
+                  By submitting this form, you agree to our{" "}
+                  <Link
+                    to="/legal/privacy"
+                    className="underline hover:text-[var(--accent-primary)]"
+                  >
+                    Privacy Policy
+                  </Link>{" "}
+                  and{" "}
+                  <Link
+                    to="/legal/terms"
+                    className="underline hover:text-[var(--accent-primary)]"
+                  >
+                    Terms of Service
+                  </Link>
+                  .
                 </p>
               </form>
             </div>
 
             {/* Success Animation Placeholder or Social Links */}
             <div className="mt-8 flex justify-center gap-8">
-              {['Twitter', 'LinkedIn', 'Github', 'Instagram'].map((social) => (
-                <a 
-                  key={social} 
-                  href={`https://${social.toLowerCase()}.com/kesarix`}
+              {Object.entries(socialLinks).map(([platform, url]) => (
+                <a
+                  key={platform}
+                  href={url}
                   target="_blank"
                   rel="noreferrer"
                   className="text-sm font-bold text-[var(--text-muted)] hover:text-[var(--accent-primary)] transition-colors uppercase tracking-widest"
                 >
-                  {social}
+                  {platform}
                 </a>
               ))}
             </div>
           </motion.div>
-
         </div>
       </section>
 
       {/* Map or Visual Section */}
       <section className="section-padding overflow-hidden">
         <div className="section-container">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -206,19 +311,23 @@ export default function ContactUs() {
             {/* Visual Representation of Global Reach */}
             <div className="absolute inset-0 bg-[#0A0A0A]" />
             <div className="absolute inset-0 opacity-40 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
-            
+
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="relative w-full h-full">
                 {/* Animated Rings */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] border border-[var(--accent-primary)]/20 rounded-full animate-[ping_3s_infinite]" />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] border border-[var(--accent-primary)]/10 rounded-full animate-[ping_5s_infinite]" />
-                
+
                 {/* Center Glow */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
                   <div className="w-16 h-16 bg-[var(--accent-primary)] rounded-full blur-2xl opacity-50 mx-auto" />
                   <div className="relative z-10">
-                    <h2 className="text-white text-3xl font-bold mb-2">Global Connectivity</h2>
-                    <p className="text-white/60">Bridging technology from India to the World.</p>
+                    <h2 className="text-white text-3xl font-bold mb-2">
+                      Global Connectivity
+                    </h2>
+                    <p className="text-white/60">
+                      Bridging technology from India to the World.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -227,5 +336,5 @@ export default function ContactUs() {
         </div>
       </section>
     </div>
-  )
+  );
 }

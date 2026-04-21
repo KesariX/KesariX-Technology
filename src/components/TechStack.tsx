@@ -23,7 +23,7 @@ export default function TechStack() {
       id: 2,
       title: 'Artificial Intelligence',
       tag: '03',
-      techs: ['GPT-4', 'LangChain', 'TensorFlow', 'PyTorch', 'Hugging Face'],
+      techs: ['GPT-4', 'LangChain', 'RAG', 'LLM', 'TensorFlow', 'PyTorch', 'Hugging Face'],
     },
     {
       id: 3,

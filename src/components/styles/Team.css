@@ -5,7 +5,7 @@
 .kx-team {
   position: relative;
   background-color: var(--bg-base); /* Keep contrast against the dark testimonials slider */
-  overflow: hidden;
+  overflow: visible;
 }
 
 /* ── Header ────────────────────────────────────── */
@@ -54,7 +54,7 @@
 
 @media (min-width: 1024px) {
   .kx-team__grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   }
 }
 

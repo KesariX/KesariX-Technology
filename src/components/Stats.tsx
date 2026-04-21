@@ -34,16 +34,16 @@ export default function Stats() {
   const stats = [
     { 
       id: "stat-1", 
-      number: 120, 
+      number: 5, 
       label: 'Projects Delivered', 
       suffix: '+', 
       icon: Globe, 
       colSpan: 2,
-      desc: 'Successful scalable deployments serving businesses across 15+ countries globally.' 
+      desc: 'Successful scalable deployments serving businesses across 1+ countries globally.' 
     },
     { 
       id: "stat-2", 
-      number: 50, 
+      number: 3, 
       label: 'AI Systems', 
       suffix: '+', 
       icon: Cpu, 
@@ -61,10 +61,10 @@ export default function Stats() {
     },
     { 
       id: "stat-4", 
-      number: 12, 
+      number: 1, 
       label: 'Value Generated', 
       prefix: '$', 
-      suffix: 'M+', 
+      suffix: 'K+', 
       icon: TrendingUp, 
       colSpan: 2,
       desc: 'Direct measurable revenue and cost-savings created for our corporate partners.' 

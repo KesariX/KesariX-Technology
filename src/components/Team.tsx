@@ -1,42 +1,70 @@
-import { motion } from 'framer-motion'
-import { LinkedinIcon, Github, Twitter } from 'lucide-react'
-import './styles/Team.css'
+import { motion } from "framer-motion";
+import { LinkedinIcon, Github, Twitter } from "lucide-react";
+import "./styles/Team.css";
 
 export default function Team() {
   const team = [
     {
-      name: 'Alex Turner',
-      role: 'CEO & Co-Founder',
-      expertise: 'AI Strategy, Product Vision',
-      bio: '10+ years building AI products at scale for enterprise leaders.',
-      initials: 'AT',
-      social: ['linkedin', 'twitter']
+      name: "Sarthak Singh",
+      role: "CEO",
+      expertise: "AI Strategy, Product Vision",
+      bio: "3+ years building AI products at scale for enterprise leaders.",
+      initials: "SS",
+      social: {
+        linkedin: "https://www.linkedin.com/in/sarthak-singh-34296b223",
+        github: "https://github.com/Sarthak-1004",
+        twitter: "https://twitter.com/username",
+      },
     },
     {
-      name: 'Maya Chen',
-      role: 'Lead AI Engineer',
-      expertise: 'LLMs, Vision, MLOps',
-      bio: 'Former ML researcher turned startup builder optimizing models.',
-      initials: 'MC',
-      social: ['linkedin', 'github']
+      name: "Ronak Parmar",
+      role: "AI Engineering Lead",
+      expertise: "LLMs, Vision, MLOps",
+      bio: "Tech lead with a passion for architecting robust AI systems that just work.",
+      initials: "RP",
+      social: {
+        linkedin: "https://www.linkedin.com/in/ronak-parmar-/",
+        github: "https://github.com/ronak-create",
+        twitter: "https://x.com/RonakParmar__",
+      },
     },
     {
-      name: 'Ryan Brooks',
-      role: 'Hardware Architect',
-      expertise: 'React, Node, Cloud',
-      bio: 'Full-stack architect obsessed with hyper-performance scaling.',
-      initials: 'RB',
-      social: ['github', 'twitter']
+      name: "Govind Mishra",
+      role: "CFO",
+      expertise: "Finance, Analysis, Operations",
+      bio: "Finance with a knack for making numbers tell stories.",
+      initials: "GM",
+      social: {
+        linkedin: "https://linkedin.com/in/username",
+        github: "https://github.com/username",
+        twitter: "https://twitter.com/username",
+      },
     },
     {
-      name: 'Leila Nour',
-      role: 'Creative Director',
-      expertise: 'UI/UX, Design Systems',
-      bio: 'Creating design systems that feel as deeply satisfying as they look.',
-      initials: 'LN',
-      social: ['linkedin', 'github', 'twitter']
+      name: "Harsh Prajapati",
+      role: "Web Development Lead",
+      expertise: "UI/UX, Design Systems",
+      bio: "Creating design systems that feel as deeply satisfying as they look.",
+      initials: "HP",
+      social: {
+        linkedin: "https://linkedin.com/in/username",
+        github: "https://github.com/username",
+        twitter: "https://twitter.com/username",
+      },
     },
-  ]
+    {
+      name: "Jay Padhiyar",
+      role: "CMO",
+      expertise: "Leagal, Marketing, Growth",
+      bio: "Growth hacker with a legal background, bridging the gap between innovation and compliance.",
+      initials: "JP",
+      social: {
+        linkedin: "https://linkedin.com/in/username",
+        github: "https://github.com/username",
+        twitter: "https://twitter.com/username",
+      },
+    },
+  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -47,7 +75,7 @@ export default function Team() {
         delayChildren: 0.2,
       },
     },
-  }
+  };
 
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -56,7 +84,7 @@ export default function Team() {
       y: 0,
       transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
     },
-  }
+  };
 
   return (
     <section className="kx-team section-padding" id="team">
@@ -76,7 +104,7 @@ export default function Team() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-50px' }}
+          viewport={{ once: true, margin: "-50px" }}
           className="kx-team__grid"
         >
           {team.map((member, idx) => (
@@ -87,7 +115,7 @@ export default function Team() {
             >
               {/* Massive Center Initials Watermark */}
               <div className="kx-team__card-graphic">{member.initials}</div>
-              
+
               {/* Top ambient glow */}
               <div className="kx-team__card-glow" />
 
@@ -102,22 +130,50 @@ export default function Team() {
                 <div className="kx-team__hidden-details">
                   <div className="kx-team__hidden-inner">
                     <p className="kx-team__bio">{member.bio}</p>
-                    
+
                     <div className="kx-team__skills">
-                      {member.expertise.split(', ').map((skill) => (
-                        <span key={skill} className="kx-team__skill">{skill}</span>
+                      {member.expertise.split(", ").map((skill) => (
+                        <span key={skill} className="kx-team__skill">
+                          {skill}
+                        </span>
                       ))}
                     </div>
 
                     <div className="kx-team__social">
-                      {member.social.includes('linkedin') && (
-                         <button className="kx-team__social-btn" aria-label="LinkedIn"><LinkedinIcon size={18} /></button>
+                      {member.social.linkedin && (
+                        <a
+                          href={member.social.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="kx-team__social-btn"
+                          aria-label="LinkedIn"
+                        >
+                          <LinkedinIcon size={18} />
+                        </a>
                       )}
-                      {member.social.includes('github') && (
-                         <button className="kx-team__social-btn" aria-label="GitHub"><Github size={18} /></button>
+
+                      {member.social.github && (
+                        <a
+                          href={member.social.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="kx-team__social-btn"
+                          aria-label="GitHub"
+                        >
+                          <Github size={18} />
+                        </a>
                       )}
-                      {member.social.includes('twitter') && (
-                         <button className="kx-team__social-btn" aria-label="Twitter"><Twitter size={18} /></button>
+
+                      {member.social.twitter && (
+                        <a
+                          href={member.social.twitter}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="kx-team__social-btn"
+                          aria-label="Twitter"
+                        >
+                          <Twitter size={18} />
+                        </a>
                       )}
                     </div>
                   </div>
@@ -128,5 +184,5 @@ export default function Team() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

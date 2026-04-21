@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { memo } from 'react'
-import { Linkedin, Github, Twitter, Send } from 'lucide-react'
+import { Linkedin, Github, Twitter, Send, Instagram } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import './styles/Footer.css'
 
@@ -21,7 +21,7 @@ export default memo(function Footer() {
       { label: 'Blog', path: '/company/blog' },
       { label: 'Careers', path: '/company/careers' }
     ],
-    Contact: ['hello@kesarix.com', '+91 98765 43210', 'India'],
+    Contact: ['info@kesarixtechnology.com', '+91 88872 39361', 'India'],
   }
 
   const containerVariants = {
@@ -65,10 +65,11 @@ export default memo(function Footer() {
             <p className="kx-footer__tagline">We Engineer What's Next.</p>
             <div className="kx-footer__social">
               {[
-                { Icon: Linkedin, href: '#' },
-                { Icon: Github, href: '#' },
-                { Icon: Twitter, href: '#' },
-                { Icon: Send, href: '#' },
+                { Icon: Linkedin, href: 'https://www.linkedin.com/company/kesarix-technology' },
+                { Icon: Github, href: 'https://github.com/KesariX' },
+                { Icon: Twitter, href: 'https://x.com/kesarixtech' },
+                // { Icon: Send, href: '#' },
+                { Icon: Instagram, href: 'https://www.instagram.com/kesarix_technology' },
               ].map(({ Icon, href }, idx) => (
                 <a key={idx} href={href} className="kx-footer__social-link" aria-label="Social link">
                   <Icon size={18} />
