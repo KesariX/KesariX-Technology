@@ -61,7 +61,7 @@ export default function ContactUs() {
     },
   ];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const now = new Date();

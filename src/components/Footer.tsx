@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { memo } from 'react'
-import { Linkedin, Github, Twitter, Send, Instagram } from 'lucide-react'
+import { Linkedin, Github, Twitter, Instagram } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import './styles/Footer.css'
 
