@@ -71,11 +71,16 @@ export default function ContactUs() {
       timeStyle: "short",
     });
 
+    const form = e.currentTarget;
+
     const formData = {
-      from_name: e.target.from_name.value,
-      from_email: e.target.from_email.value,
-      subject: e.target.subject.value,
-      message: e.target.message.value,
+      from_name: (form.elements.namedItem("from_name") as HTMLInputElement)
+        .value,
+      from_email: (form.elements.namedItem("from_email") as HTMLInputElement)
+        .value,
+      subject: (form.elements.namedItem("subject") as HTMLSelectElement).value,
+      message: (form.elements.namedItem("message") as HTMLTextAreaElement)
+        .value,
       time: formattedTime,
     };
 
