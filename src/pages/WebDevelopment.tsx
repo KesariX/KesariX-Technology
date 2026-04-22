@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Code2, MonitorSmartphone, Zap, Server, Globe2, ArrowRight, CheckCircle2, Terminal } from 'lucide-react'
+import { Code2, MonitorSmartphone, Zap, Server, Globe2, ArrowRight, CheckCircle2, Terminal, Shield } from 'lucide-react'
 import NeuralPulseMatrix from '../components/3D/NeuralPulseMatrix'
 import CTASection from '../components/CTASection'
 import './styles/WebDevelopment.css'
@@ -41,10 +41,10 @@ export default function WebDevelopment() {
   ]
 
   const metrics = [
-    { score: 100, label: 'Performance' },
-    { score: 100, label: 'Accessibility' },
-    { score: 100, label: 'Best Practices' },
-    { score: 100, label: 'SEO' }
+    { score: '99.9%', label: 'Uptime SLA' },
+    { score: 'Zero', label: 'Trust Security' },
+    { score: '98%', label: 'Client Retention' },
+    { score: '24/7', label: 'Support & Ops' }
   ]
 
   // Mock code snippet for the interactive terminal
@@ -147,11 +147,11 @@ export default function WebDevelopment() {
             >
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
-                  <Zap size={20} />
+                  <Shield size={20} />
                 </div>
                 <div>
-                  <h4 className="font-bold text-sm text-[var(--text-dark)]">Lighthouse Score</h4>
-                  <p className="text-xs text-[var(--text-muted)]">Perfect 100/100</p>
+                  <h4 className="font-bold text-sm text-[var(--text-dark)]">Enterprise Scale</h4>
+                  <p className="text-xs text-[var(--text-muted)]">99.9% Uptime Target</p>
                 </div>
               </div>
               <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
@@ -167,7 +167,7 @@ export default function WebDevelopment() {
         </div>
       </section>
 
-      {/* ── LIGHTHOUSE SCORES BANNER ──────────────── */}
+      {/* ── ENTERPRISE METRICS BANNER ──────────────── */}
       <section className="bg-white border-b border-[var(--border)] py-12 relative z-20">
         <div className="section-container">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-[var(--border)]">
@@ -178,12 +178,9 @@ export default function WebDevelopment() {
                   whileInView={{ scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ type: "spring", stiffness: 100, delay: i * 0.1 }}
-                  className="w-20 h-20 rounded-full border-4 border-[var(--accent-primary)]/20 flex flex-col items-center justify-center mb-3 relative group"
+                  className="mb-3 flex items-center justify-center min-h-[80px]"
                 >
-                  <svg className="absolute inset-0 w-full h-full -rotate-90">
-                    <circle cx="36" cy="36" r="36" stroke="var(--accent-primary)" strokeWidth="4" fill="none" strokeDasharray="226" strokeDashoffset="0" className="opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-                  </svg>
-                  <span className="text-2xl font-black text-[var(--text-dark)] font-['Outfit']">{metric.score}</span>
+                  <span className="text-4xl lg:text-5xl font-black text-[var(--text-dark)] font-['Outfit'] gradient-text">{metric.score}</span>
                 </motion.div>
                 <span className="text-xs font-bold uppercase tracking-widest text-[var(--text-muted)] text-center">{metric.label}</span>
               </div>

@@ -1,57 +1,176 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowUpRight } from 'lucide-react'
 import './styles/Blog.css'
 
 const featured = {
-  title: "Why 'Prompt Engineering' is Dead (And What Replaced It)",
-  excerpt: "The era of guessing magic words for LLMs is over. Welcome to deterministic reasoning frameworks, constrained outputs, and programmatic prompt compilation — the new standard for enterprise AI.",
+  title: "Architecting Multi-Agent Swarms for Production Workflows",
+  excerpt: "The era of single-prompt LLMs is over. Welcome to deterministic reasoning frameworks, constrained outputs, and programmatic multi-agent orchestration — the new standard for enterprise AI.",
   category: "AI Engineering",
-  date: "Oct 24, 2024",
-  author: "Arjun Mehta",
+  date: "Apr 22, 2026",
+  author: "Ronak Parmar",
   image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1200&auto=format&fit=crop"
 }
 
 const articles = [
   {
-    title: "Migrating from Vercel to Custom Bare-Metal K8s",
-    excerpt: "A technical deep-dive into how we cut hosting costs by 85% while simultaneously improving global response times.",
-    category: "Infrastructure",
-    date: "Oct 12, 2024",
-    author: "Priya Sharma",
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop"
-  },
-  {
-    title: "Stop Building Wrappers. Start Building Engines.",
-    excerpt: "An architectural guide on moving away from thin API wrappers to building defensible, data-rich AI systems.",
+    title: "The Future of Enterprise AI: Beyond the Hype",
+    excerpt: "Why the next wave of billion-dollar companies won't be built on thin wrappers, but on deep integration of AI into proprietary operational data.",
     category: "Strategy",
-    date: "Sep 28, 2024",
-    author: "Vikram Patil",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop"
-  },
-  {
-    title: "Zero-Trust Security in the Age of AI Co-Pilots",
-    excerpt: "How to safely deploy code-writing AI inside your enterprise without risking IP leaks.",
-    category: "Cybersecurity",
-    date: "Sep 15, 2024",
-    author: "Neha Singh",
-    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop"
-  },
-  {
-    title: "The Reality of RAG: Why Your Vector Search Sucks",
-    excerpt: "Semantic search alone isn't enough. Exploring hybrid search, metadata filtering, and re-ranking pipelines.",
-    category: "AI Engineering",
-    date: "Aug 30, 2024",
-    author: "Arjun Mehta",
+    date: "Apr 22, 2026",
+    author: "Sarthak Singh",
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop"
   },
   {
-    title: "Next.js 15: Is It Worth The Upgrade Risk?",
-    excerpt: "Reviewing the new caching model, Turbopack performance, and server actions stability across our production projects.",
+    title: "Why Deterministic AI is Winning the Enterprise Market",
+    excerpt: "Enterprises don't want chatbots that hallucinate. They want mathematical certainty. Here is how we enforce strict constraints on language models.",
+    category: "Strategy",
+    date: "Apr 20, 2026",
+    author: "Sarthak Singh",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "Design Systems for High-Density AI Interfaces",
+    excerpt: "Building user interfaces for complex AI agents requires a new approach to UX. We explore density, state indication, and trust markers.",
     category: "Web Dev",
-    date: "Aug 14, 2024",
-    author: "Priya Sharma",
+    date: "Apr 21, 2026",
+    author: "Harsh Prajapati",
+    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "RAG is Dead. Long Live Hybrid Semantic Reasoning.",
+    excerpt: "Basic vector search is no longer enough for accurate context retrieval. Exploring multi-hop reasoning, graph databases, and re-ranking pipelines.",
+    category: "AI Engineering",
+    date: "Apr 21, 2026",
+    author: "Ronak Parmar",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "The True ROI of Automating Operational Bottlenecks",
+    excerpt: "A financial deep dive into how automating a single core process can dramatically shift your bottom line and operating margins.",
+    category: "Strategy",
+    date: "Apr 22, 2026",
+    author: "Govind Mishra",
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "Navigating the 2026 AI Compliance Landscape",
+    excerpt: "From the EU AI Act to local data protection laws, here is everything your legal and marketing teams need to know before deploying AI.",
+    category: "Cybersecurity",
+    date: "Apr 21, 2026",
+    author: "Prince Yadav",
+    image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "Positioning Complex AI Products for Enterprise Buyers",
+    excerpt: "You can't sell technical architecture to a business buyer. How to translate complex MLOps into clear, undeniable business value.",
+    category: "Strategy",
+    date: "Apr 22, 2026",
+    author: "Jay Padhiyar",
+    image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "Scaling Product Vision in a Rapidly Evolving AI Landscape",
+    excerpt: "When the foundational models change every week, how do you maintain a stable long-term roadmap? Our CEO's framework for resilient product strategy.",
+    category: "Strategy",
+    date: "Apr 18, 2026",
+    author: "Sarthak Singh",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "Optimizing Inference Latency in Custom LLM Deployments",
+    excerpt: "Techniques for quantization, KV cache optimization, and vLLM deployment that cut our inference latency by over 60%.",
+    category: "Infrastructure",
+    date: "Apr 19, 2026",
+    author: "Ronak Parmar",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "Moving to React 19: Performance Gains for Enterprise Dashboards",
+    excerpt: "Evaluating the new React compiler and concurrent features. Is it worth the upgrade risk for mission-critical web platforms?",
+    category: "Web Dev",
+    date: "Apr 19, 2026",
+    author: "Harsh Prajapati",
     image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "FinOps for Cloud AI: Keeping Inference Costs Predictable",
+    excerpt: "GPU compute is expensive. Here is how CFOs can work with engineering teams to monitor, forecast, and optimize cloud expenditure.",
+    category: "Infrastructure",
+    date: "Apr 18, 2026",
+    author: "Govind Mishra",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "Growth Hacking in B2B Tech: When to Use AI Outreach",
+    excerpt: "AI-generated outreach is everywhere. How to cut through the noise with highly personalized, account-based marketing strategies.",
+    category: "Strategy",
+    date: "Apr 19, 2026",
+    author: "Prince Yadav",
+    image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "Marketing Automation vs Human Touch: Finding the Balance",
+    excerpt: "Automate the logistics, personalize the relationship. A guide to setting up automated funnels that still feel distinctly human.",
+    category: "Strategy",
+    date: "Apr 20, 2026",
+    author: "Jay Padhiyar",
+    image: "https://images.unsplash.com/photo-1533750516457-a7f992034fec?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "Building Defensible Moats with Proprietary Data",
+    excerpt: "Code can be copied. Algorithms will be open-sourced. The only true moat remaining is high-quality, proprietary domain data.",
+    category: "Strategy",
+    date: "Apr 15, 2026",
+    author: "Sarthak Singh",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "From Jupyter Notebooks to Kubernetes: Real-world MLOps",
+    excerpt: "The painful reality of deploying models to production. A step-by-step guide to setting up reliable CI/CD pipelines for machine learning.",
+    category: "AI Engineering",
+    date: "Apr 16, 2026",
+    author: "Ronak Parmar",
+    image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "Micro-interactions that Build Trust in Autonomous Agents",
+    excerpt: "When an AI is 'thinking' for 30 seconds, how do you prevent user abandonment? Building skeleton states and terminal-like streaming logs.",
+    category: "Web Dev",
+    date: "Apr 16, 2026",
+    author: "Harsh Prajapati",
+    image: "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "Evaluating SaaS vs Custom Build: A CFO's Perspective",
+    excerpt: "When does it make sense to pay $50k/year for a SaaS versus investing $150k in a custom-built solution you own forever?",
+    category: "Strategy",
+    date: "Apr 16, 2026",
+    author: "Govind Mishra",
+    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "Data Privacy in the Era of LLMs: A Legal Checklist",
+    excerpt: "Before you connect your company's database to an LLM, run through this comprehensive checklist to ensure you aren't leaking IP.",
+    category: "Cybersecurity",
+    date: "Apr 15, 2026",
+    author: "Prince Yadav",
+    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "Brand Moats: Why Technical Excellence Isn't Enough",
+    excerpt: "Great code doesn't sell itself. How to build a brand identity that commands premium pricing in a crowded tech ecosystem.",
+    category: "Strategy",
+    date: "Apr 17, 2026",
+    author: "Jay Padhiyar",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "Zero-Trust Security in the Age of AI Co-Pilots",
+    excerpt: "How to safely deploy autonomous, code-writing agents inside your enterprise without risking internal network traversal or data exfiltration.",
+    category: "Cybersecurity",
+    date: "Apr 15, 2026",
+    author: "Ronak Parmar",
+    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=800&auto=format&fit=crop"
   }
 ]
 
@@ -130,11 +249,6 @@ export default function Blog() {
                 <div className="blog-featured__author-name">{featured.author}</div>
                 <div className="blog-featured__date">{featured.date}</div>
               </div>
-              <div style={{ marginLeft: 'auto' }}>
-                <button className="btn-primary" style={{ padding: '0.6rem 1.25rem', fontSize: '0.875rem' }}>
-                  Read More <ArrowUpRight size={16} />
-                </button>
-              </div>
             </div>
           </div>
         </motion.div>
@@ -162,7 +276,6 @@ export default function Blog() {
                 <p className="blog-card2__excerpt">{a.excerpt}</p>
                 <div className="blog-card2__footer">
                   <span>{a.author} · {a.date}</span>
-                  <ArrowUpRight size={16} />
                 </div>
               </div>
             </motion.div>

@@ -1,14 +1,14 @@
-import { useEffect } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, ArrowRight } from "lucide-react";
+import { ArrowUpRight, ArrowRight, Rocket } from "lucide-react";
 import "./styles/OurWork.css";
 
 const projects = [
   {
     title: "AI Voice Bot Automation (Exotel)",
-    client: "Internal Product",
-    industry: "wercatalyst",
+    client: "Wercatalyst",
+    industry: "AI Automation",
     desc: "Built an AI-powered voice calling system using Exotel that can handle inbound/outbound calls, understand user intent, and respond in real-time using LLMs. Integrated WebSocket streaming, custom workflows, and automated call handling.",
     image:
       "https://images.unsplash.com/photo-1581090700227-1e8a94d7b4cf?q=80&w=2000&auto=format&fit=crop",
@@ -19,8 +19,8 @@ const projects = [
   },
   {
     title: "Mechanical Services Website Platform",
-    client: "Local Service Business",
-    industry: "Neha Engineering Works",
+    client: "Neha Engineering Works",
+    industry: "Web Development",
     desc: "Designed and developed a high-conversion website for a mechanical service provider. Includes service listings, lead capture, SEO optimization, and fast-loading UI for better customer acquisition.",
     image:
       "https://images.unsplash.com/photo-1581092160607-ee22731b8f7c?q=80&w=2000&auto=format&fit=crop",
@@ -32,7 +32,7 @@ const projects = [
   {
     title: "Global E-Commerce Platform",
     client: "Aura Aesthetics",
-    industry: "Retail & E-Commerce",
+    industry: "E-Commerce",
     desc: "A completely custom headless commerce architecture using Next.js and Shopify Plus. Achieved perfect Lighthouse 100 scores across all metrics, resulting in a 310% organic traffic increase within 6 months.",
     image:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2000&auto=format&fit=crop",
@@ -43,10 +43,26 @@ const projects = [
   },
 ];
 
+const filters = [
+  "All Projects",
+  "AI Automation",
+  "Web Development",
+  "E-Commerce",
+  "Enterprise Automation",
+  "Infrastructure",
+];
+
 export default function OurWork() {
+  const [activeFilter, setActiveFilter] = useState("All Projects");
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const filteredProjects =
+    activeFilter === "All Projects"
+      ? projects
+      : projects.filter((p) => p.industry === activeFilter);
 
   return (
     <div className="work-page">
@@ -82,15 +98,12 @@ export default function OurWork() {
 
       {/* ── INDUSTRY FILTER TAGS ── */}
       <div className="work-tags-strip">
-        {[
-          "All Projects",
-          "AI Automation",
-          "Web Development",
-          "E-Commerce",
-          "Enterprise Automation",
-          "Infrastructure",
-        ].map((t, i) => (
-          <button key={t} className={`work-tag-btn ${i === 0 ? "active" : ""}`}>
+        {filters.map((t) => (
+          <button 
+            key={t} 
+            className={`work-tag-btn ${activeFilter === t ? "active" : ""}`}
+            onClick={() => setActiveFilter(t)}
+          >
             {t}
           </button>
         ))}
@@ -98,38 +111,63 @@ export default function OurWork() {
 
       {/* ── CASE STUDIES ── */}
       <div className="work-case-list">
-        {projects.map((p, i) => (
-          <motion.div
-            key={i}
-            className="work-case"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="work-case__image">
-              <img src={p.image} alt={p.title} />
-              <div className="work-case__image-overlay">
-                <span className="work-case__view-link">
-                  View Case Study <ArrowUpRight size={16} />
-                </span>
-              </div>
-            </div>
-            <div className="work-case__content">
-              <div className="work-case__industry">{p.industry}</div>
-              <h2 className="work-case__title">{p.title}</h2>
-              <p className="work-case__desc">{p.desc}</p>
-              <div className="work-case__metrics">
-                {p.metrics.map((m, mi) => (
-                  <div key={mi}>
-                    <div className="work-metric__val">{m.val}</div>
-                    <div className="work-metric__lbl">{m.lbl}</div>
+        <AnimatePresence mode="popLayout">
+          {filteredProjects.length > 0 ? (
+            filteredProjects.map((p) => (
+              <motion.div
+                key={p.title}
+                layout
+                className="work-case"
+                initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+              >
+                <div className="work-case__image">
+                  <img src={p.image} alt={p.title} />
+                  <div className="work-case__image-overlay">
+                    <span className="work-case__view-link">
+                      View Case Study <ArrowUpRight size={16} />
+                    </span>
                   </div>
-                ))}
+                </div>
+                <div className="work-case__content">
+                  <div className="work-case__industry">{p.industry}</div>
+                  <h2 className="work-case__title">{p.title}</h2>
+                  <p className="work-case__desc">{p.desc}</p>
+                  <div className="work-case__metrics">
+                    {p.metrics.map((m, mi) => (
+                      <div key={mi}>
+                        <div className="work-metric__val">{m.val}</div>
+                        <div className="work-metric__lbl">{m.lbl}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            ))
+          ) : (
+            <motion.div
+              key="empty-state"
+              layout
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="flex flex-col items-center justify-center text-center py-24 w-full"
+            >
+              <div className="w-20 h-20 bg-[var(--surface-soft)] border border-[var(--border)] rounded-full flex items-center justify-center mb-6 text-[var(--accent-primary)] shadow-sm">
+                <Rocket size={32} />
               </div>
-            </div>
-          </motion.div>
-        ))}
+              <h3 className="text-3xl font-bold text-[var(--text-dark)] font-['Outfit'] mb-4">
+                Launching Soon
+              </h3>
+              <p className="text-[var(--text-mid)] max-w-md mx-auto text-lg leading-relaxed">
+                We are currently finalizing our enterprise case studies for the <span className="font-semibold text-[var(--accent-primary)]">{activeFilter}</span> sector. Check back soon for exciting updates!
+              </p>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* ── CTA ── */}
