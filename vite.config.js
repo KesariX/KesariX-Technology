@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-export default defineConfig({
+export default defineConfig(function () { return ({
     plugins: [react()],
     server: {
         port: 5173,
@@ -8,13 +8,7 @@ export default defineConfig({
     },
     build: {
         target: 'es2020',
-        minify: 'terser',
-        terserOptions: {
-            compress: {
-                drop_console: true,
-                drop_debugger: true,
-            },
-        },
+        minify: 'esbuild',
         reportCompressedSize: true,
         rollupOptions: {
             output: {
@@ -52,4 +46,4 @@ export default defineConfig({
         sourcemap: 'hidden',
         chunkSizeWarningLimit: 1000,
     },
-});
+}); });
