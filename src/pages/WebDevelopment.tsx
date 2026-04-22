@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Code2, MonitorSmartphone, Zap, Server, Globe2, ArrowRight, CheckCircle2, Terminal, Shield } from 'lucide-react'
+import { Code2, MonitorSmartphone, Server, Globe2, ArrowRight, CheckCircle2, Terminal, Shield } from 'lucide-react'
 import NeuralPulseMatrix from '../components/3D/NeuralPulseMatrix'
 import CTASection from '../components/CTASection'
 import './styles/WebDevelopment.css'

@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Brain, Bot, ArrowRight, Network, Database, Cpu, ShieldCheck, CheckCircle2 } from 'lucide-react'
+import { Brain, Bot, ArrowRight, Network, Database, Cpu, ShieldCheck } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import NeuralPulseMatrix from '../components/3D/NeuralPulseMatrix'
 import CTASection from '../components/CTASection'
