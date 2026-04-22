@@ -1,15 +1,15 @@
-# NexCore Solutions — Premium SaaS Website
+# KesariX Technology — Enterprise AI & Digital Engineering Website
 
-A world-class marketing website for NexCore Solutions, built with cutting-edge technologies and premium animations.
+A world-class corporate website for KesariX Technology, an enterprise AI and digital engineering firm. Built with React, TypeScript, and Framer Motion for a premium, interactive user experience.
 
 ## 🚀 Tech Stack
 
 - **Frontend Framework**: React 18 + TypeScript
 - **Build Tool**: Vite
-- **Styling**: Tailwind CSS
-- **Animations**: GSAP, Framer Motion, anime.js
+- **Styling**: CSS Modules & Tailwind CSS
+- **Animations**: Framer Motion
 - **Icons**: Lucide React
-- **Fonts**: Clash Display, General Sans, Satoshi, JetBrains Mono
+- **Email Integration**: EmailJS
 
 ## 📖 Project Structure
 
