@@ -41,11 +41,11 @@ export default function Team() {
       },
     },
     {
-      name: "Harsh Prajapati",
-      role: "Web Development Lead",
-      expertise: "UI/UX, Design Systems",
-      bio: "Creating design systems that feel as deeply satisfying as they look.",
-      initials: "HP",
+      name: "Prince Yadav",
+      role: "CMO",
+      expertise: "Leagal, Marketing, Growth",
+      bio: "Expert in Legal Strategy, Marketing, and Growth, helping businesses stay compliant, acquire customers, and scale profitably.",
+      initials: "PY",
       social: {
         linkedin: "https://linkedin.com/in/username",
         github: "https://github.com/username",
@@ -58,6 +58,18 @@ export default function Team() {
       expertise: "Leagal, Marketing, Growth",
       bio: "Growth hacker with a legal background, bridging the gap between innovation and compliance.",
       initials: "JP",
+      social: {
+        linkedin: "https://linkedin.com/in/username",
+        github: "https://github.com/username",
+        twitter: "https://twitter.com/username",
+      },
+    },
+    {
+      name: "Harsh Prajapati",
+      role: "Web Development Lead",
+      expertise: "UI/UX, Design Systems",
+      bio: "Creating design systems that feel as deeply satisfying as they look.",
+      initials: "HP",
       social: {
         linkedin: "https://linkedin.com/in/username",
         github: "https://github.com/username",

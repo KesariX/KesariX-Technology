@@ -57,13 +57,13 @@ export default function Stats() {
       suffix: '%', 
       icon: HeartHandshake, 
       colSpan: 1,
-      desc: 'Consistent client retention and satisfaction rate averaged over 5 years.' 
+      desc: 'Consistent client retention and satisfaction with repeat engagements and referrals.' 
     },
     { 
       id: "stat-4", 
-      number: 1, 
+      number: 5, 
       label: 'Value Generated', 
-      prefix: '$', 
+      prefix: '₹', 
       suffix: 'K+', 
       icon: TrendingUp, 
       colSpan: 2,

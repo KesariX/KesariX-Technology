@@ -6,7 +6,7 @@
   position: relative;
   background-color: #0b0f19; /* Extremely deep blue/black slate */
   overflow: hidden;
-  padding: 10rem 0;
+  padding: 5rem 0;
 }
 
 /* ── Ambient Background Glow ───────────────────── */
@@ -30,7 +30,7 @@
 /* ── Header ────────────────────────────────────── */
 .kx-testimonials__header {
   text-align: center;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -92,7 +92,7 @@
   position: relative;
   z-index: 2;
   width: 100%;
-  min-height: 380px; /* guarantees layout stability during crossfades */
+  min-height: 280px; /* guarantees layout stability during crossfades */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -100,7 +100,7 @@
 
 @media (max-width: 767px) {
   .kx-testimonials__slider-viewport {
-    min-height: 480px; /* Text taller on mobile */
+    min-height: 360px; /* Text taller on mobile */
   }
 }
 
@@ -117,7 +117,7 @@
 .kx-testimonials__slider-stars {
   display: flex;
   gap: 0.4rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   background: rgba(217, 119, 6, 0.05); /* very faint ring */
   padding: 0.5rem 1.25rem;
   border-radius: 999px;
@@ -131,11 +131,11 @@
 
 .kx-testimonials__slider-text {
   font-family: 'Outfit', sans-serif;
-  font-size: clamp(1.5rem, 3.5vw, 2.75rem);
+  font-size: clamp(1rem, 2.5vw, 1.875rem);
   font-weight: 500;
   line-height: 1.3;
   color: #ffffff;
-  margin: 0 0 3rem;
+  margin: 0 0 2rem;
   letter-spacing: -0.01em;
   max-width: 850px;
 }

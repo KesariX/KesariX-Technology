@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Mail,
   Phone,
@@ -8,6 +8,9 @@ import {
   MessageSquare,
   Clock,
   Globe,
+  X,
+  CheckCircle2,
+  AlertCircle,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import emailjs from "emailjs-com";
@@ -16,6 +19,9 @@ export default function ContactUs() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [statusMessage, setStatusMessage] = useState<{ type: "success" | "error" | null; text: string }>({ type: null, text: "" });
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -50,19 +56,28 @@ export default function ContactUs() {
     {
       icon: Phone,
       title: "Call Us",
-      value: "+91 88872 39361",
+      value: "+91 92747 39361",
       subValue: "Mon-Fri from 9am to 6pm",
     },
-    {
-      icon: MapPin,
-      title: "Our Office",
-      value: "Tech Hub, Silicon Valley",
-      subValue: "Gujarat, India",
-    },
+    
   ];
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const form = e.currentTarget;
+    const from_name = (form.elements.namedItem("from_name") as HTMLInputElement).value.trim();
+    const from_email = (form.elements.namedItem("from_email") as HTMLInputElement).value.trim();
+    const subject = (form.elements.namedItem("subject") as HTMLSelectElement).value;
+    const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value.trim();
+
+    if (!from_name || !from_email || !message) {
+      setStatusMessage({ type: "error", text: "Please fill out all required fields." });
+      return;
+    }
+
+    setIsSubmitting(true);
+    setStatusMessage({ type: null, text: "" });
 
     const now = new Date();
 
@@ -71,16 +86,11 @@ export default function ContactUs() {
       timeStyle: "short",
     });
 
-    const form = e.currentTarget;
-
     const formData = {
-      from_name: (form.elements.namedItem("from_name") as HTMLInputElement)
-        .value,
-      from_email: (form.elements.namedItem("from_email") as HTMLInputElement)
-        .value,
-      subject: (form.elements.namedItem("subject") as HTMLSelectElement).value,
-      message: (form.elements.namedItem("message") as HTMLTextAreaElement)
-        .value,
+      from_name,
+      from_email,
+      subject,
+      message,
       time: formattedTime,
     };
 
@@ -92,8 +102,16 @@ export default function ContactUs() {
         "wFpFjP1ut2sXe31cx",
       )
       .then(
-        () => alert("Message sent!"),
-        (err) => console.error(err),
+        () => {
+          setIsSubmitting(false);
+          setStatusMessage({ type: "success", text: "Thank you for your interest! We have received your message and will reach out to you shortly." });
+          form.reset();
+        },
+        (err) => {
+          console.error(err);
+          setIsSubmitting(false);
+          setStatusMessage({ type: "error", text: "Failed to send the message. Please try again later." });
+        }
       );
   };
 
@@ -215,6 +233,7 @@ export default function ContactUs() {
                       type="text"
                       name="from_name"
                       placeholder="John Doe"
+                      required
                       className="w-full px-5 py-4 rounded-xl bg-[var(--bg-base)] border border-[var(--border)] focus:border-[var(--accent-primary)] focus:ring-4 focus:ring-[var(--accent-primary)]/5 outline-none transition-all"
                     />
                   </div>
@@ -226,6 +245,7 @@ export default function ContactUs() {
                       type="email"
                       name="from_email"
                       placeholder="john@company.com"
+                      required
                       className="w-full px-5 py-4 rounded-xl bg-[var(--bg-base)] border border-[var(--border)] focus:border-[var(--accent-primary)] focus:ring-4 focus:ring-[var(--accent-primary)]/5 outline-none transition-all"
                     />
                   </div>
@@ -254,6 +274,7 @@ export default function ContactUs() {
                     name="message"
                     rows={4}
                     placeholder="Tell us about your project or inquiry..."
+                      required
                     className="w-full px-5 py-4 rounded-xl bg-[var(--bg-base)] border border-[var(--border)] focus:border-[var(--accent-primary)] focus:ring-4 focus:ring-[var(--accent-primary)]/5 outline-none transition-all resize-none"
                   ></textarea>
                 </div>
@@ -261,9 +282,10 @@ export default function ContactUs() {
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="btn-primary w-full py-5 text-lg flex items-center justify-center gap-3 shadow-xl shadow-[var(--accent-primary)]/30"
+                    disabled={isSubmitting}
+                    className={`btn-primary w-full py-5 text-lg flex items-center justify-center gap-3 shadow-xl shadow-[var(--accent-primary)]/30 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
                 >
-                  Shoot Message <Send size={20} />
+                    {isSubmitting ? "Sending..." : "Shoot Message"} <Send size={20} />
                 </motion.button>
 
                 <p className="text-center text-xs text-[var(--text-muted)] mt-6">
@@ -340,6 +362,51 @@ export default function ContactUs() {
           </motion.div>
         </div>
       </section>
+
+      {/* ── SUCCESS / ERROR MODAL ── */}
+      <AnimatePresence>
+        {statusMessage.type && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              className="bg-[var(--bg-base)] rounded-3xl p-8 md:p-10 max-w-md w-full shadow-2xl relative border border-[var(--border)] text-center"
+            >
+              <button
+                onClick={() => setStatusMessage({ type: null, text: "" })}
+                className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-full bg-[var(--surface-soft)] text-[var(--text-muted)] hover:text-[var(--text-dark)] transition-colors"
+              >
+                <X size={18} />
+              </button>
+              
+              <div className={`w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6 shadow-lg ${statusMessage.type === "success" ? "bg-green-500/10 text-green-500 shadow-green-500/20" : "bg-red-500/10 text-red-500 shadow-red-500/20"}`}>
+                {statusMessage.type === "success" ? <CheckCircle2 size={40} /> : <AlertCircle size={40} />}
+              </div>
+              
+              <h3 className="text-2xl font-bold text-[var(--text-dark)] mb-3 font-['Outfit']">
+                {statusMessage.type === "success" ? "Thank You!" : "Oops!"}
+              </h3>
+              
+              <p className="text-[var(--text-mid)] mb-8 leading-relaxed">
+                {statusMessage.text}
+              </p>
+              
+              <button
+                onClick={() => setStatusMessage({ type: null, text: "" })}
+                className={`w-full py-4 rounded-xl font-bold text-white transition-all shadow-lg ${statusMessage.type === "success" ? "bg-green-500 hover:bg-green-600 shadow-green-500/30" : "bg-red-500 hover:bg-red-600 shadow-red-500/30"}`}
+              >
+                {statusMessage.type === "success" ? "Done" : "Try Again"}
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

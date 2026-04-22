@@ -1,9 +1,25 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
-import "./styles/Projects.css";
+import { ArrowRight } from 'lucide-react'
+import { motion } from 'framer-motion'
+import './styles/Projects.css'
 
-const projects = [
+type Project = {
+  id: number;
+  tag?: string;
+  category?: string;
+  number?: string;
+  title: string;
+  client?: string;
+  description: string;
+  stack?: string[];
+  tags?: string[];
+  stats?: { label: string; value: string }[];
+  metric?: string;
+  metricLabel?: string;
+  image?: string;
+  website?: string;
+}
+
+const projects: Project[] = [
   {
     id: 1,
     tag: "AI Powered Voice Call Center",
@@ -23,310 +39,124 @@ const projects = [
       { label: "Daily Calls", value: "500–1000" },
       { label: "Automation Rate", value: "85%+" },
     ],
-    bg: "radial-gradient(ellipse at center, rgba(217,119,6,0.8) 0%, rgba(26,26,46,0.95) 100%)",
-    accent: "#F59E0B",
-    abstractId: 1,
-  },
-  {
-    id: 2,
-    tag: "Web Application",
-    title: "StackFlow — Real-Time Analytics Platform",
-    client: "StackFlow Inc.",
-    description:
-      "Engineered a real-time business intelligence platform handling 2M+ daily events with sub-second live dashboard rendering and edge caching.",
-    stack: ["Next.js", "Kafka", "ClickHouse", "D3.js"],
-    stats: [
-      { label: "Daily Events", value: "2M+" },
-      { label: "Avg Load", value: "180ms" },
-    ],
-    bg: "radial-gradient(ellipse at center, rgba(180,83,9,0.8) 0%, rgba(26,26,46,0.95) 100%)",
-    accent: "#D97706",
-    abstractId: 2,
-  },
-  {
-    id: 3,
-    tag: "Mobile + AI",
-    title: "MediTrack — AI-Powered Health Platform",
-    client: "NexHealth Group",
-    description:
-      "Cross-platform health monitoring mobile app with highly accurate predictive AI symptom checker used safely by 50,000+ patients.",
-    stack: ["React Native", "TensorFlow", "Firebase"],
-    stats: [
-      { label: "Active Users", value: "50K+" },
-      { label: "AI Accuracy", value: "94%" },
-    ],
-    bg: "radial-gradient(ellipse at center, rgba(245,158,11,0.6) 0%, rgba(26,26,46,0.95) 100%)",
-    accent: "#FBBF24",
-    abstractId: 3,
-  },
-  {
-    id: 4,
-    tag: "Automation",
-    title: "AutoSync — HR Workflow Automation",
-    client: "Orbito Corp",
-    description:
-      "Designed a fully automated, scalable employee onboarding and payroll pipeline, completely eliminating manual HR data entry workload.",
-    stack: ["Node.js", "Zapier API", "Docker"],
-    stats: [
-      { label: "Time Saved", value: "80%" },
-      { label: "ROI Timeline", value: "6 Wk" },
-    ],
-    bg: "radial-gradient(ellipse at center, rgba(146,64,14,0.8) 0%, rgba(26,26,46,0.95) 100%)",
-    accent: "#eab308",
-    abstractId: 4,
-  },
-  {
-    id: 5,
-    tag: "Cloud Infra",
-    title: "DataSync Cloud — Migration & DevOps",
-    client: "DataSync Solutions",
-    description:
-      "Securely migrated legacy on-premise monolithic infrastructure to AWS Kubernetes clusters with zero downtime, massively cutting costs.",
-    stack: ["AWS", "Terraform", "Kubernetes"],
-    stats: [
-      { label: "Cost Reduced", value: "55%" },
-      { label: "Downtime", value: "0 Mins" },
-    ],
-    bg: "radial-gradient(ellipse at center, rgba(120,53,15,0.9) 0%, rgba(26,26,46,0.95) 100%)",
-    accent: "#d97706",
-    abstractId: 5,
-  },
-];
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop' // Generic tech image mapped to prevent breaking
+  }
+]
 
 export default function Projects() {
-  // Desktop defaults to expanding accordion.
-  const [hoveredIndex, setHoveredIndex] = useState<number>(0);
+  const handleWebsiteClick = (website: string) => {
+    window.open(website, '_blank')
+  }
 
   return (
-    <section className="kx-accordion" id="work">
-      {/* Dynamic Master Background */}
-      <motion.div
-        className="kx-accordion__master-bg"
-        animate={{ backgroundColor: projects[hoveredIndex].accent }}
-        transition={{ duration: 1.5, ease: "easeInOut" }}
-      />
-      <div className="kx-accordion__noise" />
+    <section className="projects-section">
+      <div className="projects-container">
+        {/* Header */}
+        <motion.div 
+          className="projects-header"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <span className="section-eyebrow" style={{ display: 'inline-block', marginBottom: '1rem' }}>Our Portfolio</span>
+          <h2 className="projects-title">Products That Make an Impact</h2>
+          <p className="projects-subtitle" style={{ maxWidth: '600px', marginTop: '1rem', lineHeight: '1.6' }}>
+            We don't just write code. We engineer high-performance enterprise systems, intelligent workflows, and scalable platforms that drive measurable business results.
+          </p>
+        </motion.div>
 
-      <div className="section-container kx-accordion__container">
-        <div className="kx-accordion__header">
-          <motion.span
-            className="kx-accordion__eyebrow"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            Capabilities & Impact
-          </motion.span>
-          <motion.h2
-            className="kx-accordion__title"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-          >
-            Digital Experiences That <br className="hidden md:block" />
-            <span className="kx-accordion__title-glow">Drive Evolution</span>
-          </motion.h2>
-        </div>
-
-        {/* The Incredible Expanding Grid Gallery */}
-        <div className="kx-accordion__gallery">
-          {projects.map((project, idx) => {
-            const isActive = hoveredIndex === idx;
+        {/* Sticky Stack Layout */}
+        <div className="projects-layout">
+          {projects.map((project, index) => {
+            // Calculate a progressive top offset so they stack neatly as you scroll
+            const stickyOffset = 90 + index * 36;
+            // Optionally scale down the cards behind to give a depth effect (z-axis stacking)
+            const scaleDown = 1 - (projects.length - index - 1) * 0.02;
 
             return (
               <motion.div
                 key={project.id}
-                layout
-                onHoverStart={() => setHoveredIndex(idx)}
-                onClick={() => setHoveredIndex(idx)}
-                className={`kx-accordion__panel ${isActive ? "is-active" : ""}`}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                  boxShadow: isActive
-                    ? `0 30px 100px -20px ${project.accent}80`
-                    : `0 10px 30px -10px rgba(0,0,0,0.5)`,
-                  borderColor: isActive
-                    ? `${project.accent}80`
-                    : "rgba(255,255,255,0.05)",
-                }}
-                transition={{
-                  layout: {
-                    duration: 0.6,
-                    ease: [0.22, 1, 0.36, 1],
-                  } /* Extremely buttery fluid ease */,
-                  opacity: { duration: 0.5, ease: "easeOut" },
-                  y: { duration: 0.5, ease: "easeOut" },
-                }}
+                className="project-card-cinematic"
+                initial={{ opacity: 0, y: 60, scale: scaleDown * 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: scaleDown }}
+                viewport={{ once: true, margin: "-50px" }}
+                whileHover={{ scale: scaleDown * 1.015, y: -8 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                style={{ top: `${stickyOffset}px`, zIndex: index }}
               >
-                {/* Panel Background Layer with Parallax Pan */}
-                <motion.div
-                  className="kx-accordion__panel-bg"
-                  animate={{
-                    scale: isActive ? 1.05 : 1.2,
-                    background: project.bg,
-                  }}
-                  transition={{ duration: 1.5, ease: "easeOut" }}
-                />
-
-                {/* Abstract Geometric Overlay Element animating infinitely inside active card */}
-                <AnimatePresence>
-                  {isActive && (
-                    <motion.div
-                      key="abstract-shape"
-                      className="kx-accordion__abstract-shape"
-                      initial={{ opacity: 0, scale: 0.5, rotate: -45 }}
-                      animate={{
-                        opacity: 0.3,
-                        scale: [1, 1.2, 1],
-                        rotate: [0, 90, 180, 270, 360],
-                      }}
-                      exit={{ opacity: 0, scale: 0.5 }}
-                      transition={{
-                        opacity: { duration: 0.5 }, 
-                        scale: {
-                          duration: 8,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                        },
-                        rotate: {
-                          duration: 30,
-                          repeat: Infinity,
-                          ease: "linear",
-                        },
-                      }}
-                      style={{
-                        borderTopColor: project.accent,
-                        borderRightColor: project.accent,
-                      }}
-                    />
-                  )}
-                </AnimatePresence>
-
-                {/* Content Overlay */}
-                <motion.div layout className="kx-accordion__panel-inner">
-                  {/* Collapsed View (Vertical Text) */}
-                  <div className="kx-accordion__collapsed-view">
-                    <motion.div
-                      className="kx-accordion__number-vert"
-                      animate={{ opacity: isActive ? 0 : 0.4 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      0{idx + 1}
-                    </motion.div>
-                    <motion.h3
-                      className="kx-accordion__title-vert"
-                      animate={{ opacity: isActive ? 0 : 1 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      {project.client}
-                    </motion.h3>
+                <div className="cinematic-content">
+                  <div className="cinematic-meta">
+                    <span className="cinematic-number">{project.number || String(index + 1).padStart(2, '0')}</span>
+                    <span className="cinematic-category">{project.category || project.tag}</span>
                   </div>
 
-                  {/* Expanded View (Rich Content) */}
-                  <AnimatePresence>
-                    {isActive && (
-                      <motion.div
-                        className="kx-accordion__expanded-view"
-                        initial={{ opacity: 0, x: -40 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -40 }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                      >
-                        {/* Upper Section */}
-                        <div className="kx-accordion__expanded-top">
-                          <div
-                            className="kx-accordion__meta-badge"
-                            style={{
-                              color: project.accent,
-                              backgroundColor: `${project.accent}20`,
-                            }}
-                          >
-                            {project.tag}
-                          </div>
-                          <div
-                            className="kx-accordion__huge-number"
-                            style={{ color: project.accent }}
-                          >
-                            0{idx + 1}
-                          </div>
-                        </div>
+                  <h3 className="cinematic-title">{project.title}</h3>
+                  {project.client && (
+                    <div style={{ color: '#d97706', fontSize: '0.85rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '20px' }}>
+                      Client: {project.client}
+                    </div>
+                  )}
+                  <p className="cinematic-description">{project.description}</p>
 
-                        {/* Lower Section Detail */}
-                        <div className="kx-accordion__expanded-bottom">
-                          <h3 className="kx-accordion__expanded-title">
-                            {project.title}
-                          </h3>
-                          <p className="kx-accordion__expanded-desc">
-                            {project.description}
-                          </p>
+                  <div className="cinematic-tags">
+                    {(project.tags || project.stack || []).map((tag) => (
+                      <span key={tag} className="cinematic-tag">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
 
-                          <div className="kx-accordion__expanded-grid">
-                            {/* Tech Stack */}
-                            <div className="kx-accordion__stack-list">
-                              {project.stack.map((tech) => (
-                                <span
-                                  key={tech}
-                                  className="kx-accordion__stack-item"
-                                >
-                                  {tech}
-                                </span>
-                              ))}
-                            </div>
+                  {/* Visit Project Button matching website theme */}
+                  {project.website && (
+                    <motion.button
+                      className="cinematic-btn"
+                      whileHover={{ x: 5 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() => handleWebsiteClick(project.website!)}
+                    >
+                      View Live Project
+                      <ArrowRight size={18} className="btn-arrow" />
+                    </motion.button>
+                  )}
+                </div>
 
-                            {/* Key Stats */}
-                            <div className="kx-accordion__stats-list">
-                              {project.stats.map((stat) => (
-                                <div
-                                  key={stat.label}
-                                  className="kx-accordion__stat"
-                                >
-                                  <div
-                                    className="kx-accordion__stat-val"
-                                    style={{ color: project.accent }}
-                                  >
-                                    {stat.value}
-                                  </div>
-                                  <div className="kx-accordion__stat-lbl">
-                                    {stat.label}
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-
-                          <motion.button
-                            className="kx-accordion__cta-btn group"
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                            style={{ borderColor: project.accent }}
-                          >
-                            <span style={{ color: project.accent }}>
-                              View Full Case Study
-                            </span>
-                            <div
-                              className="kx-accordion__cta-icon group-hover:rotate-45 transition-transform"
-                              style={{ backgroundColor: project.accent }}
-                            >
-                              <ArrowUpRight
-                                strokeWidth={2.5}
-                                size={16}
-                                className="text-white"
-                              />
-                            </div>
-                          </motion.button>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
+                {/* Right side visual representation */}
+                <div className="cinematic-visual" style={{ position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '3rem' }}>
+                  {/* Image Background overlaying the visual area */}
+                  <motion.div 
+                    style={{ 
+                      position: 'absolute', 
+                      inset: 0, 
+                      backgroundImage: `url(${project.image || 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop'})`, 
+                      backgroundSize: 'cover', 
+                      backgroundPosition: 'center', 
+                      mixBlendMode: 'overlay',
+                      opacity: 0.2,
+                    }}
+                    whileHover={{ opacity: 0.45, scale: 1.1 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                  />
+                  
+                  {project.stats ? (
+                    project.stats.map(stat => (
+                      <div key={stat.label} style={{ textAlign: 'center' }}>
+                        <div className="visual-metric-large" style={{ position: 'relative', zIndex: 10, fontSize: '4.5rem', marginBottom: '8px' }}>{stat.value}</div>
+                        <div className="visual-metric-label" style={{ position: 'relative', zIndex: 10 }}>{stat.label}</div>
+                      </div>
+                    ))
+                  ) : (
+                    <div style={{ textAlign: 'center' }}>
+                      <div className="visual-metric-large" style={{ position: 'relative', zIndex: 10 }}>{project.metric}</div>
+                      <div className="visual-metric-label" style={{ position: 'relative', zIndex: 10 }}>{project.metricLabel}</div>
+                    </div>
+                  )}
+                </div>
               </motion.div>
-            );
+            )
           })}
         </div>
       </div>
     </section>
-  );
+  )
 }

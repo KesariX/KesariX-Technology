@@ -21,7 +21,7 @@ export default memo(function Footer() {
       { label: 'Blog', path: '/company/blog' },
       { label: 'Careers', path: '/company/careers' }
     ],
-    Contact: ['info@kesarixtechnology.com', '+91 88872 39361', 'India'],
+    Contact: ['info@kesarixtechnology.com', '+91 92747 39361', 'India'],
   }
 
   const containerVariants = {
