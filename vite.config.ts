@@ -14,32 +14,35 @@ export default defineConfig(() => ({
     rollupOptions: {
       output: {
         manualChunks(id: string) {
-          // Vendor chunks
-          if (id.includes('node_modules/react')) {
-            return 'vendor-react'
-          }
-          if (id.includes('node_modules/framer-motion')) {
+          // Normalize to forward slashes for cross-platform matching
+          const nid = id.replace(/\\/g, '/')
+
+          // Three.js — rolldown deduplicates this automatically into page-aiagents
+          // NeuralNetwork is lazy-loaded from Hero so Three.js doesn't block initial render
+          // Framer Motion in its own chunk
+          if (nid.includes('node_modules/framer-motion')) {
             return 'vendor-framer'
           }
-          if (id.includes('node_modules/three')) {
-            return 'vendor-three'
-          }
-          // React-dependent libraries (must be with React)
-          if (id.includes('node_modules/lucide-react') || id.includes('node_modules/react-router')) {
+          // React core + router + lucide in shared vendor chunk
+          if (
+            nid.includes('node_modules/react/') ||
+            nid.includes('node_modules/react-dom/') ||
+            nid.includes('node_modules/react-router') ||
+            nid.includes('node_modules/lucide-react') ||
+            nid.includes('node_modules/react-helmet')
+          ) {
             return 'vendor-react'
           }
-          if (id.includes('node_modules')) {
+          // Remaining node_modules
+          if (nid.includes('node_modules')) {
             return 'vendor-other'
           }
-          // Route chunks
-          if (id.includes('src/pages/')) {
-            const match = id.match(/src\/pages\/([A-Za-z]+)\.tsx/)
+          // Route chunks — each page gets its own bundle
+          if (nid.includes('src/pages/')) {
+            const match = nid.match(/src\/pages\/([A-Za-z]+)\.tsx/)
             return match ? `page-${match[1].toLowerCase()}` : 'pages'
           }
-          // Component chunks
-          if (id.includes('src/components/')) {
-            return 'components'
-          }
+          // 3D components travel with the pages that use them (no forced merge)
         },
       },
     },

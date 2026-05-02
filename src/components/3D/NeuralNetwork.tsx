@@ -7,6 +7,8 @@ export default function NeuralNetwork() {
   useEffect(() => {
     if (!containerRef.current) return
 
+    const isMobile = window.innerWidth < 768 || navigator.maxTouchPoints > 0
+
     const scene = new THREE.Scene()
     // Transparent background so the CSS gradients show through
     scene.background = null
@@ -21,14 +23,14 @@ export default function NeuralNetwork() {
     camera.position.y = 0
     camera.position.x = 4 // Offset slightly to the right to balance the Hero text
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+    const renderer = new THREE.WebGLRenderer({ antialias: !isMobile, alpha: true })
     renderer.setSize(containerRef.current.clientWidth, containerRef.current.clientHeight)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1 : 2))
     containerRef.current.appendChild(renderer.domElement)
 
-    // --- Create a highly detailed Neural Swarm ---
-    const particleCount = 2500;
-    const nodeCount = 120;
+    // Reduce counts on mobile for performance
+    const particleCount = isMobile ? 600 : 2500;
+    const nodeCount = isMobile ? 30 : 120;
 
     const particlesGeometry = new THREE.BufferGeometry();
     const particlesPositions = new Float32Array(particleCount * 3);
@@ -216,11 +218,21 @@ export default function NeuralNetwork() {
     const orb2 = addGlowOrb(0x3B82F6, 10, new THREE.Vector3(-6, -4, -8));
     const orb3 = addGlowOrb(0xF59E0B, 6, new THREE.Vector3(0, 6, -10));
 
+    // Pause animation when not in viewport
+    let isVisible = true
+    const observer = new IntersectionObserver(
+      ([entry]) => { isVisible = entry.isIntersecting },
+      { threshold: 0.1 }
+    )
+    observer.observe(containerRef.current)
+
     // Animation Loop
     const clock = new THREE.Clock();
     let animationFrameId: number;
 
     const animate = () => {
+      animationFrameId = requestAnimationFrame(animate)
+      if (!isVisible) return
       const time = clock.getElapsedTime();
       
       // Smoothly follow mouse and scroll
@@ -330,7 +342,6 @@ export default function NeuralNetwork() {
       linesGeometry.setDrawRange(0, lineIndex * 2);
 
       renderer.render(scene, camera);
-      animationFrameId = requestAnimationFrame(animate);
     };
 
     animate();
@@ -351,6 +362,7 @@ export default function NeuralNetwork() {
     window.addEventListener('resize', handleResize);
 
     return () => {
+      observer.disconnect();
       window.removeEventListener('mousemove', onDocumentMouseMove);
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', handleResize);

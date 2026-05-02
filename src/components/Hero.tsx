@@ -1,7 +1,8 @@
-import { useRef } from 'react'
+import { useRef, lazy, Suspense } from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
-import NeuralNetwork from './3D/NeuralNetwork'
 import './styles/Hero.css'
+
+const NeuralNetwork = lazy(() => import('./3D/NeuralNetwork'))
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -110,8 +111,10 @@ export default function Hero() {
 
   return (
     <section className="kx-hero" id="home">
-      {/* Three.js Neural Network Background */}
-      <NeuralNetwork />
+      {/* Three.js Neural Network — lazy loaded so it doesn't block initial render */}
+      <Suspense fallback={null}>
+        <NeuralNetwork />
+      </Suspense>
 
       <div className="section-container kx-hero__container">
         <div className="kx-hero__grid">

@@ -8,6 +8,7 @@ const NeuralPulseMatrix: React.FC<{ className?: string }> = ({ className = '' })
     if (navigator.userAgent.includes('jsdom')) return
     if (!containerRef.current) return
 
+    const isMobile = window.innerWidth < 768 || navigator.maxTouchPoints > 0
     const container = containerRef.current
     const width = container.clientWidth
     const height = container.clientHeight
@@ -17,9 +18,9 @@ const NeuralPulseMatrix: React.FC<{ className?: string }> = ({ className = '' })
     const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000)
     camera.position.z = 30
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+    const renderer = new THREE.WebGLRenderer({ antialias: !isMobile, alpha: true })
     renderer.setSize(width, height)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1 : 2))
     container.appendChild(renderer.domElement)
 
     // Colors - pulling from project variables conceptually
@@ -28,7 +29,7 @@ const NeuralPulseMatrix: React.FC<{ className?: string }> = ({ className = '' })
     const colorAccent = new THREE.Color('#3B82F6') // Blue accent
 
     // --- 1. THE GRID FLOOR (Digital Foundation) ---
-    const gridCount = 40
+    const gridCount = isMobile ? 20 : 40
     const gridSpacing = 2
     const gridGeometry = new THREE.BufferGeometry()
     const gridPositions = new Float32Array(gridCount * gridCount * 3)
@@ -55,7 +56,7 @@ const NeuralPulseMatrix: React.FC<{ className?: string }> = ({ className = '' })
     scene.add(gridPoints)
 
     // --- 2. NEURAL FILAMENTS (Flowing Data) ---
-    const filamentCount = 40
+    const filamentCount = isMobile ? 10 : 40
     const filaments: { line: THREE.Line; points: THREE.Vector3[] }[] = []
     const pulseGeometry = new THREE.SphereGeometry(0.1, 8, 8)
     const pulses: { mesh: THREE.Mesh; curve: THREE.CatmullRomCurve3; progress: number; speed: number }[] = []
@@ -107,7 +108,7 @@ const NeuralPulseMatrix: React.FC<{ className?: string }> = ({ className = '' })
     }
 
     // --- 3. FLOATING DATA NODES (Intelligence Units) ---
-    const nodeCount = 100
+    const nodeCount = isMobile ? 25 : 100
     const nodesGeometry = new THREE.BufferGeometry()
     const nodesPos = new Float32Array(nodeCount * 3)
     const nodesVel = new Float32Array(nodeCount * 3)
@@ -171,11 +172,21 @@ const NeuralPulseMatrix: React.FC<{ className?: string }> = ({ className = '' })
     }
     window.addEventListener('mousemove', handleMouseMove)
 
+    // Pause animation when not in viewport
+    let isVisible = true
+    const observer = new IntersectionObserver(
+      ([entry]) => { isVisible = entry.isIntersecting },
+      { threshold: 0.1 }
+    )
+    observer.observe(container)
+
     // --- Animation ---
     const clock = new THREE.Clock()
     let frameId: number
 
     const animate = () => {
+      frameId = requestAnimationFrame(animate)
+      if (!isVisible) return
       clock.getDelta()
       const elapsed = clock.getElapsedTime()
       
@@ -215,7 +226,6 @@ const NeuralPulseMatrix: React.FC<{ className?: string }> = ({ className = '' })
       camera.lookAt(0, 0, 0)
 
       renderer.render(scene, camera)
-      frameId = requestAnimationFrame(animate)
     }
 
     animate()
@@ -231,6 +241,7 @@ const NeuralPulseMatrix: React.FC<{ className?: string }> = ({ className = '' })
     window.addEventListener('resize', handleResize)
 
     return () => {
+      observer.disconnect()
       cancelAnimationFrame(frameId)
       window.removeEventListener('mousemove', handleMouseMove)
       window.removeEventListener('resize', handleResize)

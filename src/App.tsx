@@ -47,7 +47,7 @@ function App() {
   return (
     <BrowserRouter>
       {showLoadingScreen && (
-        <LoadingScreen onComplete={() => setShowLoadingScreen(false)} />
+        <LoadingScreen durationMs={1500} onComplete={() => setShowLoadingScreen(false)} />
       )}
 
       <div

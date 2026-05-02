@@ -22,6 +22,7 @@ const AIVisualization: React.FC<{ className?: string }> = ({ className = '' }) =
     if (navigator.userAgent.includes('jsdom')) return
     if (!containerRef.current) return
 
+    const isMobile = window.innerWidth < 768 || navigator.maxTouchPoints > 0
     const container = containerRef.current
     const width = container.clientWidth
     const height = container.clientHeight
@@ -31,16 +32,16 @@ const AIVisualization: React.FC<{ className?: string }> = ({ className = '' }) =
     const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000)
     camera.position.z = 25
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+    const renderer = new THREE.WebGLRenderer({ antialias: !isMobile, alpha: true })
     renderer.setSize(width, height)
-    renderer.setPixelRatio(window.devicePixelRatio)
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1 : 2))
     container.appendChild(renderer.domElement)
 
     const primaryColor = new THREE.Color(themeColors.accentPrimary)
     const glowColor = new THREE.Color(themeColors.accentGlow)
 
-    // --- Particle System ---
-    const particleCount = 5000
+    // Reduce counts on mobile for performance
+    const particleCount = isMobile ? 800 : 5000
     const particleGeometry = new THREE.BufferGeometry()
     const particlePositions = new Float32Array(particleCount * 3)
     const particleColors = new Float32Array(particleCount * 3)
@@ -105,7 +106,7 @@ const AIVisualization: React.FC<{ className?: string }> = ({ className = '' }) =
     scene.add(particleSystem)
 
     // --- Nodes System ---
-    const nodeCount = 70
+    const nodeCount = isMobile ? 20 : 70
     const nodesGroup = new THREE.Group()
     scene.add(nodesGroup)
     const nodeVelocities: THREE.Vector3[] = []
@@ -182,12 +183,21 @@ const AIVisualization: React.FC<{ className?: string }> = ({ className = '' }) =
     }
     container.addEventListener('mousemove', onMouseMove)
 
+    // Pause animation when not in viewport
+    let isVisible = true
+    const observer = new IntersectionObserver(
+      ([entry]) => { isVisible = entry.isIntersecting },
+      { threshold: 0.1 }
+    )
+    observer.observe(container)
+
     // --- Animation Loop ---
     const clock = new THREE.Clock()
     let animationFrameId: number
 
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate)
+      if (!isVisible) return
       const elapsedTime = clock.getElapsedTime()
 
       mouse.x += (targetMouse.x - mouse.x) * 0.05
@@ -274,6 +284,7 @@ const AIVisualization: React.FC<{ className?: string }> = ({ className = '' }) =
 
     // --- Cleanup ---
     return () => {
+      observer.disconnect()
       window.removeEventListener('resize', handleResize)
       container.removeEventListener('mousemove', onMouseMove)
       cancelAnimationFrame(animationFrameId)
