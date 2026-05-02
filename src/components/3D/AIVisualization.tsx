@@ -23,6 +23,10 @@ const AIVisualization: React.FC<{ className?: string }> = ({ className = '' }) =
     if (!containerRef.current) return
 
     const isMobile = window.innerWidth < 768 || navigator.maxTouchPoints > 0
+    let cleanupFn: (() => void) | undefined
+
+    const initTimer = setTimeout(() => {
+      if (!containerRef.current) return
     const container = containerRef.current
     const width = container.clientWidth
     const height = container.clientHeight
@@ -40,8 +44,8 @@ const AIVisualization: React.FC<{ className?: string }> = ({ className = '' }) =
     const primaryColor = new THREE.Color(themeColors.accentPrimary)
     const glowColor = new THREE.Color(themeColors.accentGlow)
 
-    // Reduce counts on mobile for performance
-    const particleCount = isMobile ? 800 : 5000
+    // Reduced counts for performance (desktop: 1500/30, mobile: 800/20)
+    const particleCount = isMobile ? 800 : 1500
     const particleGeometry = new THREE.BufferGeometry()
     const particlePositions = new Float32Array(particleCount * 3)
     const particleColors = new Float32Array(particleCount * 3)
@@ -106,7 +110,7 @@ const AIVisualization: React.FC<{ className?: string }> = ({ className = '' }) =
     scene.add(particleSystem)
 
     // --- Nodes System ---
-    const nodeCount = isMobile ? 20 : 70
+    const nodeCount = isMobile ? 20 : 30
     const nodesGroup = new THREE.Group()
     scene.add(nodesGroup)
     const nodeVelocities: THREE.Vector3[] = []
@@ -288,7 +292,7 @@ const AIVisualization: React.FC<{ className?: string }> = ({ className = '' }) =
     window.addEventListener('resize', handleResize)
 
     // --- Cleanup ---
-    return () => {
+    cleanupFn = () => {
       observer.disconnect()
       window.removeEventListener('resize', handleResize)
       container.removeEventListener('mousemove', onMouseMove)
@@ -309,6 +313,12 @@ const AIVisualization: React.FC<{ className?: string }> = ({ className = '' }) =
       })
       lineGeometry.dispose()
       lineMaterial.dispose()
+    }
+    }, 800)
+
+    return () => {
+      clearTimeout(initTimer)
+      cleanupFn?.()
     }
   }, [themeColors])
 

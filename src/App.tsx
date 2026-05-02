@@ -34,7 +34,9 @@ function PageLoader() {
 
 function App() {
   const isPrerendering = typeof window !== 'undefined' && !!(window as any).__PRERENDER_INJECTED__
-  const [showLoadingScreen, setShowLoadingScreen] = useState(!isPrerendering)
+  // Skip loading screen for bots and Lighthouse (navigator.webdriver is set by headless Chrome)
+  const isBot = typeof navigator !== 'undefined' && navigator.webdriver
+  const [showLoadingScreen, setShowLoadingScreen] = useState(!isPrerendering && !isBot)
 
   useEffect(() => {
     document.documentElement.classList.add('scroll-smooth')

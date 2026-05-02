@@ -8,6 +8,11 @@ export default function NeuralNetwork() {
     if (!containerRef.current) return
 
     const isMobile = window.innerWidth < 768 || navigator.maxTouchPoints > 0
+    let cleanupFn: (() => void) | undefined
+
+    // Defer initialization so the page becomes interactive before Three.js runs
+    const initTimer = setTimeout(() => {
+      if (!containerRef.current) return
 
     const scene = new THREE.Scene()
     // Transparent background so the CSS gradients show through
@@ -28,9 +33,9 @@ export default function NeuralNetwork() {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1 : 2))
     containerRef.current.appendChild(renderer.domElement)
 
-    // Reduce counts on mobile for performance
-    const particleCount = isMobile ? 600 : 2500;
-    const nodeCount = isMobile ? 30 : 120;
+    // Reduced counts for performance (desktop: 800/40, mobile: 600/30)
+    const particleCount = isMobile ? 600 : 800;
+    const nodeCount = isMobile ? 30 : 40;
 
     const particlesGeometry = new THREE.BufferGeometry();
     const particlesPositions = new Float32Array(particleCount * 3);
@@ -366,14 +371,14 @@ export default function NeuralNetwork() {
     
     window.addEventListener('resize', handleResize);
 
-    return () => {
+    cleanupFn = () => {
       observer.disconnect();
       window.removeEventListener('mousemove', onDocumentMouseMove);
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(animationFrameId);
       containerRef.current?.removeChild(renderer.domElement);
-      
+
       // Thorough cleanup
       particlesGeometry.dispose();
       particlesMaterial.dispose();
@@ -388,6 +393,12 @@ export default function NeuralNetwork() {
       orb3.geometry.dispose();
       (orb3.material as THREE.Material).dispose();
       renderer.dispose();
+    };
+    }, 800) // Defer init so page becomes interactive first
+
+    return () => {
+      clearTimeout(initTimer)
+      cleanupFn?.()
     };
   }, []);
 

@@ -9,6 +9,10 @@ const NeuralPulseMatrix: React.FC<{ className?: string }> = ({ className = '' })
     if (!containerRef.current) return
 
     const isMobile = window.innerWidth < 768 || navigator.maxTouchPoints > 0
+    let cleanupFn: (() => void) | undefined
+
+    const initTimer = setTimeout(() => {
+      if (!containerRef.current) return
     const container = containerRef.current
     const width = container.clientWidth
     const height = container.clientHeight
@@ -56,7 +60,7 @@ const NeuralPulseMatrix: React.FC<{ className?: string }> = ({ className = '' })
     scene.add(gridPoints)
 
     // --- 2. NEURAL FILAMENTS (Flowing Data) ---
-    const filamentCount = isMobile ? 10 : 40
+    const filamentCount = isMobile ? 10 : 20
     const filaments: { line: THREE.Line; points: THREE.Vector3[] }[] = []
     const pulseGeometry = new THREE.SphereGeometry(0.1, 8, 8)
     const pulses: { mesh: THREE.Mesh; curve: THREE.CatmullRomCurve3; progress: number; speed: number }[] = []
@@ -108,7 +112,7 @@ const NeuralPulseMatrix: React.FC<{ className?: string }> = ({ className = '' })
     }
 
     // --- 3. FLOATING DATA NODES (Intelligence Units) ---
-    const nodeCount = isMobile ? 25 : 100
+    const nodeCount = isMobile ? 25 : 50
     const nodesGeometry = new THREE.BufferGeometry()
     const nodesPos = new Float32Array(nodeCount * 3)
     const nodesVel = new Float32Array(nodeCount * 3)
@@ -245,7 +249,7 @@ const NeuralPulseMatrix: React.FC<{ className?: string }> = ({ className = '' })
     }
     window.addEventListener('resize', handleResize)
 
-    return () => {
+    cleanupFn = () => {
       observer.disconnect()
       cancelAnimationFrame(frameId)
       window.removeEventListener('mousemove', handleMouseMove)
@@ -266,6 +270,12 @@ const NeuralPulseMatrix: React.FC<{ className?: string }> = ({ className = '' })
       pulses.forEach(p => {
         ;(p.mesh.material as THREE.Material).dispose()
       })
+    }
+    }, 800)
+
+    return () => {
+      clearTimeout(initTimer)
+      cleanupFn?.()
     }
   }, [])
 
