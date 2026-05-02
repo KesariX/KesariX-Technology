@@ -144,16 +144,21 @@ const LoadingScreen = memo(function LoadingScreen({
                 }}
                 transition={{ duration: 4.8, repeat: Infinity, ease: 'easeInOut' }}
               />
-              <motion.img
-                className="loading-screen__logo-image"
-                src="/kesariX.png"
-                alt="KesariX Technology"
-                animate={{
-                  y: [0, -4, 0],
-                  scale: [1, 1.015, 1],
-                }}
-                transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
-              />
+              <picture>
+                <source srcSet="/kesariX-sm.webp" type="image/webp" />
+                <motion.img
+                  className="loading-screen__logo-image"
+                  src="/kesariX.png"
+                  alt="KesariX Technology"
+                  width={320}
+                  height={213}
+                  animate={{
+                    y: [0, -4, 0],
+                    scale: [1, 1.015, 1],
+                  }}
+                  transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
+                />
+              </picture>
               <motion.div
                 className="loading-screen__logo-sheen"
                 animate={{ x: ['-130%', '130%'] }}

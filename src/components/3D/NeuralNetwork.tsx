@@ -226,13 +226,18 @@ export default function NeuralNetwork() {
     )
     observer.observe(containerRef.current)
 
-    // Animation Loop
+    // Animation Loop — capped at 30fps to reduce main-thread work
     const clock = new THREE.Clock();
     let animationFrameId: number;
+    let lastFrameTime = 0;
+    const FRAME_MS = 1000 / 30;
 
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate)
       if (!isVisible) return
+      const now = performance.now()
+      if (now - lastFrameTime < FRAME_MS) return
+      lastFrameTime = now
       const time = clock.getElapsedTime();
       
       // Smoothly follow mouse and scroll

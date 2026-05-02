@@ -39,7 +39,7 @@ const projects: Project[] = [
       { label: "Daily Calls", value: "500–1000" },
       { label: "Automation Rate", value: "85%+" },
     ],
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop' // Generic tech image mapped to prevent breaking
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=75&w=800&auto=format&fit=crop&fm=webp'
   }
 ]
 
@@ -128,7 +128,7 @@ export default function Projects() {
                     style={{ 
                       position: 'absolute', 
                       inset: 0, 
-                      backgroundImage: `url(${project.image || 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop'})`, 
+                      backgroundImage: `url(${project.image || 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=75&w=800&auto=format&fit=crop&fm=webp'})`, 
                       backgroundSize: 'cover', 
                       backgroundPosition: 'center', 
                       mixBlendMode: 'overlay',

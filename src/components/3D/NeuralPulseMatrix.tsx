@@ -180,13 +180,18 @@ const NeuralPulseMatrix: React.FC<{ className?: string }> = ({ className = '' })
     )
     observer.observe(container)
 
-    // --- Animation ---
+    // --- Animation — capped at 30fps ---
     const clock = new THREE.Clock()
     let frameId: number
+    let lastFrameTime = 0
+    const FRAME_MS = 1000 / 30
 
     const animate = () => {
       frameId = requestAnimationFrame(animate)
       if (!isVisible) return
+      const now = performance.now()
+      if (now - lastFrameTime < FRAME_MS) return
+      lastFrameTime = now
       clock.getDelta()
       const elapsed = clock.getElapsedTime()
       

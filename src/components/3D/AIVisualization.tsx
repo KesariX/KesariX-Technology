@@ -191,13 +191,18 @@ const AIVisualization: React.FC<{ className?: string }> = ({ className = '' }) =
     )
     observer.observe(container)
 
-    // --- Animation Loop ---
+    // --- Animation Loop — capped at 30fps ---
     const clock = new THREE.Clock()
     let animationFrameId: number
+    let lastFrameTime = 0
+    const FRAME_MS = 1000 / 30
 
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate)
       if (!isVisible) return
+      const now = performance.now()
+      if (now - lastFrameTime < FRAME_MS) return
+      lastFrameTime = now
       const elapsedTime = clock.getElapsedTime()
 
       mouse.x += (targetMouse.x - mouse.x) * 0.05
