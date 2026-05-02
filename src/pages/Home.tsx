@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import SEO from '../components/SEO'
 import Hero from '../components/Hero'
 import Marquee from '../components/Marquee'
 import Services from '../components/Services'
@@ -17,6 +18,11 @@ export default function Home() {
 
   return (
     <>
+      <SEO
+        title="KesariX Technology — AI Solutions & Software Engineering"
+        description="KesariX Technology engineers high-performance AI agents, machine learning models, and scalable software platforms. From automation to enterprise cloud solutions, we build what's next."
+        path="/"
+      />
       <Hero />
       <Marquee />
       <Services />

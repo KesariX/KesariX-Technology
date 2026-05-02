@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import SEO from "../components/SEO";
 import {
   Mail,
   Phone,
@@ -116,6 +117,11 @@ export default function ContactUs() {
 
   return (
     <div className="min-h-screen pt-24 pb-16 bg-[var(--bg-base)]">
+      <SEO
+        title="Contact KesariX Technology — Get in Touch"
+        description="Ready to build your next AI or software project? Contact KesariX Technology to discuss your requirements and get a custom solution tailored to your business."
+        path="/contact"
+      />
       {/* Dynamic Background Elements */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] bg-[var(--accent-primary)]/5 rounded-full blur-[120px]" />

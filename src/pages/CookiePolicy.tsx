@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
+import SEO from '../components/SEO'
 import './styles/Legal.css'
 
 export default function CookiePolicy() {
@@ -7,6 +8,11 @@ export default function CookiePolicy() {
 
   return (
     <div className="legal-page">
+      <SEO
+        title="Cookie Policy | KesariX Technology"
+        description="Learn how KesariX Technology uses cookies and tracking technologies on our website."
+        path="/legal/cookies"
+      />
       <motion.div className="legal-container" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
         <div className="legal-header">
           <div className="legal-eyebrow">Legal & Compliance</div>

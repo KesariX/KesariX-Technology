@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
+import SEO from '../components/SEO'
 import './styles/Legal.css'
 
 export default function PrivacyPolicy() {
@@ -7,6 +8,11 @@ export default function PrivacyPolicy() {
 
   return (
     <div className="legal-page">
+      <SEO
+        title="Privacy Policy | KesariX Technology"
+        description="Read KesariX Technology's privacy policy to understand how we collect, use, and protect your personal information."
+        path="/legal/privacy"
+      />
       <motion.div className="legal-container" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
         <div className="legal-header">
           <div className="legal-eyebrow">Legal & Compliance</div>

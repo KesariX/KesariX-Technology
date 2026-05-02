@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Workflow, Database, Layers } from 'lucide-react'
+import SEO from '../components/SEO'
 import NeuralPulseMatrix from '../components/3D/NeuralPulseMatrix'
 import CTASection from '../components/CTASection'
 import './styles/Automation.css'
@@ -11,6 +12,11 @@ export default function Automation() {
 
   return (
     <div className="auto-page">
+      <SEO
+        title="Process Automation Services | KesariX Technology"
+        description="Automate business workflows with intelligent RPA and AI-powered pipelines. KesariX helps enterprises eliminate manual tasks and scale operations effortlessly."
+        path="/services/automation"
+      />
       {/* ── HERO ── */}
       <section className="auto-hero" style={{ position: 'relative' }}>
         <div className="absolute inset-0 z-0 pointer-events-none">

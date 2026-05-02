@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Bot, Network, Workflow, BrainCircuit, Activity, Lock, ArrowRight, Database, Terminal, Server } from 'lucide-react'
+import SEO from '../components/SEO'
 import NeuralPulseMatrix from '../components/3D/NeuralPulseMatrix'
 import CTASection from '../components/CTASection'
 import './styles/AiAgents.css'
@@ -20,6 +21,11 @@ export default function AiAgents() {
 
   return (
     <div className="agents-page">
+      <SEO
+        title="AI Agents & Chatbots | KesariX Technology"
+        description="Build intelligent AI agents and custom chatbots that reason, plan, and act autonomously. KesariX develops goal-oriented multi-agent systems for enterprise automation."
+        path="/services/ai-agents"
+      />
       {/* ── HERO ── */}
       <section className="agents-hero">
         <div className="agents-hero-bg" />

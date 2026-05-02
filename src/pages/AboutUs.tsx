@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Target, Shield, Activity } from 'lucide-react'
+import SEO from '../components/SEO'
 import CTA from '../components/CTA'
 import './styles/AboutUs.css'
 
@@ -34,6 +35,11 @@ export default function AboutUs() {
 
   return (
     <div>
+      <SEO
+        title="About KesariX Technology — AI Engineering Company"
+        description="KesariX Technology is an India-based AI and software engineering company. Discover our mission, values, and the team building the intelligent systems of tomorrow."
+        path="/company/about"
+      />
       {/* ── HERO ─────────────────────────── */}
       <section className="about-hero">
         {/* Left text */}

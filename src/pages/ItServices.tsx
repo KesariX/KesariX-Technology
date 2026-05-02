@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Server, ShieldCheck, Cloud, Network, HeadphonesIcon, Database, ArrowRight, CheckCircle2 } from 'lucide-react'
+import SEO from '../components/SEO'
 import NeuralPulseMatrix from '../components/3D/NeuralPulseMatrix'
 import CTASection from '../components/CTASection'
 import './styles/ItServices.css'
@@ -23,6 +24,11 @@ export default function ItServices() {
 
   return (
     <div className="it-page">
+      <SEO
+        title="IT Infrastructure & Cloud Services | KesariX Technology"
+        description="Enterprise IT services including cloud infrastructure, DevOps, security, and managed services. KesariX builds resilient, scalable systems that keep your business running."
+        path="/services/it-services"
+      />
 
       {/* ── HERO SECTION ──────────────── */}
       <section className="it-hero">

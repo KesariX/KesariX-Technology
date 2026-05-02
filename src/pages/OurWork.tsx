@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, ArrowRight, Rocket } from "lucide-react";
+import SEO from "../components/SEO";
 import "./styles/OurWork.css";
 
 const projects = [
@@ -66,6 +67,11 @@ export default function OurWork() {
 
   return (
     <div className="work-page">
+      <SEO
+        title="Our Work & Case Studies | KesariX Technology"
+        description="Explore KesariX Technology's portfolio of AI solutions, web applications, and enterprise software. See how we've delivered measurable results for our clients."
+        path="/company/work"
+      />
       {/* ── HERO ── */}
       <section className="work-hero">
         <div className="work-hero__bg-text">WORK</div>

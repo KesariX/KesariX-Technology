@@ -33,7 +33,8 @@ function PageLoader() {
 }
 
 function App() {
-  const [showLoadingScreen, setShowLoadingScreen] = useState(true)
+  const isPrerendering = typeof window !== 'undefined' && !!(window as any).__PRERENDER_INJECTED__
+  const [showLoadingScreen, setShowLoadingScreen] = useState(!isPrerendering)
 
   useEffect(() => {
     document.documentElement.classList.add('scroll-smooth')

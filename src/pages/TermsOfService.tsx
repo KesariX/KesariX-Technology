@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
+import SEO from '../components/SEO'
 import './styles/Legal.css'
 
 export default function TermsOfService() {
@@ -7,6 +8,11 @@ export default function TermsOfService() {
 
   return (
     <div className="legal-page">
+      <SEO
+        title="Terms of Service | KesariX Technology"
+        description="Review KesariX Technology's terms of service governing the use of our website and services."
+        path="/legal/terms"
+      />
       <motion.div className="legal-container" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
         <div className="legal-header">
           <div className="legal-eyebrow">Legal & Compliance</div>

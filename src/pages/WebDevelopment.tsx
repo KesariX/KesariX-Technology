@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Code2, MonitorSmartphone, Server, Globe2, ArrowRight, CheckCircle2, Terminal, Shield } from 'lucide-react'
+import SEO from '../components/SEO'
 import NeuralPulseMatrix from '../components/3D/NeuralPulseMatrix'
 import CTASection from '../components/CTASection'
 import './styles/WebDevelopment.css'
@@ -56,6 +57,11 @@ export default function WebDevelopment() {
 
   return (
     <div className="bg-[var(--bg-base)] relative">
+      <SEO
+        title="Web Development Services | KesariX Technology"
+        description="Full-stack web development built for performance and scale. KesariX engineers modern web applications using React, TypeScript, and cloud-native architectures."
+        path="/services/web-development"
+      />
       <div className="absolute inset-0 z-0 pointer-events-none" style={{ height: '600px' }}>
         <NeuralPulseMatrix className="opacity-40" />
       </div>

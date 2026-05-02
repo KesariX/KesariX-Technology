@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
+import SEO from '../components/SEO'
 import './styles/Blog.css'
 
 const featured = {
@@ -186,6 +187,11 @@ export default function Blog() {
 
   return (
     <div className="blog-page">
+      <SEO
+        title="Blog — AI & Software Engineering Insights | KesariX Technology"
+        description="Read the KesariX Technology blog for insights on AI, machine learning, software architecture, and digital transformation. Practical guides from our engineering team."
+        path="/company/blog"
+      />
       {/* ── HERO ── */}
       <section className="blog-hero">
         <div className="blog-hero__inner">

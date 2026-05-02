@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Code2, Rocket, Trophy, Globe, Heart, Zap } from 'lucide-react'
+import SEO from '../components/SEO'
 import './styles/Careers.css'
 
 const perks = [
@@ -22,6 +23,11 @@ export default function Careers() {
 
   return (
     <div className="careers-page">
+      <SEO
+        title="Careers at KesariX Technology — Join Our Team"
+        description="Join KesariX Technology's team of elite AI engineers and software architects. Explore open roles and help us build the intelligent systems of tomorrow."
+        path="/company/careers"
+      />
       {/* ── HERO ── */}
       <section className="careers-hero">
         <div className="careers-hero__noise" />

@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Brain, Bot, ArrowRight, Network, Database, Cpu, ShieldCheck } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import SEO from '../components/SEO'
 import NeuralPulseMatrix from '../components/3D/NeuralPulseMatrix'
 import CTASection from '../components/CTASection'
 
@@ -24,6 +25,11 @@ export default function AiSolutions() {
 
   return (
     <div className="bg-[var(--bg-base)] overflow-x-hidden min-h-screen">
+      <SEO
+        title="AI Solutions & Machine Learning | KesariX Technology"
+        description="KesariX delivers production-grade AI — LLM orchestration, predictive ML engines, and autonomous multi-agent systems. We engineer neural architectures that execute at scale."
+        path="/services/ai-solutions"
+      />
       {/* ── ADVANCED 3D BACKGROUND SYSTEM ──────────────── */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <NeuralPulseMatrix className="opacity-60" />
