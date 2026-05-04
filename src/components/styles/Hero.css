@@ -262,6 +262,7 @@
 .kx-hero__visual-placeholder {
   position: relative;
   min-height: 500px;
+  contain: layout;
 }
 
 /* â”€â”€ Responsive â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â€“ */

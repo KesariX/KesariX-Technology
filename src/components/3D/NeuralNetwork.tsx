@@ -394,7 +394,7 @@ export default function NeuralNetwork() {
       (orb3.material as THREE.Material).dispose();
       renderer.dispose();
     };
-    }, 800) // Defer init so page becomes interactive first
+    }, 1500) // Defer init so page becomes interactive first
 
     return () => {
       clearTimeout(initTimer)

@@ -314,7 +314,7 @@ const AIVisualization: React.FC<{ className?: string }> = ({ className = '' }) =
       lineGeometry.dispose()
       lineMaterial.dispose()
     }
-    }, 800)
+    }, 1500)
 
     return () => {
       clearTimeout(initTimer)

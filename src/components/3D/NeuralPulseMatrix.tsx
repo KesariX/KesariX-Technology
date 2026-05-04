@@ -271,7 +271,7 @@ const NeuralPulseMatrix: React.FC<{ className?: string }> = ({ className = '' })
         ;(p.mesh.material as THREE.Material).dispose()
       })
     }
-    }, 800)
+    }, 1500)
 
     return () => {
       clearTimeout(initTimer)
