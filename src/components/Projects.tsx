@@ -23,7 +23,7 @@ const projects: Project[] = [
   {
     id: 1,
     tag: "AI Powered Voice Call Center",
-    title: "Exotel Voice Bot Campaign Manager",
+    title: "AI Voice Campaign Engine",
     client: "Delivery Club (Outbound Campaign)",
     description:
       "Built an AI-driven outbound voice campaign system using Exotel, handling automated calls, real-time conversation processing, and lead qualification. Integrated speech-to-text, LLM-based intent detection, and structured data capture with campaign tracking dashboards.",
