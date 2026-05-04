@@ -1,8 +1,9 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import webfontDownload from 'vite-plugin-webfont-dl'
 
 export default defineConfig(() => ({
-  plugins: [react()],
+  plugins: [react(), webfontDownload()],
   server: {
     port: 5173,
     open: true,
@@ -47,7 +48,7 @@ export default defineConfig(() => ({
       },
     },
     cssCodeSplit: true,
-    sourcemap: 'hidden',
+    sourcemap: 'true',
     chunkSizeWarningLimit: 1000,
   },
 }))
