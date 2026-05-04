@@ -146,7 +146,7 @@ export default function Process() {
               className="gradient-text"
               style={{ display: 'inline-block' }}
               initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, ease: 'easeOut', delay: 0.25 }}
             >
