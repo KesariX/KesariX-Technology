@@ -48,7 +48,7 @@ export default defineConfig(() => ({
       },
     },
     cssCodeSplit: true,
-    sourcemap: 'true',
+    sourcemap: true,
     chunkSizeWarningLimit: 1000,
   },
 }))

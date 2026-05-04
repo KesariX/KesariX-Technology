@@ -9,7 +9,7 @@ const featured = {
   category: "AI Engineering",
   date: "Apr 22, 2026",
   author: "Ronak Parmar",
-  image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1200&auto=format&fit=crop"
+  image: "/assets/img_2.jpg"
 }
 
 const articles = [
@@ -19,7 +19,7 @@ const articles = [
     category: "Strategy",
     date: "Apr 22, 2026",
     author: "Sarthak Singh",
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop"
+    image: "/assets/img_3.jpg"
   },
   {
     title: "Why Deterministic AI is Winning the Enterprise Market",
@@ -27,7 +27,7 @@ const articles = [
     category: "Strategy",
     date: "Apr 20, 2026",
     author: "Sarthak Singh",
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop"
+    image: "/assets/img_4.jpg"
   },
   {
     title: "Design Systems for High-Density AI Interfaces",
@@ -35,7 +35,7 @@ const articles = [
     category: "Web Dev",
     date: "Apr 21, 2026",
     author: "Harsh Prajapati",
-    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=800&auto=format&fit=crop"
+    image: "/assets/img_5.jpg"
   },
   {
     title: "RAG is Dead. Long Live Hybrid Semantic Reasoning.",
@@ -43,7 +43,7 @@ const articles = [
     category: "AI Engineering",
     date: "Apr 21, 2026",
     author: "Ronak Parmar",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop"
+    image: "/assets/img_6.jpg"
   },
   {
     title: "The True ROI of Automating Operational Bottlenecks",
@@ -51,7 +51,7 @@ const articles = [
     category: "Strategy",
     date: "Apr 22, 2026",
     author: "Govind Mishra",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop"
+    image: "/assets/img_7.jpg"
   },
   {
     title: "Navigating the 2026 AI Compliance Landscape",
@@ -59,7 +59,7 @@ const articles = [
     category: "Cybersecurity",
     date: "Apr 21, 2026",
     author: "Prince Yadav",
-    image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=800&auto=format&fit=crop"
+    image: "/assets/img_8.jpg"
   },
   {
     title: "Positioning Complex AI Products for Enterprise Buyers",
@@ -67,7 +67,7 @@ const articles = [
     category: "Strategy",
     date: "Apr 22, 2026",
     author: "Jay Padhiyar",
-    image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=800&auto=format&fit=crop"
+    image: "/assets/img_9.jpg"
   },
   {
     title: "Scaling Product Vision in a Rapidly Evolving AI Landscape",
@@ -75,7 +75,7 @@ const articles = [
     category: "Strategy",
     date: "Apr 18, 2026",
     author: "Sarthak Singh",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop"
+    image: "/assets/img_10.jpg"
   },
   {
     title: "Optimizing Inference Latency in Custom LLM Deployments",
@@ -83,7 +83,7 @@ const articles = [
     category: "Infrastructure",
     date: "Apr 19, 2026",
     author: "Ronak Parmar",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop"
+    image: "/assets/img_11.jpg"
   },
   {
     title: "Moving to React 19: Performance Gains for Enterprise Dashboards",
@@ -91,7 +91,7 @@ const articles = [
     category: "Web Dev",
     date: "Apr 19, 2026",
     author: "Harsh Prajapati",
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop"
+    image: "/assets/img_12.jpg"
   },
   {
     title: "FinOps for Cloud AI: Keeping Inference Costs Predictable",
@@ -99,7 +99,7 @@ const articles = [
     category: "Infrastructure",
     date: "Apr 18, 2026",
     author: "Govind Mishra",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop"
+    image: "/assets/img_13.jpg"
   },
   {
     title: "Growth Hacking in B2B Tech: When to Use AI Outreach",
@@ -107,7 +107,7 @@ const articles = [
     category: "Strategy",
     date: "Apr 19, 2026",
     author: "Prince Yadav",
-    image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?q=80&w=800&auto=format&fit=crop"
+    image: "/assets/img_14.jpg"
   },
   {
     title: "Marketing Automation vs Human Touch: Finding the Balance",
@@ -115,7 +115,7 @@ const articles = [
     category: "Strategy",
     date: "Apr 20, 2026",
     author: "Jay Padhiyar",
-    image: "https://images.unsplash.com/photo-1533750516457-a7f992034fec?q=80&w=800&auto=format&fit=crop"
+    image: "/assets/img_15.jpg"
   },
   {
     title: "Building Defensible Moats with Proprietary Data",
@@ -123,7 +123,7 @@ const articles = [
     category: "Strategy",
     date: "Apr 15, 2026",
     author: "Sarthak Singh",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop"
+    image: "/assets/img_16.jpg"
   },
   {
     title: "From Jupyter Notebooks to Kubernetes: Real-world MLOps",
@@ -131,7 +131,7 @@ const articles = [
     category: "AI Engineering",
     date: "Apr 16, 2026",
     author: "Ronak Parmar",
-    image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=800&auto=format&fit=crop"
+    image: "/assets/img_17.jpg"
   },
   {
     title: "Micro-interactions that Build Trust in Autonomous Agents",
@@ -139,7 +139,7 @@ const articles = [
     category: "Web Dev",
     date: "Apr 16, 2026",
     author: "Harsh Prajapati",
-    image: "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?q=80&w=800&auto=format&fit=crop"
+    image: "/assets/img_18.jpg"
   },
   {
     title: "Evaluating SaaS vs Custom Build: A CFO's Perspective",
@@ -147,7 +147,7 @@ const articles = [
     category: "Strategy",
     date: "Apr 16, 2026",
     author: "Govind Mishra",
-    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=800&auto=format&fit=crop"
+    image: "/assets/img_19.jpg"
   },
   {
     title: "Data Privacy in the Era of LLMs: A Legal Checklist",
@@ -155,7 +155,7 @@ const articles = [
     category: "Cybersecurity",
     date: "Apr 15, 2026",
     author: "Prince Yadav",
-    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop"
+    image: "/assets/img_20.jpg"
   },
   {
     title: "Brand Moats: Why Technical Excellence Isn't Enough",
@@ -163,7 +163,7 @@ const articles = [
     category: "Strategy",
     date: "Apr 17, 2026",
     author: "Jay Padhiyar",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop"
+    image: "/assets/img_21.jpg"
   },
   {
     title: "Zero-Trust Security in the Age of AI Co-Pilots",
@@ -171,7 +171,7 @@ const articles = [
     category: "Cybersecurity",
     date: "Apr 15, 2026",
     author: "Ronak Parmar",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=800&auto=format&fit=crop"
+    image: "/assets/img_22.jpg"
   }
 ]
 

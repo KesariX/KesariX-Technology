@@ -12,7 +12,7 @@ const projects = [
     industry: "AI Automation",
     desc: "Built an AI-powered voice calling system using Exotel that can handle inbound/outbound calls, understand user intent, and respond in real-time using LLMs. Integrated WebSocket streaming, custom workflows, and automated call handling.",
     image:
-      "https://images.unsplash.com/photo-1581090700227-1e8a94d7b4cf?q=80&w=2000&auto=format&fit=crop",
+      "/assets/img_23.jpg",
     metrics: [
       { val: "500+", lbl: "Calls / Day" },
       { val: "<1s", lbl: "Response Time" },
@@ -24,7 +24,7 @@ const projects = [
     industry: "Web Development",
     desc: "Designed and developed a high-conversion website for a mechanical service provider. Includes service listings, lead capture, SEO optimization, and fast-loading UI for better customer acquisition.",
     image:
-      "https://images.unsplash.com/photo-1581092160607-ee22731b8f7c?q=80&w=2000&auto=format&fit=crop",
+      "/assets/img_24.jpg",
     metrics: [
       { val: "+3x", lbl: "Lead Increase" },
       { val: "95+", lbl: "Lighthouse Score" },
@@ -36,7 +36,7 @@ const projects = [
     industry: "E-Commerce",
     desc: "A completely custom headless commerce architecture using Next.js and Shopify Plus. Achieved perfect Lighthouse 100 scores across all metrics, resulting in a 310% organic traffic increase within 6 months.",
     image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2000&auto=format&fit=crop",
+      "/assets/img_25.jpg",
     metrics: [
       { val: "+310%", lbl: "Organic Traffic" },
       { val: "380ms", lbl: "Page Load" },

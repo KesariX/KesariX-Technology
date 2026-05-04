@@ -1,7 +1,8 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import webfontDownload from 'vite-plugin-webfont-dl';
 export default defineConfig(function () { return ({
-    plugins: [react()],
+    plugins: [react(), webfontDownload()],
     server: {
         port: 5173,
         open: true,
@@ -13,37 +14,37 @@ export default defineConfig(function () { return ({
         rollupOptions: {
             output: {
                 manualChunks: function (id) {
-                    // Vendor chunks
-                    if (id.includes('node_modules/react')) {
-                        return 'vendor-react';
-                    }
-                    if (id.includes('node_modules/framer-motion')) {
+                    // Normalize to forward slashes for cross-platform matching
+                    var nid = id.replace(/\\/g, '/');
+                    // Three.js — rolldown deduplicates this automatically into page-aiagents
+                    // NeuralNetwork is lazy-loaded from Hero so Three.js doesn't block initial render
+                    // Framer Motion in its own chunk
+                    if (nid.includes('node_modules/framer-motion')) {
                         return 'vendor-framer';
                     }
-                    if (id.includes('node_modules/three')) {
-                        return 'vendor-three';
-                    }
-                    // React-dependent libraries (must be with React)
-                    if (id.includes('node_modules/lucide-react') || id.includes('node_modules/react-router')) {
+                    // React core + router + lucide in shared vendor chunk
+                    if (nid.includes('node_modules/react/') ||
+                        nid.includes('node_modules/react-dom/') ||
+                        nid.includes('node_modules/react-router') ||
+                        nid.includes('node_modules/lucide-react') ||
+                        nid.includes('node_modules/react-helmet')) {
                         return 'vendor-react';
                     }
-                    if (id.includes('node_modules')) {
+                    // Remaining node_modules
+                    if (nid.includes('node_modules')) {
                         return 'vendor-other';
                     }
-                    // Route chunks
-                    if (id.includes('src/pages/')) {
-                        var match = id.match(/src\/pages\/([A-Za-z]+)\.tsx/);
+                    // Route chunks — each page gets its own bundle
+                    if (nid.includes('src/pages/')) {
+                        var match = nid.match(/src\/pages\/([A-Za-z]+)\.tsx/);
                         return match ? "page-".concat(match[1].toLowerCase()) : 'pages';
                     }
-                    // Component chunks
-                    if (id.includes('src/components/')) {
-                        return 'components';
-                    }
+                    // 3D components travel with the pages that use them (no forced merge)
                 },
             },
         },
         cssCodeSplit: true,
-        sourcemap: 'hidden',
+        sourcemap: true,
         chunkSizeWarningLimit: 1000,
     },
 }); });
