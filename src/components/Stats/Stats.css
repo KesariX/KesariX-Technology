@@ -13,13 +13,15 @@
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 5%;
+  width: 100%;
 }
 
 @media (min-width: 992px) {
   .stats__inner {
     flex-direction: row;
     gap: 8rem;
-    align-items: center;
+    align-items: flex-start;
+    flex-wrap: nowrap;
   }
 }
 
@@ -89,9 +91,22 @@
 
 .stats__grid {
   flex: 1.5;
+  min-width: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: 1fr;
   gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .stats__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .stats__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .stats__card {

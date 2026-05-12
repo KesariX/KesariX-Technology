@@ -12,6 +12,7 @@ const SERVICES = [
     type: 'AI Solutions',
     desc: 'Custom LLMs, RAG systems, and production-grade intelligence layers aligned to your business data and workflows.',
     tags: ['RAG Systems', 'Fine-tuned Models', 'Inference Ops'],
+    link: '/service/neural-architecture',
   },
   {
     num: '02',
@@ -19,6 +20,7 @@ const SERVICES = [
     type: 'Web Engineering',
     desc: 'High-performance React and Node platforms designed for speed, conversion, and enterprise-level scalability.',
     tags: ['React + TypeScript', 'Scalable APIs', 'Core Web Vitals'],
+    link: '/service/product-engineering',
   },
   {
     num: '03',
@@ -26,6 +28,7 @@ const SERVICES = [
     type: 'IT Infrastructure',
     desc: 'Managed cloud, security hardening, and dependable DevOps pipelines to keep your systems resilient at scale.',
     tags: ['Cloud Ops', 'Cybersecurity', 'CI/CD Automation'],
+    link: '/service/cloud-backbone',
   },
   {
     num: '04',
@@ -33,6 +36,7 @@ const SERVICES = [
     type: 'Autonomous Agents',
     desc: 'Multi-agent orchestration engines for autonomous execution, decision loops, and reliable handoff to human teams.',
     tags: ['Agent Memory', 'Tool Calling', 'Human-in-the-Loop'],
+    link: '/service/agentic-systems',
   },
   {
     num: '05',
@@ -40,6 +44,7 @@ const SERVICES = [
     type: 'Process Automation',
     desc: 'Operational pipelines that remove repetitive manual work and synchronize your tools into one reliable flow.',
     tags: ['No-code Integrations', 'API Workflows', 'Ops Optimization'],
+    link: '/service/workflow-engines',
   },
 ]
 
@@ -116,7 +121,7 @@ export default function Capabilities() {
               </div>
             </div>
             <div className="cap__right">
-              <a className="cap__link" href="#contact">
+              <a className="cap__link" href={s.link}>
                 Explore service
                 <span className="cap__arrow">↗</span>
               </a>

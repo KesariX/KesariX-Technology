@@ -12,8 +12,20 @@ const CHECKLIST = [
   'Built to scale from day one',
 ]
 
-const FOOTER_SERVICES = ['AI Solutions', 'Web Development', 'IT Services', 'AI Agents', 'Process Automation']
-const FOOTER_COMPANY  = ['About Us', 'Our Work', 'Blog', 'Careers', 'Hiring']
+const FOOTER_SERVICES = [
+  { name: 'AI Solutions', link: '/service/neural-architecture' },
+  { name: 'Web Development', link: '/service/product-engineering' },
+  { name: 'IT Services', link: '/service/cloud-backbone' },
+  { name: 'AI Agents', link: '/service/agentic-systems' },
+  { name: 'Process Automation', link: '/service/workflow-engines' },
+]
+const FOOTER_COMPANY = [
+  { name: 'About KesariX', link: '/about' },
+  { name: 'Our Work', link: '/work' },
+  { name: 'Blog', link: '/blog' },
+  { name: 'Careers', link: '/careers' },
+  { name: 'Contact', link: '/contact' },
+]
 
 export default function Contact() {
   const sectionRef = useRef(null)
@@ -131,13 +143,13 @@ export default function Contact() {
             <div className="footer__col">
               <div className="footer__col-head">Services</div>
               {FOOTER_SERVICES.map((s) => (
-                <a className="footer__col-link" href="#services" key={s}>{s}</a>
+                <a className="footer__col-link" href={s.link} key={s.name}>{s.name}</a>
               ))}
             </div>
             <div className="footer__col">
               <div className="footer__col-head">Company</div>
               {FOOTER_COMPANY.map((s) => (
-                <a className="footer__col-link" href="#" key={s}>{s}</a>
+                <a className="footer__col-link" href={s.link} key={s.name}>{s.name}</a>
               ))}
             </div>
             <div className="footer__col">

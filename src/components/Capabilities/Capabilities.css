@@ -111,7 +111,7 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
+  cursor: default;
 }
 
 @media (min-width: 768px) {

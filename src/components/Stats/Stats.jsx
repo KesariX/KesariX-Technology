@@ -28,10 +28,13 @@ export default function Stats() {
           onUpdate: () => { el.textContent = Math.round(obj.v) },
         })
       })
-      gsap.from('.stats__card', {
-        opacity: 0, y: 60, scale: 0.95, duration: 0.8, ease: 'power3.out', stagger: 0.1,
-        scrollTrigger: { trigger: '.stats__grid', start: 'top 82%' },
-      })
+      gsap.fromTo('.stats__card', 
+        { opacity: 0, y: 60, scale: 0.95 },
+        {
+          opacity: 1, y: 0, scale: 1, duration: 0.8, ease: 'power3.out', stagger: 0.1,
+          scrollTrigger: { trigger: '.stats__grid', start: 'top 82%' },
+        }
+      )
     }, sectionRef)
     return () => ctx.revert()
   }, [])

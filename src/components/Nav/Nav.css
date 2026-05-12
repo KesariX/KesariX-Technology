@@ -49,12 +49,31 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
-.nav__menu a {
+
+.nav__item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav__menu a,
+.nav__link-btn {
   color: inherit;
   position: relative;
   padding-bottom: 4px;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
-.nav__menu a::after {
+.nav__menu a::after,
+.nav__link-btn::after {
   content: "";
   position: absolute;
   left: 0; bottom: 0;
@@ -62,7 +81,61 @@
   background: var(--saffron);
   transition: width 0.4s cubic-bezier(.6,.2,.1,1);
 }
-.nav__menu a:hover::after { width: 100%; }
+.nav__menu a:hover::after,
+.nav__link-btn:hover::after { width: 100%; }
+
+.nav__arrow {
+  font-size: 10px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.nav__arrow--open {
+  transform: rotate(180deg);
+}
+
+.nav__submenu {
+  position: absolute;
+  top: calc(100% + 16px);
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: var(--ink-deep, #050507);
+  border: 1px solid var(--rule-bone, rgba(255, 255, 255, 0.1));
+  border-radius: 12px;
+  padding: 0.75rem 0;
+  min-width: 240px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 100;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.nav__submenu--open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.nav__submenu a {
+  padding: 0.75rem 1.5rem;
+  color: var(--bone, #efe8d8);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  letter-spacing: 0.05em;
+}
+
+.nav__submenu a::after {
+  display: none;
+}
+
+.nav__submenu a:hover {
+  color: var(--saffron, #ff5a1f);
+  background: rgba(255, 255, 255, 0.03);
+}
 
 .nav__cta {
   justify-self: end;
