@@ -1,0 +1,116 @@
+/* ========================================================
+   KESARIX TECHNOLOGY — Global tokens & base reset
+   ======================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap');
+
+:root {
+  --bone: #efe8d8;
+  --bone-2: #e6dec9;
+  --paper: #f6f1e3;
+  --ink: #0a1738;
+  --ink-2: #060d24;
+  --ink-deep: #03081a;
+  --saffron: #ff5a1f;
+  --saffron-2: #ff7a35;
+  --rule: rgba(10, 23, 56, 0.18);
+  --rule-bone: rgba(239, 232, 216, 0.18);
+
+  --f-sans: "Space Grotesk", "Helvetica Neue", system-ui, sans-serif;
+  --f-serif: "Instrument Serif", "Times New Roman", serif;
+  --f-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--bone);
+  color: var(--ink);
+  font-family: var(--f-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+
+body { cursor: none; }
+
+a { color: inherit; text-decoration: none; }
+
+section { position: relative; }
+
+::selection { background: var(--saffron); color: var(--ink-2); }
+
+/* ===== Utility: section label ===== */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.section-label::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--saffron);
+  flex-shrink: 0;
+}
+
+/* ===== Shared CTA pill ===== */
+.cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 36px 22px 28px;
+  background: var(--saffron);
+  color: var(--ink-2);
+  font-family: var(--f-sans);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 999px;
+  cursor: none;
+  text-decoration: none;
+  overflow: hidden;
+  isolation: isolate;
+}
+.cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--ink-2);
+  border-radius: inherit;
+  transform: translateY(100%);
+  transition: transform 0.5s cubic-bezier(.7,.0,.2,1);
+  z-index: -1;
+}
+.cta:hover { color: var(--bone); }
+.cta:hover::before { transform: translateY(0); }
+.cta__arrow {
+  width: 22px; height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ink-2);
+  color: var(--saffron);
+  border-radius: 50%;
+  font-size: 12px;
+  transition: transform 0.5s cubic-bezier(.7,.0,.2,1), background 0.5s, color 0.5s;
+}
+.cta:hover .cta__arrow {
+  transform: rotate(-45deg);
+  background: var(--saffron);
+  color: var(--ink-2);
+}

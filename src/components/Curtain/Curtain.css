@@ -1,0 +1,33 @@
+.curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: var(--ink-deep);
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.curtain__panel {
+  position: absolute;
+  inset: 0;
+  background: var(--saffron);
+  transform-origin: top;
+}
+
+.curtain__panel--2 {
+  background: var(--ink-deep);
+  transform-origin: bottom;
+}
+
+.curtain__num {
+  position: relative;
+  z-index: 2;
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-size: clamp(120px, 22vw, 360px);
+  color: var(--bone);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  user-select: none;
+}

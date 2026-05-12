@@ -1,0 +1,190 @@
+.process {
+  background: var(--ink-deep);
+  position: relative;
+  color: var(--bone);
+}
+
+.process__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 8rem 5%;
+}
+
+@media (min-width: 992px) {
+  .process__inner {
+    flex-direction: row;
+    gap: 8rem;
+  }
+}
+
+.process__head {
+  flex: 1;
+  max-width: 450px;
+  height: fit-content;
+  will-change: transform;
+}
+
+.process__eyebrow {
+  color: var(--saffron);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.process__eyebrow-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--saffron);
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 12px rgba(255, 90, 31, 0.6);
+}
+
+.process__title {
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  line-height: 1.05;
+  color: var(--bone);
+  margin-bottom: 2rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+/* On-theme shimmer: deep saffron → lighter saffron → warm highlight → back */
+.process__title-italic {
+  font-style: italic;
+  font-weight: 400;
+  background: linear-gradient(90deg, var(--saffron) 0%, var(--saffron-2) 25%, #ffaa70 50%, var(--saffron-2) 75%, var(--saffron) 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  padding-right: 0.1em;
+  filter: drop-shadow(0 0 24px rgba(255, 90, 31, 0.3));
+  animation: gradient-flow 8s linear infinite;
+}
+
+@keyframes gradient-flow {
+  0%   { background-position: 0% center; }
+  100% { background-position: -200% center; }
+}
+
+.process__desc {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: rgba(239, 232, 216, 0.55);
+  max-width: 90%;
+}
+
+.process__steps {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+}
+
+.process__step {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--rule-bone);
+  border-radius: 24px;
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.process__step:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 90, 31, 0.25);
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.7);
+}
+
+.process__step-glow {
+  position: absolute;
+  top: -30%;
+  right: -10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255, 90, 31, 0.12) 0%, transparent 65%);
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  opacity: 0;
+  z-index: 0;
+}
+
+.process__step:hover .process__step-glow {
+  opacity: 1;
+}
+
+.process__step-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.process__step-num {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(239, 232, 216, 0.12);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  transition: all 0.5s ease;
+}
+
+.process__step:hover .process__step-num {
+  -webkit-text-stroke: 1.5px var(--saffron);
+  color: rgba(255, 90, 31, 0.1);
+  transform: translateX(5px);
+}
+
+.process__step-phase {
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(239, 232, 216, 0.5);
+  padding: 0.5rem 1rem;
+  border-radius: 99px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: 1px solid var(--rule-bone);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.5s ease;
+}
+
+.process__step:hover .process__step-phase {
+  background: rgba(255, 90, 31, 0.1);
+  color: var(--saffron);
+  border-color: rgba(255, 90, 31, 0.25);
+}
+
+.process__step-name {
+  font-size: 1.75rem;
+  color: var(--bone);
+  margin-bottom: 1rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  position: relative;
+  z-index: 1;
+}
+
+.process__step-desc {
+  color: rgba(239, 232, 216, 0.55);
+  line-height: 1.7;
+  font-size: 1.125rem;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}

@@ -1,0 +1,50 @@
+.manifesto {
+  padding: 120px 28px 80px;
+  background: var(--bone);
+  color: var(--ink);
+  position: relative;
+  border-bottom: 1px solid var(--rule);
+}
+
+.manifesto__inner {
+  max-width: 1480px;
+  margin: 0 auto;
+}
+
+.manifesto__top {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.manifesto__meta {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.8;
+  padding-top: 6px;
+}
+
+.manifesto__sub {
+  margin-top: 20px;
+  opacity: 0.6;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  font-size: 13px;
+  line-height: 1.7;
+  max-width: 300px;
+}
+
+.manifesto__quote {
+  font-family: var(--f-serif);
+  font-size: clamp(32px, 5vw, 84px);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.manifesto__quote em {
+  font-style: italic;
+  color: var(--saffron);
+}

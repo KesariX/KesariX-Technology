@@ -1,0 +1,169 @@
+.portfolio {
+  background: var(--bone);
+  color: var(--ink);
+  padding: 140px 28px;
+}
+
+.portfolio__head {
+  max-width: 1480px;
+  margin: 0 auto 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: end;
+}
+
+.portfolio__title {
+  margin-top: 20px;
+  font-family: var(--f-sans);
+  font-weight: 500;
+  font-size: clamp(48px, 7.2vw, 128px);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+.portfolio__title em {
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-weight: 400;
+  text-transform: none;
+  color: var(--saffron);
+}
+
+.portfolio__sub {
+  font-family: var(--f-mono);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  line-height: 1.75;
+  opacity: 0.65;
+  max-width: 400px;
+  align-self: end;
+  padding-bottom: 8px;
+}
+
+/* --- card --- */
+.portfolio__card {
+  max-width: 1480px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.portfolio__card-visual {
+  position: relative;
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 32px;
+}
+
+.bg-ai-voice {
+  background: radial-gradient(130% 90% at 20% 20%,
+    #ff5a1f 0%, #c43618 28%, #2b0e08 60%, #03081a 100%);
+}
+
+.portfolio__card-num {
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-size: 80px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: rgba(239,232,216,0.12);
+  align-self: start;
+}
+
+.portfolio__card-metrics {
+  display: flex;
+  gap: 32px;
+}
+
+.portfolio__metric-value {
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-size: clamp(32px, 4vw, 56px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--bone);
+}
+
+.portfolio__metric-label {
+  margin-top: 4px;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(239,232,216,0.65);
+}
+
+.portfolio__card-body {
+  padding: 48px;
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.portfolio__card-type {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+.portfolio__card-title {
+  margin-top: 16px;
+  font-family: var(--f-sans);
+  font-weight: 500;
+  font-size: clamp(28px, 3.6vw, 52px);
+  line-height: 0.96;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+}
+
+.portfolio__card-client {
+  margin-top: 16px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+.portfolio__card-client em {
+  font-family: var(--f-serif);
+  font-style: italic;
+  color: var(--saffron);
+  text-transform: none;
+}
+
+.portfolio__card-desc {
+  margin-top: 20px;
+  font-family: var(--f-mono);
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  line-height: 1.8;
+  opacity: 0.7;
+  flex: 1;
+}
+
+.portfolio__card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.portfolio__tag {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  opacity: 0.7;
+}
