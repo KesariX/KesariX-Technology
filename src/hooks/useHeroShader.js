@@ -82,10 +82,15 @@ const FRAGMENT = `
     float fb = sampleField(uv - splitOff, vec2(0.0));
 
     vec3 c1 = mix(uColorC, uColorB, smoothstep(-0.2, 0.55, fg));
-    vec3 c2 = mix(c1, uColorA, smoothstep(0.25, 0.95, fg));
+    vec3 c2 = mix(c1, uColorA, smoothstep(0.05, 0.78, fg));
     c2 = mix(c2, uColorD, smoothstep(0.85, 1.0, fg) * 0.4);
 
     vec3 col = c2;
+
+    /* Warm amber ember — orange counterpoint to the cool blue field */
+    float wDist = length((uv - vec2(0.22, 0.18)) * vec2(0.85, 1.3));
+    float wGlow = smoothstep(0.95, 0.0, wDist);
+    col += uColorA * wGlow * 0.22;
     col.r *= 1.0 + (fr - fg) * 1.4;
     col.b *= 1.0 + (fb - fg) * 1.4;
 
