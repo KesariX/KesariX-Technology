@@ -48,3 +48,39 @@
   font-style: italic;
   color: var(--saffron);
 }
+
+/* ═══════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════ */
+@media (max-width: 768px) {
+  .manifesto {
+    padding: 72px 20px 56px;
+  }
+
+  .manifesto__top {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .manifesto__meta {
+    padding-top: 0;
+  }
+
+  .manifesto__sub {
+    max-width: 100%;
+  }
+
+  .manifesto__quote {
+    font-size: clamp(28px, 7.5vw, 48px);
+  }
+}
+
+@media (max-width: 480px) {
+  .manifesto {
+    padding: 56px 16px 44px;
+  }
+
+  .manifesto__quote {
+    font-size: clamp(24px, 7vw, 36px);
+  }
+}

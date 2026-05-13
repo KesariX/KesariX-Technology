@@ -1,101 +1,72 @@
-/* ── Curtain overlay ── */
+/* ══════════════════════════════════════════
+   Curtain — Loading Screen
+   ══════════════════════════════════════════ */
+
 .curtain {
   position: fixed;
   inset: 0;
   z-index: 9000;
-  background: var(--ink-deep);
+  background: var(--ink-deep, #03081a);
   display: flex;
   align-items: center;
   justify-content: center;
   pointer-events: none;
+  will-change: opacity;
 }
 
-/* ── Split panels (saffron flash → dark slide away) ── */
-.curtain__panel {
+/* Subtle noise texture overlay for depth */
+.curtain__noise {
   position: absolute;
   inset: 0;
-  background: var(--saffron);
-  transform-origin: top;
-  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  pointer-events: none;
+  opacity: 0.45;
 }
 
-.curtain__panel--2 {
-  background: var(--ink);
-  transform-origin: bottom;
-}
-
-/* ── Centered brand + progress ── */
+/* Centered column */
 .curtain__inner {
   position: relative;
   z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
-  width: min(560px, 88vw);
+  gap: 3.5rem;
+  width: min(460px, 82vw);
 }
 
-/* ── Brand row ── */
-.curtain__brand {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-/* ── K mark circle ── */
-.curtain__mark {
-  flex-shrink: 0;
-  width: clamp(52px, 10vw, 72px);
-  height: clamp(52px, 10vw, 72px);
-  border-radius: 50%;
-  background: var(--saffron);
+/* ── Logo ── */
+.curtain__logo-wrap {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--f-serif);
-  font-style: italic;
-  font-size: clamp(1.6rem, 4vw, 2.4rem);
-  font-weight: 700;
-  color: var(--ink-deep);
-  line-height: 1;
+  opacity: 0;
+  visibility: hidden;
+  will-change: transform, opacity;
+}
+
+.curtain__logo {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  display: block;
   user-select: none;
-}
-
-/* ── Brand text stack ── */
-.curtain__brand-text {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
-.curtain__brand-name {
-  font-family: var(--f-serif);
-  font-style: italic;
-  font-size: clamp(2.4rem, 8vw, 5rem);
-  font-weight: 400;
-  color: var(--bone);
-  line-height: 1;
-  letter-spacing: -0.02em;
-  opacity: 0;
-  visibility: hidden;
-}
-
-.curtain__sub {
-  font-family: var(--f-mono);
-  font-size: clamp(0.55rem, 1.4vw, 0.78rem);
-  text-transform: uppercase;
-  letter-spacing: 0.32em;
-  color: var(--saffron);
-  font-weight: 600;
-  opacity: 0;
-  visibility: hidden;
+  pointer-events: none;
+  /*
+    mix-blend-mode: screen makes any dark areas of the logo blend into
+    the dark background, effectively removing the background and leaving
+    only the lighter / coloured parts of the mark visible.
+  */
+  mix-blend-mode: screen;
+  filter: brightness(1.15) contrast(1.05);
 }
 
 /* ── Progress row ── */
 .curtain__progress-wrap {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.1rem;
   width: 100%;
   opacity: 0;
   visibility: hidden;
@@ -104,27 +75,49 @@
 .curtain__bar-track {
   flex: 1;
   height: 1px;
-  background: rgba(239, 232, 216, 0.15);
+  background: rgba(239, 232, 216, 0.12);
   overflow: hidden;
-  position: relative;
   border-radius: 999px;
+  position: relative;
 }
 
 .curtain__bar-fill {
   position: absolute;
   inset: 0;
-  background: var(--saffron);
+  background: linear-gradient(90deg, rgba(255,90,31,0.7) 0%, var(--saffron, #ff5a1f) 100%);
   transform: scaleX(0);
   transform-origin: left;
   border-radius: 999px;
+  transition: none;
 }
 
 .curtain__num {
-  font-family: var(--f-mono);
-  font-size: clamp(0.65rem, 1.4vw, 0.82rem);
-  color: rgba(239, 232, 216, 0.45);
-  min-width: 2.2rem;
+  font-family: var(--f-mono, 'JetBrains Mono', monospace);
+  font-size: 0.72rem;
+  color: rgba(239, 232, 216, 0.35);
+  min-width: 2.4rem;
   text-align: right;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   user-select: none;
+}
+
+/* ── Glow behind logo ── */
+.curtain__logo-wrap::before {
+  content: '';
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle, rgba(255,90,31,0.1) 0%, transparent 65%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@media (max-width: 480px) {
+  .curtain__logo {
+    max-width: 240px;
+  }
+  .curtain__inner {
+    gap: 2.5rem;
+  }
 }

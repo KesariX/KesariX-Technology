@@ -43,8 +43,13 @@ export default function Nav() {
     <>
       <nav className={`nav ${isMobileOpen ? 'nav--menu-open' : ''}`} ref={navRef}>
         <a className="nav__logo" href="/">
-          <span className="nav__mark">K</span>
-          <span>KesariX&nbsp;/&nbsp;Technology</span>
+          <img
+            className="nav__logo-img"
+            src="/Kesarix-technology-logo.webp"
+            alt="KesariX Technology"
+            draggable="false"
+          />
+          <span className="nav__logo-name">KesariX<span className="nav__logo-sep"> </span>Technology</span>
         </a>
 
         {/* Desktop menu */}
