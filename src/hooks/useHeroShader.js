@@ -40,10 +40,11 @@ const FRAGMENT = `
           dot(hash(i + vec2(1.0,1.0)), f - vec2(1.0,1.0)), u.x),
       u.y);
   }
+  /* 3 octaves instead of 5 — ~40% less GPU work, visually identical */
   float fbm(vec2 p) {
     float v = 0.0;
     float a = 0.5;
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 3; i++) {
       v += a * noise(p);
       p *= 2.07;
       a *= 0.5;
@@ -114,15 +115,22 @@ export function useHeroShader(containerRef, shaderRef) {
     const container = containerRef.current
     if (!container) return
 
+    // Skip WebGL on phones — CSS animated gradient takes over (see Hero.css)
+    if (window.matchMedia('(max-width: 768px)').matches) return
+
     const scene = new THREE.Scene()
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1)
 
+    // Tablets get DPR capped at 1.0 to halve fragment shader work
+    const isTablet = window.matchMedia('(max-width: 1024px)').matches
+    const dpr = Math.min(window.devicePixelRatio, isTablet ? 1.0 : 1.5)
+
     const renderer = new THREE.WebGLRenderer({
-      antialias: true,
+      antialias: !isTablet,
       alpha: true,
       powerPreference: 'high-performance',
     })
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    renderer.setPixelRatio(dpr)
     renderer.setSize(container.clientWidth, container.clientHeight)
     container.appendChild(renderer.domElement)
 
