@@ -24,12 +24,11 @@ export default defineConfig({
 
     rollupOptions: {
       output: {
-        // Explicit file name patterns keep Vite 8/rolldown in rollup-compatible
-        // output mode (needed to emit the main entry bundle) without triggering
-        // the empty-vendor-stub bug that manualChunks causes in rolldown.
-        chunkFileNames:  'assets/[name]-[hash].js',
-        entryFileNames:  'assets/[name]-[hash].js',
-        assetFileNames:  'assets/[name]-[hash].[ext]',
+        // A no-op manualChunks function keeps Vite 8/rolldown in
+        // rollup-compatible output mode (required to emit the main entry
+        // bundle) without returning any chunk names, so no empty vendor
+        // stub files are created and there are no broken imports.
+        manualChunks: () => undefined,
       },
     },
 
