@@ -13,12 +13,66 @@
   --ink-deep: #03081a;
   --saffron: #ff5a1f;
   --saffron-2: #ff7a35;
+  --blue: #3b82f6;
+  --blue-2: #60a5fa;
+  --blue-dark: #1d4ed8;
   --rule: rgba(10, 23, 56, 0.18);
   --rule-bone: rgba(239, 232, 216, 0.18);
 
   --f-sans: "Space Grotesk", "Helvetica Neue", system-ui, sans-serif;
   --f-serif: "Instrument Serif", "Times New Roman", serif;
   --f-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+/* ===== LIGHT THEME ===== */
+[data-theme="light"] {
+  --bone: #0d1b3e;
+  --bone-2: #1e3560;
+  --paper: #ffffff;
+  --ink: #f0f5ff;
+  --ink-2: #e8eeff;
+  --ink-deep: #dce7ff;
+  --saffron: #ea580c;
+  --saffron-2: #f97316;
+  --rule: rgba(13, 27, 62, 0.1);
+  --rule-bone: rgba(13, 27, 62, 0.12);
+}
+
+[data-theme="light"] body {
+  background: #fafbff;
+  color: #0d1b3e;
+}
+
+/* Keep hero always dark */
+[data-theme="light"] .hero {
+  background-color: #050507 !important;
+}
+
+/* Light-mode nav override (turns off blend mode) */
+[data-theme="light"] .nav {
+  mix-blend-mode: normal;
+  background: rgba(250, 251, 255, 0.92);
+  border-bottom: 1px solid rgba(13, 27, 62, 0.07);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: #0d1b3e;
+}
+
+[data-theme="light"] .nav__submenu {
+  background: #ffffff;
+  border-color: rgba(13, 27, 62, 0.1);
+}
+[data-theme="light"] .nav__submenu a {
+  color: #0d1b3e;
+}
+[data-theme="light"] .nav__submenu a:hover {
+  color: var(--saffron);
+  background: rgba(234, 88, 12, 0.04);
+}
+
+[data-theme="light"] ::selection {
+  background: var(--saffron);
+  color: #ffffff;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }

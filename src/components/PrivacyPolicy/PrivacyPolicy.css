@@ -1,0 +1,2 @@
+/* Legal pages share a common CSS file — imported by all three */
+@import url('../Terms/Terms.css');

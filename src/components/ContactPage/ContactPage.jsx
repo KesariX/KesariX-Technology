@@ -256,12 +256,16 @@ export default function ContactPage() {
 
               {/* Social links */}
               <div className="cp-social-row">
-                <a className="cp-social-link" href="#" aria-label="LinkedIn">
-                  LinkedIn
+                <a className="cp-social-link" href="https://www.linkedin.com/company/kesarix-technology" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                  LinkedIn ↗
                 </a>
                 <span className="cp-social-sep" aria-hidden="true">·</span>
-                <a className="cp-social-link" href="#" aria-label="Twitter / X">
-                  Twitter / X
+                <a className="cp-social-link" href="https://twitter.com/kesarixtechnology" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X">
+                  Twitter / X ↗
+                </a>
+                <span className="cp-social-sep" aria-hidden="true">·</span>
+                <a className="cp-social-link" href="https://wa.me/919274739361" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                  WhatsApp ↗
                 </a>
               </div>
 

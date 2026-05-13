@@ -22,6 +22,7 @@ const FOOTER_SERVICES = [
 const FOOTER_COMPANY = [
   { name: 'About KesariX', link: '/about' },
   { name: 'Our Work', link: '/work' },
+  { name: 'Pricing', link: '/pricing' },
   { name: 'Blog', link: '/blog' },
   { name: 'Careers', link: '/careers' },
   { name: 'Contact', link: '/contact' },
@@ -163,9 +164,9 @@ export default function Contact() {
         <div className="footer__bottom">
           <span>© 2026 KesariX Technology. All rights reserved.</span>
           <div className="footer__legal">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-            <a href="#">Cookie Policy</a>
+            <a href="/privacy-policy">Privacy Policy</a>
+            <a href="/terms">Terms of Service</a>
+            <a href="/cookie-policy">Cookie Policy</a>
           </div>
         </div>
       </footer>
