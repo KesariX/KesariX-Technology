@@ -24,21 +24,12 @@ export default defineConfig({
 
     rollupOptions: {
       output: {
-        // manualChunks presence keeps Vite 8/rolldown in rollup-compatible mode,
-        // which correctly generates the main entry bundle. Rolldown currently
-        // ignores the function body and produces empty vendor stubs, but the
-        // main index bundle is properly emitted — which is what matters.
-        manualChunks(id) {
-          if (id.includes('node_modules/three'))         return 'vendor-three'
-          if (id.includes('node_modules/gsap'))          return 'vendor-gsap'
-          if (id.includes('node_modules/framer-motion')) return 'vendor-framer'
-          if (id.includes('node_modules/lenis'))         return 'vendor-lenis'
-          if (
-            id.includes('node_modules/react/') ||
-            id.includes('node_modules/react-dom/') ||
-            id.includes('node_modules/react-router-dom/')
-          ) return 'vendor-react'
-        },
+        // Explicit file name patterns keep Vite 8/rolldown in rollup-compatible
+        // output mode (needed to emit the main entry bundle) without triggering
+        // the empty-vendor-stub bug that manualChunks causes in rolldown.
+        chunkFileNames:  'assets/[name]-[hash].js',
+        entryFileNames:  'assets/[name]-[hash].js',
+        assetFileNames:  'assets/[name]-[hash].[ext]',
       },
     },
 
