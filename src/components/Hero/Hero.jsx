@@ -1,15 +1,9 @@
 import { useRef, useLayoutEffect } from 'react'
 import gsap from 'gsap'
-import { useHeroShader } from '../../hooks/useHeroShader'
-import { useShader } from '../../context/ShaderContext'
 import './Hero.css'
 
 export default function Hero() {
   const sectionRef = useRef(null)
-  const canvasRef = useRef(null)
-  const shaderRef = useShader()
-
-  useHeroShader(canvasRef, shaderRef)
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -59,8 +53,7 @@ export default function Hero() {
     return () => ctx.revert()
   }, [])
 
-  // Throttle to one CSS variable update per animation frame.
-  // Prevents getBoundingClientRect + style thrash on every mousemove event.
+  // Throttle mouse tracking to one rAF per frame
   const mousePending = useRef(false)
   const mouseXY = useRef({ x: 0, y: 0 })
   const handleMouseMove = (e) => {
@@ -77,67 +70,27 @@ export default function Hero() {
     })
   }
 
+  const handleMouseEnter = () => sectionRef.current?.classList.add('is-hovered')
+  const handleMouseLeave = () => sectionRef.current?.classList.remove('is-hovered')
+
   return (
-    <section 
-      className="hero" 
-      id="top" 
-      ref={sectionRef} 
+    <section
+      className="hero"
+      id="top"
+      ref={sectionRef}
       onMouseMove={handleMouseMove}
-      style={{ 
-        backgroundColor: '#050507',
-        position: 'relative',
-        overflow: 'hidden'
-      }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
-      {/* Interactive Cursor Glow */}
-      <div 
-        style={{
-          position: 'absolute',
-          left: 'var(--mouse-x, 50%)',
-          top: 'var(--mouse-y, 50%)',
-          width: '1000px',
-          height: '1000px',
-          background: 'radial-gradient(circle, rgba(251, 146, 60, 0.35) 0%, rgba(52, 211, 153, 0.2) 40%, transparent 70%)',
-          transform: 'translate(-50%, -50%)',
-          pointerEvents: 'none',
-          zIndex: 0,
-          mixBlendMode: 'screen',
-          transition: 'opacity 0.3s ease'
-        }} 
-      />
+      {/* Cursor-following spotlight — visible only while hovering */}
+      <div className="hero__spotlight" />
 
-      {/* Static Ambient Glow: Top Right */}
-      <div 
-        style={{
-          position: 'absolute',
-          top: '-20%',
-          right: '-10%',
-          width: '800px',
-          height: '800px',
-          background: 'radial-gradient(circle, rgba(234, 88, 12, 0.25) 0%, transparent 60%)',
-          pointerEvents: 'none',
-          zIndex: 0,
-          mixBlendMode: 'screen',
-        }} 
-      />
+      {/* Static ambient glows */}
+      <div className="hero__ambient hero__ambient--tr" />
+      <div className="hero__ambient hero__ambient--bl" />
 
-      {/* Static Ambient Glow: Bottom Left */}
-      <div 
-        style={{
-          position: 'absolute',
-          bottom: '-20%',
-          left: '-10%',
-          width: '800px',
-          height: '800px',
-          background: 'radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, transparent 60%)',
-          pointerEvents: 'none',
-          zIndex: 0,
-          mixBlendMode: 'screen',
-        }} 
-      />
-
-      {/* WebGL canvas */}
-      <div className="hero__canvas" ref={canvasRef} />
+      {/* CSS animated gradient background */}
+      <div className="hero__canvas" />
       {/* Film grain */}
       <div className="hero__grain" />
       {/* Readability gradients */}

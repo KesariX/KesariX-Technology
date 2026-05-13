@@ -14,16 +14,80 @@
   overflow: hidden;
 }
 
-/* --- Canvas & overlays --- */
+/* --- Cursor spotlight hover effect --- */
+.hero__spotlight {
+  position: absolute;
+  left: var(--mouse-x, 50%);
+  top: var(--mouse-y, 50%);
+  width: 560px;
+  height: 560px;
+  background: radial-gradient(circle,
+    rgba(255, 90, 31, 0.22) 0%,
+    rgba(255, 90, 31, 0.08) 40%,
+    transparent 68%
+  );
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 2;
+  mix-blend-mode: screen;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  will-change: left, top;
+}
+.hero.is-hovered .hero__spotlight {
+  opacity: 1;
+}
+
+/* --- Static ambient corner glows --- */
+.hero__ambient {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: screen;
+}
+.hero__ambient--tr {
+  top: -20%;
+  right: -10%;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(255, 90, 31, 0.18) 0%, transparent 60%);
+}
+.hero__ambient--bl {
+  bottom: -20%;
+  left: -10%;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(29, 78, 216, 0.2) 0%, transparent 60%);
+}
+
+/* --- CSS gradient background (replaces WebGL shader) --- */
 .hero__canvas {
   position: absolute;
   inset: 0;
   z-index: 0;
+  background: linear-gradient(
+    135deg,
+    #06091a 0%,
+    #0d1f4a 30%,
+    #1a0a2e 60%,
+    #06091a 100%
+  );
+  background-size: 300% 300%;
+  animation: heroGradientShift 10s ease infinite;
 }
-.hero__canvas canvas {
-  display: block;
-  width: 100% !important;
-  height: 100% !important;
+@keyframes heroGradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.hero__canvas::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 20% 15%, rgba(255, 90, 31, 0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 85%, rgba(31, 58, 138, 0.22) 0%, transparent 60%);
+  pointer-events: none;
 }
 
 .hero__grain {
@@ -414,39 +478,6 @@
 }
 
 
-/* ===================================================================
-   MOBILE SHADER FALLBACK  ≤ 768px
-   Three.js is skipped on phones; this CSS gradient replaces it.
-   =================================================================== */
-@media (max-width: 768px) {
-  .hero__canvas {
-    background: linear-gradient(
-      135deg,
-      #06091a 0%,
-      #0d1f4a 30%,
-      #1a0a2e 60%,
-      #06091a 100%
-    );
-    background-size: 300% 300%;
-    animation: heroGradientShift 10s ease infinite;
-  }
-  @keyframes heroGradientShift {
-    0%   { background-position: 0% 50%; }
-    50%  { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
-  /* Warm ember glow — mirrors the shader's amber accent */
-  .hero__canvas::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 70% 50% at 20% 15%, rgba(255, 90, 31, 0.18) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 40% at 80% 85%, rgba(31, 58, 138, 0.22) 0%, transparent 60%);
-    pointer-events: none;
-  }
-}
 
 /* ===================================================================
    MOBILE  ≤ 640px

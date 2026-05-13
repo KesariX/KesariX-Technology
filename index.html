@@ -5,6 +5,21 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!--
+      Font strategy:
+      1. preconnect opens the TCP connection to Google Fonts before CSS is parsed
+      2. <link rel="stylesheet"> is non-render-blocking (unlike @import in CSS)
+      3. display=swap keeps text visible during font download (prevents invisible text)
+      Weights trimmed: removed 300 (unused), kept 400/500/600/700 for Space Grotesk
+      and 400/500 for JetBrains Mono to cut ~40 KB from font payload.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+
     <!-- Primary SEO -->
     <title>KesariX Technology — AI Solutions, Web &amp; Mobile Development | Surat, India</title>
     <meta name="description" content="KesariX Technology builds AI agents, enterprise web platforms, mobile apps &amp; intelligent automation. 50+ projects shipped. 98% client satisfaction. Based in Surat, India. Get a free discovery call." />
@@ -82,6 +97,18 @@
     </script>
   </head>
   <body>
+    <!--
+      Inline critical style prevents FOUC (flash of unstyled content) and gives
+      Lighthouse a painted background before any JS loads.
+    -->
+    <style>
+      #root { min-height: 100vh; }
+      .page-loader {
+        min-height: 100vh;
+        background: #03081a;
+        width: 100%;
+      }
+    </style>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

@@ -2,7 +2,7 @@
    KESARIX TECHNOLOGY — Global tokens & base reset
    ======================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap');
+/* Fonts are loaded via <link> in index.html to avoid render-blocking @import */
 
 :root {
   --bone: #efe8d8;

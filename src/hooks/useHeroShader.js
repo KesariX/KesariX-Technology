@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
-import * as THREE from 'three'
+// THREE is dynamically imported inside the hook so mobile browsers never
+// download the ~600 KB three.js chunk (the CSS gradient fallback runs instead).
 
 const VERTEX = `
   varying vec2 vUv;
@@ -115,120 +116,132 @@ export function useHeroShader(containerRef, shaderRef) {
     const container = containerRef.current
     if (!container) return
 
-    // Skip WebGL on phones — CSS animated gradient takes over (see Hero.css)
+    // Skip WebGL on phones — CSS animated gradient takes over (see Hero.css).
+    // Returning early here also means the dynamic import below never runs,
+    // so mobile browsers never download the three.js chunk (~600 KB saved).
     if (window.matchMedia('(max-width: 768px)').matches) return
 
-    const scene = new THREE.Scene()
-    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1)
+    let mounted = true
+    // Outer cleanup ref — filled once the async import resolves
+    let innerCleanup = () => {}
 
-    // Tablets get DPR capped at 1.0 to halve fragment shader work
-    const isTablet = window.matchMedia('(max-width: 1024px)').matches
-    const dpr = Math.min(window.devicePixelRatio, isTablet ? 1.0 : 1.5)
+    import('three').then((THREE) => {
+      // Guard: component may have unmounted while the chunk was downloading
+      if (!mounted || !containerRef.current) return
 
-    const renderer = new THREE.WebGLRenderer({
-      antialias: !isTablet,
-      alpha: true,
-      powerPreference: 'high-performance',
+      const scene = new THREE.Scene()
+      const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1)
+
+      const isTablet = window.matchMedia('(max-width: 1024px)').matches
+      const dpr = Math.min(window.devicePixelRatio, isTablet ? 1.0 : 1.5)
+
+      const renderer = new THREE.WebGLRenderer({
+        antialias: !isTablet,
+        alpha: true,
+        powerPreference: 'high-performance',
+      })
+      renderer.setPixelRatio(dpr)
+      renderer.setSize(container.clientWidth, container.clientHeight)
+      container.appendChild(renderer.domElement)
+
+      const uniforms = {
+        uTime:        { value: 0 },
+        uRes:         { value: new THREE.Vector2(container.clientWidth, container.clientHeight) },
+        uMouse:       { value: new THREE.Vector2(0.5, 0.5) },
+        uMouseTarget: { value: new THREE.Vector2(0.5, 0.5) },
+        uScroll:      { value: 0 },
+        uVelocity:    { value: 0 },
+        uIntensity:   { value: 1.0 },
+        uHueShift:    { value: 0.0 },
+        uColorA:      { value: new THREE.Color('#ff5a1f') },
+        uColorB:      { value: new THREE.Color('#1f3a8a') },
+        uColorC:      { value: new THREE.Color('#06091a') },
+        uColorD:      { value: new THREE.Color('#efe8d8') },
+      }
+
+      const material = new THREE.ShaderMaterial({
+        uniforms,
+        vertexShader: VERTEX,
+        fragmentShader: FRAGMENT,
+      })
+
+      const mesh = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), material)
+      scene.add(mesh)
+
+      const targetMouse = uniforms.uMouseTarget.value
+      const liveMouse   = uniforms.uMouse.value
+
+      const onMouseMove = (e) => {
+        targetMouse.x = e.clientX / window.innerWidth
+        targetMouse.y = 1.0 - e.clientY / window.innerHeight
+      }
+      window.addEventListener('mousemove', onMouseMove, { passive: true })
+
+      const onResize = () => {
+        const w = container.clientWidth
+        const h = container.clientHeight
+        renderer.setSize(w, h, false)
+        uniforms.uRes.value.set(w, h)
+      }
+      window.addEventListener('resize', onResize)
+
+      const clock = new THREE.Clock()
+      let velocityDecay = 0
+      let rafId
+      let isVisible = true
+
+      const observer = new IntersectionObserver(
+        ([entry]) => { isVisible = entry.isIntersecting },
+        { threshold: 0.01 }
+      )
+      observer.observe(container)
+
+      function tick() {
+        rafId = requestAnimationFrame(tick)
+        if (!isVisible) return
+        const dt = clock.getDelta()
+        uniforms.uTime.value += dt
+        liveMouse.x += (targetMouse.x - liveMouse.x) * 0.08
+        liveMouse.y += (targetMouse.y - liveMouse.y) * 0.08
+        velocityDecay *= 0.92
+        uniforms.uVelocity.value += (velocityDecay - uniforms.uVelocity.value) * 0.18
+        renderer.render(scene, camera)
+      }
+      tick()
+
+      const api = {
+        uniforms,
+        setVelocity(v)  { velocityDecay = v },
+        setIntensity(v) { uniforms.uIntensity.value = v },
+        setHueShift(v)  { uniforms.uHueShift.value = v },
+        setPalette(pal) {
+          uniforms.uColorA.value.set(pal.a)
+          uniforms.uColorB.value.set(pal.b)
+          uniforms.uColorC.value.set(pal.c)
+          uniforms.uColorD.value.set(pal.d)
+        },
+      }
+      if (shaderRef) shaderRef.current = api
+
+      // Store cleanup so the outer return() can call it even after unmount
+      innerCleanup = () => {
+        cancelAnimationFrame(rafId)
+        observer.disconnect()
+        window.removeEventListener('mousemove', onMouseMove)
+        window.removeEventListener('resize', onResize)
+        renderer.dispose()
+        material.dispose()
+        mesh.geometry.dispose()
+        if (container.contains(renderer.domElement)) {
+          container.removeChild(renderer.domElement)
+        }
+        if (shaderRef) shaderRef.current = null
+      }
     })
-    renderer.setPixelRatio(dpr)
-    renderer.setSize(container.clientWidth, container.clientHeight)
-    container.appendChild(renderer.domElement)
-
-    const uniforms = {
-      uTime:        { value: 0 },
-      uRes:         { value: new THREE.Vector2(container.clientWidth, container.clientHeight) },
-      uMouse:       { value: new THREE.Vector2(0.5, 0.5) },
-      uMouseTarget: { value: new THREE.Vector2(0.5, 0.5) },
-      uScroll:      { value: 0 },
-      uVelocity:    { value: 0 },
-      uIntensity:   { value: 1.0 },
-      uHueShift:    { value: 0.0 },
-      uColorA:      { value: new THREE.Color('#ff5a1f') },
-      uColorB:      { value: new THREE.Color('#1f3a8a') },
-      uColorC:      { value: new THREE.Color('#06091a') },
-      uColorD:      { value: new THREE.Color('#efe8d8') },
-    }
-
-    const material = new THREE.ShaderMaterial({
-      uniforms,
-      vertexShader: VERTEX,
-      fragmentShader: FRAGMENT,
-    })
-
-    const mesh = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), material)
-    scene.add(mesh)
-
-    const targetMouse = uniforms.uMouseTarget.value
-    const liveMouse = uniforms.uMouse.value
-
-    const onMouseMove = (e) => {
-      targetMouse.x = e.clientX / window.innerWidth
-      targetMouse.y = 1.0 - e.clientY / window.innerHeight
-    }
-    window.addEventListener('mousemove', onMouseMove, { passive: true })
-
-    const onResize = () => {
-      const w = container.clientWidth
-      const h = container.clientHeight
-      renderer.setSize(w, h, false)
-      uniforms.uRes.value.set(w, h)
-    }
-    window.addEventListener('resize', onResize)
-
-    const clock = new THREE.Clock()
-    let velocityDecay = 0
-    let rafId
-    let isVisible = true
-
-    // Pause the WebGL render loop when the hero is off-screen.
-    // This is the single biggest perf win — stops the heavy shader
-    // from consuming GPU cycles while the user is scrolled down.
-    const observer = new IntersectionObserver(
-      ([entry]) => { isVisible = entry.isIntersecting },
-      { threshold: 0.01 }
-    )
-    observer.observe(container)
-
-    function tick() {
-      rafId = requestAnimationFrame(tick)
-      if (!isVisible) return
-      const dt = clock.getDelta()
-      uniforms.uTime.value += dt
-      liveMouse.x += (targetMouse.x - liveMouse.x) * 0.08
-      liveMouse.y += (targetMouse.y - liveMouse.y) * 0.08
-      velocityDecay *= 0.92
-      uniforms.uVelocity.value += (velocityDecay - uniforms.uVelocity.value) * 0.18
-      renderer.render(scene, camera)
-    }
-    tick()
-
-    const api = {
-      uniforms,
-      setVelocity(v) { velocityDecay = v },
-      setIntensity(v) { uniforms.uIntensity.value = v },
-      setHueShift(v) { uniforms.uHueShift.value = v },
-      setPalette(pal) {
-        uniforms.uColorA.value.set(pal.a)
-        uniforms.uColorB.value.set(pal.b)
-        uniforms.uColorC.value.set(pal.c)
-        uniforms.uColorD.value.set(pal.d)
-      },
-    }
-
-    if (shaderRef) shaderRef.current = api
 
     return () => {
-      cancelAnimationFrame(rafId)
-      observer.disconnect()
-      window.removeEventListener('mousemove', onMouseMove)
-      window.removeEventListener('resize', onResize)
-      renderer.dispose()
-      material.dispose()
-      mesh.geometry.dispose()
-      if (container.contains(renderer.domElement)) {
-        container.removeChild(renderer.domElement)
-      }
-      if (shaderRef) shaderRef.current = null
+      mounted = false
+      innerCleanup()
     }
   }, [containerRef, shaderRef])
 }
