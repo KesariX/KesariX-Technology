@@ -121,7 +121,7 @@ export default function Capabilities() {
               </div>
             </div>
             <div className="cap__right">
-              <a className="cap__link" href={s.link}>
+              <a className="cap__link" href={s.link} aria-label={`Explore ${s.category} service`}>
                 Explore service
                 <span className="cap__arrow">↗</span>
               </a>

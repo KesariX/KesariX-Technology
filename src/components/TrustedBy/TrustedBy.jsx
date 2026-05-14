@@ -31,16 +31,16 @@ export default function TrustedBy() {
   return (
     <section className="trusted-by" ref={sectionRef} style={{ backgroundColor: '#050507', padding: '4rem 2rem', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
       <div className="trusted-by__inner" style={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'center' }}>
-        <p className="trusted-by__label" style={{ fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#666', marginBottom: '2.5rem', fontWeight: 500 }}>
+        <p className="trusted-by__label" style={{ fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#aaa', marginBottom: '2.5rem', fontWeight: 500 }}>
           Trusted by innovative teams at
         </p>
         <div className="trusted-by__logos" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '4rem', alignItems: 'center' }}>
           {/* Replace with your actual client SVG logos */}
-          <h3 className="trusted-by__logo" style={{ fontSize: '1.5rem', fontWeight: '700', color: '#fff', margin: 0 }}>Acme Corp</h3>
-          <h3 className="trusted-by__logo" style={{ fontSize: '1.5rem', fontWeight: '700', color: '#fff', margin: 0 }}>GlobalTech</h3>
-          <h3 className="trusted-by__logo" style={{ fontSize: '1.5rem', fontWeight: '700', color: '#fff', margin: 0 }}>Nebula</h3>
-          <h3 className="trusted-by__logo" style={{ fontSize: '1.5rem', fontWeight: '700', color: '#fff', margin: 0 }}>Quantum</h3>
-          <h3 className="trusted-by__logo" style={{ fontSize: '1.5rem', fontWeight: '700', color: '#fff', margin: 0 }}>Starlight</h3>
+          <span className="trusted-by__logo" style={{ fontSize: '1.5rem', fontWeight: '700', color: '#fff' }}>Acme Corp</span>
+          <span className="trusted-by__logo" style={{ fontSize: '1.5rem', fontWeight: '700', color: '#fff' }}>GlobalTech</span>
+          <span className="trusted-by__logo" style={{ fontSize: '1.5rem', fontWeight: '700', color: '#fff' }}>Nebula</span>
+          <span className="trusted-by__logo" style={{ fontSize: '1.5rem', fontWeight: '700', color: '#fff' }}>Quantum</span>
+          <span className="trusted-by__logo" style={{ fontSize: '1.5rem', fontWeight: '700', color: '#fff' }}>Starlight</span>
         </div>
       </div>
     </section>

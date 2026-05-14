@@ -44,6 +44,8 @@ export default function Nav() {
             className="nav__logo-img"
             src="/Kesarix-technology-logo.webp"
             alt="KesariX Technology"
+            width="40"
+            height="30"
             draggable="false"
           />
           <span className="nav__logo-name">KesariX<span className="nav__logo-sep"> </span>Technology</span>

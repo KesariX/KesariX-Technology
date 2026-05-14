@@ -96,6 +96,8 @@ export default function Curtain() {
             className="curtain__logo"
             src="/Kesarix-technology-logo.webp"
             alt="KesariX Technology"
+            width="80"
+            height="60"
             draggable="false"
           />
         </div>

@@ -19,7 +19,7 @@ export default function Hero() {
       gsap.set(['.hero__foot-desc', '.hero__foot-ctas', '.hero__foot-metrics'], { opacity: 0, y: 20 })
       gsap.set('.hero__scroll-wrap', { opacity: 0 })
 
-      const tl = gsap.timeline({ delay: 2.2 })
+      const tl = gsap.timeline({ delay: 1.8 })
 
       // Strip + kicker come in first
       tl.to('.hero__strip', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' })
@@ -42,13 +42,6 @@ export default function Hero() {
         .to('.hero__foot-metrics', { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.8')
         .to('.hero__scroll-wrap',  { opacity: 1, duration: 0.8 }, '-=0.4')
 
-      // Continuous background gradient flow for "Extraordinary"
-      gsap.to('.text-gradient-flow', {
-        backgroundPosition: '200% center',
-        duration: 8,
-        repeat: -1,
-        ease: 'none'
-      })
     }, sectionRef)
     return () => ctx.revert()
   }, [])
