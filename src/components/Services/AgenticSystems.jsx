@@ -5,6 +5,51 @@ import './AgenticSystems.css'
 
 gsap.registerPlugin(ScrollTrigger)
 
+const BOT_TYPES = [
+  {
+    num: '01',
+    icon: '🎧',
+    title: 'Customer Support Bot',
+    desc: 'Handles L1/L2 queries autonomously — processing refunds, updating tickets, accessing CRM data, and escalating edge-cases to human agents with full context passed.',
+    tags: ['CRM Integration', 'Sentiment Analysis', 'Auto-Escalation'],
+  },
+  {
+    num: '02',
+    icon: '📈',
+    title: 'Sales Intelligence Agent',
+    desc: 'Qualifies inbound leads, follows up via email & WhatsApp, schedules demos, and syncs all interaction history into your CRM — operating 24/7 without fatigue.',
+    tags: ['Lead Scoring', 'CRM Sync', 'Multi-channel Outreach'],
+  },
+  {
+    num: '03',
+    icon: '🧠',
+    title: 'Knowledge Base Assistant',
+    desc: 'A RAG-powered agent trained on your internal docs, SOPs, and wikis. Instantly surfaces accurate, cited answers for your team — no more manual search.',
+    tags: ['RAG Architecture', 'Document Ingestion', 'Role-based Access'],
+  },
+  {
+    num: '04',
+    icon: '🛒',
+    title: 'E-commerce Concierge',
+    desc: 'Product discovery, order tracking, return processing, and upsell recommendations — fully automated across WhatsApp, web chat, and email channels.',
+    tags: ['Product Search', 'Order Management', 'Personalized Upsell'],
+  },
+  {
+    num: '05',
+    icon: '🏢',
+    title: 'HR & Onboarding Agent',
+    desc: 'Automates new-hire onboarding flows, policy Q&A, leave management, and performance review nudges — freeing your HR team for high-value strategic work.',
+    tags: ['Policy Q&A', 'Document Automation', 'HRMS Integration'],
+  },
+  {
+    num: '06',
+    icon: '🔗',
+    title: 'Custom Multi-Agent Pipeline',
+    desc: 'Multiple specialized sub-agents orchestrated to handle complex, multi-step workflows spanning tools, APIs, and human touchpoints in a single reliable chain.',
+    tags: ['Agent Orchestration', 'Tool Calling', 'Human-in-the-Loop'],
+  },
+]
+
 export default function AgenticSystems() {
   const sectionRef = useRef(null)
 
@@ -163,6 +208,28 @@ export default function AgenticSystems() {
               <p className="as-use-case__desc">Reviewing hundreds of documents for compliance anomalies, flagging irregularities to human supervisors instantly.</p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ── BOT TYPES (DARK) ── */}
+      <section className="as-section as-bot-types as-dark">
+        <div className="as-section-header as-reveal">
+          <span className="as-eyebrow"><span className="as-eyebrow-dot"></span>Agent Catalogue</span>
+          <h2 className="as-title-huge">Bot Types <em className="as-italic">We Deploy</em></h2>
+          <p className="as-desc-large">Purpose-built autonomous agents for every business function — not generic chatbots, but precision-engineered digital workers with real integrations.</p>
+        </div>
+        <div className="as-bot-types__grid">
+          {BOT_TYPES.map((bot) => (
+            <div className="as-bot-card as-reveal" key={bot.num}>
+              <span className="as-bot-card__icon">{bot.icon}</span>
+              <div className="as-bot-card__num">{bot.num}</div>
+              <h3 className="as-bot-card__title">{bot.title}</h3>
+              <p className="as-bot-card__desc">{bot.desc}</p>
+              <div className="as-bot-card__tags">
+                {bot.tags.map(t => <span key={t} className="as-bot-tag">{t}</span>)}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 

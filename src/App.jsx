@@ -27,6 +27,7 @@ import BottomMarquee from './components/BottomMarquee/BottomMarquee'
 import Contact       from './components/Contact/Contact'
 import TweaksPanel   from './components/TweaksPanel/TweaksPanel'
 import WhatsApp      from './components/WhatsApp/WhatsApp'
+import ChatBot       from './components/ChatBot/ChatBot'
 import CookieBanner  from './components/CookieBanner/CookieBanner'
 
 /*
@@ -126,6 +127,7 @@ export default function App() {
           </Suspense>
 
           {/* Global persistent widgets — always present, not part of Suspense */}
+          <ChatBot />
           <WhatsApp />
           <CookieBanner />
         </ShaderProvider>
