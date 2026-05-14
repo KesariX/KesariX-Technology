@@ -1,15 +1,15 @@
 .bm {
-  background: var(--ink-deep);
+  background: var(--bg-navy, #0a1428);
   overflow: hidden;
   padding: 0;
-  border-top: 1px solid var(--rule-bone);
-  border-bottom: 1px solid var(--rule-bone);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .bm__row {
   overflow: hidden;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--rule-bone);
+  padding: 15px 0;
+  border-bottom: 1px solid var(--border-subtle);
 }
 .bm__row:last-child { border-bottom: none; }
 
@@ -19,11 +19,11 @@
   will-change: transform;
   animation: bmScroll 24s linear infinite;
   font-family: var(--f-sans);
-  font-weight: 500;
-  font-size: clamp(14px, 2vw, 22px);
-  letter-spacing: 0.08em;
+  font-weight: 400;
+  font-size: clamp(13px, 1.8vw, 20px);
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--bone);
+  color: rgba(239, 232, 216, 0.25);
 }
 
 .bm__row--reverse .bm__track {
@@ -32,9 +32,10 @@
 }
 
 .bm__dot {
-  color: var(--saffron);
-  font-size: 0.65em;
-  margin: 0 20px;
+  color: var(--electric);
+  font-size: 0.55em;
+  margin: 0 24px;
+  opacity: 0.6;
 }
 
 @keyframes bmScroll {

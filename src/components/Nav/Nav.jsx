@@ -11,7 +11,7 @@ export default function Nav() {
     const ctx = gsap.context(() => {
       gsap.from('.nav > *', {
         opacity: 0, y: -16, duration: 0.8,
-        ease: 'power2.out', stagger: 0.08, delay: 3.0,
+        ease: 'power2.out', stagger: 0.08, delay: 0.2,
       })
     }, navRef)
     return () => ctx.revert()

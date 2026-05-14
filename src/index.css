@@ -5,23 +5,64 @@
 /* Fonts are loaded via <link> in index.html to avoid render-blocking @import */
 
 :root {
+  /* ── Core palette ── */
   --bone: #efe8d8;
   --bone-2: #e6dec9;
   --paper: #f6f1e3;
   --ink: #0a1738;
   --ink-2: #060d24;
   --ink-deep: #03081a;
+
+  /* ── Section backgrounds (dark spectrum) ── */
+  --bg-void:  #020408;
+  --bg-depth: #040810;
+  --bg-deep:  #060d1e;
+  --bg-navy:  #0a1428;
+
+  /* ── Electric blue – primary accent ── */
+  --electric:      #3b82f6;
+  --electric-2:    #60a5fa;
+  --electric-3:    #93c5fd;
+  --electric-dark: #1d4ed8;
+  --electric-glow: rgba(59, 130, 246, 0.22);
+
+  /* ── Amber / orange – editorial highlight ── */
+  --amber:   #f97316;
+  --amber-2: #fb923c;
   --saffron: #ff5a1f;
   --saffron-2: #ff7a35;
-  --blue: #3b82f6;
-  --blue-2: #60a5fa;
-  --blue-dark: #1d4ed8;
-  --rule: rgba(10, 23, 56, 0.18);
-  --rule-bone: rgba(239, 232, 216, 0.18);
 
+  /* ── Surfaces & borders ── */
+  --surface-1: rgba(255, 255, 255, 0.025);
+  --surface-2: rgba(255, 255, 255, 0.045);
+  --surface-3: rgba(255, 255, 255, 0.07);
+  --border-subtle: rgba(255, 255, 255, 0.055);
+  --border-dim:    rgba(255, 255, 255, 0.10);
+  --rule: rgba(10, 23, 56, 0.18);
+  --rule-bone: rgba(239, 232, 216, 0.10);
+
+  /* ── Text alpha scale ── */
+  --text-hi:  rgba(239, 232, 216, 1.0);
+  --text-mid: rgba(239, 232, 216, 0.65);
+  --text-lo:  rgba(239, 232, 216, 0.38);
+
+  /* ── Typography ── */
   --f-sans: "Space Grotesk", "Helvetica Neue", system-ui, sans-serif;
   --f-serif: "Instrument Serif", "Times New Roman", serif;
   --f-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* ── Spacing scale ── */
+  --sp-xs:  clamp(0.5rem, 1vw,  0.75rem);
+  --sp-sm:  clamp(1rem,   2vw,  1.5rem);
+  --sp-md:  clamp(1.5rem, 3vw,  2.5rem);
+  --sp-lg:  clamp(3rem,   5vw,  5rem);
+  --sp-xl:  clamp(5rem,   8vw,  8rem);
+  --sp-2xl: clamp(7rem,  11vw, 11rem);
+
+  /* Legacy aliases */
+  --blue: #3b82f6;
+  --blue-2: #60a5fa;
+  --blue-dark: #1d4ed8;
 }
 
 /* ===== LIGHT THEME ===== */
@@ -66,8 +107,8 @@
   color: #0d1b3e;
 }
 [data-theme="light"] .nav__submenu a:hover {
-  color: var(--saffron);
-  background: rgba(234, 88, 12, 0.04);
+  color: var(--electric);
+  background: rgba(59, 130, 246, 0.04);
 }
 
 [data-theme="light"] ::selection {
@@ -78,8 +119,8 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html, body {
-  background: var(--bone);
-  color: var(--ink);
+  background: var(--bg-void, #020408);
+  color: var(--bone);
   font-family: var(--f-sans);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -97,41 +138,42 @@ a { color: inherit; text-decoration: none; }
 
 section { position: relative; }
 
-::selection { background: var(--saffron); color: var(--ink-2); }
+::selection { background: var(--electric); color: #ffffff; }
 
 /* ===== Utility: section label ===== */
 .section-label {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   font-family: var(--f-mono);
-  font-size: 11px;
+  font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--ink);
+  color: var(--text-lo, rgba(239, 232, 216, 0.38));
 }
 .section-label::before {
   content: "";
-  width: 10px;
-  height: 10px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  background: var(--saffron);
+  background: var(--electric);
+  box-shadow: 0 0 8px var(--electric);
   flex-shrink: 0;
 }
 
-/* ===== Shared CTA pill ===== */
+/* ===== Shared CTA pill — electric blue primary ===== */
 .cta {
   position: relative;
   display: inline-flex;
   align-items: center;
   gap: 16px;
-  padding: 22px 36px 22px 28px;
-  background: var(--saffron);
-  color: var(--ink-2);
+  padding: 20px 36px 20px 28px;
+  background: var(--electric);
+  color: #ffffff;
   font-family: var(--f-sans);
-  font-weight: 500;
-  font-size: 14px;
-  letter-spacing: 0.12em;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   border: none;
   border-radius: 999px;
@@ -139,32 +181,61 @@ section { position: relative; }
   text-decoration: none;
   overflow: hidden;
   isolation: isolate;
+  transition: color 0.45s cubic-bezier(.7,.0,.2,1), box-shadow 0.45s;
+  box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
 }
 .cta::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: var(--ink-2);
+  background: var(--electric-dark);
   border-radius: inherit;
-  transform: translateY(100%);
+  transform: translateY(102%);
   transition: transform 0.5s cubic-bezier(.7,.0,.2,1);
   z-index: -1;
 }
-.cta:hover { color: var(--bone); }
+.cta:hover {
+  color: #ffffff;
+  box-shadow: 0 8px 32px -8px rgba(59, 130, 246, 0.55);
+}
 .cta:hover::before { transform: translateY(0); }
 .cta__arrow {
-  width: 22px; height: 22px;
+  width: 24px; height: 24px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--ink-2);
-  color: var(--saffron);
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
   border-radius: 50%;
   font-size: 12px;
-  transition: transform 0.5s cubic-bezier(.7,.0,.2,1), background 0.5s, color 0.5s;
+  transition: transform 0.5s cubic-bezier(.7,.0,.2,1), background 0.45s;
+  flex-shrink: 0;
 }
 .cta:hover .cta__arrow {
   transform: rotate(-45deg);
-  background: var(--saffron);
-  color: var(--ink-2);
+  background: rgba(255, 255, 255, 0.28);
+}
+
+/* ===== Section chip / eyebrow ===== */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px 5px 10px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-lo);
+  backdrop-filter: blur(8px);
+}
+.chip::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--electric);
+  flex-shrink: 0;
+  box-shadow: 0 0 8px var(--electric);
 }

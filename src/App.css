@@ -3,3 +3,9 @@
   overflow-x: hidden;
   cursor: auto;
 }
+
+/* Lazy-page loading state */
+.page-loader {
+  min-height: 100vh;
+  background: #020408;
+}

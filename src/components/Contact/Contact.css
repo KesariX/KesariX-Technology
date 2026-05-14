@@ -11,8 +11,8 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 55% 100%, rgba(255,90,31,0.16) 0%, transparent 50%),
-    radial-gradient(circle at 15% 15%, rgba(31,58,138,0.28) 0%, transparent 48%);
+    radial-gradient(ellipse 70% 60% at 55% 105%, rgba(59, 130, 246, 0.14) 0%, transparent 55%),
+    radial-gradient(ellipse 55% 45% at 10% 10%, rgba(249, 115, 22, 0.10) 0%, transparent 50%);
   pointer-events: none;
 }
 
@@ -71,7 +71,10 @@
   font-style: italic;
   font-weight: 400;
   text-transform: none;
-  color: var(--saffron);
+  background: linear-gradient(90deg, var(--electric-2) 0%, var(--amber) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 24px rgba(59, 130, 246, 0.3));
 }
 
 .contact__copy {
@@ -126,13 +129,13 @@
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: rgba(255,90,31,0.12);
-  border: 1px solid rgba(255,90,31,0.3);
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.28);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-size: 11px;
-  color: var(--saffron);
+  color: var(--electric-2);
   flex-shrink: 0;
 }
 
@@ -210,45 +213,7 @@ a.contact__bar-item:hover {
   padding: 0 24px;
 }
 
-/* ── Shared CTA pill (defined in index.css but scoped here for override) ── */
-.cta {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 16px;
-  padding: 22px 36px 22px 28px;
-  background: var(--saffron);
-  color: var(--ink-2);
-  font-family: var(--f-sans);
-  font-weight: 500;
-  font-size: 14px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  border-radius: 999px;
-  text-decoration: none;
-  cursor: none;
-  overflow: hidden;
-  isolation: isolate;
-  transition: color 0.45s cubic-bezier(0.7,0,0.2,1);
-}
-.cta::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--ink-2);
-  border-radius: inherit;
-  transform: translateY(102%);
-  transition: transform 0.5s cubic-bezier(0.7,0,0.2,1);
-  z-index: -1;
-}
-.cta:hover { color: var(--bone); }
-.cta:hover::before { transform: translateY(0); }
-
-.cta__arrow {
-  font-size: 16px;
-  transition: transform 0.4s cubic-bezier(0.7,0,0.2,1);
-}
-.cta:hover .cta__arrow { transform: rotate(-45deg); }
+/* contact section uses global .cta from index.css (electric blue) — no local override needed */
 
 /* ===== Footer ===== */
 .footer {
@@ -323,7 +288,7 @@ a.contact__bar-item:hover {
   text-decoration: none;
   transition: border-color 0.3s, color 0.3s;
 }
-.footer__book:hover { border-color: var(--saffron); color: var(--saffron); }
+.footer__book:hover { border-color: var(--electric-2); color: var(--electric-2); }
 
 .footer__cols {
   display: grid;

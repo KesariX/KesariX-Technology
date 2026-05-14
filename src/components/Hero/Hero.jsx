@@ -19,7 +19,7 @@ export default function Hero() {
       gsap.set(['.hero__foot-desc', '.hero__foot-ctas', '.hero__foot-metrics'], { opacity: 0, y: 20 })
       gsap.set('.hero__scroll-wrap', { opacity: 0 })
 
-      const tl = gsap.timeline({ delay: 1.8 })
+      const tl = gsap.timeline({ delay: 0.2 })
 
       // Strip + kicker come in first
       tl.to('.hero__strip', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' })
@@ -75,12 +75,16 @@ export default function Hero() {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Cursor-following spotlight — visible only while hovering */}
+      {/* CSS grid mesh overlay — futuristic depth */}
+      <div className="hero__grid" aria-hidden="true" />
+
+      {/* Cursor-following spotlight — electric blue */}
       <div className="hero__spotlight" />
 
-      {/* Static ambient glows */}
+      {/* Static ambient corner glows */}
       <div className="hero__ambient hero__ambient--tr" />
       <div className="hero__ambient hero__ambient--bl" />
+      <div className="hero__ambient hero__ambient--center" />
 
       {/* CSS animated gradient background */}
       <div className="hero__canvas" />
@@ -117,11 +121,9 @@ export default function Hero() {
 
         {/* The headline — each word wrapped for clip reveal */}
         <h1 className="hero__headline" style={{
-          fontSize: 'clamp(2.5rem, 7.5vw, 6.5rem)', // Fluid typography fixes the font cut-off
-          lineHeight: '1.05',
           display: 'flex',
           flexDirection: 'column',
-          gap: '0.1em',
+          gap: '0.08em',
           perspective: '1000px'
         }}>
 
@@ -135,19 +137,19 @@ export default function Hero() {
             </span>
           </span>
 
-          {/* Line 2: Extraordinary — serif italic, saffron, deliberately oversized */}
+          {/* Line 2: Extraordinary — serif italic, warm gradient */}
           <span className="hero__line hero__line--italic" style={{ paddingLeft: '5%' }}>
             <span className="h-word">
-              <span 
+              <span
                 className="text-gradient-flow"
-                style={{ 
-                  background: 'linear-gradient(90deg, #f59e0b 0%, #ea580c 25%, #f43f5e 50%, #ea580c 75%, #f59e0b 100%)', 
+                style={{
+                  background: 'linear-gradient(90deg, #f97316 0%, #fb923c 30%, #fbbf24 55%, #fb923c 75%, #f97316 100%)',
                   backgroundSize: '200% 100%',
-                WebkitBackgroundClip: 'text', 
-                WebkitTextFillColor: 'transparent',
-                  paddingRight: '0.1em', // Prevents italic clipping issues
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  paddingRight: '0.1em',
                   display: 'inline-block',
-                  filter: 'drop-shadow(0 0 24px rgba(234, 88, 12, 0.4))'
+                  filter: 'drop-shadow(0 0 32px rgba(249, 115, 22, 0.35))'
                 }}
               >
                 Extraordinary
@@ -176,20 +178,7 @@ export default function Hero() {
                   cursor: 'crosshair',
                   display: 'inline-block'
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = '#ffffff'
-                  e.currentTarget.style.WebkitTextStroke = '1.5px #ffffff'
-                  e.currentTarget.style.textShadow = '0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.4)'
-                  e.currentTarget.style.transform = 'scale(1.03) translateX(1.5%)'
-                  e.currentTarget.style.letterSpacing = '0.02em'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = 'transparent'
-                  e.currentTarget.style.WebkitTextStroke = '1.5px rgba(255, 255, 255, 0.5)'
-                  e.currentTarget.style.textShadow = 'none'
-                  e.currentTarget.style.transform = 'scale(1) translateX(0)'
-                  e.currentTarget.style.letterSpacing = 'normal'
-                }}
+                
               >
                 That Inspire.
               </span>

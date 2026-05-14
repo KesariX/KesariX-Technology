@@ -10,7 +10,6 @@ import { useLenis } from './hooks/useLenis'
   These are part of the critical home-page path and must be available
   immediately. They stay in the main bundle.
 */
-import Curtain       from './components/Curtain/Curtain'
 import Nav           from './components/Nav/Nav'
 import Hero          from './components/Hero/Hero'
 import TrustedBy     from './components/TrustedBy/TrustedBy'
@@ -68,7 +67,6 @@ function PageContent() {
 
   return (
     <>
-      <Curtain />
       <Nav />
       <main>
         <Hero />

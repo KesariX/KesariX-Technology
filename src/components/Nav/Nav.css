@@ -92,7 +92,7 @@
   position: absolute;
   left: 0; bottom: 0;
   height: 1px; width: 0;
-  background: var(--saffron);
+  background: var(--electric);
   transition: width 0.4s cubic-bezier(.6,.2,.1,1);
 }
 .nav__menu a:hover::after,
@@ -172,9 +172,10 @@
   white-space: nowrap;
 }
 .nav__cta:hover {
-  background: var(--saffron);
-  border-color: var(--saffron);
-  color: #050507;
+  background: var(--electric);
+  border-color: var(--electric);
+  color: #ffffff;
+  box-shadow: 0 4px 20px -6px rgba(59, 130, 246, 0.5);
 }
 
 /* ── Hamburger ── */
@@ -292,8 +293,8 @@
   justify-content: center;
   gap: 10px;
   padding: 18px 28px;
-  background: var(--saffron);
-  color: #050507 !important;
+  background: var(--electric);
+  color: #ffffff !important;
   font-family: var(--f-sans);
   font-weight: 700;
   font-size: 15px;
@@ -307,7 +308,8 @@
 .nav__drawer-cta:hover {
   opacity: 0.9;
   padding-left: 28px !important;
-  color: #050507 !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 28px -8px rgba(59, 130, 246, 0.55);
 }
 
 .nav__drawer-meta {

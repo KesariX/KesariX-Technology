@@ -1,10 +1,10 @@
 .marquee {
-  background: var(--ink-deep);
+  background: var(--bg-depth, #040810);
   color: var(--bone);
   overflow: hidden;
-  padding: 20px 0;
-  border-top: 1px solid var(--rule-bone);
-  border-bottom: 1px solid var(--rule-bone);
+  padding: 22px 0;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .marquee__track {
@@ -25,10 +25,11 @@
 }
 
 .marquee__dot {
-  color: var(--saffron);
-  margin: 0 20px;
+  color: var(--electric);
+  margin: 0 24px;
   font-style: normal;
-  font-size: 0.6em;
+  font-size: 0.55em;
+  opacity: 0.7;
 }
 
 @keyframes marqueeScroll {

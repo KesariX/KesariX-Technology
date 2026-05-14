@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
-import './Capabilities.css'
+import './CapabilitiesPremium.css'
 
 const SERVICES = [
   {
@@ -48,84 +48,159 @@ const SERVICES = [
 
 export default function Capabilities() {
   const sectionRef = useRef(null)
+  const cardsRef = useRef([])
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      let mm = gsap.matchMedia()
-      
-      // Pin the left section while the right side scrolls (Desktop only)
-      mm.add("(min-width: 1024px)", () => {
-        ScrollTrigger.create({
-          trigger: '.cap__inner',
-          start: 'top 15%',
-          end: 'bottom 85%',
-          pin: '.cap__head',
-          pinSpacing: false,
-        })
+      // Ambient Background Animation
+      gsap.to('.cp-ambient__orb--blue', {
+        x: '8vw',
+        y: '8vh',
+        duration: 15,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut'
       })
 
-      gsap.fromTo('.cap__eyebrow, .cap__title, .cap__desc', 
-        { opacity: 0, y: 40 },
-        {
-          opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', stagger: 0.1,
-          scrollTrigger: { trigger: '.cap__head', start: 'top 82%' }
+      gsap.to('.cp-ambient__orb--orange', {
+        x: '-8vw',
+        y: '-6vh',
+        duration: 12,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut'
+      })
+
+      // Cinematic Header Reveal
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.cp-header',
+          start: 'top 80%',
         }
+      })
+
+      tl.fromTo('.cp-header__eyebrow',
+        { opacity: 0, x: -30 },
+        { opacity: 1, x: 0, duration: 1, ease: 'power3.out' }
+      ).fromTo('.cp-header__title .line',
+        { opacity: 0, y: 50, rotationX: -30 },
+        { opacity: 1, y: 0, rotationX: 0, duration: 1.2, stagger: 0.15, ease: 'expo.out' },
+        "-=0.6"
+      ).fromTo('.cp-header__desc',
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 1, ease: 'power3.out' },
+        "-=0.8"
       )
-      
-      gsap.fromTo('.cap__row', 
-        { opacity: 0, y: 50, scale: 0.98 },
-        {
-          opacity: 1, y: 0, scale: 1, duration: 0.8, ease: 'power3.out', stagger: 0.1,
-          scrollTrigger: { trigger: '.cap__list', start: 'top 80%' },
-        }
-      )
+
+      // Staggered Card Parallax & Reveal
+      cardsRef.current.forEach((card, index) => {
+        if (!card) return;
+
+        gsap.fromTo(card,
+          { opacity: 0, y: 100 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: 'expo.out',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 85%',
+            }
+          }
+        )
+
+        // Parallax depth applied only on desktop
+        let mm = gsap.matchMedia();
+        mm.add("(min-width: 1024px)", () => {
+          const speed = index % 2 !== 0 ? 90 : 40;
+          gsap.to(card, {
+            y: -speed,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: '.cp-grid',
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: 1
+            }
+          })
+        });
+      })
     }, sectionRef)
     return () => ctx.revert()
   }, [])
 
-  return (
-    <section className="capabilities" id="capabilities" ref={sectionRef}>
-      <div className="cap__inner">
+  const handleMouseMove = (e, cardElement) => {
+    if (!cardElement) return;
+    const rect = cardElement.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    cardElement.style.setProperty('--mouse-x', `${x}px`)
+    cardElement.style.setProperty('--mouse-y', `${y}px`)
+  }
 
-        <div className="cap__head">
-          <span className="cap__eyebrow">
-            <span className="cap__eyebrow-dot"></span>
-            Our Arsenal
-          </span>
-          <h2 className="cap__title">
-            Capabilities <br />
-            <span className="cap__title-italic">That Deliver.</span>
+  return (
+    <section className="capabilities-premium" id="capabilities" ref={sectionRef}>
+      
+      {/* Ambient Lighting & Atmosphere */}
+      <div className="cp-ambient" aria-hidden="true">
+        <div className="cp-ambient__orb cp-ambient__orb--blue" />
+        <div className="cp-ambient__orb cp-ambient__orb--orange" />
+        <div className="cp-ambient__noise" />
+      </div>
+
+      <div className="cp-container">
+        {/* Cinematic Header */}
+        <div className="cp-header">
+          <div className="cp-header__eyebrow">
+            <span className="cp-eyebrow-dot" /> Architecture & Delivery
+          </div>
+          <h2 className="cp-header__title">
+            <div className="line" style={{ perspective: '1000px' }}>Capabilities</div>
+            <div className="line" style={{ perspective: '1000px' }}>
+              <em className="italic-accent">That Deliver.</em>
+            </div>
           </h2>
-          <p className="cap__desc">
+          <p className="cp-header__desc">
             We combine deep technical expertise with strategic product vision to build systems that scale, perform, and drive real business value.
           </p>
         </div>
 
-        <div className="cap__list">
-        {SERVICES.map((s, i) => (
-          <div className="cap__row" key={i}>
-              <div className="cap__row-glow" />
-            <div className="cap__left">
-              <div className="cap__num">{s.num}</div>
-                <h3 className="cap__category">{s.category}</h3>
-                <div className="cap__type"><em>{s.type}</em></div>
-            </div>
-            <div className="cap__center">
-                <p className="cap__desc-text">{s.desc}</p>
-              <div className="cap__tags">
-                {s.tags.map((tag) => (
-                  <span className="cap__tag" key={tag}>{tag}</span>
-                ))}
+        {/* Asymmetrical Grid */}
+        <div className="cp-grid">
+          <div className="cp-grid__line cp-grid__line--v" aria-hidden="true" />
+          {SERVICES.map((s, i) => (
+            <div
+              className={`cp-card ${i % 2 !== 0 ? 'cp-card--offset' : ''}`}
+              key={i}
+              ref={el => cardsRef.current[i] = el}
+              onMouseMove={(e) => handleMouseMove(e, cardsRef.current[i])}
+            >
+              {/* Mouse-reactive glow layer */}
+              <div className="cp-card__glow" aria-hidden="true" />
+              
+              <div className="cp-card__content">
+                <div className="cp-card__header">
+                  <span className="cp-card__num">{s.num}</span>
+                  <h3 className="cp-card__title">{s.category}</h3>
+                  <span className="cp-card__type">{s.type}</span>
+                </div>
+                
+                <p className="cp-card__desc">{s.desc}</p>
+                
+                <div className="cp-card__tags">
+                  {s.tags.map(tag => (
+                    <span className="cp-tag" key={tag}>{tag}</span>
+                  ))}
+                </div>
               </div>
-            </div>
-            <div className="cap__right">
-              <a className="cap__link" href={s.link} aria-label={`Explore ${s.category} service`}>
-                Explore service
-                <span className="cap__arrow">↗</span>
+
+              <a href={s.link} className="cp-card__link" aria-label={`Explore ${s.category}`}>
+                <span className="cp-link-text">Explore Blueprint</span>
+                <span className="cp-link-arrow">↗</span>
               </a>
             </div>
-          </div>
-        ))}
+          ))}
         </div>
 
       </div>

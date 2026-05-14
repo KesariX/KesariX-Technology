@@ -1,86 +1,123 @@
+/* ============================================================
+   MANIFESTO — Cinematic dark editorial statement
+   ============================================================ */
+
 .manifesto {
-  padding: 120px 28px 80px;
-  background: var(--bone);
-  color: var(--ink);
+  padding: 140px 48px 120px;
+  background: var(--bg-deep, #060d1e);
+  color: var(--bone);
   position: relative;
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid var(--border-subtle);
+  overflow: hidden;
+}
+
+/* Ambient lighting */
+.manifesto::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 65% 55% at 85% 45%, rgba(59, 130, 246, 0.08) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 40% at 10% 75%, rgba(249, 115, 22, 0.06) 0%, transparent 60%);
+  pointer-events: none;
 }
 
 .manifesto__inner {
   max-width: 1480px;
   margin: 0 auto;
+  position: relative;
 }
 
 .manifesto__top {
   display: grid;
-  grid-template-columns: 1fr 1.6fr;
+  grid-template-columns: 1fr 1.8fr;
   gap: 80px;
   align-items: start;
 }
 
+/* Left column: label + sub */
 .manifesto__meta {
-  font-family: var(--f-mono);
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  line-height: 1.8;
-  padding-top: 6px;
+  padding-top: 10px;
+}
+
+.manifesto__meta .section-label {
+  color: rgba(239, 232, 216, 0.5);
+}
+.manifesto__meta .section-label::before {
+  background: var(--electric);
+  box-shadow: 0 0 10px var(--electric);
 }
 
 .manifesto__sub {
-  margin-top: 20px;
-  opacity: 0.72;
-  letter-spacing: 0.04em;
-  text-transform: none;
-  font-size: 13px;
-  line-height: 1.7;
+  margin-top: 24px;
+  font-family: var(--f-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  line-height: 1.8;
+  color: var(--text-lo);
   max-width: 300px;
 }
 
+/* The giant editorial quote */
 .manifesto__quote {
   font-family: var(--f-serif);
-  font-size: clamp(32px, 5vw, 84px);
+  font-size: clamp(36px, 5.2vw, 88px);
   line-height: 1.04;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   text-wrap: balance;
+  color: var(--bone);
 }
+
+/* Italic word — electric blue → amber gradient */
 .manifesto__quote em {
   font-style: italic;
-  color: var(--saffron);
+  background: linear-gradient(90deg, #60a5fa 0%, #3b82f6 35%, #f97316 70%, #fb923c 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: manifesto-flow 9s linear infinite;
+  filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.3));
+}
+
+@keyframes manifesto-flow {
+  0%   { background-position: 0% center; }
+  100% { background-position: -200% center; }
 }
 
 /* ═══════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════ */
+@media (max-width: 1024px) {
+  .manifesto {
+    padding: 100px 36px 80px;
+  }
+  .manifesto__top {
+    gap: 56px;
+  }
+}
+
 @media (max-width: 768px) {
   .manifesto {
-    padding: 72px 20px 56px;
+    padding: 80px 24px 64px;
   }
 
   .manifesto__top {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 32px;
   }
 
-  .manifesto__meta {
-    padding-top: 0;
-  }
-
-  .manifesto__sub {
-    max-width: 100%;
-  }
+  .manifesto__sub { max-width: 100%; }
 
   .manifesto__quote {
-    font-size: clamp(28px, 7.5vw, 48px);
+    font-size: clamp(30px, 7.5vw, 52px);
   }
 }
 
 @media (max-width: 480px) {
   .manifesto {
-    padding: 56px 16px 44px;
+    padding: 64px 20px 56px;
   }
-
   .manifesto__quote {
-    font-size: clamp(24px, 7vw, 36px);
+    font-size: clamp(26px, 7vw, 40px);
   }
 }

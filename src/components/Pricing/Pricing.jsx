@@ -160,156 +160,210 @@ export default function Pricing() {
   const [activeService, setActiveService] = useState('Web Development')
   const [openFaq, setOpenFaq] = useState(null)
   const pageRef = useRef(null)
+  const panelsRef = useRef(null)
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo('.pr-hero-line', { autoAlpha: 0, y: 60 },
-        { autoAlpha: 1, y: 0, duration: 1.2, ease: 'expo.out', stagger: 0.12, delay: 0.1 })
-      gsap.fromTo('.pr-hero-desc', { autoAlpha: 0, y: 24 },
-        { autoAlpha: 1, y: 0, duration: 0.9, ease: 'expo.out', delay: 0.4 })
-      gsap.fromTo('.pr-promo', { autoAlpha: 0, scale: 0.94 },
-        { autoAlpha: 1, scale: 1, duration: 0.7, ease: 'back.out(1.5)', delay: 0.6,
-          scrollTrigger: { trigger: '.pr-promo', start: 'top 88%' } })
-      gsap.fromTo('.pr-card', { autoAlpha: 0, y: 48 },
-        { autoAlpha: 1, y: 0, duration: 0.85, ease: 'power3.out', stagger: 0.12,
-          scrollTrigger: { trigger: '.pr-cards', start: 'top 80%' } })
+      // Ambient orb animation
+      gsap.to('.pr-ambient__orb--1', {
+        x: '10vw',
+        y: '10vh',
+        duration: 15,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut'
+      })
+      gsap.to('.pr-ambient__orb--2', {
+        x: '-10vw',
+        y: '-10vh',
+        duration: 18,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut'
+      })
+
+      // Cinematic Header reveal
+      gsap.fromTo('.pr-hero-line', 
+        { autoAlpha: 0, y: 60, rotationX: -30 },
+        { autoAlpha: 1, y: 0, rotationX: 0, duration: 1.2, ease: 'expo.out', stagger: 0.12, delay: 0.1 }
+      )
+      gsap.fromTo('.pr-hero-desc', 
+        { autoAlpha: 0, y: 24 },
+        { autoAlpha: 1, y: 0, duration: 0.9, ease: 'power3.out', delay: 0.5 }
+      )
+      gsap.fromTo('.pr-promo-glass', 
+        { autoAlpha: 0, scale: 0.94 },
+        { autoAlpha: 1, scale: 1, duration: 0.7, ease: 'back.out(1.5)', delay: 0.7 }
+      )
     }, pageRef)
     return () => ctx.revert()
+  }, [])
+
+  // Animate panels dynamically on tab change
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const panels = gsap.utils.toArray('.pr-panel');
+      panels.forEach((panel) => {
+        gsap.fromTo(panel, 
+          { opacity: 0, y: 40, filter: 'blur(10px)' },
+          { 
+            opacity: 1, y: 0, filter: 'blur(0px)', 
+            duration: 0.8, 
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: panel,
+              start: 'top 85%',
+            }
+          }
+        )
+      })
+    }, panelsRef)
+    return () => ctx.revert()
   }, [activeService])
+
+  const handleMouseMove = (e, cardElement) => {
+    if (!cardElement) return;
+    const rect = cardElement.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    cardElement.style.setProperty('--mouse-x', `${x}px`)
+    cardElement.style.setProperty('--mouse-y', `${y}px`)
+  }
 
   const plans = PLANS[activeService]
 
   return (
-    <div className="pr-page" ref={pageRef}>
+    <div className="pr-page-premium" ref={pageRef}>
+
+      {/* ── AMBIENT BACKGROUND ── */}
+      <div className="pr-ambient" aria-hidden="true">
+        <div className="pr-ambient__orb pr-ambient__orb--1" />
+        <div className="pr-ambient__orb pr-ambient__orb--2" />
+        <div className="pr-ambient__noise" />
+      </div>
+
+      <div className="pr-container">
 
       {/* ── HERO ── */}
-      <section className="pr-hero">
-        <div className="pr-hero__glow" aria-hidden="true" />
-        <div className="pr-hero__grid" aria-hidden="true" />
-        <div className="pr-hero__inner">
-          <nav className="pr-breadcrumb">
-            <a href="/">Home</a>
-            <span>/</span>
-            <span>Pricing</span>
-          </nav>
-          <span className="pr-eyebrow">
-            <span className="pr-eyebrow-dot" />
-            Transparent Pricing
-          </span>
-          <h1 className="pr-hero-title">
-            <span className="pr-hero-line">Simple, Clear</span>
-            <span className="pr-hero-line"><em className="pr-italic">Pricing.</em></span>
-          </h1>
-          <p className="pr-hero-desc">
-            Fixed prices. No hidden fees. No surprise invoices. Every project starts
-            with a free 30-minute discovery call — so you know exactly what you're paying for.
-          </p>
+      <header className="pr-hero">
+        <div className="pr-eyebrow">
+          <span className="pr-eyebrow-dot" /> Transparent Investment
         </div>
-      </section>
+        <h1 className="pr-hero-title" style={{ perspective: '1000px' }}>
+          <div className="pr-hero-line">Simple, Clear</div>
+          <div className="pr-hero-line"><em className="pr-italic">Pricing.</em></div>
+        </h1>
+        <p className="pr-hero-desc">
+          Fixed prices. No hidden fees. No surprise invoices. Every project starts
+          with a free 30-minute discovery call — so you know exactly what you're paying for.
+        </p>
 
-      {/* ── PROMO BANNER ── */}
-      <section className="pr-promo-wrap">
-        <div className="pr-promo">
-          <span className="pr-promo__badge">Limited Offer</span>
-          <p className="pr-promo__text">
-            <strong>First 2 projects — 10% OFF</strong> &nbsp;·&nbsp; Every new client gets an automatic 10% discount on their first two projects.
-            <a href="/contact" className="pr-promo__link">Claim your discount ↗</a>
-          </p>
+        {/* ── PROMO BANNER ── */}
+        <div className="pr-promo-glass">
+          <span className="pr-promo-badge">Limited</span>
+          <span className="pr-promo-text">First 2 projects — 10% OFF</span>
         </div>
-      </section>
+      </header>
 
       {/* ── SERVICE TABS ── */}
-      <section className="pr-body">
-        <div className="pr-tabs" role="tablist" aria-label="Service pricing categories">
-          {SERVICES.map(s => (
-            <button
-              key={s}
-              className={`pr-tab${activeService === s ? ' pr-tab--active' : ''}`}
-              onClick={() => setActiveService(s)}
-              role="tab"
-              aria-selected={activeService === s}
-            >
-              {s}
-            </button>
-          ))}
-        </div>
+      <nav className="pr-tabs" role="tablist">
+        {SERVICES.map(s => (
+          <button
+            key={s}
+            className={`pr-tab ${activeService === s ? 'is-active' : ''}`}
+            onClick={() => setActiveService(s)}
+            role="tab"
+          >
+            {s}
+          </button>
+        ))}
+      </nav>
 
-        {/* ── CARDS ── */}
-        <div className="pr-cards">
-          {plans.map((plan) => {
+      {/* ── ASYMMETRICAL PANELS ── */}
+      <div className="pr-panels" ref={panelsRef}>
+          {plans.map((plan, i) => {
             const discounted = Math.round(plan.price * 0.9)
             return (
-              <div key={plan.name} className={`pr-card${plan.popular ? ' pr-card--popular' : ''}`}>
-                {plan.popular && <div className="pr-card__badge">Most Popular</div>}
-                <div className="pr-card__head">
-                  <h3 className="pr-card__name">{plan.name}</h3>
-                  <p className="pr-card__desc">{plan.desc}</p>
-                </div>
-                <div className="pr-card__pricing">
-                  <div className="pr-card__price-row">
-                    <span className="pr-card__price">{fmt(plan.price)}</span>
-                    <span className="pr-card__unit">one-time</span>
+              <div 
+                key={plan.name} 
+                className={`pr-panel ${plan.popular ? 'pr-panel--popular' : ''} ${i % 2 !== 0 ? 'pr-panel--offset' : ''}`}
+                onMouseMove={(e) => handleMouseMove(e, e.currentTarget)}
+              >
+                <div className="pr-panel__glow" aria-hidden="true" />
+                
+                <div className="pr-panel__content">
+                  <div className="pr-panel__left">
+                    {plan.popular && <div className="pr-panel__badge">Most Popular</div>}
+                    <h3 className="pr-panel__name">{plan.name}</h3>
+                    <p className="pr-panel__desc">{plan.desc}</p>
+                    
+                    <div className="pr-panel__price-wrap">
+                      <div className="pr-panel__price-main">
+                        <span className="pr-price">{fmt(plan.price)}</span>
+                        <span className="pr-unit">/ project</span>
+                      </div>
+                      <div className="pr-panel__price-discount">
+                        <span>With 10% new client offer:</span>
+                        <strong className="pr-discount-val">{fmt(discounted)}</strong>
+                      </div>
+                    </div>
                   </div>
-                  <div className="pr-card__discount">
-                    <span className="pr-card__discount-label">With 10% new client offer:</span>
-                    <span className="pr-card__discount-price">{fmt(discounted)}</span>
+
+                  <div className="pr-panel__right">
+                    <ul className="pr-features">
+                      {plan.features.map(f => (
+                        <li key={f} className="pr-feature">
+                          <span className="pr-check" />
+                          {f}
+                        </li>
+                      ))}
+                    </ul>
+                    
+                    <a href={`${plan.ctaLink}?service=${encodeURIComponent(activeService + ' – ' + plan.name)}`} className="pr-cta">
+                      <span className="pr-cta-text">{plan.cta}</span>
+                      <span className="pr-cta-arrow">↗</span>
+                    </a>
                   </div>
                 </div>
-                <ul className="pr-card__features">
-                  {plan.features.map(f => (
-                    <li key={f} className="pr-card__feature">
-                      <span className="pr-card__check">✓</span>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <a
-                  href={`${plan.ctaLink}?service=${encodeURIComponent(activeService + ' – ' + plan.name)}`}
-                  className={`pr-card__cta${plan.popular ? ' pr-card__cta--primary' : ''}`}
-                >
-                  {plan.cta === 'Most Popular' ? 'Get Started' : plan.cta} ↗
-                </a>
               </div>
             )
           })}
-        </div>
+      </div>
 
         {/* ── CUSTOM / ENTERPRISE ── */}
         <div className="pr-custom">
-          <div className="pr-custom__left">
-            <h3 className="pr-custom__title">Need something custom?</h3>
-            <p className="pr-custom__desc">
-              Every great product is unique. If your requirements don't fit a standard package,
-              let's talk — we'll scope a custom solution and provide a fixed-price quote within 48 hours.
-            </p>
-          </div>
-          <a href="/contact" className="pr-custom__cta">
-            <span>Get a Custom Quote</span>
-            <span className="pr-custom__arrow">↗</span>
-          </a>
+        <div className="pr-custom__bg" />
+        <div className="pr-custom__content">
+          <h3 className="pr-custom__title">Need something custom?</h3>
+          <p className="pr-custom__desc">
+            Every great product is unique. If your requirements don't fit a standard package,
+            let's talk — we'll scope a custom solution and provide a fixed-price quote within 48 hours.
+          </p>
         </div>
-      </section>
+        <a href="/contact" className="pr-custom__btn">
+          Get a Custom Quote <span className="pr-custom-arrow">↗</span>
+        </a>
+        </div>
 
       {/* ── FAQ ── */}
-      <section className="pr-faq-section">
-        <div className="pr-faq-inner">
-          <h2 className="pr-faq-title">Pricing FAQs</h2>
-          <div className="pr-faq-list">
-            {FAQS.map((item, i) => (
-              <div key={i} className={`pr-faq-item${openFaq === i ? ' pr-faq-item--open' : ''}`}>
-                <button className="pr-faq-q" onClick={() => setOpenFaq(openFaq === i ? null : i)}>
-                  <span>{item.q}</span>
-                  <span className="pr-faq-icon">{openFaq === i ? '−' : '+'}</span>
-                </button>
-                {openFaq === i && (
-                  <p className="pr-faq-a">{item.a}</p>
-                )}
+      <div className="pr-faq">
+        <h2 className="pr-faq-head">Pricing FAQs</h2>
+        <div className="pr-faq-list">
+          {FAQS.map((item, i) => (
+            <div key={i} className={`pr-faq-item ${openFaq === i ? 'is-open' : ''}`}>
+              <button className="pr-faq-q" onClick={() => setOpenFaq(openFaq === i ? null : i)}>
+                <span>{item.q}</span>
+                <span className="pr-faq-icon">{openFaq === i ? '−' : '+'}</span>
+              </button>
+              <div className="pr-faq-a">
+                <div className="pr-faq-a-inner">{item.a}</div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
-      </section>
+      </div>
 
+      </div>
     </div>
   )
 }
