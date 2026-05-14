@@ -1,14 +1,12 @@
-import { useRef, useLayoutEffect } from 'react'
+import { useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import './TrustedBy.css'
 
-gsap.registerPlugin(ScrollTrigger)
-
 export default function TrustedBy() {
   const sectionRef = useRef(null)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo('.trusted-by__logo', 
         { y: 30, opacity: 0 },

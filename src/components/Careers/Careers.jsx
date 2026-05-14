@@ -3,8 +3,6 @@ import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import './Careers.css'
 
-gsap.registerPlugin(ScrollTrigger)
-
 export default function Careers() {
   const sectionRef = useRef(null)
   const [email, setEmail] = useState('')

@@ -4,8 +4,6 @@ import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import './AboutKesariX.css'
 
-gsap.registerPlugin(ScrollTrigger)
-
 const TEAM = [
   {
     name: 'Sarthak Singh',

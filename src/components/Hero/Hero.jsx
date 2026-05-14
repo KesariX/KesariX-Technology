@@ -95,7 +95,7 @@ export default function Hero() {
       {/* ── Top eyebrow strip ── */}
       <div className="hero__strip" style={{ zIndex: 10, position: 'relative' }}>
         <div className="hero__strip-left">
-          <span style={{ opacity: 0.6 }}>Based in</span>
+          <span>Based in</span>
           <span style={{ fontWeight: 500, marginLeft: '6px' }}>India</span>
         </div>
         <div className="hero__strip-right">

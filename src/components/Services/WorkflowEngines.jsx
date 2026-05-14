@@ -3,8 +3,6 @@ import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import './WorkflowEngines.css'
 
-gsap.registerPlugin(ScrollTrigger)
-
 export default function WorkflowEngines() {
   const sectionRef = useRef(null)
 

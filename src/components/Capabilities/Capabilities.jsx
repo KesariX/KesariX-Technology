@@ -1,9 +1,7 @@
-import { useRef, useLayoutEffect } from 'react'
+import { useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import './Capabilities.css'
-
-gsap.registerPlugin(ScrollTrigger)
 
 const SERVICES = [
   {
@@ -51,7 +49,7 @@ const SERVICES = [
 export default function Capabilities() {
   const sectionRef = useRef(null)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const ctx = gsap.context(() => {
       let mm = gsap.matchMedia()
       

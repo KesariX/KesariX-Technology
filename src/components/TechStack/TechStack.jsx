@@ -1,9 +1,7 @@
-import { useRef, useLayoutEffect } from 'react'
+import { useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import './TechStack.css'
-
-gsap.registerPlugin(ScrollTrigger)
 
 const STACKS = [
   {
@@ -41,7 +39,7 @@ const totalTools = STACKS.reduce((a, s) => a + s.chips.length, 0)
 export default function TechStack() {
   const sectionRef = useRef(null)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from('.tech__head > *', {
         opacity: 0, y: 28, duration: 0.9, ease: 'power3.out', stagger: 0.1,

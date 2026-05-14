@@ -17,8 +17,8 @@
 /* --- Cursor spotlight hover effect --- */
 .hero__spotlight {
   position: absolute;
-  left: var(--mouse-x, 50%);
-  top: var(--mouse-y, 50%);
+  left: 0;
+  top: 0;
   width: 560px;
   height: 560px;
   background: radial-gradient(circle,
@@ -26,13 +26,13 @@
     rgba(255, 90, 31, 0.08) 40%,
     transparent 68%
   );
-  transform: translate(-50%, -50%);
+  transform: translate(var(--mouse-x, 50%), var(--mouse-y, 50%)) translate(-50%, -50%);
   pointer-events: none;
   z-index: 2;
   mix-blend-mode: screen;
   opacity: 0;
   transition: opacity 0.6s ease;
-  will-change: left, top;
+  will-change: transform;
 }
 .hero.is-hovered .hero__spotlight {
   opacity: 1;
@@ -137,7 +137,7 @@
   font-size: 11px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(239,232,216,0.45);
+  color: rgba(239,232,216,0.62);
 }
 
 .hero__strip-left {
@@ -200,14 +200,20 @@
   border-radius: 50%;
   background: var(--saffron);
   flex-shrink: 0;
-  animation: stripDot 2s ease-in-out infinite;
-  box-shadow: 0 0 0 0 rgba(255,90,31,0.6);
+  position: relative;
+}
+.hero__kicker-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--saffron);
   animation: kickerPulse 2s ease-in-out infinite;
 }
 @keyframes kickerPulse {
-  0%   { box-shadow: 0 0 0 0 rgba(255,90,31,0.7); opacity: 1; }
-  70%  { box-shadow: 0 0 0 8px rgba(255,90,31,0); opacity: 0.7; }
-  100% { box-shadow: 0 0 0 0 rgba(255,90,31,0); opacity: 1; }
+  0%   { transform: scale(1); opacity: 0.8; }
+  70%  { transform: scale(2.8); opacity: 0; }
+  100% { transform: scale(2.8); opacity: 0; }
 }
 
 
@@ -368,9 +374,9 @@
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(239,232,216,0.45);
+  color: rgba(239,232,216,0.62);
   text-decoration: none;
-  border-bottom: 1px solid rgba(239,232,216,0.18);
+  border-bottom: 1px solid rgba(239,232,216,0.25);
   padding-bottom: 3px;
   transition: color 0.3s, border-color 0.3s;
   white-space: nowrap;
@@ -415,7 +421,7 @@
   font-size: 10px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(239,232,216,0.38);
+  color: rgba(239,232,216,0.55);
   margin-top: 5px;
   white-space: nowrap;
 }

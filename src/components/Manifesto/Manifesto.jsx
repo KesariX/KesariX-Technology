@@ -1,14 +1,12 @@
-import { useRef, useLayoutEffect } from 'react'
+import { useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import './Manifesto.css'
 
-gsap.registerPlugin(ScrollTrigger)
-
 export default function Manifesto() {
   const sectionRef = useRef(null)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const ctx = gsap.context(() => {
       const quoteEl = sectionRef.current?.querySelector('[data-rise]')
       if (quoteEl) {

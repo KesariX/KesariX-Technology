@@ -3,8 +3,6 @@ import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import './ContactPage.css'
 
-gsap.registerPlugin(ScrollTrigger)
-
 const PROJECT_TYPES = [
   '— Select project type —',
   'AI & Machine Learning',

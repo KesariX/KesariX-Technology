@@ -1,9 +1,7 @@
-import { useRef, useLayoutEffect } from 'react'
+import { useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import './WorkReel.css'
-
-gsap.registerPlugin(ScrollTrigger)
 
 const PROJECTS = [
   {
@@ -24,7 +22,7 @@ const PROJECTS = [
 export default function WorkReel() {
   const sectionRef = useRef(null)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from('.portfolio__card', {
         opacity: 0, y: 60, duration: 1.2, ease: 'expo.out',

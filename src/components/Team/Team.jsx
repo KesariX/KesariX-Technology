@@ -1,9 +1,7 @@
-import { useRef, useLayoutEffect } from 'react'
+import { useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import './Team.css'
-
-gsap.registerPlugin(ScrollTrigger)
 
 const MEMBERS = [
   {
@@ -60,7 +58,7 @@ const MEMBERS = [
 export default function Team() {
   const sectionRef = useRef(null)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const ctx = gsap.context(() => {
       let mm = gsap.matchMedia()
       

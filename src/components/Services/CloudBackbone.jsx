@@ -3,8 +3,6 @@ import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import './CloudBackbone.css'
 
-gsap.registerPlugin(ScrollTrigger)
-
 export default function CloudBackbone() {
   const sectionRef = useRef(null)
 

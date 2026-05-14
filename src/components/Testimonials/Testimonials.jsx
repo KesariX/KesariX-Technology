@@ -1,9 +1,7 @@
-import { useRef, useLayoutEffect } from 'react'
+import { useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import './Testimonials.css'
-
-gsap.registerPlugin(ScrollTrigger)
 
 const testimonials = [
   {
@@ -65,7 +63,7 @@ function Stars({ count }) {
 export default function Testimonials() {
   const sectionRef = useRef(null)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo('.testi__eyebrow, .testi__title, .testi__head-meta', 
         { opacity: 0, y: 40 },

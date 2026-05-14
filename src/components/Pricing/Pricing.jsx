@@ -3,8 +3,6 @@ import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import './Pricing.css'
 
-gsap.registerPlugin(ScrollTrigger)
-
 const SERVICES = ['Web Development', 'AI Solutions', 'Mobile App', 'Cloud & Infrastructure', 'Process Automation']
 
 const PLANS = {

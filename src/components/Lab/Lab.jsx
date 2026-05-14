@@ -3,8 +3,6 @@ import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import './Lab.css'
 
-gsap.registerPlugin(ScrollTrigger)
-
 const TECHNOLOGIES = [
   {
     num: '01',

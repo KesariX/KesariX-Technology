@@ -3,8 +3,6 @@ import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import './NeuralArchitecture.css'
 
-gsap.registerPlugin(ScrollTrigger)
-
 export default function NeuralArchitecture() {
   const sectionRef = useRef(null)
 

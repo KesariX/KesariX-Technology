@@ -1,9 +1,7 @@
-import { useRef, useLayoutEffect } from 'react'
+import { useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import './Process.css'
-
-gsap.registerPlugin(ScrollTrigger)
 
 const STEPS = [
   { num: '01', phase: 'Week 1-2',   name: 'Discovery & Strategy', desc: 'We deep-dive into your goals, users, and technical requirements to define a product roadmap built for results — not assumptions.' },
@@ -16,7 +14,7 @@ const STEPS = [
 export default function Process() {
   const sectionRef = useRef(null)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     let ctx = gsap.context(() => {
       let mm = gsap.matchMedia()
       

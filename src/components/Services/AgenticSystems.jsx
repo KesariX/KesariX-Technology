@@ -3,8 +3,6 @@ import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import './AgenticSystems.css'
 
-gsap.registerPlugin(ScrollTrigger)
-
 const BOT_TYPES = [
   {
     num: '01',

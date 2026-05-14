@@ -4,8 +4,6 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 import { BLOG_POSTS, CATEGORIES } from '../../data/blogPosts'
 import './Blog.css'
 
-gsap.registerPlugin(ScrollTrigger)
-
 export default function Blog() {
   const pageRef = useRef(null)
   const [activeCategory, setActiveCategory] = useState('All')

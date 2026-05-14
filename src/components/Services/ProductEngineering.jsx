@@ -3,8 +3,6 @@ import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import './ProductEngineering.css'
 
-gsap.registerPlugin(ScrollTrigger)
-
 export default function ProductEngineering() {
   const sectionRef = useRef(null)
 

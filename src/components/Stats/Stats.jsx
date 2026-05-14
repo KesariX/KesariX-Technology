@@ -1,9 +1,7 @@
-import { useRef, useLayoutEffect } from 'react'
+import { useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import './Stats.css'
-
-gsap.registerPlugin(ScrollTrigger)
 
 const STATS = [
   { count: 50,  suffix: '+',  prefix: '',  label: 'Projects Delivered',    sub: 'Successful scalable deployments serving businesses across 1+ countries globally.' },
@@ -15,7 +13,7 @@ const STATS = [
 export default function Stats() {
   const sectionRef = useRef(null)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const ctx = gsap.context(() => {
       sectionRef.current?.querySelectorAll('[data-count]').forEach((el) => {
         const target = parseFloat(el.dataset.count)

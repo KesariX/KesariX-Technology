@@ -1,9 +1,7 @@
-import { useRef, useLayoutEffect } from 'react'
+import { useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import './Contact.css'
-
-gsap.registerPlugin(ScrollTrigger)
 
 const CHECKLIST = [
   'Free 30-minute discovery call',
@@ -31,7 +29,7 @@ const FOOTER_COMPANY = [
 export default function Contact() {
   const sectionRef = useRef(null)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const ctx = gsap.context(() => {
       // Headline clip-reveal
       gsap.from('.contact__line', {

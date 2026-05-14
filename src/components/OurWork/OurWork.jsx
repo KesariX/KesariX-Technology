@@ -3,8 +3,6 @@ import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import './OurWork.css'
 
-gsap.registerPlugin(ScrollTrigger)
-
 const PROJECTS = [
   {
     id: 1,
