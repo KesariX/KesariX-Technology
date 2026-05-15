@@ -36,7 +36,9 @@ export default function WorkReel() {
     <section className="portfolio" id="portfolio" ref={sectionRef}>
       <div className="portfolio__head">
         <div className="portfolio__title-wrap">
-          <span className="section-label" style={{ color: 'var(--ink)' }}>Our Portfolio</span>
+          <div className="cp-header__eyebrow">
+            <span className="cp-eyebrow-dot" /> Our Products
+          </div>
           <h2 className="portfolio__title">
             Products That Make<br />an <em>Impact</em>
           </h2>

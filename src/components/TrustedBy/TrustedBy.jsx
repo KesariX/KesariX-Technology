@@ -34,11 +34,11 @@ export default function TrustedBy() {
         </p>
         <div className="trusted-by__logos" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '4rem', alignItems: 'center' }}>
           {/* Replace with your actual client SVG logos */}
-          <span className="trusted-by__logo" style={{ fontSize: '1.5rem', fontWeight: '700', color: '#fff' }}>Acme Corp</span>
-          <span className="trusted-by__logo" style={{ fontSize: '1.5rem', fontWeight: '700', color: '#fff' }}>GlobalTech</span>
-          <span className="trusted-by__logo" style={{ fontSize: '1.5rem', fontWeight: '700', color: '#fff' }}>Nebula</span>
-          <span className="trusted-by__logo" style={{ fontSize: '1.5rem', fontWeight: '700', color: '#fff' }}>Quantum</span>
-          <span className="trusted-by__logo" style={{ fontSize: '1.5rem', fontWeight: '700', color: '#fff' }}>Starlight</span>
+          <span className="trusted-by__logo" style={{ fontSize: '1.5rem', fontWeight: '700', color: '#fff' }}>Wercatalyst</span>
+          <span className="trusted-by__logo" style={{ fontSize: '1.5rem', fontWeight: '700', color: '#fff' }}>Neha Engineering Works</span>
+          <span className="trusted-by__logo" style={{ fontSize: '1.5rem', fontWeight: '700', color: '#fff' }}>Shiv Krishna Engineers</span>
+          <span className="trusted-by__logo" style={{ fontSize: '1.5rem', fontWeight: '700', color: '#fff' }}>BIT Bharuch</span>
+          <span className="trusted-by__logo" style={{ fontSize: '1.5rem', fontWeight: '700', color: '#fff' }}>chronagen technophant</span>
         </div>
       </div>
     </section>

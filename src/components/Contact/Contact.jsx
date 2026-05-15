@@ -114,7 +114,7 @@ export default function Contact() {
               +91 92747 39361
             </a>
             <span className="contact__bar-sep">·</span>
-            <span className="contact__bar-item">Surat, India</span>
+            <span className="contact__bar-item">Vadodara, India</span>
             <span className="contact__bar-sep">·</span>
             <span className="contact__bar-item contact__bar-item--live">
               <span className="contact__live-dot" />
@@ -130,8 +130,16 @@ export default function Contact() {
         <div className="footer__top">
           <div className="footer__brand">
             <div className="footer__logo">
-              <span className="footer__mark">K</span>
-              <span>KesariX</span>
+              {/* <span className="footer__mark">K</span> */}
+              <img
+                className="nav__logo-img"
+                src="/Kesarix-technology-logo.webp"
+                alt="KesariX Technology"
+                width="40"
+                height="30"
+                draggable="false"
+              />
+              <span>KesariX Technology</span>
             </div>
             <p className="footer__tagline">We Engineer What's Next.</p>
             <a className="footer__book" href="mailto:info@kesarixtechnology.com">
@@ -155,7 +163,7 @@ export default function Contact() {
               <div className="footer__col-head">Get in Touch</div>
               <a className="footer__col-link" href="mailto:info@kesarixtechnology.com">info@kesarixtechnology.com</a>
               <a className="footer__col-link" href="tel:+919274739361">+91 92747 39361</a>
-              <span className="footer__col-link">India</span>
+              <span className="footer__col-link">Vadodara, India</span>
             </div>
           </div>
         </div>

@@ -102,6 +102,7 @@ const TIMELINE = [
 
 export default function AboutKesariX() {
   const sectionRef = useRef(null)
+  const milestonesRef = useRef([])
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -154,15 +155,55 @@ export default function AboutKesariX() {
         })
       })
 
-      /* ── Timeline stagger ── */
-      gsap.utils.toArray('.ab-milestone').forEach((item, i) => {
+      /* ── Premium Timeline stagger & Parallax ── */
+      milestonesRef.current.forEach((item, i) => {
+        if (!item) return;
         gsap.fromTo(item,
-          { autoAlpha: 0, x: -40 },
+          { autoAlpha: 0, y: 100 },
           {
-            autoAlpha: 1, x: 0, duration: 0.9, ease: 'power3.out', delay: i * 0.1,
-            scrollTrigger: { trigger: item, start: 'top 85%', toggleActions: 'play none none none' },
+            autoAlpha: 1, y: 0, duration: 1.2, ease: 'expo.out', delay: i * 0.1,
+            scrollTrigger: { trigger: item, start: 'top 85%' },
           }
         )
+
+        // Desktop Parallax
+        let mm = gsap.matchMedia();
+        mm.add("(min-width: 1024px)", () => {
+          const speed = i % 2 !== 0 ? 80 : 40;
+          gsap.to(item, {
+            y: -speed,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: '.ab-history-premium',
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: 1
+            }
+          })
+        });
+      })
+      
+      gsap.fromTo('.ab-history-line',
+        { scaleY: 0 },
+        {
+          scaleY: 1,
+          transformOrigin: 'top center',
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.ab-history-premium',
+            start: 'top 60%',
+            end: 'bottom 80%',
+            scrub: true
+          }
+        }
+      )
+
+      /* ── Ambient Orbs ── */
+      gsap.to('.ab-ambient__orb--blue', {
+        x: '8vw', y: '8vh', duration: 15, repeat: -1, yoyo: true, ease: 'sine.inOut'
+      })
+      gsap.to('.ab-ambient__orb--orange', {
+        x: '-8vw', y: '-6vh', duration: 12, repeat: -1, yoyo: true, ease: 'sine.inOut'
       })
 
       /* ── Values grid stagger ── */
@@ -188,6 +229,16 @@ export default function AboutKesariX() {
 
     return () => ctx.revert()
   }, [])
+
+  // Tracks mouse position for the luxury lighting glow on cards
+  const handleMouseMove = (e, cardElement) => {
+    if (!cardElement) return;
+    const rect = cardElement.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    cardElement.style.setProperty('--mouse-x', `${x}px`)
+    cardElement.style.setProperty('--mouse-y', `${y}px`)
+  }
 
   return (
     <div className="ab-page" ref={sectionRef}>
@@ -234,12 +285,7 @@ export default function AboutKesariX() {
               <span className="ab-hero-stat__val">98% Satisfaction</span>
             </div>
           </div>
-          <div className="ab-hero__scroll">
-            <div className="ab-hero__scroll-track">
-              <div className="ab-hero__scroll-dot" />
-            </div>
-            <span className="ab-hero__scroll-label">Scroll to explore</span>
-          </div>
+          
         </div>
       </section>
 
@@ -419,40 +465,85 @@ export default function AboutKesariX() {
       </section>
 
       {/* ══════════════════════════════════════
-          7. TIMELINE — MILESTONES
+          7. TIMELINE — MILESTONES (Premium Cinematic)
          ══════════════════════════════════════ */}
-      <section className="ab-section ab-history ab-light">
-        <div className="ab-history__inner">
+      <section className="ab-section ab-history-premium ab-dark" style={{ position: 'relative', overflow: 'hidden' }}>
+        {/* Ambient Atmosphere */}
+        <div className="ab-ambient" aria-hidden="true">
+          <div className="ab-ambient__orb ab-ambient__orb--blue" />
+          <div className="ab-ambient__orb ab-ambient__orb--orange" />
+          <div className="ab-ambient__noise" />
+        </div>
+
+        <div className="ab-history__inner" style={{ position: 'relative', zIndex: 2 }}>
           <div className="ab-history__header ab-reveal">
             <span className="ab-eyebrow">
               <span className="ab-eyebrow-dot" />
-              Company Milestones
+              Evolution
             </span>
             <h2 className="ab-title-huge">
-              The Road to <br />
-              <em className="ab-italic">Scale.</em>
+              <div className="line" style={{ perspective: '1000px' }}>The Road to</div>
+              <div className="line" style={{ perspective: '1000px' }}>
+                <em className="ab-italic--blue">Scale.</em>
+              </div>
             </h2>
+            <p className="ab-desc-large">
+              A rapid trajectory of shipping robust enterprise systems, pushing the boundaries of what a lean elite team can build.
+            </p>
           </div>
-          <div className="ab-history-track">
-            <div className="ab-history-track__line" />
+          
+          <div className="ab-history-track-premium">
+            <div className="ab-history-line" aria-hidden="true" />
             {TIMELINE.map((item, i) => (
-              <div className="ab-milestone" key={i}>
-                <div className="ab-milestone__node">
-                  <div className="ab-milestone__node-core" />
-                </div>
-                <div className="ab-milestone__card">
-                  <div className="ab-milestone__bg" />
-                  <div className="ab-milestone__header">
-                    <span className="ab-milestone__period">{item.period}</span>
-                    <span className="ab-milestone__badge">{item.badge}</span>
+              <div 
+                className={`ab-milestone-card ${i % 2 !== 0 ? 'ab-milestone-card--offset' : ''}`}
+                key={i}
+                ref={el => milestonesRef.current[i] = el}
+                onMouseMove={(e) => handleMouseMove(e, milestonesRef.current[i])}
+              >
+                {/* Mouse-reactive glow layer */}
+                <div className="ab-milestone-card__glow" aria-hidden="true" />
+                
+                {/* Massive background text for depth */}
+                <div className="ab-milestone-card__bg-text" aria-hidden="true">{item.badge}</div>
+
+                <div className="ab-milestone-card__content">
+                  <div className="ab-milestone-card__meta">
+                    <span className="ab-milestone-card__period">{item.period}</span>
+                    <span className="ab-milestone-card__line-dec" aria-hidden="true" />
                   </div>
-                  <h3 className="ab-milestone__title">{item.event}</h3>
-                  <p className="ab-milestone__desc">{item.desc}</p>
+                  
+                  <h3 className="ab-milestone-card__title">{item.event}</h3>
+                  <p className="ab-milestone-card__desc">{item.desc}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
+        
+        {/* Base component CSS embedded to ensure zero-flicker load & maintain independent encapsulation */}
+        <style dangerouslySetInnerHTML={{__html: `
+          .ab-history-premium { padding: 8rem 5%; background: var(--color-bg-dark, #0a0a0a); color: var(--color-text-light, #fff); }
+          .ab-history-premium .ab-ambient__orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.3; pointer-events: none; }
+          .ab-history-premium .ab-ambient__orb--blue { width: 40vw; height: 40vw; background: rgba(59, 130, 246, 0.4); top: -10%; left: -10%; }
+          .ab-history-premium .ab-ambient__orb--orange { width: 35vw; height: 35vw; background: rgba(249, 115, 22, 0.3); bottom: 10%; right: -10%; }
+          .ab-history-premium .ab-italic--blue { color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.8); font-style: italic; font-weight: 300; }
+          .ab-history-track-premium { position: relative; margin-top: 6rem; display: flex; flex-direction: column; gap: 4rem; max-width: 1200px; margin-inline: auto; padding-left: 2rem; }
+          .ab-history-line { position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,255,255,0.4), rgba(255,255,255,0.05)); }
+          .ab-milestone-card { position: relative; background: rgba(20,20,20,0.6); border: 1px solid rgba(255,255,255,0.05); padding: 3rem; border-radius: 24px; overflow: hidden; backdrop-filter: blur(20px); max-width: 600px; width: 100%; transition: border-color 0.3s ease; }
+          .ab-milestone-card:hover { border-color: rgba(255,255,255,0.2); }
+          .ab-milestone-card--offset { align-self: flex-end; }
+          .ab-milestone-card__glow { position: absolute; top: var(--mouse-y, 0); left: var(--mouse-x, 0); width: 400px; height: 400px; background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%); transform: translate(-50%, -50%); pointer-events: none; opacity: 0; transition: opacity 0.3s; z-index: 1; }
+          .ab-milestone-card:hover .ab-milestone-card__glow { opacity: 1; }
+          .ab-milestone-card__bg-text { position: absolute; right: -5%; bottom: -10%; font-size: 8rem; font-weight: 900; color: rgba(255,255,255,0.02); z-index: 0; user-select: none; pointer-events: none; letter-spacing: -0.02em; }
+          .ab-milestone-card__content { position: relative; z-index: 2; }
+          .ab-milestone-card__meta { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+          .ab-milestone-card__period { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: #a1a1aa; }
+          .ab-milestone-card__line-dec { height: 1px; width: 40px; background: rgba(255,255,255,0.2); }
+          .ab-milestone-card__title { font-size: 2rem; font-weight: 400; margin-bottom: 1rem; color: #fff; letter-spacing: -0.02em; }
+          .ab-milestone-card__desc { font-size: 1.125rem; color: #a1a1aa; line-height: 1.6; }
+          @media (max-width: 1024px) { .ab-history-track-premium { gap: 2rem; } .ab-milestone-card--offset { align-self: flex-start; } .ab-milestone-card { padding: 2rem; } .ab-milestone-card__bg-text { font-size: 5rem; } }
+        `}} />
       </section>
 
       {/* ══════════════════════════════════════

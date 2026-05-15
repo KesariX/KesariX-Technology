@@ -210,11 +210,11 @@ export default function Hero() {
 
         <div className="hero__foot-metrics">
           <div className="hero__metric">
-            <span className="hero__metric-num">50<sup>+</sup></span>
+            <span className="hero__metric-num">5<sup>+</sup></span>
             <span className="hero__metric-label">Projects Shipped</span>
           </div>
           <div className="hero__metric">
-            <span className="hero__metric-num">5<sup>+</sup></span>
+            <span className="hero__metric-num">6<sup>+</sup></span>
             <span className="hero__metric-label">Active Teams</span>
           </div>
           <div className="hero__metric">

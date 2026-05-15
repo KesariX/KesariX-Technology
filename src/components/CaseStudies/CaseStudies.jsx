@@ -14,28 +14,34 @@ const PROJECTS = [
       { value: '<1s', label: 'Response Time' },
     ],
     image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=1200',
+    link: '/#contact',
+    ctaText: 'View Case Study ↗',
   },
   {
     id: 2,
     category: 'Web Development',
-    title: 'Mechanical Services Website Platform',
-    desc: 'Designed and developed a high-conversion website for a mechanical service provider. Includes service listings, lead capture, SEO optimization, and fast-loading UI for better customer acquisition.',
+    title: 'Shiv Krishna Engineering',
+    desc: 'Designed and developed a modern, high-performance website. The new design is clean, user-friendly, and has significantly enhanced their online presence and credibility in the industry.',
     metrics: [
-      { value: '+3x', label: 'Lead Increase' },
-      { value: '95+', label: 'Lighthouse Score' },
+      { value: '100%', label: 'Responsive' },
+      { value: 'A+', label: 'Performance' },
     ],
-    image: 'https://images.unsplash.com/photo-1517524285303-d6fc683dddf8?auto=format&fit=crop&q=80&w=1200',
+    previewUrl: 'https://shiv-krishna-engineering.vercel.app/',
+    link: 'https://shiv-krishna-engineering.vercel.app/',
+    ctaText: 'Visit Website ↗',
   },
   {
     id: 3,
-    category: 'E-Commerce',
-    title: 'Global E-Commerce Platform',
-    desc: 'A completely custom headless commerce architecture using Next.js and Shopify Plus. Achieved perfect Lighthouse 100 scores across all metrics, resulting in a 310% organic traffic increase within 6 months.',
+    category: 'Web Development',
+    title: 'Neha Engineering Works',
+    desc: 'Created a professional website to showcase their engineering capabilities. Delivered a beautiful, highly responsive platform with outstanding performance and exceptional ongoing support.',
     metrics: [
-      { value: '+310%', label: 'Organic Traffic' },
-      { value: '380ms', label: 'Page Load' },
+      { value: '100%', label: 'Responsive' },
+      { value: 'A+', label: 'Performance' },
     ],
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=1200',
+    previewUrl: 'https://neha-engineering-works.vercel.app/',
+    link: 'https://neha-engineering-works.vercel.app/',
+    ctaText: 'Visit Website ↗',
   },
 ]
 
@@ -152,15 +158,31 @@ export default function CaseStudies() {
         {filtered.length > 0 ? filtered.map(project => (
           <article className="cs-card" key={project.id}>
             <div className="cs-card__visual">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="cs-card__img"
-                loading="lazy"
-              />
+              {project.previewUrl ? (
+                <iframe
+                  src={project.previewUrl}
+                  title={project.title}
+                  className="cs-card__img"
+                  style={{ border: 'none', pointerEvents: 'none', width: '100%', height: '100%' }}
+                  loading="lazy"
+                  scrolling="no"
+                />
+              ) : (
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="cs-card__img"
+                  loading="lazy"
+                />
+              )}
               <div className="cs-card__overlay"></div>
               <span className="cs-card__tag">{project.category}</span>
-              <a href="/#contact" className="cs-card__cta">View Case Study ↗</a>
+              <a href={project.link} target={project.previewUrl ? "_blank" : "_self"} rel={project.previewUrl ? "noopener noreferrer" : ""} className="cs-card__cta">
+                {project.ctaText || 'View Case Study ↗'}
+              </a>
+              {project.previewUrl && (
+                <a href={project.link} target="_blank" rel="noopener noreferrer" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 1 }} aria-label={`Visit ${project.title}`}></a>
+              )}
             </div>
             <div className="cs-card__body">
               <h3 className="cs-card__title">{project.title}</h3>

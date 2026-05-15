@@ -255,3 +255,21 @@
   .portfolio__metric-value { font-size: 36px; }
   .portfolio__tag { font-size: 9px; padding: 5px 10px; }
 }
+.cp-header__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #9ca3af;
+  margin-bottom: 2rem;
+}
+
+.cp-eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #3b82f6;
+  border-radius: 50%;
+  box-shadow: 0 0 12px #3b82f6;
+}
