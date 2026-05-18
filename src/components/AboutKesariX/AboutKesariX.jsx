@@ -46,14 +46,14 @@ const TEAM = [
     role: 'Growth Specialist',
     bio: 'Growth expert with deep expertise in digital campaigns, performance marketing, and data-driven pipelines.',
     tags: ['Digital', 'Analytics', 'Growth'],
-    photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=480&h=600&q=85',
+    photo: '/src/assets/profiles/jay.jpg',
   },
   {
     name: 'Om Parmar',
     role: 'Mobile App Development Lead',
     bio: 'Mobile architect crafting elegant, high-performance cross-platform applications using modern mobile technologies and best practices.',
     tags: ['React Native', 'iOS', 'Android'],
-    photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=480&h=600&q=85',
+    photo: '/src/assets/profiles/om.png',
   },
 ]
 

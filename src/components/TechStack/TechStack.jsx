@@ -102,7 +102,7 @@ const STACKS = [
   },
   {
     id: 'mobile',
-    num: '05',
+    num: '07',
     label: 'Mobile Development',
     desc: 'Native and cross-platform applications built for speed, beauty, and flawless user experience.',
     chips: ['React Native', 'Flutter', 'Swift', 'Kotlin', 'Firebase', 'Expo', 'Native Modules', 'App Distribution'],

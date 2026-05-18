@@ -168,17 +168,8 @@
   transform: translateY(8px) translateX(8px);
 }
 
-/* Card glow */
 .testi__card-glow {
-  position: absolute;
-  top: -30%;
-  right: -10%;
-  width: 280px; height: 280px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.09) 0%, transparent 65%);
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.45s ease;
-  z-index: 0;
+  display: none;
 }
 .testi__card:hover .testi__card-glow { opacity: 1; }
 

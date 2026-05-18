@@ -26,16 +26,38 @@ export default function ContactPage() {
   const [company, setCompany] = useState('')
   const [projectType, setProjectType] = useState('')
   const [message, setMessage] = useState('')
+  const [status, setStatus] = useState('idle') // 'idle' | 'loading' | 'success' | 'error'
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault()
-    const subject = encodeURIComponent(
-      `Project Enquiry from ${name || 'Website Visitor'}`
-    )
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nCompany: ${company}\nProject Type: ${projectType}\n\nMessage:\n${message}`
-    )
-    window.location.href = `mailto:info@kesarixtechnology.com?subject=${subject}&body=${body}`
+    setStatus('loading')
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: import.meta.env.VITE_WEB3FORMS_KEY,
+          subject: `New Project Enquiry from ${name || 'Website Visitor'}`,
+          name,
+          email,
+          company: company || 'Not provided',
+          project_type: projectType || 'Not selected',
+          message,
+          from_name: 'KesariX Website',
+        }),
+      })
+
+      const data = await res.json()
+      if (data.success) {
+        setStatus('success')
+        setName(''); setEmail(''); setCompany(''); setProjectType(''); setMessage('')
+      } else {
+        setStatus('error')
+      }
+    } catch {
+      setStatus('error')
+    }
   }
 
   useLayoutEffect(() => {
@@ -190,13 +212,35 @@ export default function ContactPage() {
                 />
               </div>
 
-              <button type="submit" className="cp-submit-btn">
-                Send Message ↗
-              </button>
+              {status === 'success' ? (
+                <div className="cp-success-msg">
+                  <span className="cp-success-icon">✓</span>
+                  <div>
+                    <strong>Message sent!</strong>
+                    <p>We'll get back to you within 24 hours.</p>
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <button
+                    type="submit"
+                    className="cp-submit-btn"
+                    disabled={status === 'loading'}
+                  >
+                    {status === 'loading' ? 'Sending…' : 'Send Message ↗'}
+                  </button>
 
-              <p className="cp-form-note">
-                We respond within 24 hours &middot; Free discovery call included
-              </p>
+                  {status === 'error' && (
+                    <p className="cp-error-msg">
+                      Something went wrong. Please email us directly at info@kesarixtechnology.com
+                    </p>
+                  )}
+
+                  <p className="cp-form-note">
+                    We respond within 24 hours &middot; Free discovery call included
+                  </p>
+                </>
+              )}
 
             </form>
           </div>
@@ -242,7 +286,7 @@ export default function ContactPage() {
                 </div>
                 <div className="cp-contact-row">
                   <span className="cp-contact-label">Based in</span>
-                  <span className="cp-contact-value">Surat, India</span>
+                  <span className="cp-contact-value">Vadodara, India</span>
                 </div>
               </div>
 

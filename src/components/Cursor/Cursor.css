@@ -49,3 +49,39 @@
 .c-tr { top: 0;    right: 0;  border-width: 1.5px 1.5px 0 0; }
 .c-bl { bottom: 0; left: 0;   border-width: 0 0 1.5px 1.5px; }
 .c-br { bottom: 0; right: 0;  border-width: 0 1.5px 1.5px 0; }
+
+/* ── Ambient page glow — slow drift, velocity elongation ── */
+.cursor__glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 580px;
+  height: 360px;
+  pointer-events: none;
+  z-index: 9997;
+  mix-blend-mode: screen;
+  will-change: transform, opacity;
+  opacity: 1;
+  transition: opacity 0.9s ease;
+}
+
+.cursor__glow-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 54% 46% 38% 62% / 60% 44% 56% 40%;
+  background:
+    radial-gradient(ellipse 55% 80% at 22% 50%, rgba(249, 115, 22, 0.55) 0%, transparent 65%),
+    radial-gradient(ellipse 55% 80% at 78% 50%, rgba(59, 130, 246, 0.48) 0%, transparent 65%),
+    radial-gradient(ellipse 35% 55% at 50% 50%, rgba(255, 255, 255, 0.12) 0%, transparent 55%);
+  filter: blur(50px);
+  animation: glowMorph 14s ease-in-out infinite;
+}
+
+@keyframes glowMorph {
+  0%   { border-radius: 54% 46% 38% 62% / 60% 44% 56% 40%; }
+  20%  { border-radius: 40% 60% 55% 45% / 48% 62% 38% 52%; }
+  40%  { border-radius: 62% 38% 48% 52% / 38% 58% 42% 62%; }
+  60%  { border-radius: 48% 52% 62% 38% / 55% 40% 60% 45%; }
+  80%  { border-radius: 38% 62% 44% 56% / 62% 48% 52% 38%; }
+  100% { border-radius: 54% 46% 38% 62% / 60% 44% 56% 40%; }
+}

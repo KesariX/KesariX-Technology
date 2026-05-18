@@ -136,19 +136,9 @@
   box-shadow: 0 24px 48px -24px rgba(0, 0, 0, 0.6);
 }
 
-/* Glow on hover */
 .stats__card-glow {
-  position: absolute;
-  top: -30%;
-  right: -10%;
-  width: 320px; height: 320px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, transparent 65%);
-  pointer-events: none;
-  transition: opacity 0.5s ease;
-  opacity: 0;
-  z-index: 0;
+  display: none;
 }
-.stats__card:hover .stats__card-glow { opacity: 1; }
 
 /* The number — editorial outlined treatment */
 .stats__num {
