@@ -300,39 +300,262 @@
   pointer-events: none;
 }
 
-/* Success message */
-.cp-success-msg {
+/* ── Premium Success Panel — light theme (sits on --bone cream bg) ── */
+.cp-success-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding: 3rem;
+  background: #ffffff;
+  border-radius: 20px;
+  border-top: 3px solid var(--saffron);
+  box-shadow:
+    0 2px 0 rgba(10, 23, 56, 0.04),
+    0 8px 40px -8px rgba(10, 23, 56, 0.10),
+    0 24px 64px -16px rgba(10, 23, 56, 0.06);
+  overflow: hidden;
+  animation: successPanelIn 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes successPanelIn {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Faint warm corner wash on the white card */
+.cp-success-panel__glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 65% 55% at 0% 0%, rgba(255, 90, 31, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 45% at 100% 100%, rgba(59, 130, 246, 0.04) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Animated SVG checkmark ── */
+.cp-success-check-wrap {
+  position: relative;
+  z-index: 1;
+  width: 56px;
+  height: 56px;
+}
+
+.cp-check-svg {
+  width: 56px;
+  height: 56px;
+}
+
+.cp-check-circle {
+  stroke: var(--saffron);
+  stroke-width: 1.8;
+  stroke-dasharray: 151;
+  stroke-dashoffset: 151;
+  animation: drawCircle 0.6s cubic-bezier(0.65, 0, 0.45, 1) 0.1s forwards;
+}
+
+.cp-check-tick {
+  stroke: var(--saffron);
+  stroke-width: 2.5;
+  stroke-dasharray: 36;
+  stroke-dashoffset: 36;
+  animation: drawTick 0.32s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards;
+}
+
+@keyframes drawCircle { to { stroke-dashoffset: 0; } }
+@keyframes drawTick   { to { stroke-dashoffset: 0; } }
+
+/* ── Panel body ── */
+.cp-success-panel__body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cp-success-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--f-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: rgba(10, 23, 56, 0.45);
+}
+
+.cp-success-eyebrow-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #16a34a;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.18);
+  animation: successDotPulse 2.2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes successDotPulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.18); }
+  50%       { box-shadow: 0 0 0 6px rgba(22, 163, 74, 0.07); }
+}
+
+.cp-success-title {
+  font-family: var(--f-sans);
+  font-size: clamp(1.9rem, 3vw, 2.7rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--ink-deep);
+  margin: 0;
+}
+
+.cp-success-title-em {
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--saffron);
+}
+
+.cp-success-desc {
+  font-size: 1rem;
+  color: rgba(10, 23, 56, 0.58);
+  line-height: 1.7;
+  margin: 0;
+  max-width: 460px;
+  border-left: 2px solid rgba(255, 90, 31, 0.2);
+  padding-left: 1rem;
+}
+
+/* ── Timeline ── */
+.cp-success-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 1.5rem 1.75rem;
+  background: var(--bone);
+  border-radius: 14px;
+  border: 1px solid rgba(10, 23, 56, 0.07);
+}
+
+.cp-success-timeline-head {
+  font-family: var(--f-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: rgba(10, 23, 56, 0.35);
+  margin: 0 0 1.1rem 0;
+}
+
+.cp-timeline-item {
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  padding: 1.5rem;
-  background: rgba(34, 197, 94, 0.08);
-  border: 1px solid rgba(34, 197, 94, 0.25);
-  border-radius: 12px;
-  color: var(--bone);
+  padding: 0.8rem 0;
+  border-top: 1px solid rgba(10, 23, 56, 0.06);
+  animation: timelineItemIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
-.cp-success-icon {
-  width: 28px;
-  height: 28px;
+
+.cp-timeline-item:nth-child(2) { animation-delay: 0.75s; }
+.cp-timeline-item:nth-child(3) { animation-delay: 0.95s; }
+.cp-timeline-item:nth-child(4) { animation-delay: 1.15s; }
+
+@keyframes timelineItemIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.cp-tl-dot {
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
-  background: rgba(34, 197, 94, 0.2);
-  color: #22c55e;
+  background: #fff;
+  border: 1.5px solid rgba(10, 23, 56, 0.22);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.cp-timeline-item--done .cp-tl-dot {
+  background: #16a34a;
+  border-color: #16a34a;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15);
+}
+
+.cp-tl-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+}
+
+.cp-tl-when {
+  font-family: var(--f-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--saffron);
+  font-weight: 600;
+}
+
+.cp-timeline-item--done .cp-tl-when {
+  color: #16a34a;
+}
+
+.cp-tl-what {
+  font-size: 0.9rem;
+  color: rgba(10, 23, 56, 0.7);
+  font-weight: 400;
+}
+
+/* ── Quick contact footer ── */
+.cp-success-reach {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 0.85rem;
-  flex-shrink: 0;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(10, 23, 56, 0.07);
 }
-.cp-success-msg strong {
-  display: block;
-  margin-bottom: 0.2rem;
-  color: #22c55e;
-  font-size: 1rem;
+
+.cp-success-reach-label {
+  font-size: 0.82rem;
+  color: rgba(10, 23, 56, 0.38);
+  white-space: nowrap;
+  font-family: var(--f-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
-.cp-success-msg p {
-  font-size: 0.9rem;
-  color: var(--text-mid, #a1a1aa);
-  margin: 0;
+
+.cp-success-reach-links {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-left: auto;
+}
+
+.cp-reach-link {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  font-family: var(--f-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid rgba(10, 23, 56, 0.15);
+  border-radius: 999px;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.cp-reach-link:hover {
+  background: var(--saffron);
+  color: #ffffff;
+  border-color: var(--saffron);
+}
+
+.cp-reach-sep {
+  color: rgba(10, 23, 56, 0.2);
+  font-size: 0.75rem;
 }
 
 /* Error message */

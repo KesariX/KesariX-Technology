@@ -136,92 +136,169 @@ export default function ContactPage() {
       <section className="cp-body">
         <div className="cp-body__inner">
 
-          {/* LEFT — Contact Form */}
+          {/* LEFT — Contact Form or Success Panel */}
           <div className="cp-form-col">
-            <h3 className="cp-form-title">Tell Us About Your Project</h3>
 
-            <form className="cp-form" onSubmit={handleSubmit} noValidate>
+            {status === 'success' ? (
 
-              <div className="cp-field">
-                <label className="cp-label" htmlFor="cp-name">Name</label>
-                <input
-                  id="cp-name"
-                  className="cp-input"
-                  type="text"
-                  placeholder="Your full name"
-                  value={name}
-                  onChange={e => setName(e.target.value)}
-                  autoComplete="name"
-                />
-              </div>
+              <div className="cp-success-panel">
+                <div className="cp-success-panel__glow" aria-hidden="true" />
 
-              <div className="cp-field">
-                <label className="cp-label" htmlFor="cp-email">Email</label>
-                <input
-                  id="cp-email"
-                  className="cp-input"
-                  type="email"
-                  placeholder="your@company.com"
-                  value={email}
-                  onChange={e => setEmail(e.target.value)}
-                  autoComplete="email"
-                />
-              </div>
-
-              <div className="cp-field">
-                <label className="cp-label" htmlFor="cp-company">Company</label>
-                <input
-                  id="cp-company"
-                  className="cp-input"
-                  type="text"
-                  placeholder="Company name (optional)"
-                  value={company}
-                  onChange={e => setCompany(e.target.value)}
-                  autoComplete="organization"
-                />
-              </div>
-
-              <div className="cp-field">
-                <label className="cp-label" htmlFor="cp-project-type">Project Type</label>
-                <div className="cp-select-wrap">
-                  <select
-                    id="cp-project-type"
-                    className="cp-input cp-select"
-                    value={projectType}
-                    onChange={e => setProjectType(e.target.value)}
-                  >
-                    {PROJECT_TYPES.map(type => (
-                      <option key={type} value={type === '— Select project type —' ? '' : type}>
-                        {type}
-                      </option>
-                    ))}
-                  </select>
-                  <span className="cp-select-arrow" aria-hidden="true">↓</span>
+                {/* Animated checkmark */}
+                <div className="cp-success-check-wrap">
+                  <svg className="cp-check-svg" viewBox="0 0 52 52" aria-hidden="true">
+                    <circle className="cp-check-circle" cx="26" cy="26" r="24" fill="none" />
+                    <path className="cp-check-tick" fill="none" strokeLinecap="round" strokeLinejoin="round" d="M14 27l8 8 16-16" />
+                  </svg>
                 </div>
-              </div>
 
-              <div className="cp-field">
-                <label className="cp-label" htmlFor="cp-message">Message</label>
-                <textarea
-                  id="cp-message"
-                  className="cp-input cp-textarea"
-                  rows={6}
-                  placeholder="Describe your project, goals, and any relevant context..."
-                  value={message}
-                  onChange={e => setMessage(e.target.value)}
-                />
-              </div>
+                <div className="cp-success-panel__body">
+                  <span className="cp-success-eyebrow">
+                    <span className="cp-success-eyebrow-dot" aria-hidden="true" />
+                    Message Delivered
+                  </span>
 
-              {status === 'success' ? (
-                <div className="cp-success-msg">
-                  <span className="cp-success-icon">✓</span>
-                  <div>
-                    <strong>Message sent!</strong>
-                    <p>We'll get back to you within 24 hours.</p>
+                  <h3 className="cp-success-title">
+                    We've got your<br />
+                    <em className="cp-success-title-em">
+                      {name ? `message, ${name.split(' ')[0]}.` : 'message.'}
+                    </em>
+                  </h3>
+
+                  <p className="cp-success-desc">
+                    Every enquiry is reviewed personally by our team — you'll get a real reply, not a template.
+                  </p>
+
+                  {/* What happens next */}
+                  <div className="cp-success-timeline">
+                    <p className="cp-success-timeline-head">What happens next</p>
+
+                    <div className="cp-timeline-item cp-timeline-item--done">
+                      <span className="cp-tl-dot" />
+                      <div className="cp-tl-content">
+                        <span className="cp-tl-when">Right now</span>
+                        <span className="cp-tl-what">Your message landed in our inbox</span>
+                      </div>
+                    </div>
+
+                    <div className="cp-timeline-item">
+                      <span className="cp-tl-dot" />
+                      <div className="cp-tl-content">
+                        <span className="cp-tl-when">Within 24 hours</span>
+                        <span className="cp-tl-what">Personal reply from our team</span>
+                      </div>
+                    </div>
+
+                    <div className="cp-timeline-item">
+                      <span className="cp-tl-dot" />
+                      <div className="cp-tl-content">
+                        <span className="cp-tl-when">Within 48 hours</span>
+                        <span className="cp-tl-what">Free 30-min discovery call booked</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Immediate contact */}
+                  <div className="cp-success-reach">
+                    <span className="cp-success-reach-label">Need to talk sooner?</span>
+                    <div className="cp-success-reach-links">
+                      <a
+                        className="cp-reach-link"
+                        href="https://wa.me/919274739361"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        WhatsApp ↗
+                      </a>
+                      <span className="cp-reach-sep" aria-hidden="true">·</span>
+                      <a
+                        className="cp-reach-link"
+                        href="mailto:info@kesarixtechnology.com"
+                      >
+                        Email directly ↗
+                      </a>
+                    </div>
                   </div>
                 </div>
-              ) : (
-                <>
+              </div>
+
+            ) : (
+
+              <>
+                <h3 className="cp-form-title">Tell Us About Your Project</h3>
+
+                <form className="cp-form" onSubmit={handleSubmit} noValidate>
+
+                  <div className="cp-field">
+                    <label className="cp-label" htmlFor="cp-name">Name</label>
+                    <input
+                      id="cp-name"
+                      className="cp-input"
+                      type="text"
+                      placeholder="Your full name"
+                      value={name}
+                      onChange={e => setName(e.target.value)}
+                      autoComplete="name"
+                    />
+                  </div>
+
+                  <div className="cp-field">
+                    <label className="cp-label" htmlFor="cp-email">Email</label>
+                    <input
+                      id="cp-email"
+                      className="cp-input"
+                      type="email"
+                      placeholder="your@company.com"
+                      value={email}
+                      onChange={e => setEmail(e.target.value)}
+                      autoComplete="email"
+                    />
+                  </div>
+
+                  <div className="cp-field">
+                    <label className="cp-label" htmlFor="cp-company">Company</label>
+                    <input
+                      id="cp-company"
+                      className="cp-input"
+                      type="text"
+                      placeholder="Company name (optional)"
+                      value={company}
+                      onChange={e => setCompany(e.target.value)}
+                      autoComplete="organization"
+                    />
+                  </div>
+
+                  <div className="cp-field">
+                    <label className="cp-label" htmlFor="cp-project-type">Project Type</label>
+                    <div className="cp-select-wrap">
+                      <select
+                        id="cp-project-type"
+                        className="cp-input cp-select"
+                        value={projectType}
+                        onChange={e => setProjectType(e.target.value)}
+                      >
+                        {PROJECT_TYPES.map(type => (
+                          <option key={type} value={type === '— Select project type —' ? '' : type}>
+                            {type}
+                          </option>
+                        ))}
+                      </select>
+                      <span className="cp-select-arrow" aria-hidden="true">↓</span>
+                    </div>
+                  </div>
+
+                  <div className="cp-field">
+                    <label className="cp-label" htmlFor="cp-message">Message</label>
+                    <textarea
+                      id="cp-message"
+                      className="cp-input cp-textarea"
+                      rows={6}
+                      placeholder="Describe your project, goals, and any relevant context..."
+                      value={message}
+                      onChange={e => setMessage(e.target.value)}
+                    />
+                  </div>
+
                   <button
                     type="submit"
                     className="cp-submit-btn"
@@ -239,10 +316,12 @@ export default function ContactPage() {
                   <p className="cp-form-note">
                     We respond within 24 hours &middot; Free discovery call included
                   </p>
-                </>
-              )}
 
-            </form>
+                </form>
+              </>
+
+            )}
+
           </div>
 
           {/* RIGHT — Info Panel */}
