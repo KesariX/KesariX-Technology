@@ -10,7 +10,7 @@ const TEAM = [
     role: 'Founder & CEO',
     bio: "Visionary founder driving KesariX's mission to deliver AI-powered products that create real business impact.",
     tags: ['Strategy', 'Vision', 'Product'],
-    photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=480&h=600&q=85',
+    photo: '/src/assets/profiles/sarthak.png',
     featured: true,
   },
   {
@@ -18,28 +18,28 @@ const TEAM = [
     role: 'AI Engineering Lead',
     bio: 'Tech lead with a passion for architecting robust AI systems that just work — every time, at any scale.',
     tags: ['LLMs', 'Vision AI', 'MLOps'],
-    photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=480&h=600&q=85',
+    photo: '/src/assets/profiles/ronak.jpeg',
   },
   {
     name: 'Govind Mishra',
     role: 'Chief Financial Officer',
     bio: 'Finance strategist ensuring sustainable growth and the operational backbone that lets the team move fast.',
     tags: ['Finance', 'Operations', 'Growth'],
-    photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=480&h=600&q=85',
+    photo: '/src/assets/profiles/govind.png',
   },
   {
     name: 'Harsh Prajapati',
     role: 'Web Development Lead',
     bio: 'Frontend engineer building fast, pixel-perfect web experiences using modern stack and creative precision.',
     tags: ['React', 'Next.js', 'UI/UX'],
-    photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=480&h=600&q=85',
+    photo: '/src/assets/profiles/harsh.png',
   },
-  {
+  { 
     name: 'Prince Yadav',
     role: 'Chief Marketing Officer',
     bio: 'Marketing architect crafting brand narratives that connect with audiences and drive measurable growth.',
     tags: ['Brand', 'SEO', 'Campaigns'],
-    photo: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=480&h=600&q=85',
+    photo: '/src/assets/profiles/prince.jpeg',
   },
   {
     name: 'Jay Padhiyar',
@@ -412,7 +412,7 @@ export default function AboutKesariX() {
               <div className="ab-founder__avatar-wrap">
                 <img
                   className="ab-founder__avatar"
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&h=120&q=85"
+                  src="/src/assets/profiles/sarthak.png"
                   alt="Sarthak Singh"
                   loading="lazy"
                 />
@@ -428,7 +428,7 @@ export default function AboutKesariX() {
             <div className="ab-founder__img-frame">
               <img
                 className="ab-founder__img"
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&h=780&q=85"
+                src="/src/assets/profiles/sarthak.png"
                 alt="Sarthak Singh, Founder of KesariX"
                 loading="lazy"
               />
