@@ -53,6 +53,14 @@ const MEMBERS = [
     tags: ['Digital', 'Analytics', 'Growth'],
     bg: 'avatar--teal',
   },
+  {
+    initials: 'OP',
+    name: 'Om Parmar',
+    role: 'Mobile App Development Lead',
+    bio: 'Mobile architect designing seamless cross-platform experiences that scale to millions of users.',
+    tags: ['React Native', 'iOS', 'Android'],
+    bg: 'avatar--blue',
+  },
 ]
 
 export default function Team() {

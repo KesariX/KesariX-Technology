@@ -32,6 +32,13 @@ const STACKS = [
     desc: 'Infrastructure that scales with you — automated, secure, and always on.',
     chips: ['AWS', 'GCP', 'Docker', 'Kubernetes', 'CI/CD', 'Terraform', 'Nginx', 'Linux'],
   },
+  {
+    id: 'mobile',
+    num: '05',
+    label: 'Mobile Development',
+    desc: 'Native and cross-platform applications built for speed, beauty, and flawless user experience.',
+    chips: ['React Native', 'Flutter', 'Swift', 'Kotlin', 'Firebase', 'Expo', 'Native Modules', 'App Distribution'],
+  },
 ]
 
 const totalTools = STACKS.reduce((a, s) => a + s.chips.length, 0)

@@ -43,9 +43,22 @@ const PROJECTS = [
     link: 'https://neha-engineering-works.vercel.app/',
     ctaText: 'Visit Website ↗',
   },
+  {
+    id: 4,
+    category: 'Internal Product',
+    title: 'Aegis CRM',
+    desc: 'Forked and fully rebranded Twenty CRM (AGPL-3.0) into Aegis — a self-hosted, white-labelled CRM platform. Replaced all branding, implemented a custom KesariX color theme, built a branded landing page, and configured a Docker Compose production deployment pipeline for client deployment.',
+    metrics: [
+      { value: '100%', label: 'Self-Hosted' },
+      { value: 'White-Label', label: 'Custom Brand' },
+    ],
+    previewUrl: 'https://aegis.kesarixtechnology.com/',
+    link: 'https://aegis.kesarixtechnology.com/',
+    ctaText: 'Visit Live ↗',
+  },
 ]
 
-const FILTERS = ['All Projects', 'AI Automation', 'Web Development', 'E-Commerce', 'Enterprise Automation', 'Infrastructure']
+const FILTERS = ['All Projects', 'AI Automation', 'Web Development', 'Internal Product', 'E-Commerce', 'Enterprise Automation', 'Infrastructure']
 
 export default function CaseStudies() {
   const sectionRef = useRef(null)

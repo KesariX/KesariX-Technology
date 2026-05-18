@@ -10,7 +10,7 @@ const TEAM = [
     role: 'Founder & CEO',
     bio: "Visionary founder driving KesariX's mission to deliver AI-powered products that create real business impact.",
     tags: ['Strategy', 'Vision', 'Product'],
-    photo: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=480&h=600&q=80',
+    photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=480&h=600&q=85',
     featured: true,
   },
   {
@@ -18,35 +18,42 @@ const TEAM = [
     role: 'AI Engineering Lead',
     bio: 'Tech lead with a passion for architecting robust AI systems that just work — every time, at any scale.',
     tags: ['LLMs', 'Vision AI', 'MLOps'],
-    photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=480&h=600&q=80',
+    photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=480&h=600&q=85',
   },
   {
     name: 'Govind Mishra',
     role: 'Chief Financial Officer',
     bio: 'Finance strategist ensuring sustainable growth and the operational backbone that lets the team move fast.',
     tags: ['Finance', 'Operations', 'Growth'],
-    photo: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=480&h=600&q=80',
+    photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=480&h=600&q=85',
   },
   {
     name: 'Harsh Prajapati',
     role: 'Web Development Lead',
     bio: 'Frontend engineer building fast, pixel-perfect web experiences using modern stack and creative precision.',
     tags: ['React', 'Next.js', 'UI/UX'],
-    photo: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=480&h=600&q=80',
+    photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=480&h=600&q=85',
   },
   {
     name: 'Prince Yadav',
     role: 'Chief Marketing Officer',
     bio: 'Marketing architect crafting brand narratives that connect with audiences and drive measurable growth.',
     tags: ['Brand', 'SEO', 'Campaigns'],
-    photo: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=480&h=600&q=80',
+    photo: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=480&h=600&q=85',
   },
   {
     name: 'Jay Padhiyar',
     role: 'Growth Specialist',
     bio: 'Growth expert with deep expertise in digital campaigns, performance marketing, and data-driven pipelines.',
     tags: ['Digital', 'Analytics', 'Growth'],
-    photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=480&h=600&q=80',
+    photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=480&h=600&q=85',
+  },
+  {
+    name: 'Om Parmar',
+    role: 'Mobile App Development Lead',
+    bio: 'Mobile architect crafting elegant, high-performance cross-platform applications using modern mobile technologies and best practices.',
+    tags: ['React Native', 'iOS', 'Android'],
+    photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=480&h=600&q=85',
   },
 ]
 
@@ -296,7 +303,7 @@ export default function AboutKesariX() {
         <div className="ab-stats-grid">
           {[
             { val: '5+',  label: 'Enterprise Clients' },
-            { val: '6+',  label: 'Core Team Members' },
+            { val: '7+',  label: 'Core Team Members' },
             { val: '98%', label: 'Client Satisfaction' },
             { val: '5+',  label: 'Projects Delivered' },
           ].map(({ val, label }) => (
@@ -405,7 +412,7 @@ export default function AboutKesariX() {
               <div className="ab-founder__avatar-wrap">
                 <img
                   className="ab-founder__avatar"
-                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=120&h=120&q=80"
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&h=120&q=85"
                   alt="Sarthak Singh"
                   loading="lazy"
                 />
@@ -421,7 +428,7 @@ export default function AboutKesariX() {
             <div className="ab-founder__img-frame">
               <img
                 className="ab-founder__img"
-                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&h=780&q=80"
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&h=780&q=85"
                 alt="Sarthak Singh, Founder of KesariX"
                 loading="lazy"
               />
@@ -561,7 +568,7 @@ export default function AboutKesariX() {
               <em className="ab-italic">Give a Damn.</em>
             </h2>
             <p className="ab-desc-large">
-              Six specialists across AI, engineering, finance, and growth — all aligned on one mission.
+              Seven specialists across AI, mobile, engineering, finance, and growth — all aligned on one mission.
             </p>
           </div>
           <div className="ab-team-grid">

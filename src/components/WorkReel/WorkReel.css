@@ -102,6 +102,17 @@
     linear-gradient(135deg, #0a0514 0%, #060c1e 100%);
 }
 
+/* Aegis CRM gradient — deep indigo/violet luxury */
+.bg-aegis-crm {
+  background:
+    radial-gradient(130% 90% at 15% 15%,
+      rgba(99, 102, 241, 0.9) 0%,
+      rgba(67, 56, 202, 0.75) 28%,
+      rgba(10, 5, 30, 0.92) 58%,
+      #030810 100%),
+    linear-gradient(135deg, #05041a 0%, #060c1e 100%);
+}
+
 .portfolio__card-num {
   font-family: var(--f-serif);
   font-style: italic;
@@ -214,6 +225,26 @@
 .portfolio__card:hover .portfolio__tag {
   border-color: rgba(59, 130, 246, 0.2);
   color: var(--electric-3);
+}
+
+.portfolio__card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 20px;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--electric);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.25s, opacity 0.25s;
+  width: fit-content;
+}
+.portfolio__card-link:hover {
+  border-color: var(--electric);
+  opacity: 0.85;
 }
 
 /* ═══════════════════════════════════

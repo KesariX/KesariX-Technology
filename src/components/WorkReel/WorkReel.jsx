@@ -17,6 +17,20 @@ const PROJECTS = [
     ],
     gradient: 'bg-ai-voice',
   },
+  {
+    num: '02',
+    type: 'Self-Hosted CRM Platform',
+    title: 'Aegis CRM',
+    client: 'Internal / KesariX Technology',
+    desc: 'Forked and fully rebranded Twenty CRM (AGPL-3.0) into Aegis — a self-hosted, white-labelled CRM platform built for client deployment. Replaced all branding, implemented a custom KesariX color theme, built a branded cover landing page, and configured a Docker Compose production deployment pipeline.',
+    tags: ['Node.js', 'NestJS', 'PostgreSQL', 'React', 'Vite', 'Nx Monorepo', 'Docker', 'Linaria'],
+    metrics: [
+      { value: '100%', label: 'Self-Hosted' },
+      { value: 'White-Label', label: 'Custom Brand' },
+    ],
+    gradient: 'bg-aegis-crm',
+    link: 'https://aegis.kesarixtechnology.com/',
+  },
 ]
 
 export default function WorkReel() {
@@ -75,6 +89,16 @@ export default function WorkReel() {
                 <span className="portfolio__tag" key={tag}>{tag}</span>
               ))}
             </div>
+            {p.link && (
+              <a
+                href={p.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="portfolio__card-link"
+              >
+                Visit Live ↗
+              </a>
+            )}
           </div>
         </div>
       ))}
