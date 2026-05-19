@@ -7,6 +7,8 @@ export default function Nav() {
   const [isServicesOpen, setIsServicesOpen] = useState(false)
   const [isCompanyOpen, setIsCompanyOpen] = useState(false)
   const [isMobileOpen, setIsMobileOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from('.nav > *', {
@@ -15,6 +17,13 @@ export default function Nav() {
       })
     }, navRef)
     return () => ctx.revert()
+  }, [])
+
+  // Add solid dark glass background once user scrolls off the hero
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 60)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   useEffect(() => {
@@ -38,7 +47,7 @@ export default function Nav() {
 
   return (
     <>
-      <nav className={`nav ${isMobileOpen ? 'nav--menu-open' : ''}`} ref={navRef}>
+      <nav className={`nav ${isMobileOpen ? 'nav--menu-open' : ''} ${isScrolled ? 'nav--scrolled' : ''}`} ref={navRef}>
         <a className="nav__logo" href="/">
           <img
             className="nav__logo-img"

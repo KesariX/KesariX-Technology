@@ -11,6 +11,41 @@
   padding: 22px 28px;
   color: var(--bone);
   mix-blend-mode: difference;
+  /* smooth transition when scrolled state kicks in */
+  transition:
+    background 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    backdrop-filter 0.35s ease,
+    border-color 0.35s ease,
+    padding 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    mix-blend-mode 0s;
+}
+
+/*
+  Once the user scrolls past the hero the nav gets a proper dark glass
+  background so its text no longer bleeds into / overlaps page content.
+  mix-blend-mode is reset to normal so colours render correctly against
+  the dark backdrop.
+*/
+.nav--scrolled {
+  mix-blend-mode: normal;
+  background: rgba(3, 6, 20, 0.88);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 14px 28px;
+  color: var(--bone);
+}
+
+/* Logo image: keep white silhouette while blending, show real colours when scrolled */
+.nav--scrolled .nav__logo-img {
+  filter: brightness(1.15) saturate(1.1);
+  mix-blend-mode: screen;
+}
+
+/* Logo name glow looks better on a dark bg */
+.nav--scrolled .nav__logo-name {
+  text-shadow: none;
+  animation: nav-name-glow 2.8s ease-in-out infinite;
 }
 
 .nav__logo {

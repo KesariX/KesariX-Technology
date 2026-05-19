@@ -10,7 +10,7 @@ const TEAM = [
     role: 'Founder & CEO',
     bio: "Visionary founder driving KesariX's mission to deliver AI-powered products that create real business impact.",
     tags: ['Strategy', 'Vision', 'Product'],
-    photo: '/src/assets/profiles/sarthak.png',
+    photo: '/profiles/sarthak.png',
     featured: true,
   },
   {
@@ -18,42 +18,42 @@ const TEAM = [
     role: 'AI Engineering Lead',
     bio: 'Tech lead with a passion for architecting robust AI systems that just work — every time, at any scale.',
     tags: ['LLMs', 'Vision AI', 'MLOps'],
-    photo: '/src/assets/profiles/ronak.jpeg',
+    photo: '/profiles/ronak.jpeg',
   },
   {
     name: 'Govind Mishra',
     role: 'Chief Financial Officer',
     bio: 'Finance strategist ensuring sustainable growth and the operational backbone that lets the team move fast.',
     tags: ['Finance', 'Operations', 'Growth'],
-    photo: '/src/assets/profiles/govind.png',
+    photo: '/profiles/govind.png',
   },
   {
     name: 'Harsh Prajapati',
     role: 'Web Development Lead',
     bio: 'Frontend engineer building fast, pixel-perfect web experiences using modern stack and creative precision.',
     tags: ['React', 'Next.js', 'UI/UX'],
-    photo: '/src/assets/profiles/harsh.png',
+    photo: '/profiles/harsh.png',
   },
-  { 
+  {
     name: 'Prince Yadav',
     role: 'Chief Marketing Officer',
     bio: 'Marketing architect crafting brand narratives that connect with audiences and drive measurable growth.',
     tags: ['Brand', 'SEO', 'Campaigns'],
-    photo: '/src/assets/profiles/prince.jpeg',
+    photo: '/profiles/prince.jpeg',
   },
   {
     name: 'Jay Padhiyar',
     role: 'Growth Specialist',
     bio: 'Growth expert with deep expertise in digital campaigns, performance marketing, and data-driven pipelines.',
     tags: ['Digital', 'Analytics', 'Growth'],
-    photo: '/src/assets/profiles/jay.jpg',
+    photo: '/profiles/jay.jpg',
   },
   {
     name: 'Om Parmar',
     role: 'Mobile App Development Lead',
     bio: 'Mobile architect crafting elegant, high-performance cross-platform applications using modern mobile technologies and best practices.',
     tags: ['React Native', 'iOS', 'Android'],
-    photo: '/src/assets/profiles/om.png',
+    photo: '/profiles/om.png',
   },
 ]
 
@@ -412,7 +412,7 @@ export default function AboutKesariX() {
               <div className="ab-founder__avatar-wrap">
                 <img
                   className="ab-founder__avatar"
-                  src="/src/assets/profiles/sarthak.png"
+                  src="/profiles/sarthak.png"
                   alt="Sarthak Singh"
                   loading="lazy"
                 />
@@ -428,7 +428,7 @@ export default function AboutKesariX() {
             <div className="ab-founder__img-frame">
               <img
                 className="ab-founder__img"
-                src="/src/assets/profiles/sarthak.png"
+                src="/profiles/sarthak.png"
                 alt="Sarthak Singh, Founder of KesariX"
                 loading="lazy"
               />
