@@ -19,7 +19,7 @@
   transform: translate(-50%, -50%);
   width: 800px;
   height: 600px;
-  background: radial-gradient(ellipse, rgba(255,90,31,0.12) 0%, rgba(59,130,246,0.08) 40%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(255,90,31,0.12) 0%, rgba(249,115,22,0.08) 40%, transparent 70%);
   pointer-events: none;
 }
 
@@ -37,7 +37,7 @@
   font-size: clamp(120px, 20vw, 220px);
   line-height: 0.9;
   letter-spacing: -0.06em;
-  background: linear-gradient(90deg, #ff5a1f 0%, #ea580c 25%, #3b82f6 50%, #ea580c 75%, #ff5a1f 100%);
+  background: linear-gradient(90deg, #ff5a1f 0%, #ea580c 25%, #f97316 50%, #ea580c 75%, #ff5a1f 100%);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;

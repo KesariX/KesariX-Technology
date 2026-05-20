@@ -28,7 +28,7 @@
   right: -5%;
   width: 50vw;
   height: 50vw;
-  background: radial-gradient(circle, rgba(37, 99, 235, 0.4) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(234, 88, 12, 0.4) 0%, transparent 65%);
 }
 
 .pr-ambient__orb--2 {
@@ -76,9 +76,9 @@
 .pr-eyebrow-dot {
   width: 6px;
   height: 6px;
-  background-color: #3b82f6;
+  background-color: #f97316;
   border-radius: 50%;
-  box-shadow: 0 0 12px #3b82f6;
+  box-shadow: 0 0 12px #f97316;
 }
 
 .pr-hero-title {
@@ -98,7 +98,7 @@
   font-family: "Playfair Display", serif;
   font-style: italic;
   font-weight: 300;
-  background: linear-gradient(90deg, #3b82f6 0%, #a855f7 100%);
+  background: linear-gradient(90deg, #f97316 0%, #a855f7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   padding-right: 0.1em;
@@ -175,8 +175,8 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: #3b82f6;
-  box-shadow: 0 -2px 10px rgba(37, 99, 235, 0.5);
+  background: #f97316;
+  box-shadow: 0 -2px 10px rgba(234, 88, 12, 0.5);
 }
 
 /* ── Asymmetrical Panels ── */
@@ -230,7 +230,7 @@
 }
 
 .pr-panel--popular {
-  border-color: rgba(37, 99, 235, 0.2);
+  border-color: rgba(234, 88, 12, 0.2);
 }
 
 .pr-panel--popular::before {
@@ -240,14 +240,14 @@
   left: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+  background: linear-gradient(180deg, #f97316, #8b5cf6);
   z-index: 2;
 }
 
 .pr-panel--popular:hover .pr-panel__glow {
   background: radial-gradient(
     800px circle at var(--mouse-x) var(--mouse-y),
-    rgba(37, 99, 235, 0.08),
+    rgba(234, 88, 12, 0.08),
     transparent 40%
   );
 }
@@ -281,8 +281,8 @@
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #3b82f6;
-  border: 1px solid rgba(37, 99, 235, 0.3);
+  color: #f97316;
+  border: 1px solid rgba(234, 88, 12, 0.3);
   padding: 0.3rem 0.8rem;
   border-radius: 100px;
   margin-bottom: 1.5rem;
@@ -377,8 +377,8 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #3b82f6;
-  box-shadow: 0 0 8px #3b82f6;
+  background: #f97316;
+  box-shadow: 0 0 8px #f97316;
 }
 
 .pr-cta {
@@ -436,7 +436,7 @@
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at 100% 50%, rgba(249, 115, 22, 0.1), transparent 50%),
-              radial-gradient(circle at 0% 50%, rgba(37, 99, 235, 0.1), transparent 50%);
+              radial-gradient(circle at 0% 50%, rgba(234, 88, 12, 0.1), transparent 50%);
   pointer-events: none;
   z-index: 1;
 }
@@ -527,7 +527,7 @@
 }
 
 .pr-faq-q:hover {
-  color: #3b82f6;
+  color: #f97316;
 }
 
 .pr-faq-icon {

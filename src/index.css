@@ -19,12 +19,12 @@
   --bg-deep:  #060d1e;
   --bg-navy:  #0a1428;
 
-  /* ── Electric blue – primary accent ── */
-  --electric:      #3b82f6;
-  --electric-2:    #60a5fa;
-  --electric-3:    #93c5fd;
-  --electric-dark: #1d4ed8;
-  --electric-glow: rgba(59, 130, 246, 0.22);
+  /* ── Electric orange – primary accent ── */
+  --electric:      #f97316;
+  --electric-2:    #fb923c;
+  --electric-3:    #fdba74;
+  --electric-dark: #ea580c;
+  --electric-glow: rgba(249, 115, 22, 0.22);
 
   /* ── Amber / orange – editorial highlight ── */
   --amber:   #f97316;
@@ -60,9 +60,9 @@
   --sp-2xl: clamp(7rem,  11vw, 11rem);
 
   /* Legacy aliases */
-  --blue: #3b82f6;
-  --blue-2: #60a5fa;
-  --blue-dark: #1d4ed8;
+  --blue: #f97316;
+  --blue-2: #fb923c;
+  --blue-dark: #ea580c;
 }
 
 /* ===== LIGHT THEME ===== */
@@ -91,7 +91,6 @@
 
 /* Light-mode nav override (turns off blend mode) */
 [data-theme="light"] .nav {
-  mix-blend-mode: normal;
   background: rgba(250, 251, 255, 0.92);
   border-bottom: 1px solid rgba(13, 27, 62, 0.07);
   backdrop-filter: blur(16px);
@@ -108,7 +107,7 @@
 }
 [data-theme="light"] .nav__submenu a:hover {
   color: var(--electric);
-  background: rgba(59, 130, 246, 0.04);
+  background: rgba(249, 115, 22, 0.04);
 }
 
 [data-theme="light"] ::selection {
@@ -182,7 +181,7 @@ section { position: relative; }
   overflow: hidden;
   isolation: isolate;
   transition: color 0.45s cubic-bezier(.7,.0,.2,1), box-shadow 0.45s;
-  box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  box-shadow: 0 0 0 0 rgba(249, 115, 22, 0);
 }
 .cta::before {
   content: "";
@@ -196,7 +195,7 @@ section { position: relative; }
 }
 .cta:hover {
   color: #ffffff;
-  box-shadow: 0 8px 32px -8px rgba(59, 130, 246, 0.55);
+  box-shadow: 0 8px 32px -8px rgba(249, 115, 22, 0.55);
 }
 .cta:hover::before { transform: translateY(0); }
 .cta__arrow {

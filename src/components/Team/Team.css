@@ -15,7 +15,7 @@
   position: absolute;
   bottom: -10%; right: -5%;
   width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.06) 0%, transparent 65%);
   pointer-events: none;
 }
 
@@ -179,7 +179,7 @@
     border-radius: 20px;
   }
   .team__row:hover {
-    background: rgba(59, 130, 246, 0.035);
+    background: rgba(249, 115, 22, 0.035);
     transform: translateX(10px);
     border-bottom-color: transparent;
     box-shadow: 0 8px 32px -16px rgba(0, 0, 0, 0.5);
@@ -208,10 +208,10 @@
 .team__row:hover .team__avatar { transform: scale(1.1) rotate(-5deg); }
 
 .avatar--saffron { background: linear-gradient(135deg, var(--amber-2), var(--amber));  box-shadow: 0 8px 16px rgba(249, 115, 22, 0.25); }
-.avatar--blue    { background: linear-gradient(135deg, var(--electric-2), var(--electric-dark)); box-shadow: 0 8px 16px rgba(59, 130, 246, 0.25); }
+.avatar--blue    { background: linear-gradient(135deg, var(--electric-2), var(--electric-dark)); box-shadow: 0 8px 16px rgba(249, 115, 22, 0.25); }
 .avatar--ink     { background: linear-gradient(135deg, #1e3a5f, #0d1b3e);              box-shadow: 0 8px 16px rgba(6, 13, 36, 0.4); }
 .avatar--ember   { background: linear-gradient(135deg, var(--amber), #c43618);         box-shadow: 0 8px 16px rgba(249, 115, 22, 0.2); }
-.avatar--teal    { background: linear-gradient(135deg, #1f6dbf, var(--electric-dark)); box-shadow: 0 8px 16px rgba(59, 130, 246, 0.2); }
+.avatar--teal    { background: linear-gradient(135deg, #c2410c, var(--electric-dark)); box-shadow: 0 8px 16px rgba(249, 115, 22, 0.2); }
 
 .team__row-info {
   display: flex;
@@ -275,7 +275,7 @@
   transition: all 0.3s ease;
 }
 .team__row:hover .team__tag {
-  background: rgba(59, 130, 246, 0.08);
+  background: rgba(249, 115, 22, 0.08);
   color: var(--electric-3);
-  border-color: rgba(59, 130, 246, 0.22);
+  border-color: rgba(249, 115, 22, 0.22);
 }

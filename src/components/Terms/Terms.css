@@ -250,7 +250,7 @@
   font-weight: 600;
 }
 .cookie-tag--essential { background: rgba(16,185,129,0.15); color: #10b981; }
-.cookie-tag--analytics { background: rgba(59,130,246,0.15); color: var(--blue-2); }
+.cookie-tag--analytics { background: rgba(249,115,22,0.15); color: var(--blue-2); }
 
 /* ── Responsive ── */
 @media (max-width: 900px) {

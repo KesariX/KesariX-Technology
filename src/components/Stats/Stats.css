@@ -17,7 +17,7 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 60% 80% at 90% 20%, rgba(59, 130, 246, 0.07) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 80% at 90% 20%, rgba(249, 115, 22, 0.07) 0%, transparent 65%),
     radial-gradient(ellipse 40% 50% at 5% 80%, rgba(249, 115, 22, 0.05) 0%, transparent 55%);
   pointer-events: none;
 }
@@ -131,7 +131,7 @@
 
 .stats__card:hover {
   background: var(--surface-2);
-  border-color: rgba(59, 130, 246, 0.2);
+  border-color: rgba(249, 115, 22, 0.2);
   transform: translateY(-5px) scale(1.01);
   box-shadow: 0 24px 48px -24px rgba(0, 0, 0, 0.6);
 }
@@ -160,7 +160,7 @@
 }
 .stats__card:hover .stats__num {
   -webkit-text-stroke: 1.5px var(--electric-2);
-  color: rgba(59, 130, 246, 0.06);
+  color: rgba(249, 115, 22, 0.06);
   transform: translateX(5px);
 }
 

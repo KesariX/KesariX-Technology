@@ -11,7 +11,7 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 70% 60% at 55% 105%, rgba(59, 130, 246, 0.14) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 60% at 55% 105%, rgba(249, 115, 22, 0.14) 0%, transparent 55%),
     radial-gradient(ellipse 55% 45% at 10% 10%, rgba(249, 115, 22, 0.10) 0%, transparent 50%);
   pointer-events: none;
 }
@@ -74,7 +74,7 @@
   background: linear-gradient(90deg, var(--electric-2) 0%, var(--amber) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 24px rgba(59, 130, 246, 0.3));
+  filter: drop-shadow(0 0 24px rgba(249, 115, 22, 0.3));
 }
 
 .contact__copy {
@@ -129,8 +129,8 @@
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: rgba(59, 130, 246, 0.12);
-  border: 1px solid rgba(59, 130, 246, 0.28);
+  background: rgba(249, 115, 22, 0.12);
+  border: 1px solid rgba(249, 115, 22, 0.28);
   display: inline-flex;
   align-items: center;
   justify-content: center;

@@ -532,7 +532,7 @@ export default function AboutKesariX() {
         <style dangerouslySetInnerHTML={{__html: `
           .ab-history-premium { padding: 8rem 5%; background: var(--color-bg-dark, #0a0a0a); color: var(--color-text-light, #fff); }
           .ab-history-premium .ab-ambient__orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.3; pointer-events: none; }
-          .ab-history-premium .ab-ambient__orb--blue { width: 40vw; height: 40vw; background: rgba(59, 130, 246, 0.4); top: -10%; left: -10%; }
+          .ab-history-premium .ab-ambient__orb--blue { width: 40vw; height: 40vw; background: rgba(249, 115, 22, 0.4); top: -10%; left: -10%; }
           .ab-history-premium .ab-ambient__orb--orange { width: 35vw; height: 35vw; background: rgba(249, 115, 22, 0.3); bottom: 10%; right: -10%; }
           .ab-history-premium .ab-italic--blue { color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.8); font-style: italic; font-weight: 300; }
           .ab-history-track-premium { position: relative; margin-top: 6rem; display: flex; flex-direction: column; gap: 4rem; max-width: 1200px; margin-inline: auto; padding-left: 2rem; }
