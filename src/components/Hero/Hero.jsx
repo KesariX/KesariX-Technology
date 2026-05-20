@@ -167,7 +167,7 @@ export default function Hero() {
                   filter: 'drop-shadow(0 0 32px rgba(249, 115, 22, 0.35))'
                 }}
               >
-                Extraordinary
+                EXTRAORDINARY
               </span>
             </span>
           </span>
