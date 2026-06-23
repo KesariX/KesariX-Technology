@@ -7,7 +7,7 @@ const testimonials = [
   {
     id: 1,
     text: "KesariX built our AI calling bot platform from scratch. It's now handling 500+ calls daily with 95% accuracy. Their team understood our requirements perfectly and delivered on time.",
-    author: 'Founder',
+    author: 'Product Manager',
     role: 'Wercatalyst',
     initials: 'WC',
     stars: 5,

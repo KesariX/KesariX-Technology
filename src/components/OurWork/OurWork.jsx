@@ -178,7 +178,7 @@ export default function OurWork() {
           </p>
           <div className="ow-hero-ctas">
             <a href="/#contact" className="ow-cta ow-cta--primary">Start a Project ↗</a>
-            <a href="#case-studies" className="ow-cta ow-cta--secondary">View All Work ↓</a>
+            <a href="https://projects.kesarixtechnology.com/" target="_blank" rel="noopener noreferrer" className="ow-cta ow-cta--secondary">View All Work ↗</a>
           </div>
         </div>
       </section>
