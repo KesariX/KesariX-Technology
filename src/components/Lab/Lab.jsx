@@ -25,13 +25,6 @@ const TECHNOLOGIES = [
     desc: 'Robust microservices and APIs engineered for high availability and security.',
     uses: ['Node.js', 'Python', 'Go', 'GraphQL'],
   },
-  {
-    num: '04',
-    name: 'Cloud',
-    accent: 'Infrastructure',
-    desc: 'Automated CI/CD pipelines, containerization, and serverless architectures.',
-    uses: ['AWS', 'Docker', 'Kubernetes', 'Terraform'],
-  },
 ]
 
 export default function Lab() {

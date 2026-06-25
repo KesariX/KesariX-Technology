@@ -11,8 +11,8 @@ const KNOWLEDGE = [
     quick: ['Our Services', 'Pricing', 'Get Started'],
   },
   {
-    patterns: ['service', 'offer', 'capabilities', 'build', 'neural', 'cloud', 'product engineering', 'agentic', 'workflow', 'what do'],
-    reply: 'We offer five specialized services:<br><br>🧠 <b>Neural Architecture</b> — Custom LLMs & RAG systems<br>⚙️ <b>Product Engineering</b> — React & Node.js platforms<br>☁️ <b>Cloud Backbone</b> — DevOps & managed infrastructure<br>🤖 <b>Agentic Systems</b> — Autonomous AI agents<br>🔄 <b>Workflow Engines</b> — Process automation<br><br>Which area interests you?',
+    patterns: ['service', 'offer', 'capabilities', 'build', 'neural', 'product engineering', 'agentic', 'workflow', 'what do'],
+    reply: 'We offer four specialized services:<br><br>🧠 <b>Neural Architecture</b> — Custom LLMs & RAG systems<br>⚙️ <b>Product Engineering</b> — React & Node.js platforms<br>🤖 <b>Agentic Systems</b> — Autonomous AI agents<br>🔄 <b>Workflow Engines</b> — Process automation<br><br>Which area interests you?',
     quick: ['Agentic Systems', 'Neural Architecture', 'Pricing'],
   },
   {
@@ -37,7 +37,7 @@ const KNOWLEDGE = [
   },
   {
     patterns: ['work', 'portfolio', 'project', 'case study', 'client', 'example'],
-    reply: 'We\'ve delivered AI-powered SaaS platforms, autonomous agent systems, and enterprise cloud infrastructures across India and globally.<br><br>Browse our case studies to see real outcomes.',
+    reply: 'We\'ve delivered AI-powered SaaS platforms and autonomous agent systems across India and globally.<br><br>Browse our case studies to see real outcomes.',
     quick: ['View Our Work', 'Get Started'],
   },
   {

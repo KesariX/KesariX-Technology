@@ -18,6 +18,7 @@ import { useState, useRef, useEffect, useLayoutEffect } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import './Pricing.css'
+import SEO from '../SEO/SEO'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -27,7 +28,6 @@ const SERVICES = [
   'Web Development',
   'AI Solutions',
   'Mobile App',
-  'Cloud & Infrastructure',
   'Process Automation',
 ]
 
@@ -40,8 +40,8 @@ const PLANS = {
   'Web Development': [
     {
       name: 'Starter',
-      inr: 24999,   // was 29,999
-      usd: 499,     // was 599
+      inr: 22499,   // was 29,999
+      usd: 449,     // was 599
       desc: 'Perfect for small businesses and personal brands',
       features: [
         '5-page responsive website',
@@ -57,8 +57,8 @@ const PLANS = {
     },
     {
       name: 'Professional',
-      inr: 44999,   // was 49,999
-      usd: 1199,    // was 1,499
+      inr: 40499,   // was 49,999
+      usd: 1079,    // was 1,499
       popular: true,
       desc: 'Full-featured website for growing businesses',
       features: [
@@ -76,8 +76,8 @@ const PLANS = {
     },
     {
       name: 'Enterprise',
-      inr: 124999,  // was 149,999
-      usd: 3499,    // was 3,999
+      inr: 112499,  // was 149,999
+      usd: 3149,    // was 3,999
       desc: 'Custom platform built to scale your business',
       features: [
         'Unlimited pages',
@@ -97,8 +97,8 @@ const PLANS = {
   'AI Solutions': [
     {
       name: 'AI Chatbot',
-      inr: 39999,   // was 49,999
-      usd: 999,     // was 1,499
+      inr: 35999,   // was 49,999
+      usd: 899,     // was 1,499
       desc: 'Smart chatbot that handles customer queries 24/7',
       features: [
         'GPT-powered responses',
@@ -114,8 +114,8 @@ const PLANS = {
     },
     {
       name: 'AI Agent System',
-      inr: 99999,   // was 124,999
-      usd: 2799,    // was 3,499
+      inr: 89999,   // was 124,999
+      usd: 2519,    // was 3,499
       popular: true,
       desc: 'Autonomous agent that executes multi-step tasks',
       features: [
@@ -132,8 +132,8 @@ const PLANS = {
     },
     {
       name: 'Enterprise AI',
-      inr: 249999,  // was 299,999
-      usd: 6499,    // was 7,999
+      inr: 224999,  // was 299,999
+      usd: 5849,    // was 7,999
       desc: 'Full AI transformation for your organisation',
       features: [
         'Custom LLM fine-tuning',
@@ -153,8 +153,8 @@ const PLANS = {
   'Mobile App': [
     {
       name: 'MVP App',
-      inr: 59999,   // was 69,999
-      usd: 1699,    // was 1,999
+      inr: 53999,   // was 69,999
+      usd: 1529,    // was 1,999
       desc: 'Validate your idea with a functional prototype',
       features: [
         'iOS + Android (React Native)',
@@ -170,8 +170,8 @@ const PLANS = {
     },
     {
       name: 'Business App',
-      inr: 124999,  // was 149,999
-      usd: 3699,    // was 4,499
+      inr: 112499,  // was 149,999
+      usd: 3329,    // was 4,499
       popular: true,
       desc: 'Production-ready app for real users',
       features: [
@@ -189,8 +189,8 @@ const PLANS = {
     },
     {
       name: 'Enterprise App',
-      inr: 299999,  // was 349,999
-      usd: 8499,    // was 9,999
+      inr: 269999,  // was 349,999
+      usd: 7649,    // was 9,999
       desc: 'Scalable, secure enterprise mobile solution',
       features: [
         'Custom screens + features',
@@ -207,68 +207,11 @@ const PLANS = {
     },
   ],
 
-  'Cloud & Infrastructure': [
-    {
-      name: 'Starter Setup',
-      inr: 19999,   // was 24,999
-      usd: 549,     // was 699
-      desc: 'Get your app hosted reliably and securely',
-      features: [
-        'AWS / GCP setup',
-        'Docker containerisation',
-        'Domain + SSL configuration',
-        'Auto-scaling basics',
-        'Daily backups',
-        'Monitoring alerts',
-        '1 month support',
-      ],
-      cta: 'Get Started',
-      ctaLink: '/contact',
-    },
-    {
-      name: 'Professional Cloud',
-      inr: 59999,   // was 74,999
-      usd: 1699,    // was 2,199
-      popular: true,
-      desc: 'Production-grade cloud for growing products',
-      features: [
-        'Multi-region deployment',
-        'Kubernetes orchestration',
-        'CI/CD pipelines',
-        'Database clustering',
-        'CDN configuration',
-        'Security hardening',
-        'Cost optimisation',
-        '3 months support',
-      ],
-      cta: 'Most Popular',
-      ctaLink: '/contact',
-    },
-    {
-      name: 'Enterprise Cloud',
-      inr: 174999,  // was 199,999
-      usd: 4999,    // was 5,999
-      desc: 'Zero-downtime infrastructure that scales globally',
-      features: [
-        'Custom cloud architecture',
-        'Multi-cloud strategy',
-        'Disaster recovery plan',
-        'SOC2 / compliance setup',
-        'FinOps cost management',
-        '24/7 on-call support',
-        'SLA guarantee',
-        'Dedicated DevOps engineer',
-      ],
-      cta: 'Book a Call',
-      ctaLink: '/contact',
-    },
-  ],
-
   'Process Automation': [
     {
       name: 'Basic Automation',
-      inr: 24999,   // was 34,999
-      usd: 699,     // was 999
+      inr: 22499,   // was 34,999
+      usd: 629,     // was 999
       desc: 'Eliminate one major manual process',
       features: [
         '1 workflow automated',
@@ -283,8 +226,8 @@ const PLANS = {
     },
     {
       name: 'Advanced Workflows',
-      inr: 64999,   // was 79,999
-      usd: 1799,    // was 2,299
+      inr: 58499,   // was 79,999
+      usd: 1619,    // was 2,299
       popular: true,
       desc: 'Automate entire departments and pipelines',
       features: [
@@ -302,8 +245,8 @@ const PLANS = {
     },
     {
       name: 'Enterprise Automation',
-      inr: 164999,  // was 199,999
-      usd: 4699,    // was 5,999
+      inr: 148499,  // was 199,999
+      usd: 4229,    // was 5,999
       desc: 'End-to-end digital transformation',
       features: [
         'Unlimited workflows',
@@ -500,8 +443,14 @@ export default function Pricing() {
 
   return (
     <div className="pr-page-premium" ref={pageRef}>
+      <SEO 
+        title="Pricing | Web Development & AI Solutions Cost"
+        description="Transparent pricing for enterprise software development, AI automation, and web platforms in India, USA, and globally."
+        keywords="Web Development Cost, Software Engineering Pricing, Hire Developers Cost, Custom Software Pricing"
+        canonicalUrl="/pricing"
+      />
 
-      {/* ── AMBIENT ── */}
+      {/* ── PROMO BANNER ── */}
       <div className="pr-ambient" aria-hidden="true">
         <div className="pr-ambient__orb pr-ambient__orb--1" />
         <div className="pr-ambient__orb pr-ambient__orb--2" />

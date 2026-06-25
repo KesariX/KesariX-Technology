@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { ShaderProvider, useShader } from './context/ShaderContext'
 import { ThemeProvider } from './context/ThemeContext'
 import { useLenis } from './hooks/useLenis'
+import SEO from './components/SEO/SEO'
 
 /*
   ─── EAGERLY LOADED ──────────────────────────────────────────────────────────
@@ -49,7 +50,7 @@ const CookiePolicy      = lazy(() => import('./components/CookiePolicy/CookiePol
 const NotFound          = lazy(() => import('./components/NotFound/NotFound'))
 const NeuralArchitecture = lazy(() => import('./components/Services/NeuralArchitecture'))
 const ProductEngineering = lazy(() => import('./components/Services/ProductEngineering'))
-const CloudBackbone      = lazy(() => import('./components/Services/CloudBackbone'))
+
 const AgenticSystems     = lazy(() => import('./components/Services/AgenticSystems'))
 const WorkflowEngines    = lazy(() => import('./components/Services/WorkflowEngines'))
 
@@ -67,6 +68,12 @@ function PageContent() {
 
   return (
     <>
+      <SEO 
+        title="KesariX Technology — We Engineer What's Next"
+        description="KesariX Technology builds AI agents, enterprise web platforms, mobile apps & intelligent automation. 50+ projects shipped. 98% client satisfaction. Based in Surat, India. Get a free discovery call."
+        canonicalUrl=""
+        isHomePage={true}
+      />
       <Nav />
       <main>
         <Hero />
@@ -116,7 +123,7 @@ export default function App() {
 
               <Route path="/service/neural-architecture" element={<WithNav><NeuralArchitecture /></WithNav>} />
               <Route path="/service/product-engineering" element={<WithNav><ProductEngineering /></WithNav>} />
-              <Route path="/service/cloud-backbone"      element={<WithNav><CloudBackbone /></WithNav>} />
+
               <Route path="/service/agentic-systems"     element={<WithNav><AgenticSystems /></WithNav>} />
               <Route path="/service/workflow-engines"    element={<WithNav><WorkflowEngines /></WithNav>} />
 

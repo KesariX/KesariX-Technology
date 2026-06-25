@@ -1,8 +1,14 @@
 import './PrivacyPolicy.css'
+import SEO from '../SEO/SEO'
 
 export default function PrivacyPolicy() {
   return (
     <div className="legal-page">
+      <SEO 
+        title="Privacy Policy | KesariX Technology"
+        description="KesariX Technology privacy policy regarding data collection, security, and usage for our web development and AI services."
+        canonicalUrl="/privacy-policy"
+      />
       <div className="legal-hero">
         <div className="legal-hero__inner">
           <nav className="legal-breadcrumb">

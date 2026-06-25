@@ -3,6 +3,7 @@ import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import { BLOG_POSTS, CATEGORIES } from '../../data/blogPosts'
 import './Blog.css'
+import SEO from '../SEO/SEO'
 
 export default function Blog() {
   const pageRef = useRef(null)
@@ -66,6 +67,12 @@ export default function Blog() {
 
   return (
     <div className="bl-page" ref={pageRef}>
+      <SEO 
+        title="Insights & Blog | Technology Trends"
+        description="Read the latest insights on web development, AI automation, and enterprise software engineering from the KesariX Technology team."
+        keywords="Web Development Blog, AI Insights, Software Engineering Blog, Technology Trends"
+        canonicalUrl="/blog"
+      />
 
       {/* ── HERO ── */}
       <section className="bl-hero">

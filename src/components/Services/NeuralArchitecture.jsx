@@ -1,6 +1,7 @@
 import { useRef, useLayoutEffect } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
+import SEO from '../SEO/SEO'
 import './NeuralArchitecture.css'
 
 export default function NeuralArchitecture() {
@@ -63,6 +64,13 @@ export default function NeuralArchitecture() {
 
   return (
     <div className="na-page" ref={sectionRef}>
+      <SEO 
+        title="AI Development & Neural Architecture"
+        description="We engineer Custom LLMs, RAG architectures, and scalable AI solutions. Turn proprietary data into enterprise-grade intelligence."
+        keywords="AI Development Company, AI Chatbots, AI Agents, RAG Systems, LLM Integration, OpenAI Integration, Claude Integration, Gemini Integration"
+        canonicalUrl="/service/neural-architecture"
+        isServicePage={true}
+      />
       
       {/* ── HERO (DARK) ── */}
       <section className="na-section na-hero na-dark">
@@ -122,7 +130,7 @@ export default function NeuralArchitecture() {
         <div className="na-why-us__inner">
           <div className="na-why-us__visual na-reveal">
             <div className="na-why-us__img-wrap">
-              <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=1200" alt="Production AI Architecture" className="na-parallax-img" />
+              <img loading="lazy" src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=1200" alt="Production AI Architecture" className="na-parallax-img" />
             </div>
             <div className="na-badge">
               <span className="na-badge__num">99.9%</span>
@@ -146,21 +154,21 @@ export default function NeuralArchitecture() {
         </div>
         <div className="na-use-cases__grid">
           <div className="na-use-case na-reveal">
-            <img className="na-use-case__img" src="https://images.unsplash.com/photo-1586528116311-ad8ed3c84a0c?auto=format&fit=crop&q=80&w=800" alt="Logistics AI" />
+            <img loading="lazy" className="na-use-case__img" src="https://images.unsplash.com/photo-1586528116311-ad8ed3c84a0c?auto=format&fit=crop&q=80&w=800" alt="Logistics AI" />
             <div className="na-use-case__content">
               <h4 className="na-use-case__title">Logistics</h4>
               <p className="na-use-case__desc">Predictive routing, demand forecasting, and automated supply chain anomaly resolution.</p>
             </div>
           </div>
           <div className="na-use-case na-reveal">
-            <img className="na-use-case__img" src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=800" alt="Fintech AI" />
+            <img loading="lazy" className="na-use-case__img" src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=800" alt="Fintech AI" />
             <div className="na-use-case__content">
               <h4 className="na-use-case__title">Fintech</h4>
               <p className="na-use-case__desc">Real-time risk analysis, transaction fraud detection, and algorithmic compliance reporting.</p>
             </div>
           </div>
           <div className="na-use-case na-reveal">
-            <img className="na-use-case__img" src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=800" alt="SaaS AI" />
+            <img loading="lazy" className="na-use-case__img" src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=800" alt="SaaS AI" />
             <div className="na-use-case__content">
               <h4 className="na-use-case__title">SaaS Platforms</h4>
               <p className="na-use-case__desc">Intelligent workflow automation and context-aware copilot integrations built securely into your app.</p>

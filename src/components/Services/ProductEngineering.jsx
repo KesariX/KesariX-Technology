@@ -2,6 +2,7 @@ import { useRef, useLayoutEffect } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import './ProductEngineering.css'
+import SEO from '../SEO/SEO'
 
 export default function ProductEngineering() {
   const sectionRef = useRef(null)
@@ -57,6 +58,13 @@ export default function ProductEngineering() {
 
   return (
     <div className="pe-page" ref={sectionRef}>
+      <SEO 
+        title="Product Engineering & Custom Software Development"
+        description="End-to-end product engineering services. We build scalable React, Next.js, and Node.js platforms, plus iOS & Android mobile apps."
+        keywords="Custom Software Development, Product Engineering, Full Stack Development, React Development, Next.js Development, Mobile App Development, iOS, Android, SaaS Development"
+        canonicalUrl="/service/product-engineering"
+        isServicePage={true}
+      />
 
       {/* ── HERO (DARK) ── */}
       <section className="pe-section pe-hero pe-dark">
@@ -113,7 +121,7 @@ export default function ProductEngineering() {
         <div className="pe-why-us__inner">
           <div className="pe-why-us__visual pe-reveal">
             <div className="pe-why-us__img-wrap">
-              <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1200" alt="Product Engineering" className="pe-parallax-img" />
+              <img loading="lazy" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1200" alt="Product Engineering" className="pe-parallax-img" />
             </div>
             <div className="pe-badge">
               <span className="pe-badge__num">100+</span>
@@ -137,21 +145,21 @@ export default function ProductEngineering() {
         </div>
         <div className="pe-use-cases__grid">
           <div className="pe-use-case pe-reveal">
-            <img className="pe-use-case__img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="SaaS Platforms" />
+            <img loading="lazy" className="pe-use-case__img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="SaaS Platforms" />
             <div className="pe-use-case__content">
               <h4 className="pe-use-case__title">SaaS Platforms</h4>
               <p className="pe-use-case__desc">Multi-tenant dashboard products with subscription billing, role management, and complex data visualisation.</p>
             </div>
           </div>
           <div className="pe-use-case pe-reveal">
-            <img className="pe-use-case__img" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800" alt="E-Commerce" />
+            <img loading="lazy" className="pe-use-case__img" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800" alt="E-Commerce" />
             <div className="pe-use-case__content">
               <h4 className="pe-use-case__title">E-Commerce</h4>
               <p className="pe-use-case__desc">High-conversion storefronts with custom checkout flows, headless CMS integrations, and real-time inventory systems.</p>
             </div>
           </div>
           <div className="pe-use-case pe-reveal">
-            <img className="pe-use-case__img" src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&q=80&w=800" alt="Enterprise Portals" />
+            <img loading="lazy" className="pe-use-case__img" src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&q=80&w=800" alt="Enterprise Portals" />
             <div className="pe-use-case__content">
               <h4 className="pe-use-case__title">Enterprise Portals</h4>
               <p className="pe-use-case__desc">Internal tooling, client portals, and data dashboards handling sensitive workflows at enterprise scale.</p>

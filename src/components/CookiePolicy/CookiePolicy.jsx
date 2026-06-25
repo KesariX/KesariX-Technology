@@ -1,8 +1,14 @@
 import './CookiePolicy.css'
+import SEO from '../SEO/SEO'
 
 export default function CookiePolicy() {
   return (
     <div className="legal-page">
+      <SEO 
+        title="Cookie Policy | KesariX Technology"
+        description="Read the KesariX Technology cookie policy to understand how we use cookies and tracking technologies to improve your experience."
+        canonicalUrl="/cookie-policy"
+      />
       <div className="legal-hero">
         <div className="legal-hero__inner">
           <nav className="legal-breadcrumb">

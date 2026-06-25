@@ -13,7 +13,7 @@ const CHECKLIST = [
 const FOOTER_SERVICES = [
   { name: 'AI Solutions', link: '/service/neural-architecture' },
   { name: 'Web Development', link: '/service/product-engineering' },
-  { name: 'IT Services', link: '/service/cloud-backbone' },
+
   { name: 'AI Agents', link: '/service/agentic-systems' },
   { name: 'Process Automation', link: '/service/workflow-engines' },
 ]

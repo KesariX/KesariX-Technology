@@ -2,12 +2,13 @@ import { useRef, useLayoutEffect, useState } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import './ContactPage.css'
+import SEO from '../SEO/SEO'
 
 const PROJECT_TYPES = [
   '— Select project type —',
   'AI & Machine Learning',
   'Web / Mobile Development',
-  'Cloud Infrastructure',
+
   'Workflow Automation',
   'Other',
 ]
@@ -99,6 +100,25 @@ export default function ContactPage() {
 
   return (
     <div className="cp-page" ref={pageRef}>
+      <SEO 
+        title="Contact Us | Hire Web Developers & AI Experts"
+        description="Get in touch with KesariX Technology. Hire MERN developers, full stack engineers, and AI specialists. We serve clients in the US, UK, Canada, Australia, and India."
+        keywords="Contact Software Company, Hire Web Developers, Hire MERN Developers, AI Agency Near Me, Website Developers Near Me"
+        canonicalUrl="/contact"
+        schemaData={{
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          "mainEntity": {
+            "@type": "Organization",
+            "name": "KesariX Technology",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+91-92747-39361",
+              "contactType": "customer service"
+            }
+          }
+        }}
+      />
 
       {/* ── HERO ── */}
       <section className="cp-hero">

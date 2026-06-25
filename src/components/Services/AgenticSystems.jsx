@@ -2,6 +2,7 @@ import { useRef, useLayoutEffect } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import './AgenticSystems.css'
+import SEO from '../SEO/SEO'
 
 const BOT_TYPES = [
   {
@@ -106,6 +107,13 @@ export default function AgenticSystems() {
 
   return (
     <div className="as-page" ref={sectionRef}>
+      <SEO 
+        title="Agentic Systems & AI Automation"
+        description="Deploy custom autonomous AI agents to handle customer support, sales intelligence, e-commerce, and HR operations 24/7."
+        keywords="AI Automation, Agentic Systems, AI Agents, Workflow Automation, Custom AI Development, CRM Automation"
+        canonicalUrl="/service/agentic-systems"
+        isServicePage={true}
+      />
       
       {/* ── HERO (DARK) ── */}
       <section className="as-section as-hero as-dark">
@@ -162,7 +170,7 @@ export default function AgenticSystems() {
         <div className="as-why-us__inner">
           <div className="as-why-us__visual as-reveal">
             <div className="as-why-us__img-wrap">
-              <img src="https://images.unsplash.com/photo-1678324483786-9dc5512217f2?auto=format&fit=crop&q=80&w=1200" alt="Agentic Automation" className="as-parallax-img" />
+              <img loading="lazy" src="https://images.unsplash.com/photo-1678324483786-9dc5512217f2?auto=format&fit=crop&q=80&w=1200" alt="Agentic Automation" className="as-parallax-img" />
             </div>
             <div className="as-badge">
               <span className="as-badge__num">10x</span>
@@ -186,21 +194,21 @@ export default function AgenticSystems() {
         </div>
         <div className="as-use-cases__grid">
           <div className="as-use-case as-reveal">
-            <img className="as-use-case__img" src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&q=80&w=800" alt="Customer Support Agent" />
+            <img loading="lazy" className="as-use-case__img" src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&q=80&w=800" alt="Customer Support Agent" />
             <div className="as-use-case__content">
               <h4 className="as-use-case__title">Customer Support</h4>
               <p className="as-use-case__desc">L1/L2 autonomous resolution capable of processing refunds, updating billing, and referencing CRM data.</p>
             </div>
           </div>
           <div className="as-use-case as-reveal">
-            <img className="as-use-case__img" src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&q=80&w=800" alt="Data Research Agent" />
+            <img loading="lazy" className="as-use-case__img" src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&q=80&w=800" alt="Data Research Agent" />
             <div className="as-use-case__content">
               <h4 className="as-use-case__title">Data Research</h4>
               <p className="as-use-case__desc">Agents that crawl the web, synthesize reports, monitor competitors, and update internal databases automatically.</p>
             </div>
           </div>
           <div className="as-use-case as-reveal">
-            <img className="as-use-case__img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Financial Audit Agent" />
+            <img loading="lazy" className="as-use-case__img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Financial Audit Agent" />
             <div className="as-use-case__content">
               <h4 className="as-use-case__title">Financial Auditing</h4>
               <p className="as-use-case__desc">Reviewing hundreds of documents for compliance anomalies, flagging irregularities to human supervisors instantly.</p>

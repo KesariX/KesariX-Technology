@@ -5,40 +5,8 @@ import './TechStack.css'
 
 const STACKS = [
   {
-    id: 'frontend',
-    num: '01',
-    label: 'Frontend Engineering',
-    desc: 'Pixel-perfect, performant interfaces that feel alive — not just functional.',
-    chips: [
-      'React',
-      'Next.js',
-      'TypeScript',
-      'Tailwind CSS',
-      'Framer Motion',
-      'GSAP',
-      'WebGL',
-      'Three.js'
-    ],
-  },
-  {
-    id: 'backend',
-    num: '02',
-    label: 'Backend Architecture',
-    desc: 'Scalable server-side systems built for reliability, speed, and growth.',
-    chips: [
-      'Node.js',
-      'FastAPI',
-      'PostgreSQL',
-      'Redis',
-      'GraphQL',
-      'REST APIs',
-      'WebSockets',
-      'Microservices'
-    ],
-  },
-  {
     id: 'ai',
-    num: '03',
+    num: '01',
     label: 'Artificial Intelligence',
     desc: 'Production-grade AI — from conversational agents to computer vision pipelines.',
     chips: [
@@ -53,60 +21,69 @@ const STACKS = [
     ],
   },
   {
-    id: 'cloud',
-    num: '04',
-    label: 'Cloud & DevOps',
-    desc: 'Infrastructure that scales with you — automated, secure, and always on.',
+    id: 'web',
+    num: '02',
+    label: 'Website Development',
+    desc: 'Pixel-perfect, performant interfaces that feel alive — not just functional.',
     chips: [
-      'AWS',
-      'GCP',
-      'Docker',
-      'Kubernetes',
-      'CI/CD',
-      'Terraform',
-      'Nginx',
-      'Linux'
+      'React',
+      'Next.js',
+      'TypeScript',
+      'Tailwind CSS',
+      'Framer Motion',
+      'GSAP',
+      'WebGL',
+      'Three.js'
     ],
   },
   {
-    id: 'marketing',
-    num: '05',
-    label: 'Digital Marketing',
-    desc: 'Growth-focused digital execution designed to increase visibility, leads, and conversions.',
+    id: 'fullstack',
+    num: '03',
+    label: 'Full Stack Development',
+    desc: 'Scalable server-side systems and end-to-end solutions built for reliability and growth.',
     chips: [
-      'SEO',
-      'Google Ads',
-      'Meta Ads',
-      'Lead Generation',
-      'Content Marketing',
-      'Email Campaigns',
-      'Social Media Management',
-      'Analytics'
-    ],
-  },
-  {
-    id: 'operations',
-    num: '06',
-    label: 'BPO & Data Operations',
-    desc: 'Reliable operational support for repetitive, high-volume business workflows.',
-    chips: [
-      'Data Entry',
-      'CRM Management',
-      'Lead Qualification',
-      'Call Center Support',
-      'Virtual Assistance',
-      'Manual Data Processing',
-      'Customer Support',
-      'Back Office Operations'
+      'Node.js',
+      'FastAPI',
+      'PostgreSQL',
+      'Redis',
+      'GraphQL',
+      'REST APIs',
+      'WebSockets',
+      'Microservices'
     ],
   },
   {
     id: 'mobile',
-    num: '07',
+    num: '04',
     label: 'Mobile Development',
     desc: 'Native and cross-platform applications built for speed, beauty, and flawless user experience.',
-    chips: ['React Native', 'Flutter', 'Swift', 'Kotlin', 'Firebase', 'Expo', 'Native Modules', 'App Distribution'],
+    chips: [
+      'React Native',
+      'Flutter',
+      'Swift',
+      'Kotlin',
+      'Firebase',
+      'Expo',
+      'Native Modules',
+      'App Distribution'
+    ],
   },
+  {
+    id: 'ai-automation',
+    num: '05',
+    label: 'AI Automation & Agent',
+    desc: 'Autonomous AI agents and end-to-end automation workflows that operate 24/7.',
+    chips: [
+      'Make',
+      'n8n',
+      'Zapier',
+      'CrewAI',
+      'AutoGPT',
+      'Custom Agents',
+      'Workflow Automation',
+      'API Integration'
+    ],
+  }
 ]
 
 const totalTools = STACKS.reduce((a, s) => a + s.chips.length, 0)

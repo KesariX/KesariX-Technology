@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import './AboutKesariX.css'
+import SEO from '../SEO/SEO'
 
 const TEAM = [
   {
@@ -249,6 +250,23 @@ export default function AboutKesariX() {
 
   return (
     <div className="ab-page" ref={sectionRef}>
+      <SEO 
+        title="About Us | Digital Transformation Agency"
+        description="Learn about KesariX Technology, a premium digital transformation agency delivering software, AI, and digital experiences across India, USA, UK, and worldwide."
+        keywords="Software Development Company, Digital Transformation Agency, AI Company India, Top Software Company, Website Development Company India"
+        canonicalUrl="/about"
+        schemaData={{
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          "mainEntity": {
+            "@type": "Organization",
+            "name": "KesariX Technology",
+            "foundingDate": "2023"
+          }
+        }}
+      />
+      
+      {/* ── BACKGROUND AMBIENCE ── */}
 
       {/* ══════════════════════════════════════
           1. HERO

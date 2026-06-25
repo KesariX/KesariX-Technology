@@ -2,6 +2,7 @@ import { useRef, useLayoutEffect } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import './WorkflowEngines.css'
+import SEO from '../SEO/SEO'
 
 export default function WorkflowEngines() {
   const sectionRef = useRef(null)
@@ -61,6 +62,13 @@ export default function WorkflowEngines() {
 
   return (
     <div className="we-page" ref={sectionRef}>
+      <SEO 
+        title="Workflow Automation & Business Process Orchestration"
+        description="Scalable workflow engines and process automation solutions. We engineer distributed systems to handle complex, long-running business logic."
+        keywords="Workflow Automation, Business Process Automation, Distributed Orchestration, Process Engines, Custom Enterprise Software"
+        canonicalUrl="/service/workflow-engines"
+        isServicePage={true}
+      />
       
       {/* ── HERO (DARK) ── */}
       <section className="we-section we-hero we-dark">
@@ -117,7 +125,7 @@ export default function WorkflowEngines() {
         <div className="we-why-us__inner">
           <div className="we-why-us__visual we-reveal">
             <div className="we-why-us__img-wrap">
-              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1200" alt="Hardware Infrastructure" className="we-parallax-img" />
+              <img loading="lazy" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1200" alt="Hardware Infrastructure" className="we-parallax-img" />
             </div>
             <div className="we-badge">
               <span className="we-badge__num">Zero</span>
@@ -141,21 +149,21 @@ export default function WorkflowEngines() {
         </div>
         <div className="we-use-cases__grid">
           <div className="we-use-case we-reveal">
-            <img className="we-use-case__img" src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?auto=format&fit=crop&q=80&w=800" alt="E-Commerce Fulfillment" />
+            <img loading="lazy" className="we-use-case__img" src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?auto=format&fit=crop&q=80&w=800" alt="E-Commerce Fulfillment" />
             <div className="we-use-case__content">
               <h4 className="we-use-case__title">E-Commerce Fulfillment</h4>
               <p className="we-use-case__desc">Orchestrating inventory reservation, payment processing, and shipping dispatch with automated rollbacks.</p>
             </div>
           </div>
           <div className="we-use-case we-reveal">
-            <img className="we-use-case__img" src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=800" alt="Financial Transactions" />
+            <img loading="lazy" className="we-use-case__img" src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=800" alt="Financial Transactions" />
             <div className="we-use-case__content">
               <h4 className="we-use-case__title">Financial Transactions</h4>
               <p className="we-use-case__desc">Multi-step ledger reconciliations requiring distributed transactions and strict ACID properties.</p>
             </div>
           </div>
           <div className="we-use-case we-reveal">
-            <img className="we-use-case__img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Media Processing" />
+            <img loading="lazy" className="we-use-case__img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Media Processing" />
             <div className="we-use-case__content">
               <h4 className="we-use-case__title">Media Processing</h4>
               <p className="we-use-case__desc">Encoding, transcribing, and distributing high-volume media assets across asynchronous worker pools.</p>

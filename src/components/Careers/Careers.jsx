@@ -2,6 +2,7 @@ import { useRef, useLayoutEffect, useState } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import './Careers.css'
+import SEO from '../SEO/SEO'
 
 export default function Careers() {
   const sectionRef = useRef(null)
@@ -60,6 +61,12 @@ export default function Careers() {
 
   return (
     <div className="cr-page" ref={sectionRef}>
+      <SEO 
+        title="Careers | Join Our Engineering Team"
+        description="Join KesariX Technology. We are hiring software engineers, AI developers, UI/UX designers, and digital experts to build the future of tech."
+        keywords="Software Engineering Jobs, Web Developer Jobs, React Developer Jobs, AI Jobs, IT Careers"
+        canonicalUrl="/careers"
+      />
 
       {/* ── HERO (DARK) ── */}
       <section className="cr-section cr-hero cr-dark">

@@ -1,8 +1,14 @@
 import './Terms.css'
+import SEO from '../SEO/SEO'
 
 export default function Terms() {
   return (
     <div className="legal-page">
+      <SEO 
+        title="Terms of Service | KesariX Technology"
+        description="Read the terms of service for engaging with KesariX Technology, covering software development, AI solutions, and digital transformation."
+        canonicalUrl="/terms"
+      />
       <div className="legal-hero">
         <div className="legal-hero__inner">
           <nav className="legal-breadcrumb">
@@ -45,7 +51,7 @@ export default function Terms() {
             <ul>
               <li>Web and mobile application development</li>
               <li>AI solutions and machine learning systems</li>
-              <li>Cloud infrastructure setup and management</li>
+
               <li>Process automation and workflow engineering</li>
               <li>Digital strategy and consulting</li>
             </ul>

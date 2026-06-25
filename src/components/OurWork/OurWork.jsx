@@ -2,6 +2,7 @@ import { useRef, useLayoutEffect, useEffect, useState } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import './OurWork.css'
+import SEO from '../SEO/SEO'
 
 const PROJECTS = [
   {
@@ -154,6 +155,12 @@ export default function OurWork() {
 
   return (
     <div className="ow-page" ref={pageRef}>
+      <SEO 
+        title="Our Work & Case Studies | Portfolio"
+        description="Explore our portfolio of AI automation, enterprise web development, and digital transformation projects delivered globally."
+        keywords="Web Development Portfolio, AI Development Case Studies, Software Company Portfolio, Best Web Development Company, Custom Software Development"
+        canonicalUrl="/work"
+      />
 
       {/* ── HERO ── */}
       <section className="ow-section ow-hero ow-dark">

@@ -1,8 +1,8 @@
 import './Marquee.css'
 
 const ITEMS = [
-  'AI Solutions', 'Web Development', 'Automation Systems', 'Cloud Architecture',
-  'AI Agents', 'IT Infrastructure', 'Mobile Apps', 'Data Engineering',
+  'AI Solutions', 'Web Development', 'Automation Systems',
+  'AI Agents', 'Mobile Apps', 'Data Engineering',
   'Digital Marketing', 'SEO', 'Social Media Marketing', 'Paid Ads',
   'Branding & Content', 'API Development',
 ]
