@@ -1,6 +1,8 @@
 import { useRef, useLayoutEffect } from 'react'
 import gsap from 'gsap'
 import './NotFound.css'
+import SEO from '../SEO/SEO'
+
 
 export default function NotFound() {
   const ref = useRef(null)
@@ -21,6 +23,12 @@ export default function NotFound() {
 
   return (
     <div className="nf-page" ref={ref}>
+      <SEO
+        title="404 — Page Not Found"
+        description="The page you're looking for doesn't exist. Return to the KesariX Technology homepage."
+        canonicalUrl="/404"
+        noIndex={true}
+      />
       <div className="nf-glow" aria-hidden="true" />
       <div className="nf-inner">
         <div className="nf-num" aria-hidden="true">404</div>

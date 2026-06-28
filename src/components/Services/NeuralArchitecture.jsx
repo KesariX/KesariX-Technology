@@ -4,6 +4,41 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 import SEO from '../SEO/SEO'
 import './NeuralArchitecture.css'
 
+const NA_FAQS = [
+  {
+    question: 'What AI development services does KesariX Technology offer?',
+    answer: 'KesariX Technology offers end-to-end AI development including custom LLM fine-tuning, RAG (Retrieval-Augmented Generation) system design, AI agent development, OpenAI GPT-4 integration, Anthropic Claude integration, Google Gemini integration, computer vision pipelines, document AI, voice AI, and vector database setup with Pinecone, Weaviate, or Qdrant.',
+  },
+  {
+    question: 'What is RAG and can KesariX build a RAG system for my business?',
+    answer: 'RAG (Retrieval-Augmented Generation) is an AI architecture that combines a language model with a searchable knowledge base of your private data. KesariX builds production RAG systems that let your AI answer questions accurately using your internal documents, PDFs, databases, and APIs — with source citations and no hallucinations.',
+  },
+  {
+    question: 'How long does it take to build a custom AI chatbot or AI agent?',
+    answer: 'A standard AI chatbot with LLM integration typically takes 3–6 weeks. A fully autonomous multi-agent AI system with tool calling, memory, and external API integrations takes 6–14 weeks. Timeline depends on data complexity, integration requirements, and testing needs.',
+  },
+  {
+    question: 'Can KesariX fine-tune an LLM on my proprietary data?',
+    answer: 'Yes. We fine-tune open-source models (LLaMA, Mistral, Phi) and select OpenAI models on your proprietary datasets using LoRA and QLoRA techniques. Fine-tuning improves domain accuracy, reduces prompt length, and lowers inference costs compared to general-purpose models.',
+  },
+  {
+    question: 'What is the cost of building a custom AI solution in India?',
+    answer: 'A basic AI chatbot integration starts at ₹50,000–₹2,00,000. A custom RAG system costs ₹1,50,000–₹5,00,000. A full multi-agent AI pipeline with custom integrations ranges from ₹3,00,000–₹15,00,000+. All projects include architecture review, deployment, and 30-day post-launch support.',
+  },
+  {
+    question: 'Does KesariX build AI solutions for international clients?',
+    answer: 'Yes. We work with clients across the US, UK, Canada, Australia, UAE, Singapore, and Europe. All communication is in English, delivery is remote-first, and we accommodate time zone requirements for calls and stand-ups.',
+  },
+]
+
+const NA_BREADCRUMBS = [
+  { name: 'Home', url: '/' },
+  { name: 'Services', url: '/#capabilities' },
+  { name: 'AI Development & Neural Architecture', url: '/service/neural-architecture' },
+]
+
+const NA_RATING = { ratingValue: '4.9', reviewCount: '38', bestRating: '5' }
+
 export default function NeuralArchitecture() {
   const sectionRef = useRef(null)
 
@@ -65,11 +100,14 @@ export default function NeuralArchitecture() {
   return (
     <div className="na-page" ref={sectionRef}>
       <SEO 
-        title="AI Development & Neural Architecture"
-        description="We engineer Custom LLMs, RAG architectures, and scalable AI solutions. Turn proprietary data into enterprise-grade intelligence."
-        keywords="AI Development Company, AI Chatbots, AI Agents, RAG Systems, LLM Integration, OpenAI Integration, Claude Integration, Gemini Integration"
+        title="AI Development Company India — LLM, RAG & Custom AI Solutions"
+        description="KesariX Technology engineers production-grade AI systems — custom LLMs, RAG architectures, AI agents, GPT/Claude/Gemini integration, computer vision, and voice AI. Turn proprietary data into enterprise intelligence."
+        keywords="AI Development Company India, AI Development Company Surat, LLM Development, RAG Development Company, GPT Integration India, Claude Integration, Gemini API Integration, Custom AI Solutions, AI Chatbot Development, AI Agent Development, Vector Database, Pinecone Integration, OpenAI API, LangChain Development, LangGraph, Computer Vision AI, Document AI, Voice AI, Fine-tuning LLM, AI Automation India"
         canonicalUrl="/service/neural-architecture"
         isServicePage={true}
+        breadcrumbs={NA_BREADCRUMBS}
+        faqs={NA_FAQS}
+        aggregateRating={NA_RATING}
       />
       
       {/* ── HERO (DARK) ── */}

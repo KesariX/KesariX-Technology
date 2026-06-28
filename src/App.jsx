@@ -62,6 +62,45 @@ function PageLoader() {
   return <div className="page-loader" aria-hidden="true" />
 }
 
+const HOME_FAQS = [
+  {
+    question: 'What services does KesariX Technology offer?',
+    answer: 'KesariX Technology offers end-to-end AI development (LLMs, RAG, AI agents, ChatGPT/Claude/Gemini integration), full-stack web development (React, Next.js, Node.js), mobile app development (Flutter, React Native), enterprise software (CRM, ERP, SaaS), and AI-powered workflow automation (n8n, Make, Zapier, custom pipelines).',
+  },
+  {
+    question: 'Where is KesariX Technology located?',
+    answer: 'KesariX Technology is headquartered in Surat, Gujarat, India. We serve clients across India (Mumbai, Delhi, Bangalore, Hyderabad, Pune, Chennai, Ahmedabad, and all major cities) and internationally across the USA, UK, Canada, Australia, UAE, and Europe.',
+  },
+  {
+    question: 'How much does it cost to build an AI solution or website with KesariX?',
+    answer: 'Project costs vary by scope. A business website typically starts at ₹25,000–₹1,50,000. A custom AI chatbot or agent starts at ₹50,000–₹5,00,000 depending on integrations. Enterprise platforms and SaaS products are scoped individually. Contact us for a free discovery call and detailed estimate.',
+  },
+  {
+    question: 'Can KesariX Technology integrate ChatGPT, Claude, or Gemini into my business?',
+    answer: 'Yes. We specialize in integrating OpenAI GPT-4, Anthropic Claude, and Google Gemini into business workflows — including custom AI chatbots, document analysis systems, RAG-based knowledge bases, and autonomous AI agents tailored to your data and processes.',
+  },
+  {
+    question: 'Does KesariX Technology develop mobile apps?',
+    answer: 'Yes. We build cross-platform iOS and Android mobile apps using Flutter and React Native, as well as native apps using Swift and Kotlin. Our mobile apps include Firebase integrations, real-time features, payment gateways, and custom native modules.',
+  },
+  {
+    question: 'What is the typical project timeline at KesariX Technology?',
+    answer: 'A standard business website takes 2–4 weeks. A mobile app or SaaS platform takes 6–16 weeks. Custom AI solutions take 4–12 weeks depending on complexity. We use agile 2-week sprints with continuous delivery and stakeholder demos.',
+  },
+  {
+    question: 'Does KesariX Technology provide post-launch support and maintenance?',
+    answer: 'Yes. We offer ongoing maintenance packages covering bug fixes, feature additions, performance monitoring, security updates, and cloud infrastructure management. Our team is available via email, WhatsApp, and scheduled calls.',
+  },
+  {
+    question: 'Can KesariX Technology build a complete CRM or ERP system for my business?',
+    answer: 'Absolutely. We develop fully custom CRM systems, ERP platforms, HRMS solutions, inventory management systems, and billing software tailored to your specific business processes — not off-the-shelf tools that require adapting your workflow to their limitations.',
+  },
+]
+
+const HOME_BREADCRUMBS = [{ name: 'Home', url: '/' }]
+
+const HOME_RATING = { ratingValue: '4.9', reviewCount: '47', bestRating: '5' }
+
 function PageContent() {
   const shaderRef = useShader()
   useLenis(shaderRef)
@@ -69,10 +108,14 @@ function PageContent() {
   return (
     <>
       <SEO 
-        title="KesariX Technology — We Engineer What's Next"
-        description="KesariX Technology builds AI agents, enterprise web platforms, mobile apps & intelligent automation. 50+ projects shipped. 98% client satisfaction. Based in Surat, India. Get a free discovery call."
-        canonicalUrl=""
+        title="KesariX Technology — AI Development & Software Company India"
+        description="KesariX Technology builds production AI agents, LLMs, RAG systems, enterprise web platforms, mobile apps & intelligent automation. 50+ projects shipped. 98% client satisfaction. Based in Surat, India. Get a free discovery call."
+        keywords="AI Development Company India, AI Agency Surat, LLM Development, GPT Integration, RAG Development, Web Development Company India, React Development, Full Stack Development, Mobile App Development, Flutter, Software Company Surat Gujarat, AI Automation"
+        canonicalUrl="/"
         isHomePage={true}
+        breadcrumbs={HOME_BREADCRUMBS}
+        faqs={HOME_FAQS}
+        aggregateRating={HOME_RATING}
       />
       <Nav />
       <main>

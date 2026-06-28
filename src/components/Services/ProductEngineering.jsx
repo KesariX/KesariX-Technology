@@ -4,6 +4,41 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 import './ProductEngineering.css'
 import SEO from '../SEO/SEO'
 
+const PE_FAQS = [
+  {
+    question: 'What web development services does KesariX Technology provide?',
+    answer: 'KesariX Technology provides end-to-end web development services including custom React and Next.js websites, full-stack MERN/MEAN applications, REST and GraphQL APIs, SaaS platforms, admin dashboards, CRM development, ERP systems, payment gateway integration, and real-time features using WebSockets.',
+  },
+  {
+    question: 'Does KesariX develop mobile apps for iOS and Android?',
+    answer: 'Yes. We build cross-platform iOS and Android apps using Flutter and React Native, and native apps using Swift (iOS) and Kotlin (Android). Our mobile apps include Firebase integrations, push notifications, offline capabilities, payment gateways, and custom native modules.',
+  },
+  {
+    question: 'How much does it cost to build a website or web application in India?',
+    answer: 'A business website or landing page starts at ₹20,000–₹80,000. A full-stack web application or SaaS platform starts at ₹1,50,000–₹8,00,000+ depending on features and complexity. E-commerce stores with custom checkout start at ₹60,000. All quotes include design, development, testing, and deployment.',
+  },
+  {
+    question: 'What is the typical timeline for a React or Next.js project?',
+    answer: 'A standard React website takes 2–4 weeks. A full-stack Next.js SaaS application takes 6–14 weeks. Complex enterprise platforms can take 3–6 months. We use 2-week agile sprints with regular demos so you always see progress.',
+  },
+  {
+    question: 'Can KesariX build a custom SaaS product from scratch?',
+    answer: 'Yes. We specialize in SaaS product development including multi-tenant architecture, subscription billing (Stripe, Razorpay), role-based access control, onboarding flows, analytics dashboards, and API-first design. We have shipped 15+ SaaS products across India, USA, and UK.',
+  },
+  {
+    question: 'Do you use React or Next.js for web development?',
+    answer: 'We use both. React is ideal for single-page applications and dashboards. Next.js is preferred when you need server-side rendering, static site generation, or better SEO out of the box. We recommend the right framework based on your traffic, content, and performance requirements.',
+  },
+]
+
+const PE_BREADCRUMBS = [
+  { name: 'Home', url: '/' },
+  { name: 'Services', url: '/#capabilities' },
+  { name: 'Product Engineering', url: '/service/product-engineering' },
+]
+
+const PE_RATING = { ratingValue: '4.9', reviewCount: '42', bestRating: '5' }
+
 export default function ProductEngineering() {
   const sectionRef = useRef(null)
 
@@ -59,11 +94,14 @@ export default function ProductEngineering() {
   return (
     <div className="pe-page" ref={sectionRef}>
       <SEO 
-        title="Product Engineering & Custom Software Development"
-        description="End-to-end product engineering services. We build scalable React, Next.js, and Node.js platforms, plus iOS & Android mobile apps."
-        keywords="Custom Software Development, Product Engineering, Full Stack Development, React Development, Next.js Development, Mobile App Development, iOS, Android, SaaS Development"
+        title="Web Development & Product Engineering Company India"
+        description="KesariX Technology builds scalable React, Next.js, and Node.js web platforms, iOS & Android mobile apps, SaaS products, CRM/ERP systems, and enterprise APIs. End-to-end product engineering from concept to production."
+        keywords="Web Development Company India, React Development Company, Next.js Development, Full Stack Development India, MERN Stack Development, Node.js Development, Mobile App Development India, Flutter Development, React Native Development, SaaS Development India, CRM Development, ERP Development, Custom Software Development Surat, Enterprise Web Development"
         canonicalUrl="/service/product-engineering"
         isServicePage={true}
+        breadcrumbs={PE_BREADCRUMBS}
+        faqs={PE_FAQS}
+        aggregateRating={PE_RATING}
       />
 
       {/* ── HERO (DARK) ── */}

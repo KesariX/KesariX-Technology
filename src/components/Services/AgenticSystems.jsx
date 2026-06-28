@@ -49,6 +49,41 @@ const BOT_TYPES = [
   },
 ]
 
+const AS_FAQS = [
+  {
+    question: 'What are AI agents and how can they help my business?',
+    answer: 'AI agents are autonomous software systems that perceive input, reason over it using a large language model, and take actions—calling APIs, updating databases, sending emails, or triggering workflows—without human intervention. KesariX builds AI agents that handle customer support, sales follow-up, HR onboarding, document processing, and complex multi-step business workflows 24/7.',
+  },
+  {
+    question: 'What is the difference between an AI chatbot and an AI agent?',
+    answer: 'A chatbot answers questions conversationally. An AI agent goes further—it can take multi-step actions, call external tools and APIs, remember context across sessions, make decisions, and complete tasks autonomously. For example, an AI sales agent doesn\'t just respond; it qualifies leads, books meetings, and updates your CRM automatically.',
+  },
+  {
+    question: 'Which platforms do you use to build AI agents?',
+    answer: 'We build AI agents using LangChain, LangGraph, CrewAI, AutoGen, and custom Python frameworks depending on the use case. For no-code/low-code automation we integrate n8n, Make (Integromat), and Zapier. We also build fully custom agent orchestration systems for enterprise clients who need full control.',
+  },
+  {
+    question: 'Can AI agents integrate with my existing CRM, ERP, or business tools?',
+    answer: 'Yes. Our AI agents integrate with Salesforce, HubSpot, Zoho CRM, Notion, Slack, WhatsApp, Gmail, Google Workspace, Jira, and custom internal systems via REST APIs or webhooks. Every integration is purpose-built, not a generic connector.',
+  },
+  {
+    question: 'How much does it cost to build a custom AI agent in India?',
+    answer: 'A focused AI agent (e.g., customer support bot with CRM integration) starts at ₹1,00,000–3,00,000. A full multi-agent pipeline with memory, tool calling, and human-in-the-loop workflows costs ₹3,00,000–10,00,000+. All agents include testing, monitoring, and 30-day post-launch support.',
+  },
+  {
+    question: 'Is the AI agent data secure and private?',
+    answer: 'Yes. We implement role-based access control, data encryption at rest and in transit, and can deploy agents on your private cloud or on-premise infrastructure. For regulated industries, we offer RAG architectures that never send sensitive data to third-party LLM providers.',
+  },
+]
+
+const AS_BREADCRUMBS = [
+  { name: 'Home', url: '/' },
+  { name: 'Services', url: '/#capabilities' },
+  { name: 'Agentic Systems & AI Automation', url: '/service/agentic-systems' },
+]
+
+const AS_RATING = { ratingValue: '4.9', reviewCount: '35', bestRating: '5' }
+
 export default function AgenticSystems() {
   const sectionRef = useRef(null)
 
@@ -108,11 +143,14 @@ export default function AgenticSystems() {
   return (
     <div className="as-page" ref={sectionRef}>
       <SEO 
-        title="Agentic Systems & AI Automation"
-        description="Deploy custom autonomous AI agents to handle customer support, sales intelligence, e-commerce, and HR operations 24/7."
-        keywords="AI Automation, Agentic Systems, AI Agents, Workflow Automation, Custom AI Development, CRM Automation"
+        title="AI Agent Development Company India — Custom Autonomous AI Systems"
+        description="KesariX Technology builds production AI agents that handle customer support, sales follow-up, lead qualification, HR automation, and complex multi-step workflows 24/7. Custom AI agent development using LangGraph, CrewAI, n8n, and OpenAI."
+        keywords="AI Agent Development India, Custom AI Agents, AI Automation Agency India, Agentic Systems, LangGraph Development, CrewAI Development, n8n Automation, Make Automation, Zapier Integration, CRM Automation AI, Sales AI Agent, Customer Support AI, WhatsApp AI Bot, Multi-Agent System, Autonomous AI Workflow, AI Chatbot Development India, Workflow Automation India"
         canonicalUrl="/service/agentic-systems"
         isServicePage={true}
+        breadcrumbs={AS_BREADCRUMBS}
+        faqs={AS_FAQS}
+        aggregateRating={AS_RATING}
       />
       
       {/* ── HERO (DARK) ── */}

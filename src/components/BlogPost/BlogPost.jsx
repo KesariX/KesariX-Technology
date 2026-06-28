@@ -3,6 +3,7 @@ import { useRef, useLayoutEffect } from 'react'
 import gsap from 'gsap'
 import { BLOG_POSTS } from '../../data/blogPosts'
 import './BlogPost.css'
+import SEO from '../SEO/SEO'
 
 export default function BlogPost() {
   const { id } = useParams()
@@ -31,6 +32,27 @@ export default function BlogPost() {
 
   return (
     <div className="bp-page" ref={ref}>
+      <SEO
+        title={post.title}
+        description={post.excerpt || post.summary || `${post.title} — Read the full article on the KesariX Technology blog.`}
+        keywords={`${post.category}, ${post.tags ? post.tags.join(', ') : ''}, AI Blog, Tech Blog India, KesariX Technology Blog`}
+        canonicalUrl={`/blog/${post.slug || post.id}`}
+        type="article"
+        ogImage={post.image}
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Blog', url: '/blog' },
+          { name: post.title, url: `/blog/${post.slug || post.id}` },
+        ]}
+        article={{
+          title: post.title,
+          description: post.excerpt || post.summary || post.title,
+          publishedTime: post.isoDate || post.date || '2025-01-01',
+          modifiedTime: post.isoDate || post.date || '2025-01-01',
+          author: post.author || 'KesariX Technology',
+          image: post.image,
+        }}
+      />
 
       {/* ── HERO ── */}
       <section className="bp-hero" style={{ backgroundImage: `url(${post.image})` }}>

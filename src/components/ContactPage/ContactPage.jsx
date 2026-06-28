@@ -101,21 +101,37 @@ export default function ContactPage() {
   return (
     <div className="cp-page" ref={pageRef}>
       <SEO 
-        title="Contact Us | Hire Web Developers & AI Experts"
-        description="Get in touch with KesariX Technology. Hire MERN developers, full stack engineers, and AI specialists. We serve clients in the US, UK, Canada, Australia, and India."
-        keywords="Contact Software Company, Hire Web Developers, Hire MERN Developers, AI Agency Near Me, Website Developers Near Me"
+        title="Contact KesariX Technology — Hire AI Developers & Software Engineers"
+        description="Get in touch with KesariX Technology. Hire expert AI developers, full-stack engineers, mobile app developers, and automation specialists. Free 30-min discovery call. Response within 24 hours. Serving India, USA, UK, UAE, Canada, Australia."
+        keywords="Hire AI Developer India, Hire Full Stack Developer India, Hire React Developer, Contact Software Company India, Web Development Agency Contact, AI Agency India Contact, Hire Mobile App Developer, Software Outsourcing India, Hire MERN Developer, Hire Next.js Developer, AI Consulting India, Free Discovery Call, Tech Partner India"
         canonicalUrl="/contact"
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Contact', url: '/contact' },
+        ]}
+        faqs={[
+          { question: 'How can I hire KesariX Technology for a project?', answer: 'Fill out the contact form on this page or send us an email at info@kesarixtechnology.com. We respond within 24 hours and schedule a free 30-minute discovery call to understand your requirements before providing a detailed proposal.' },
+          { question: 'Does KesariX Technology work with international clients?', answer: 'Yes. We actively work with clients in the USA, UK, Canada, Australia, UAE, Singapore, and across Europe. All communication is in English, and we accommodate time zone requirements for meetings and stand-ups.' },
+          { question: 'Is there a minimum project budget?', answer: 'Our minimum engagement is ₹20,000 (approx. $250 USD) for small projects like landing pages. For AI development and enterprise software, engagements typically start at ₹1,00,000+. We quote based on scope, not arbitrary minimums.' },
+        ]}
         schemaData={{
           "@context": "https://schema.org",
           "@type": "ContactPage",
+          "name": "Contact KesariX Technology",
+          "url": "https://kesarixtechnology.com/contact",
           "mainEntity": {
-            "@type": "Organization",
+            "@type": "LocalBusiness",
             "name": "KesariX Technology",
-            "contactPoint": {
-              "@type": "ContactPoint",
-              "telephone": "+91-92747-39361",
-              "contactType": "customer service"
-            }
+            "telephone": "+91-92747-39361",
+            "email": "info@kesarixtechnology.com",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Surat",
+              "addressRegion": "Gujarat",
+              "postalCode": "395001",
+              "addressCountry": "IN"
+            },
+            "openingHours": ["Mo-Fr 09:00-19:00", "Sa 10:00-16:00"]
           }
         }}
       />

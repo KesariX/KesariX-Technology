@@ -444,10 +444,20 @@ export default function Pricing() {
   return (
     <div className="pr-page-premium" ref={pageRef}>
       <SEO 
-        title="Pricing | Web Development & AI Solutions Cost"
-        description="Transparent pricing for enterprise software development, AI automation, and web platforms in India, USA, and globally."
-        keywords="Web Development Cost, Software Engineering Pricing, Hire Developers Cost, Custom Software Pricing"
+        title="Software Development Pricing India — Web, AI & Mobile App Cost"
+        description="Transparent, no-surprise pricing for web development, AI solutions, mobile app development, and automation in India and globally. View plans starting at ₹22,499. Free discovery call included."
+        keywords="Web Development Cost India, Software Development Pricing, AI Development Cost India, Mobile App Development Cost, React Development Price, Custom Software Cost, SaaS Development Cost, CRM Development Price, Hire Developer India Cost, Software Agency Pricing, Digital Transformation Cost"
         canonicalUrl="/pricing"
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Pricing', url: '/pricing' },
+        ]}
+        faqs={[
+          { question: 'How much does website development cost in India?', answer: 'A basic business website or landing page at KesariX starts at ₹22,499. A feature-rich React or Next.js web application starts at ₹75,000. Enterprise SaaS platforms are quoted based on scope and typically range from ₹2,00,000 to ₹10,00,000+.' },
+          { question: 'What is included in the pricing?', answer: 'All plans include design, development, testing, deployment, and 30 days of post-launch support. No hidden costs or surprise invoices. Fixed-price contracts are available for well-defined scopes.' },
+          { question: 'Do you offer pricing for international clients in USD?', answer: 'Yes. We have a Global pricing tier in USD for clients in the USA, UK, Canada, Australia, UAE, and Europe. Toggle to the Global view on this page to see USD pricing.' },
+          { question: 'Is there a custom plan for large enterprise projects?', answer: 'Yes. Contact us for a free discovery call to discuss your requirements. We provide custom scoping and fixed-price proposals for enterprise platforms, large AI systems, and multi-phase digital transformation projects.' },
+        ]}
       />
 
       {/* ── PROMO BANNER ── */}

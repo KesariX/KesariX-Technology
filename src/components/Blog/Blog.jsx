@@ -68,10 +68,18 @@ export default function Blog() {
   return (
     <div className="bl-page" ref={pageRef}>
       <SEO 
-        title="Insights & Blog | Technology Trends"
-        description="Read the latest insights on web development, AI automation, and enterprise software engineering from the KesariX Technology team."
-        keywords="Web Development Blog, AI Insights, Software Engineering Blog, Technology Trends"
+        title="AI & Tech Insights Blog — Web Development, AI Automation, Software Engineering"
+        description="Read expert insights on AI development, LLM engineering, React & Next.js, workflow automation, SaaS architecture, and enterprise software from the KesariX Technology team. Updated weekly."
+        keywords="AI Development Blog, Tech Insights, Web Development Blog India, Software Engineering Blog, LLM Engineering, React Development Tips, Next.js Blog, AI Automation Insights, SaaS Development Blog, Technology Blog India, AI Trends 2025, Digital Transformation Blog"
         canonicalUrl="/blog"
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Blog', url: '/blog' },
+        ]}
+        faqs={[
+          { question: 'What topics does the KesariX Technology blog cover?', answer: 'The KesariX blog covers AI development, LLM engineering, RAG systems, React and Next.js development, workflow automation, SaaS architecture, mobile app development, enterprise software, and digital transformation trends — written by our engineering team.' },
+          { question: 'How often is new content published on the KesariX blog?', answer: 'We publish new technical articles and industry insights weekly, covering the latest developments in AI, software engineering, and enterprise automation.' },
+        ]}
       />
 
       {/* ── HERO ── */}

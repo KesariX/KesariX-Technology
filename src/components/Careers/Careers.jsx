@@ -62,10 +62,20 @@ export default function Careers() {
   return (
     <div className="cr-page" ref={sectionRef}>
       <SEO 
-        title="Careers | Join Our Engineering Team"
-        description="Join KesariX Technology. We are hiring software engineers, AI developers, UI/UX designers, and digital experts to build the future of tech."
-        keywords="Software Engineering Jobs, Web Developer Jobs, React Developer Jobs, AI Jobs, IT Careers"
+        title="Careers at KesariX Technology — Software & AI Engineering Jobs India"
+        description="Join the KesariX Technology team. We're hiring talented software engineers, AI/ML developers, React developers, Flutter developers, DevOps engineers, and automation specialists. Remote-friendly roles based in Surat, India."
+        keywords="Software Engineer Jobs India, AI Developer Jobs India, React Developer Jobs Surat, Web Developer Jobs India, Machine Learning Jobs India, Full Stack Developer Jobs, Mobile App Developer Jobs, Flutter Developer Jobs, Tech Jobs Surat Gujarat, Software Company Jobs India, Startup Jobs India, Remote Developer Jobs India"
         canonicalUrl="/careers"
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Company', url: '/about' },
+          { name: 'Careers', url: '/careers' },
+        ]}
+        faqs={[
+          { question: 'What roles is KesariX Technology currently hiring for?', answer: 'KesariX Technology hires software engineers, AI/ML developers, React developers, Next.js developers, Flutter developers, Node.js backend engineers, DevOps engineers, UI/UX designers, and automation specialists. Check back regularly as we post new openings.' },
+          { question: 'Does KesariX Technology offer remote work?', answer: 'Yes. KesariX is a remote-friendly company. Most of our engineering and design roles support hybrid or fully remote arrangements with regular team stand-ups and sprint reviews over video call.' },
+          { question: 'How can I apply to KesariX Technology?', answer: 'You can apply by filling out the interest form on this page or by emailing your resume to info@kesarixtechnology.com with the role title in the subject line. We review all applications within 5 business days.' },
+        ]}
       />
 
       {/* ── HERO (DARK) ── */}

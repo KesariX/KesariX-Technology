@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>KesariX Technology — AI &amp; Tech Insights Blog</title>
+    <link>https://kesarixtechnology.com/blog</link>
+    <description>Expert insights on AI development, LLM engineering, web development, workflow automation, and enterprise software from the KesariX Technology team. Based in Surat, India. Serving clients worldwide.</description>
+    <language>en-IN</language>
+    <managingEditor>info@kesarixtechnology.com (KesariX Technology)</managingEditor>
+    <webMaster>info@kesarixtechnology.com (KesariX Technology)</webMaster>
+    <lastBuildDate>Sat, 28 Jun 2026 00:00:00 +0530</lastBuildDate>
+    <copyright>Copyright 2026 KesariX Technology. All rights reserved.</copyright>
+    <category>Technology</category>
+    <category>Artificial Intelligence</category>
+    <category>Web Development</category>
+    <category>Software Engineering</category>
+    <ttl>1440</ttl>
+    <image>
+      <url>https://kesarixtechnology.com/Kesarix-technology-logo.webp</url>
+      <title>KesariX Technology Blog</title>
+      <link>https://kesarixtechnology.com/blog</link>
+      <width>200</width>
+      <height>60</height>
+    </image>
+    <atom:link href="https://kesarixtechnology.com/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>The Future of Enterprise AI: Beyond the Hype</title>
+      <link>https://kesarixtechnology.com/blog/future-of-enterprise-ai</link>
+      <guid isPermaLink="true">https://kesarixtechnology.com/blog/future-of-enterprise-ai</guid>
+      <pubDate>Tue, 22 Apr 2026 09:00:00 +0530</pubDate>
+      <dc:creator>Sarthak Singh</dc:creator>
+      <category>Strategy</category>
+      <description>Why the next wave of billion-dollar companies won't be built on thin wrappers, but on deep integration of AI into proprietary operational data.</description>
+      <media:content url="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&amp;fit=crop&amp;q=80&amp;w=800" medium="image"/>
+    </item>
+
+    <item>
+      <title>Why Deterministic AI is Winning the Enterprise Market</title>
+      <link>https://kesarixtechnology.com/blog/deterministic-ai-enterprise</link>
+      <guid isPermaLink="true">https://kesarixtechnology.com/blog/deterministic-ai-enterprise</guid>
+      <pubDate>Sun, 20 Apr 2026 09:00:00 +0530</pubDate>
+      <dc:creator>Sarthak Singh</dc:creator>
+      <category>Strategy</category>
+      <description>Enterprises don't want chatbots that hallucinate. They want mathematical certainty. Here is how we enforce strict constraints on language models.</description>
+      <media:content url="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&amp;fit=crop&amp;q=80&amp;w=800" medium="image"/>
+    </item>
+
+    <item>
+      <title>Design Systems for High-Density AI Interfaces</title>
+      <link>https://kesarixtechnology.com/blog/design-systems-ai-interfaces</link>
+      <guid isPermaLink="true">https://kesarixtechnology.com/blog/design-systems-ai-interfaces</guid>
+      <pubDate>Mon, 21 Apr 2026 09:00:00 +0530</pubDate>
+      <dc:creator>Harsh Prajapati</dc:creator>
+      <category>Web Dev</category>
+      <description>Building user interfaces for complex AI agents requires a new approach to UX. We explore density, state indication, and trust markers.</description>
+      <media:content url="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&amp;fit=crop&amp;q=80&amp;w=800" medium="image"/>
+    </item>
+
+    <item>
+      <title>RAG is Dead. Long Live Hybrid Semantic Reasoning.</title>
+      <link>https://kesarixtechnology.com/blog/rag-hybrid-semantic-reasoning</link>
+      <guid isPermaLink="true">https://kesarixtechnology.com/blog/rag-hybrid-semantic-reasoning</guid>
+      <pubDate>Mon, 21 Apr 2026 09:00:00 +0530</pubDate>
+      <dc:creator>Ronak Parmar</dc:creator>
+      <category>AI Engineering</category>
+      <description>Basic vector search is no longer enough for accurate context retrieval. Exploring multi-hop reasoning, graph databases, and re-ranking pipelines.</description>
+      <media:content url="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;q=80&amp;w=800" medium="image"/>
+    </item>
+
+    <item>
+      <title>The True ROI of Automating Operational Bottlenecks</title>
+      <link>https://kesarixtechnology.com/blog/roi-automating-operational-bottlenecks</link>
+      <guid isPermaLink="true">https://kesarixtechnology.com/blog/roi-automating-operational-bottlenecks</guid>
+      <pubDate>Tue, 22 Apr 2026 09:00:00 +0530</pubDate>
+      <dc:creator>Govind Mishra</dc:creator>
+      <category>Strategy</category>
+      <description>A financial deep dive into how automating a single core process can dramatically shift your bottom line and operating margins.</description>
+      <media:content url="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;q=80&amp;w=800" medium="image"/>
+    </item>
+
+    <item>
+      <title>Navigating the 2026 AI Compliance Landscape</title>
+      <link>https://kesarixtechnology.com/blog/ai-compliance-landscape-2026</link>
+      <guid isPermaLink="true">https://kesarixtechnology.com/blog/ai-compliance-landscape-2026</guid>
+      <pubDate>Mon, 21 Apr 2026 09:00:00 +0530</pubDate>
+      <dc:creator>Prince Yadav</dc:creator>
+      <category>Cybersecurity</category>
+      <description>From the EU AI Act to local data protection laws, here is everything your legal and marketing teams need to know before deploying AI.</description>
+      <media:content url="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?auto=format&amp;fit=crop&amp;q=80&amp;w=800" medium="image"/>
+    </item>
+
+    <item>
+      <title>Positioning Complex AI Products for Enterprise Buyers</title>
+      <link>https://kesarixtechnology.com/blog/positioning-ai-products-enterprise</link>
+      <guid isPermaLink="true">https://kesarixtechnology.com/blog/positioning-ai-products-enterprise</guid>
+      <pubDate>Tue, 22 Apr 2026 09:00:00 +0530</pubDate>
+      <dc:creator>Jay Padhiyar</dc:creator>
+      <category>Strategy</category>
+      <description>You can't sell technical architecture to a business buyer. How to translate complex MLOps into clear, undeniable business value.</description>
+      <media:content url="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&amp;fit=crop&amp;q=80&amp;w=800" medium="image"/>
+    </item>
+
+    <item>
+      <title>Scaling Product Vision in a Rapidly Evolving AI Landscape</title>
+      <link>https://kesarixtechnology.com/blog/scaling-product-vision-ai-landscape</link>
+      <guid isPermaLink="true">https://kesarixtechnology.com/blog/scaling-product-vision-ai-landscape</guid>
+      <pubDate>Fri, 18 Apr 2026 09:00:00 +0530</pubDate>
+      <dc:creator>Sarthak Singh</dc:creator>
+      <category>Strategy</category>
+      <description>When the foundational models change every week, how do you maintain a stable long-term roadmap?</description>
+      <media:content url="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;q=80&amp;w=800" medium="image"/>
+    </item>
+
+    <item>
+      <title>Optimizing Inference Latency in Custom LLM Deployments</title>
+      <link>https://kesarixtechnology.com/blog/optimizing-inference-latency</link>
+      <guid isPermaLink="true">https://kesarixtechnology.com/blog/optimizing-inference-latency</guid>
+      <pubDate>Sat, 19 Apr 2026 09:00:00 +0530</pubDate>
+      <dc:creator>Ronak Parmar</dc:creator>
+      <category>Infrastructure</category>
+      <description>Techniques for quantization, KV cache optimization, and vLLM deployment that cut our inference latency by over 60%.</description>
+      <media:content url="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&amp;fit=crop&amp;q=80&amp;w=800" medium="image"/>
+    </item>
+
+    <item>
+      <title>Moving to React 19: Performance Gains for Enterprise Dashboards</title>
+      <link>https://kesarixtechnology.com/blog/react-19-enterprise-dashboards</link>
+      <guid isPermaLink="true">https://kesarixtechnology.com/blog/react-19-enterprise-dashboards</guid>
+      <pubDate>Sat, 19 Apr 2026 09:00:00 +0530</pubDate>
+      <dc:creator>Harsh Prajapati</dc:creator>
+      <category>Web Dev</category>
+      <description>Evaluating the new React compiler and concurrent features for mission-critical web platforms.</description>
+      <media:content url="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&amp;fit=crop&amp;q=80&amp;w=800" medium="image"/>
+    </item>
+
+    <item>
+      <title>FinOps for Cloud AI: Keeping Inference Costs Predictable</title>
+      <link>https://kesarixtechnology.com/blog/finops-cloud-ai</link>
+      <guid isPermaLink="true">https://kesarixtechnology.com/blog/finops-cloud-ai</guid>
+      <pubDate>Fri, 18 Apr 2026 09:00:00 +0530</pubDate>
+      <dc:creator>Govind Mishra</dc:creator>
+      <category>Infrastructure</category>
+      <description>GPU compute is expensive. Here is how CFOs can work with engineering teams to monitor, forecast, and optimize cloud expenditure.</description>
+      <media:content url="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&amp;fit=crop&amp;q=80&amp;w=800" medium="image"/>
+    </item>
+
+    <item>
+      <title>Growth Hacking in B2B Tech: When to Use AI Outreach</title>
+      <link>https://kesarixtechnology.com/blog/growth-hacking-b2b-ai-outreach</link>
+      <guid isPermaLink="true">https://kesarixtechnology.com/blog/growth-hacking-b2b-ai-outreach</guid>
+      <pubDate>Sat, 19 Apr 2026 09:00:00 +0530</pubDate>
+      <dc:creator>Prince Yadav</dc:creator>
+      <category>Strategy</category>
+      <description>AI-generated outreach is everywhere. How to cut through the noise with highly personalized, account-based marketing strategies.</description>
+      <media:content url="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&amp;fit=crop&amp;q=80&amp;w=800" medium="image"/>
+    </item>
+
+    <item>
+      <title>Marketing Automation vs Human Touch: Finding the Balance</title>
+      <link>https://kesarixtechnology.com/blog/marketing-automation-human-touch</link>
+      <guid isPermaLink="true">https://kesarixtechnology.com/blog/marketing-automation-human-touch</guid>
+      <pubDate>Sun, 20 Apr 2026 09:00:00 +0530</pubDate>
+      <dc:creator>Jay Padhiyar</dc:creator>
+      <category>Strategy</category>
+      <description>Automate the logistics, personalize the relationship. A guide to automated funnels that still feel distinctly human.</description>
+      <media:content url="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&amp;fit=crop&amp;q=80&amp;w=800" medium="image"/>
+    </item>
+
+    <item>
+      <title>Building Defensible Moats with Proprietary Data</title>
+      <link>https://kesarixtechnology.com/blog/building-defensible-moats-proprietary-data</link>
+      <guid isPermaLink="true">https://kesarixtechnology.com/blog/building-defensible-moats-proprietary-data</guid>
+      <pubDate>Tue, 15 Apr 2026 09:00:00 +0530</pubDate>
+      <dc:creator>Sarthak Singh</dc:creator>
+      <category>Strategy</category>
+      <description>Code can be copied. Algorithms will be open-sourced. The only true moat remaining is high-quality, proprietary domain data.</description>
+      <media:content url="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&amp;fit=crop&amp;q=80&amp;w=800" medium="image"/>
+    </item>
+
+    <item>
+      <title>From Jupyter Notebooks to Kubernetes: Real-world MLOps</title>
+      <link>https://kesarixtechnology.com/blog/jupyter-to-kubernetes-mlops</link>
+      <guid isPermaLink="true">https://kesarixtechnology.com/blog/jupyter-to-kubernetes-mlops</guid>
+      <pubDate>Wed, 16 Apr 2026 09:00:00 +0530</pubDate>
+      <dc:creator>Ronak Parmar</dc:creator>
+      <category>AI Engineering</category>
+      <description>The painful reality of deploying models to production. A step-by-step guide to CI/CD pipelines for machine learning.</description>
+      <media:content url="https://images.unsplash.com/photo-1678324483786-9dc5512217f2?auto=format&amp;fit=crop&amp;q=80&amp;w=800" medium="image"/>
+    </item>
+
+    <item>
+      <title>Micro-interactions that Build Trust in Autonomous Agents</title>
+      <link>https://kesarixtechnology.com/blog/micro-interactions-autonomous-agents</link>
+      <guid isPermaLink="true">https://kesarixtechnology.com/blog/micro-interactions-autonomous-agents</guid>
+      <pubDate>Wed, 16 Apr 2026 09:00:00 +0530</pubDate>
+      <dc:creator>Harsh Prajapati</dc:creator>
+      <category>Web Dev</category>
+      <description>When an AI is thinking for 30 seconds, how do you prevent user abandonment? Building skeleton states and streaming logs.</description>
+      <media:content url="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&amp;fit=crop&amp;q=80&amp;w=800" medium="image"/>
+    </item>
+
+    <item>
+      <title>Evaluating SaaS vs Custom Build: A CFO's Perspective</title>
+      <link>https://kesarixtechnology.com/blog/saas-vs-custom-build-cfo-perspective</link>
+      <guid isPermaLink="true">https://kesarixtechnology.com/blog/saas-vs-custom-build-cfo-perspective</guid>
+      <pubDate>Wed, 16 Apr 2026 09:00:00 +0530</pubDate>
+      <dc:creator>Govind Mishra</dc:creator>
+      <category>Strategy</category>
+      <description>When does it make sense to pay ₹40k/year for a SaaS versus investing ₹1.5L in a custom-built solution you own forever?</description>
+      <media:content url="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&amp;fit=crop&amp;q=80&amp;w=800" medium="image"/>
+    </item>
+
+    <item>
+      <title>Data Privacy in the Era of LLMs: A Legal Checklist</title>
+      <link>https://kesarixtechnology.com/blog/data-privacy-llms-legal-checklist</link>
+      <guid isPermaLink="true">https://kesarixtechnology.com/blog/data-privacy-llms-legal-checklist</guid>
+      <pubDate>Tue, 15 Apr 2026 09:00:00 +0530</pubDate>
+      <dc:creator>Prince Yadav</dc:creator>
+      <category>Cybersecurity</category>
+      <description>Before you connect your company's database to an LLM, run through this comprehensive checklist to ensure you aren't leaking IP.</description>
+      <media:content url="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&amp;fit=crop&amp;q=80&amp;w=800" medium="image"/>
+    </item>
+
+    <item>
+      <title>Brand Moats: Why Technical Excellence Isn't Enough</title>
+      <link>https://kesarixtechnology.com/blog/brand-moats-technical-excellence</link>
+      <guid isPermaLink="true">https://kesarixtechnology.com/blog/brand-moats-technical-excellence</guid>
+      <pubDate>Thu, 17 Apr 2026 09:00:00 +0530</pubDate>
+      <dc:creator>Jay Padhiyar</dc:creator>
+      <category>Strategy</category>
+      <description>Great code doesn't sell itself. How to build a brand identity that commands premium pricing in a crowded tech ecosystem.</description>
+      <media:content url="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&amp;fit=crop&amp;q=80&amp;w=800" medium="image"/>
+    </item>
+
+    <item>
+      <title>Zero-Trust Security in the Age of AI Co-Pilots</title>
+      <link>https://kesarixtechnology.com/blog/zero-trust-security-ai-copilots</link>
+      <guid isPermaLink="true">https://kesarixtechnology.com/blog/zero-trust-security-ai-copilots</guid>
+      <pubDate>Tue, 15 Apr 2026 09:00:00 +0530</pubDate>
+      <dc:creator>Ronak Parmar</dc:creator>
+      <category>Cybersecurity</category>
+      <description>How to safely deploy autonomous, code-writing agents inside your enterprise without risking internal network traversal or data exfiltration.</description>
+      <media:content url="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&amp;fit=crop&amp;q=80&amp;w=800" medium="image"/>
+    </item>
+
+  </channel>
+</rss>

@@ -1,6 +1,48 @@
 User-agent: *
 Allow: /
-Disallow: /admin
-Disallow: /api
 
+# Disallow admin, API, and internal paths
+Disallow: /admin
+Disallow: /api/
+Disallow: /api
+Disallow: /_vercel/
+Disallow: /404
+
+# Block AI training crawlers per Google EEAT best practices
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 5
+
+# Sitemap index
+Sitemap: https://kesarixtechnology.com/sitemap-index.xml
 Sitemap: https://kesarixtechnology.com/sitemap.xml
+Sitemap: https://kesarixtechnology.com/sitemap-blog.xml
