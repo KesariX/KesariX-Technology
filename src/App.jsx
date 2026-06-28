@@ -69,7 +69,7 @@ const HOME_FAQS = [
   },
   {
     question: 'Where is KesariX Technology located?',
-    answer: 'KesariX Technology is headquartered in Surat, Gujarat, India. We serve clients across India (Mumbai, Delhi, Bangalore, Hyderabad, Pune, Chennai, Ahmedabad, and all major cities) and internationally across the USA, UK, Canada, Australia, UAE, and Europe.',
+    answer: 'KesariX Technology is headquartered in Vadodara, Gujarat, India. We serve clients across India (Mumbai, Delhi, Bangalore, Hyderabad, Pune, Chennai, Ahmedabad, and all major cities) and internationally across the USA, UK, Canada, Australia, UAE, and Europe.',
   },
   {
     question: 'How much does it cost to build an AI solution or website with KesariX?',
@@ -109,8 +109,8 @@ function PageContent() {
     <>
       <SEO 
         title="KesariX Technology — AI Development & Software Company India"
-        description="KesariX Technology builds production AI agents, LLMs, RAG systems, enterprise web platforms, mobile apps & intelligent automation. 50+ projects shipped. 98% client satisfaction. Based in Surat, India. Get a free discovery call."
-        keywords="AI Development Company India, AI Agency Surat, LLM Development, GPT Integration, RAG Development, Web Development Company India, React Development, Full Stack Development, Mobile App Development, Flutter, Software Company Surat Gujarat, AI Automation"
+        description="KesariX Technology builds production AI agents, LLMs, RAG systems, enterprise web platforms, mobile apps & intelligent automation. 50+ projects shipped. 98% client satisfaction. Based in Vadodara, India. Get a free discovery call."
+        keywords="AI Development Company India, AI Agency Vadodara, LLM Development, GPT Integration, RAG Development, Web Development Company India, React Development, Full Stack Development, Mobile App Development, Flutter, Software Company Vadodara Gujarat, AI Automation"
         canonicalUrl="/"
         isHomePage={true}
         breadcrumbs={HOME_BREADCRUMBS}

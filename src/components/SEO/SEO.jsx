@@ -16,8 +16,8 @@ export const siteMetadata = {
   twitterHandle: '@kesarixtechnology',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Surat',
-    addressLocality: 'Surat',
+    streetAddress: 'Vadodara',
+    addressLocality: 'Vadodara',
     addressRegion: 'Gujarat',
     postalCode: '395001',
     addressCountry: 'IN',
@@ -59,7 +59,7 @@ export const siteMetadata = {
     { '@type': 'Country', name: 'Japan' },
     { '@type': 'Country', name: 'South Korea' },
     { '@type': 'Country', name: 'Malaysia' },
-    { '@type': 'City', name: 'Surat' },
+    { '@type': 'City', name: 'Vadodara' },
     { '@type': 'City', name: 'Ahmedabad' },
     { '@type': 'City', name: 'Mumbai' },
     { '@type': 'City', name: 'Delhi' },
@@ -193,16 +193,16 @@ export default function SEO({
   /* ── Title ── */
   const fullTitle = title
     ? `${title} | ${companyName}`
-    : `${companyName} — AI Solutions, Web & Mobile Development | Surat, India`;
+    : `${companyName} — AI Solutions, Web & Mobile Development | Vadodara, India`;
 
   /* ── Description fallback ── */
   const finalDescription =
     description ||
-    `${companyName} builds production AI agents, enterprise web platforms, mobile apps & intelligent automation. 50+ projects shipped. 98% client satisfaction. Based in Surat, India.`;
+    `${companyName} builds production AI agents, enterprise web platforms, mobile apps & intelligent automation. 50+ projects shipped. 98% client satisfaction. Based in Vadodara, India.`;
 
   /* ── Keywords ── */
   const baseKeywords =
-    'AI Development Company India, Web Development Company, Software Development India, AI Agency, Digital Transformation, React Development, Next.js, Mobile App Development, CRM Development, ERP Development, Surat, Gujarat, Mumbai, Delhi, Bangalore, Hyderabad, USA, UK, Canada, Australia, UAE';
+    'AI Development Company India, Web Development Company, Software Development India, AI Agency, Digital Transformation, React Development, Next.js, Mobile App Development, CRM Development, ERP Development, Vadodara, Gujarat, Mumbai, Delhi, Bangalore, Hyderabad, USA, UK, Canada, Australia, UAE';
   const finalKeywords = keywords ? `${keywords}, ${baseKeywords}` : baseKeywords;
 
   /* ── Canonical & full URL ── */
@@ -273,7 +273,7 @@ export default function SEO({
       priceRange: '$$',
       currenciesAccepted: 'INR, USD, GBP, EUR, AED',
       paymentAccepted: 'Bank Transfer, Credit Card, PayPal, UPI',
-      hasMap: `https://www.google.com/maps?q=Surat+Gujarat+India`,
+      hasMap: `https://www.google.com/maps?q=Vadodara+Gujarat+India`,
     };
 
     /* Add OfferCatalog on homepage */
@@ -479,7 +479,7 @@ export default function SEO({
 
       {/* ── Geo / Regional ── */}
       <meta name="geo.region" content="IN-GJ" />
-      <meta name="geo.placename" content="Surat, Gujarat, India" />
+      <meta name="geo.placename" content="Vadodara, Gujarat, India" />
       <meta name="geo.position" content="21.1702;72.8311" />
       <meta name="ICBM" content="21.1702, 72.8311" />
 

@@ -126,7 +126,7 @@ export default function ContactPage() {
             "email": "info@kesarixtechnology.com",
             "address": {
               "@type": "PostalAddress",
-              "addressLocality": "Surat",
+              "addressLocality": "Vadodara",
               "addressRegion": "Gujarat",
               "postalCode": "395001",
               "addressCountry": "IN"

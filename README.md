@@ -129,7 +129,7 @@ src/
 |---|---|
 | Email | info@kesarixtechnology.com |
 | Phone | +91 92747 39361 |
-| Location | Surat, India |
+| Location | Vadodara, India |
 
 ---
 
@@ -184,7 +184,7 @@ src/
 ### TODO — Low Priority
 
 - [ ] **CaseStudies route** — Component exists at `CaseStudies/CaseStudies.jsx`; add `/case-studies` route to `App.jsx`
-- [ ] **Google Map embed** — Add iframe map of Surat office to `ContactPage/ContactPage.jsx`
+- [ ] **Google Map embed** — Add iframe map of Vadodara office to `ContactPage/ContactPage.jsx`
 - [ ] **Video testimonials** — Upgrade text cards in `Testimonials/Testimonials.jsx` with embedded video
 
 ---

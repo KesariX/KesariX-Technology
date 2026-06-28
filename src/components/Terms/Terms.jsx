@@ -119,7 +119,7 @@ export default function Terms() {
 
           <section id="governing">
             <h2>8. Governing Law</h2>
-            <p>These Terms are governed by the laws of India. Any disputes arising under these Terms shall be subject to the exclusive jurisdiction of the courts in Surat, Gujarat, India.</p>
+            <p>These Terms are governed by the laws of India. Any disputes arising under these Terms shall be subject to the exclusive jurisdiction of the courts in Vadodara, Gujarat, India.</p>
             <p>For any questions about these Terms, contact us at <a href="mailto:info@kesarixtechnology.com">info@kesarixtechnology.com</a>.</p>
           </section>
         </div>
