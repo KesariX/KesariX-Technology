@@ -262,7 +262,7 @@ export default function AboutKesariX() {
         faqs={[
           { question: 'When was KesariX Technology founded?', answer: 'KesariX Technology was founded in 2023 in Vadodara, Gujarat, India with a mission to deliver enterprise-grade AI systems, web platforms, and automation solutions to businesses across India and globally.' },
           { question: 'What makes KesariX Technology different from other software companies?', answer: 'KesariX focuses exclusively on high-impact digital products — AI-first systems, scalable SaaS platforms, and automation pipelines. We ship production-ready code, not prototypes, and every project includes architecture review, performance optimization, and 30-day post-launch support.' },
-          { question: 'How many projects has KesariX Technology delivered?', answer: 'KesariX Technology has shipped 50+ projects with a 98% client satisfaction rate across AI development, web applications, mobile apps, CRM/ERP systems, and automation workflows.' },
+          { question: 'How many projects has KesariX Technology delivered?', answer: 'KesariX Technology has shipped 5+ projects with a 98% client satisfaction rate across AI development, web applications, mobile apps, CRM/ERP systems, and automation workflows.' },
         ]}
         schemaData={{
           "@context": "https://schema.org",

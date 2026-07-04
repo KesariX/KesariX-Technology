@@ -109,7 +109,7 @@ function PageContent() {
     <>
       <SEO 
         title="KesariX Technology — AI Development & Software Company India"
-        description="KesariX Technology builds production AI agents, LLMs, RAG systems, enterprise web platforms, mobile apps & intelligent automation. 50+ projects shipped. 98% client satisfaction. Based in Vadodara, India. Get a free discovery call."
+        description="KesariX Technology builds production AI agents, LLMs, RAG systems, enterprise web platforms, mobile apps & intelligent automation. 5+ projects shipped. 98% client satisfaction. Based in Vadodara, India. Get a free discovery call."
         keywords="AI Development Company India, AI Agency Vadodara, LLM Development, GPT Integration, RAG Development, Web Development Company India, React Development, Full Stack Development, Mobile App Development, Flutter, Software Company Vadodara Gujarat, AI Automation"
         canonicalUrl="/"
         isHomePage={true}

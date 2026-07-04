@@ -198,7 +198,7 @@ export default function SEO({
   /* ── Description fallback ── */
   const finalDescription =
     description ||
-    `${companyName} builds production AI agents, enterprise web platforms, mobile apps & intelligent automation. 50+ projects shipped. 98% client satisfaction. Based in Vadodara, India.`;
+    `${companyName} builds production AI agents, enterprise web platforms, mobile apps & intelligent automation. 5+ projects shipped. 98% client satisfaction. Based in Vadodara, India.`;
 
   /* ── Keywords ── */
   const baseKeywords =

@@ -145,7 +145,7 @@ export default function Process() {
             </div>
           </h2>
           <p className="pr-header__desc">
-            A battle-tested delivery cadence refined across 50+ engagements. Structured enough to ship fast. Flexible enough to adapt.
+            A battle-tested delivery cadence refined across 5+ engagements. Structured enough to ship fast. Flexible enough to adapt.
           </p>
         </div>
 

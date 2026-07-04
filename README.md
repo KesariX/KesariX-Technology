@@ -141,7 +141,7 @@ src/
 |---|---|---|
 | Hero headline + CTA buttons | Live | `Hero/Hero.jsx` |
 | Navigation (Services, Work, Company, Blog) | Live | `Nav/Nav.jsx` |
-| Hero metrics (50+ projects, 98% retention) | Live | `Hero/Hero.jsx` |
+| Hero metrics (5+ projects, 98% retention) | Live | `Hero/Hero.jsx` |
 | Services overview (5 service cards) | Live | `Capabilities/Capabilities.jsx` |
 | 5 dedicated service detail pages | Live | `Services/*.jsx` |
 | Portfolio / Work reel | Live | `WorkReel/WorkReel.jsx`, `OurWork/OurWork.jsx` |
@@ -149,7 +149,7 @@ src/
 | Contact form (Name, Email, Company, Type, Message) | Live | `ContactPage/ContactPage.jsx` |
 | Email + phone + location in contact | Live | `Contact/Contact.jsx` |
 | 5 real client testimonials with results | Live | `Testimonials/Testimonials.jsx` |
-| Stats (50+ projects, 20+ AI systems, 98% satisfaction) | Live | `Stats/Stats.jsx` |
+| Stats (5+ projects, 20+ AI systems, 98% satisfaction) | Live | `Stats/Stats.jsx` |
 | TrustedBy client logos section | Live* | `TrustedBy/TrustedBy.jsx` |
 | Team section | Live | `Team/Team.jsx` |
 | Tech stack section | Live | `TechStack/TechStack.jsx` |
