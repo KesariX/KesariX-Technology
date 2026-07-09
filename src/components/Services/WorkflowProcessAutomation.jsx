@@ -1,10 +1,11 @@
 import { useRef, useLayoutEffect } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
-import './WorkflowProcessAutomation.css'
 import SEO from '../SEO/SEO'
+import './WorkflowProcessAutomation.css'
 
 const WE_FAQS = [
+  // ... (keeping standard FAQs)
   {
     question: 'What workflow automation services does KesariX Technology offer?',
     answer: 'KesariX Technology designs and builds end-to-end workflow automation systems—from simple task automation with n8n and Make (Integromat) to complex distributed workflow engines with event-driven microservices, stateful long-running processes, and human-in-the-loop approvals. We also integrate Zapier, custom webhooks, and AI-powered decision nodes.',
@@ -43,54 +44,88 @@ export default function WorkflowProcessAutomation() {
   const sectionRef = useRef(null)
 
   useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      // Hero Animations
-      gsap.fromTo('.we-hero-title', 
-        { autoAlpha: 0, y: 60 },
-        { autoAlpha: 1, y: 0, duration: 1.2, ease: 'expo.out', delay: 0.1 }
+    let ctx = gsap.context(() => {
+      // 1. Hero Reveal
+      gsap.fromTo('.we-hero-word', 
+        { autoAlpha: 0, y: 100 },
+        { autoAlpha: 1, y: 0, duration: 1.5, ease: 'power4.out', stagger: 0.1, delay: 0.2 }
       )
-      gsap.fromTo('.we-hero-desc, .we-hero-ctas', 
-        { autoAlpha: 0, y: 30 },
-        { autoAlpha: 1, y: 0, duration: 1, ease: 'expo.out', delay: 0.4, stagger: 0.15 }
+      gsap.fromTo('.we-hero-meta',
+        { autoAlpha: 0 },
+        { autoAlpha: 1, duration: 2, delay: 1 }
       )
 
-      // Independent element reveals
-      const revealElements = gsap.utils.toArray('.we-reveal')
-      revealElements.forEach((el) => {
-        gsap.fromTo(el,
-          { autoAlpha: 0, y: 50 },
-          { 
-            autoAlpha: 1, 
-            y: 0, 
-            duration: 1, 
-            ease: 'power3.out', 
-            scrollTrigger: { 
-              trigger: el, 
-              start: 'top 85%',
-              toggleActions: 'play none none none' 
-            } 
+      // 2. Manifesto Text Scrub
+      const manifestoLines = gsap.utils.toArray('.we-manifesto-line')
+      manifestoLines.forEach((line) => {
+        gsap.fromTo(line,
+          { opacity: 0.1, y: 50 },
+          {
+            opacity: 1,
+            y: 0,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: line,
+              start: 'top 80%',
+              end: 'top 40%',
+              scrub: true,
+            }
           }
         )
       })
 
-      // Image Parallax
-      gsap.fromTo('.we-parallax-img', 
-        { scale: 1.2, y: '-15%' },
-        { scale: 1, y: '15%', ease: 'none', scrollTrigger: { trigger: '.we-why-us', start: 'top bottom', end: 'bottom top', scrub: true } }
-      )
-
-      // Desktop Sticky Process Pinning
-      let mm = gsap.matchMedia()
-      mm.add("(min-width: 1024px)", () => {
-        ScrollTrigger.create({
-          trigger: '.we-process__inner',
-          start: 'top 15%',
-          end: 'bottom 85%',
-          pin: '.we-process__sticky',
+      // 3. Horizontal Scroll (Our Method)
+      let hzSections = gsap.utils.toArray('.we-hz-panel')
+      if (hzSections.length > 0) {
+        gsap.to(hzSections, {
+          xPercent: -100 * (hzSections.length - 1),
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".we-hz-container",
+            pin: true,
+            scrub: 1,
+            end: () => "+=" + document.querySelector(".we-hz-wrapper").offsetWidth
+          }
         })
+      }
+
+      // 4. Typographic Capabilities Reveal
+      const useCaseLines = gsap.utils.toArray('.we-uc-item')
+      useCaseLines.forEach((line) => {
+        gsap.fromTo(line,
+          { opacity: 0, x: -50 },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: line,
+              start: 'top 85%',
+              toggleActions: 'play none none none'
+            }
+          }
+        )
       })
 
-      setTimeout(() => ScrollTrigger.refresh(), 500)
+      // Image Parallax within Horizontal Scroll
+      const hzImages = gsap.utils.toArray('.we-step-img')
+      hzImages.forEach((img) => {
+        gsap.fromTo(img,
+          { scale: 1.2 },
+          {
+            scale: 1,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: ".we-hz-container",
+              scrub: 1,
+              start: "top top",
+              end: "bottom top",
+            }
+          }
+        )
+      })
+
     }, sectionRef)
     return () => ctx.revert()
   }, [])
@@ -108,142 +143,153 @@ export default function WorkflowProcessAutomation() {
         aggregateRating={WE_RATING}
       />
       
-      {/* ── HERO (DARK) ── */}
-      <section className="we-section we-hero we-dark">
-        <div className="we-hero__glow"></div>
-        <div className="we-hero__bg-grid"></div>
+      {/* ── 1. HERO (Extreme Minimal) ── */}
+      <section className="we-hero">
         <div className="we-hero__inner">
-          <div className="we-hero__breadcrumb">
-            <a href="/">Home</a>
-            <span className="we-hero__breadcrumb-sep">/</span>
-            <a href="/#capabilities">Services</a>
-            <span className="we-hero__breadcrumb-sep">/</span>
-            <span>Workflow & Process Automation</span>
+          <div className="we-hero-meta">
+            <span>/ SERVICE</span>
+            <span>WORKFLOW & PROCESS AUTOMATION</span>
           </div>
-          <span className="we-eyebrow">
-            <span className="we-eyebrow-dot"></span>
-            Workflow & Process Automation
-          </span>
           <h1 className="we-hero-title">
-            Process <br /> <em className="we-italic">Automation.</em>
+            <div className="we-hero-word">Process</div>
+            <div className="we-hero-word we-italic we-saffron">Automation.</div>
           </h1>
-          <p className="we-hero-desc">
-            Scalable state machines and distributed workflow engines designed to orchestrate complex, long-running business logic.
-          </p>
-          <div className="we-hero-ctas">
-            <a href="/#contact" className="we-cta we-cta--primary">Architect Workflow ↗</a>
-            <a href="/#contact" className="we-cta we-cta--secondary">Audit Processes ↗</a>
+          <div className="we-hero-meta we-hero-bottom">
+            <span>Scalable state machines and distributed workflow engines orchestrating business logic.</span>
+            <a href="/contact" className="we-cta">Inquire Now ↗</a>
           </div>
         </div>
       </section>
 
-      {/* ── CARDS (LIGHT) ── */}
-      <section className="we-section we-light">
-        <div className="we-cards__grid">
-          <div className="we-card we-reveal">
-            <div className="we-card__icon">01</div>
-            <h3 className="we-card__title">Distributed Orchestration</h3>
-            <p className="we-card__desc">Reliable execution of microservices using temporal logic and distributed queues to avoid single points of failure.</p>
-          </div>
-          <div className="we-card we-reveal">
-            <div className="we-card__icon">02</div>
-            <h3 className="we-card__title">Event-Driven Architecture</h3>
-            <p className="we-card__desc">Pub/sub event routing ensuring decoupled, resilient, and highly available systems that react to state changes instantly.</p>
-          </div>
-          <div className="we-card we-reveal">
-            <div className="we-card__icon">03</div>
-            <h3 className="we-card__title">Long-Running Processes</h3>
-            <p className="we-card__desc">Stateful workflows that handle delays, retries, and human-in-the-loop approvals seamlessly without blocking resources.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* ── WHY US (BLUE) ── */}
-      <section className="we-section we-why-us we-blue">
-        <div className="we-why-us__inner">
-          <div className="we-why-us__visual we-reveal">
-            <div className="we-why-us__img-wrap">
-              <img loading="lazy" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1200" alt="Hardware Infrastructure" className="we-parallax-img" />
+      {/* ── 2. MANIFESTO (Scrub Typography) ── */}
+      <section className="we-manifesto">
+        <div className="we-manifesto__inner">
+          <h2 className="we-manifesto-text">
+            <div className="we-manifesto-line">Cron jobs fail.</div>
+            <div className="we-manifesto-line we-italic we-saffron">Workflows recover.</div>
+            <div className="we-manifesto-line">We implement durable</div>
+            <div className="we-manifesto-line">execution platforms.</div>
+            <div className="we-manifesto-line">Guaranteeing your</div>
+            <div className="we-manifesto-line">mission-critical code runs.</div>
+          </h2>
+          <div className="we-manifesto-stats">
+            <div className="we-stat">
+              <span className="we-stat-num">Zero</span>
+              <span className="we-stat-label">State Loss</span>
             </div>
-            <div className="we-badge">
-              <span className="we-badge__num">Zero</span>
-              <span className="we-badge__text">State Loss<br/>Guarantee</span>
+            <div className="we-stat">
+              <span className="we-stat-num">High</span>
+              <span className="we-stat-label">Availability</span>
             </div>
-          </div>
-          <div className="we-why-us__content">
-            <h2 className="we-title-huge we-reveal">Cron jobs fail.<br/><em className="we-italic">Workflows recover.</em></h2>
-            <p className="we-desc-large we-reveal">
-              We don't just schedule scripts. We implement durable execution platforms that guarantee your mission-critical code runs to completion, even if the underlying infrastructure crashes mid-process.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ── USE CASES (DARK) ── */}
-      <section className="we-section we-use-cases we-dark">
-        <div className="we-section-header we-reveal">
-          <h2 className="we-title-huge">Engine <em className="we-italic">Use Cases</em></h2>
-          <p className="we-desc-large">Resilient operations across distinct industries.</p>
-        </div>
-        <div className="we-use-cases__grid">
-          <div className="we-use-case we-reveal">
-            <img loading="lazy" className="we-use-case__img" src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?auto=format&fit=crop&q=80&w=800" alt="E-Commerce Fulfillment" />
-            <div className="we-use-case__content">
-              <h4 className="we-use-case__title">E-Commerce Fulfillment</h4>
-              <p className="we-use-case__desc">Orchestrating inventory reservation, payment processing, and shipping dispatch with automated rollbacks.</p>
-            </div>
-          </div>
-          <div className="we-use-case we-reveal">
-            <img loading="lazy" className="we-use-case__img" src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=800" alt="Financial Transactions" />
-            <div className="we-use-case__content">
-              <h4 className="we-use-case__title">Financial Transactions</h4>
-              <p className="we-use-case__desc">Multi-step ledger reconciliations requiring distributed transactions and strict ACID properties.</p>
-            </div>
-          </div>
-          <div className="we-use-case we-reveal">
-            <img loading="lazy" className="we-use-case__img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Media Processing" />
-            <div className="we-use-case__content">
-              <h4 className="we-use-case__title">Media Processing</h4>
-              <p className="we-use-case__desc">Encoding, transcribing, and distributing high-volume media assets across asynchronous worker pools.</p>
+            <div className="we-stat">
+              <span className="we-stat-num">Distributed</span>
+              <span className="we-stat-label">Execution</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── PROCESS (LIGHT) ── */}
-      <section className="we-section we-process we-light">
-        <div className="we-process__inner">
-          <div className="we-process__sticky we-reveal">
-            <h2 className="we-title-huge">Our <em className="we-italic">Method</em></h2>
-            <p className="we-desc-large">A structured approach to resilient operations.</p>
+      {/* ── 3. HORIZONTAL SCROLL (Our Method) ── */}
+      <section className="we-hz-container">
+        <div className="we-hz-wrapper">
+          {/* Intro Panel */}
+          <div className="we-hz-panel we-hz-intro">
+            <h2 className="we-hz-title">Our<br/><em className="we-italic we-saffron">Method.</em></h2>
+            <p className="we-hz-desc">A structured approach to resilient operations.</p>
+            <span className="we-scroll-indicator">Scroll to Explore →</span>
           </div>
-          <div className="we-process__list">
-            <div className="we-step we-reveal">
-              <div className="we-step__num">01</div> 
-              <div className="we-step__content">
-                <h4>Logic Mapping</h4>
-                <p>We translate your complex business requirements into distinct, fault-tolerant workflow steps.</p>
+          {/* Step 1 */}
+          <div className="we-hz-panel we-hz-step">
+            <div className="we-step-content-wrap">
+              <div className="we-step-num">01</div>
+              <div className="we-step-content">
+                <h3 className="we-step-title">Logic Mapping</h3>
+                <p className="we-step-desc">Translating complex business requirements into distinct, fault-tolerant workflow steps.</p>
               </div>
             </div>
-            <div className="we-step we-reveal">
-              <div className="we-step__num">02</div> 
-              <div className="we-step__content">
-                <h4>State Machine Design</h4>
-                <p>Architecting the event schema and compensation logic for when specific tasks fail or timeout.</p>
+            <div className="we-step-image-wrap">
+              {/* IMAGE CONTEXT: Needs flowcharts, whiteboarding, or mapping visualization */}
+              <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80&w=1200" alt="Logic Mapping" className="we-step-img" />
+            </div>
+          </div>
+          {/* Step 2 */}
+          <div className="we-hz-panel we-hz-step">
+            <div className="we-step-content-wrap">
+              <div className="we-step-num">02</div>
+              <div className="we-step-content">
+                <h3 className="we-step-title">State Machine</h3>
+                <p className="we-step-desc">Architecting event schemas and compensation logic for when specific tasks fail or timeout.</p>
               </div>
             </div>
-            <div className="we-step we-reveal">
-              <div className="we-step__num">03</div> 
-              <div className="we-step__content">
-                <h4>Engine Integration</h4>
-                <p>Deploying robust engines like Temporal, Camunda, or AWS Step Functions to manage state and execution.</p>
+            <div className="we-step-image-wrap">
+              {/* IMAGE CONTEXT: Needs server architecture, database schemas, or abstract nodes */}
+              <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=1200" alt="State Machine Design" className="we-step-img" />
+            </div>
+          </div>
+          {/* Step 3 */}
+          <div className="we-hz-panel we-hz-step">
+            <div className="we-step-content-wrap">
+              <div className="we-step-num">03</div>
+              <div className="we-step-content">
+                <h3 className="we-step-title">Integration</h3>
+                <p className="we-step-desc">Deploying robust engines like Temporal or AWS Step Functions to manage state and execution.</p>
               </div>
             </div>
-            <div className="we-step we-reveal">
-              <div className="we-step__num">04</div> 
-              <div className="we-step__content">
-                <h4>Monitoring & Telemetry</h4>
-                <p>Providing full visibility into workflow states, execution times, and automated retry metrics via dashboards.</p>
+            <div className="we-step-image-wrap">
+              {/* IMAGE CONTEXT: Needs cloud infrastructure, AWS servers, or complex integrations */}
+              <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200" alt="Engine Integration" className="we-step-img" />
+            </div>
+          </div>
+          {/* Step 4 */}
+          <div className="we-hz-panel we-hz-step">
+            <div className="we-step-content-wrap">
+              <div className="we-step-num">04</div>
+              <div className="we-step-content">
+                <h3 className="we-step-title">Telemetry</h3>
+                <p className="we-step-desc">Providing full visibility into workflow states, execution times, and automated retry metrics via dashboards.</p>
+              </div>
+            </div>
+            <div className="we-step-image-wrap">
+              {/* IMAGE CONTEXT: Needs analytics dashboards, glowing graphs, or monitoring systems */}
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200" alt="Monitoring Dashboard" className="we-step-img" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 4. HOVER REVEAL PILLARS (Capabilities) ── */}
+      <section className="we-use-cases">
+        <div className="we-uc-inner">
+          <h2 className="we-uc-header we-italic">Capabilities</h2>
+          <div className="we-uc-list">
+            <div className="we-uc-item">
+              <div className="we-uc-text-wrap">
+                <h4 className="we-uc-title">Distributed Orchestration</h4>
+                <p className="we-uc-desc">Reliable execution of microservices using temporal logic and distributed queues to avoid single points of failure.</p>
+              </div>
+              <div className="we-uc-image-wrap">
+                {/* IMAGE CONTEXT: High-end visualization of distributed servers or microservices */}
+                <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=800" alt="Distributed Orchestration" className="we-uc-img" />
+              </div>
+            </div>
+            <div className="we-uc-item">
+              <div className="we-uc-text-wrap">
+                <h4 className="we-uc-title">Event-Driven Architecture</h4>
+                <p className="we-uc-desc">Pub/sub event routing ensuring decoupled systems that react to state changes instantly and reliably.</p>
+              </div>
+              <div className="we-uc-image-wrap">
+                {/* IMAGE CONTEXT: High-end visualization of data streams, glowing networks, or messaging queues */}
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800" alt="Event-Driven Architecture" className="we-uc-img" />
+              </div>
+            </div>
+            <div className="we-uc-item">
+              <div className="we-uc-text-wrap">
+                <h4 className="we-uc-title">Long-Running Processes</h4>
+                <p className="we-uc-desc">Stateful workflows that handle delays, retries, and human-in-the-loop approvals without blocking resources.</p>
+              </div>
+              <div className="we-uc-image-wrap">
+                {/* IMAGE CONTEXT: High-end visualization of clocks, timelines, or complex state machines */}
+                <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800" alt="Long Running Processes" className="we-uc-img" />
               </div>
             </div>
           </div>
