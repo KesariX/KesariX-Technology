@@ -46,20 +46,28 @@ export default function Blog() {
         { autoAlpha: 0, y: 30 },
         { autoAlpha: 1, y: 0, duration: 1.0, ease: 'expo.out', delay: 0.4 }
       )
-      gsap.fromTo('.bl-filter-btn',
-        { autoAlpha: 0, y: 16 },
-        {
-          autoAlpha: 1, y: 0, duration: 0.65, ease: 'power3.out', stagger: 0.07,
-          scrollTrigger: { trigger: '.bl-filters', start: 'top 88%' },
-        }
-      )
-      gsap.fromTo('.bl-card',
-        { autoAlpha: 0, y: 50 },
-        {
-          autoAlpha: 1, y: 0, duration: 1.0, ease: 'power3.out', stagger: 0.1,
-          scrollTrigger: { trigger: '.bl-grid', start: 'top 84%' },
-        }
-      )
+      
+      if (document.querySelector('.bl-compiling-card')) {
+        gsap.fromTo('.bl-compiling-card',
+          { autoAlpha: 0, y: 40 },
+          { autoAlpha: 1, y: 0, duration: 1.0, ease: 'power3.out', delay: 0.5 }
+        )
+      } else {
+        gsap.fromTo('.bl-filter-btn',
+          { autoAlpha: 0, y: 16 },
+          {
+            autoAlpha: 1, y: 0, duration: 0.65, ease: 'power3.out', stagger: 0.07,
+            scrollTrigger: { trigger: '.bl-filters', start: 'top 88%' },
+          }
+        )
+        gsap.fromTo('.bl-card',
+          { autoAlpha: 0, y: 50 },
+          {
+            autoAlpha: 1, y: 0, duration: 1.0, ease: 'power3.out', stagger: 0.1,
+            scrollTrigger: { trigger: '.bl-grid', start: 'top 84%' },
+          }
+        )
+      }
       setTimeout(() => ScrollTrigger.refresh(), 500)
     }, pageRef)
     return () => ctx.revert()
@@ -109,24 +117,24 @@ export default function Blog() {
         </div>
       </section>
 
-      {/* ── BLOG GRID ── */}
-      <section className="bl-grid-section">
-        <div className="bl-filters" role="group" aria-label="Blog category filters">
-          {CATEGORIES.map(cat => (
-            <button
-              key={cat}
-              className={`bl-filter-btn${activeCategory === cat ? ' bl-filter-btn--active' : ''}`}
-              onClick={() => handleFilter(cat)}
-              aria-pressed={activeCategory === cat}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
+      {/* ── BLOG GRID OR COMPILING STATE ── */}
+      {BLOG_POSTS.length > 0 ? (
+        <section className="bl-grid-section">
+          <div className="bl-filters" role="group" aria-label="Blog category filters">
+            {CATEGORIES.map(cat => (
+              <button
+                key={cat}
+                className={`bl-filter-btn${activeCategory === cat ? ' bl-filter-btn--active' : ''}`}
+                onClick={() => handleFilter(cat)}
+                aria-pressed={activeCategory === cat}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
 
-        <div className="bl-grid">
-          {filtered.length > 0 ? (
-            filtered.map(post => (
+          <div className="bl-grid">
+            {filtered.map(post => (
               <a className="bl-card" key={post.id} href={`/blog/${post.id}`}>
                 <div className="bl-card__image-wrap">
                   <img
@@ -150,15 +158,29 @@ export default function Blog() {
                   </footer>
                 </div>
               </a>
-            ))
-          ) : (
-            <div className="bl-empty">
-              <span className="bl-empty__icon" aria-hidden="true">◎</span>
-              <p>No articles in this category yet — more coming soon.</p>
+            ))}
+          </div>
+        </section>
+      ) : (
+        <section className="bl-compiling-section">
+          <div className="bl-compiling-card">
+            <span className="bl-compiling-icon" aria-hidden="true">◎</span>
+            <h2 className="bl-compiling-title">The KesariX Engineering Blog</h2>
+            <h3 className="bl-compiling-sub">We are currently compiling our best insights.</h3>
+            <p className="bl-compiling-text">
+              From deep dives into AI integrations to frontend performance breakdowns, we are preparing high-quality, technical content. Check back soon as we launch our bi-weekly updates on how we build scalable digital products.
+            </p>
+            <div className="bl-compiling-ctas">
+              <a href="/service/product-engineering" className="bl-compiling-btn bl-compiling-btn--primary">
+                View Our Services
+              </a>
+              <a href="/" className="bl-compiling-btn bl-compiling-btn--secondary">
+                Return Home
+              </a>
             </div>
-          )}
-        </div>
-      </section>
+          </div>
+        </section>
+      )}
 
     </div>
   )
