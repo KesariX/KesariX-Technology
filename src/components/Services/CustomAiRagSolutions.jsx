@@ -2,7 +2,7 @@ import { useRef, useLayoutEffect } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import SEO from '../SEO/SEO'
-import './NeuralArchitecture.css'
+import './CustomAiRagSolutions.css'
 
 const NA_FAQS = [
   {
@@ -34,12 +34,12 @@ const NA_FAQS = [
 const NA_BREADCRUMBS = [
   { name: 'Home', url: '/' },
   { name: 'Services', url: '/#capabilities' },
-  { name: 'AI Development & Neural Architecture', url: '/service/neural-architecture' },
+  { name: 'Custom AI & RAG Solutions', url: '/service/custom-ai-rag-solutions' },
 ]
 
 const NA_RATING = { ratingValue: '4.9', reviewCount: '38', bestRating: '5' }
 
-export default function NeuralArchitecture() {
+export default function CustomAiRagSolutions() {
   const sectionRef = useRef(null)
 
   useLayoutEffect(() => {
@@ -58,15 +58,15 @@ export default function NeuralArchitecture() {
       const revealElements = gsap.utils.toArray('.na-reveal')
       revealElements.forEach((el) => {
         gsap.fromTo(el,
-          { autoAlpha: 0, y: 50 },
+          { autoAlpha: 0, y: 40 },
           { 
             autoAlpha: 1, 
             y: 0, 
-            duration: 1, 
+            duration: 1.2, 
             ease: 'power3.out', 
             scrollTrigger: { 
               trigger: el, 
-              start: 'top 85%',
+              start: 'top 95%', // Triggers much earlier as it enters the viewport
               toggleActions: 'play none none none' // Ensures it stays visible once revealed
             } 
           }
@@ -103,7 +103,7 @@ export default function NeuralArchitecture() {
         title="AI Development Company India — LLM, RAG & Custom AI Solutions"
         description="KesariX Technology engineers production-grade AI systems — custom LLMs, RAG architectures, AI agents, GPT/Claude/Gemini integration, computer vision, and voice AI. Turn proprietary data into enterprise intelligence."
         keywords="AI Development Company India, AI Development Company Gujarat, LLM Development, RAG Development Company, GPT Integration India, Claude Integration, Gemini API Integration, Custom AI Solutions, AI Chatbot Development, AI Agent Development, Vector Database, Pinecone Integration, OpenAI API, LangChain Development, LangGraph, Computer Vision AI, Document AI, Voice AI, Fine-tuning LLM, AI Automation India, AI Agency Ahmedabad, AI Engineers Surat, AI Agency Vadodara, AI Developers Rajkot"
-        canonicalUrl="/service/neural-architecture"
+        canonicalUrl="/service/custom-ai-rag-solutions"
         isServicePage={true}
         breadcrumbs={NA_BREADCRUMBS}
         faqs={NA_FAQS}
@@ -120,24 +120,24 @@ export default function NeuralArchitecture() {
             <span className="na-hero__breadcrumb-sep">/</span>
             <a href="/#capabilities">Services</a>
             <span className="na-hero__breadcrumb-sep">/</span>
-            <span>Neural Architecture</span>
+            <span>Custom AI & RAG Solutions</span>
           </div>
           <span className="na-eyebrow">
             <span className="na-eyebrow-dot"></span>
-            Neural Architecture
+            Custom AI & RAG Solutions
           </span>
           <h1 className="na-hero-title">
-            <span className="na-title-line na-title-line--outline">Enterprise</span>
+            <span className="na-title-line na-title-line--outline">Autonomous</span>
             <span className="na-title-line na-title-line--accent">
               <em className="na-italic">Intelligence.</em>
             </span>
           </h1>
           <p className="na-hero-desc">
-            We engineer Custom LLMs and RAG architectures that turn your proprietary data into scalable, production-grade intelligence.
+            We engineer bespoke AI architectures and Retrieval-Augmented Generation (RAG) systems that transform your proprietary data into scalable, production-grade assets.
           </p>
           <div className="na-hero-ctas">
-            <a href="/#contact" className="na-cta na-cta--primary">Deploy Your Model ↗</a>
-            <a href="/#contact" className="na-cta na-cta--secondary">Audit Architecture ↗</a>
+            <a href="/#contact" className="na-cta na-cta--primary">Build Your AI Strategy ↗</a>
+            <a href="/#contact" className="na-cta na-cta--secondary">Explore Architecture ↗</a>
           </div>
         </div>
       </section>
@@ -147,18 +147,18 @@ export default function NeuralArchitecture() {
         <div className="na-cards__grid">
           <div className="na-card na-reveal">
             <div className="na-card__icon">01</div>
-            <h3 className="na-card__title">Custom LLM Development</h3>
-            <p className="na-card__desc">Train and fine-tune foundation models on your proprietary data. Achieve domain-specific accuracy without compromising speed or data privacy.</p>
+            <h3 className="na-card__title">Custom LLM Integration</h3>
+            <p className="na-card__desc">Harness the power of foundation models (GPT-4, Claude, Gemini, Llama) fine-tuned on your internal datasets. Achieve unprecedented domain accuracy and operational velocity.</p>
           </div>
           <div className="na-card na-reveal">
             <div className="na-card__icon">02</div>
-            <h3 className="na-card__title">RAG Systems</h3>
-            <p className="na-card__desc">Ground your AI in reality. We build Retrieval-Augmented Generation pipelines that eliminate hallucinations and provide real-time, verifiable answers.</p>
+            <h3 className="na-card__title">Advanced RAG Architecture</h3>
+            <p className="na-card__desc">Eliminate hallucinations. We build scalable vector data pipelines that ground generative models in your real-world, real-time enterprise data.</p>
           </div>
           <div className="na-card na-reveal">
             <div className="na-card__icon">03</div>
-            <h3 className="na-card__title">Production-Grade Integration</h3>
-            <p className="na-card__desc">Move beyond Jupyter notebooks. We engineer resilient intelligence layers that seamlessly integrate into your existing enterprise workflows and cloud backbones.</p>
+            <h3 className="na-card__title">Agentic Workflows</h3>
+            <p className="na-card__desc">Deploy autonomous AI agents capable of multi-step reasoning, API execution, and intelligent decision-making integrated directly into your software ecosystem.</p>
           </div>
         </div>
       </section>
@@ -176,9 +176,9 @@ export default function NeuralArchitecture() {
             </div>
           </div>
           <div className="na-why-us__content">
-            <h2 className="na-title-huge na-reveal">Prototypes are easy.<br/><em className="na-italic">Production is hard.</em></h2>
+            <h2 className="na-title-huge na-reveal">Beyond the <em className="na-italic">Prototype.</em></h2>
             <p className="na-desc-large na-reveal">
-              We don't just build impressive demos. We engineer resilient, secure, and scalable AI architectures designed to handle enterprise workloads, stringent security compliances, and real-time inference demands.
+              The gap between a compelling demo and a robust production system is vast. We specialize in crossing it. We architect secure, low-latency AI backends designed to withstand enterprise scale, stringent compliance, and complex data environments.
             </p>
           </div>
         </div>
@@ -220,35 +220,35 @@ export default function NeuralArchitecture() {
         <div className="na-process__inner">
           <div className="na-process__sticky na-reveal">
             <h2 className="na-title-huge">How We <em className="na-italic">Build</em></h2>
-            <p className="na-desc-large">A rigorous, four-phase engineering workflow mapped for scale.</p>
+            <p className="na-desc-large">A rigorous, structured engineering lifecycle tailored for AI deployment.</p>
           </div>
           <div className="na-process__list">
             <div className="na-step na-reveal">
               <div className="na-step__num">01</div> 
               <div className="na-step__content">
-                <h4>Data Audit & Strategy</h4>
-                <p>We assess your data readiness, identify silos, and define a clear ROI-driven AI roadmap.</p>
+                <h4>Discovery & Strategy</h4>
+                <p>We analyze your data landscape and identify high-leverage AI opportunities that drive tangible business value.</p>
               </div>
             </div>
             <div className="na-step na-reveal">
               <div className="na-step__num">02</div> 
               <div className="na-step__content">
-                <h4>Architecture Design</h4>
-                <p>Constructing secure, scalable infrastructure customized for your specific inference and latency requirements.</p>
+                <h4>Data Pipeline & Vectorization</h4>
+                <p>Establishing clean, real-time ingestion pipelines and vector databases to ensure the foundation model has pristine, searchable context.</p>
               </div>
             </div>
             <div className="na-step na-reveal">
               <div className="na-step__num">03</div> 
               <div className="na-step__content">
-                <h4>Training & Orchestration</h4>
-                <p>Fine-tuning models, embedding RAG pipelines, and establishing guardrails for accuracy and tone.</p>
+                <h4>Orchestration & Fine-Tuning</h4>
+                <p>Integrating frameworks like LangChain or LlamaIndex, crafting robust prompts, and establishing strict guardrails against hallucinations.</p>
               </div>
             </div>
             <div className="na-step na-reveal">
               <div className="na-step__num">04</div> 
               <div className="na-step__content">
                 <h4>Deployment & MLOps</h4>
-                <p>Seamless rollout to production with continuous monitoring, automated retraining loops, and zero-downtime scaling.</p>
+                <p>Seamless integration into your production environment with continuous observability, automated feedback loops, and dynamic scaling.</p>
               </div>
             </div>
           </div>
