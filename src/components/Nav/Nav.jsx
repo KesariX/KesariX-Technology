@@ -70,11 +70,11 @@ export default function Nav() {
               Services <span className={`nav__arrow ${isServicesOpen ? 'nav__arrow--open' : ''}`}>▾</span>
             </button>
             <div className={`nav__submenu ${isServicesOpen ? 'nav__submenu--open' : ''}`}>
-              <a href="/service/neural-architecture" onClick={closeAll}>Neural Architecture</a>
-              <a href="/service/product-engineering" onClick={closeAll}>Product Engineering</a>
+              <a href="/service/custom-ai-rag-solutions" onClick={closeAll}>Custom AI & RAG Solutions</a>
+              <a href="/service/web-mobile-app-development" onClick={closeAll}>Web & Mobile App Development</a>
 
-              <a href="/service/agentic-systems" onClick={closeAll}>Agentic Systems</a>
-              <a href="/service/workflow-engines" onClick={closeAll}>Workflow Engines</a>
+              <a href="/service/autonomous-ai-agents" onClick={closeAll}>Autonomous AI Agents</a>
+              <a href="/service/workflow-process-automation" onClick={closeAll}>Workflow & Process Automation</a>
             </div>
           </div>
           <a href="/work">Our Work</a>
@@ -113,11 +113,11 @@ export default function Nav() {
           <div className="nav__drawer-sections">
             <div className="nav__drawer-section">
               <div className="nav__drawer-label">Services</div>
-              <a href="/service/neural-architecture" onClick={closeMobile}>Neural Architecture</a>
-              <a href="/service/product-engineering" onClick={closeMobile}>Product Engineering</a>
+              <a href="/service/custom-ai-rag-solutions" onClick={closeMobile}>Custom AI & RAG Solutions</a>
+              <a href="/service/web-mobile-app-development" onClick={closeMobile}>Web & Mobile App Development</a>
 
-              <a href="/service/agentic-systems" onClick={closeMobile}>Agentic Systems</a>
-              <a href="/service/workflow-engines" onClick={closeMobile}>Workflow Engines</a>
+              <a href="/service/autonomous-ai-agents" onClick={closeMobile}>Autonomous AI Agents</a>
+              <a href="/service/workflow-process-automation" onClick={closeMobile}>Workflow & Process Automation</a>
             </div>
             <div className="nav__drawer-section">
               <div className="nav__drawer-label">Company</div>

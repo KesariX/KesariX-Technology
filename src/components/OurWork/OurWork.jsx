@@ -14,9 +14,9 @@ const PROJECTS = [
       { value: '500+', label: 'Calls / Day' },
       { value: '<1s', label: 'Response Time' },
     ],
-    image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=1200',
-    link: '/#contact',
-    ctaText: 'View Case Study ↗',
+    image: '/our work/ai_voice_bot_automation.png',
+    link: '/contact',
+    ctaText: 'Inquire Now ↗',
   },
   {
     id: 2,
@@ -156,9 +156,9 @@ export default function OurWork() {
   return (
     <div className="ow-page" ref={pageRef}>
       <SEO 
-        title="Our Work & Case Studies | Portfolio"
+        title="Our Work & Portfolio | KesariX"
         description="Explore our portfolio of AI automation, enterprise web development, and digital transformation projects delivered globally."
-        keywords="Web Development Portfolio, AI Development Case Studies, Software Company Portfolio, Best Web Development Company, Custom Software Development"
+        keywords="Web Development Portfolio, AI Development Portfolio, Software Company Portfolio, Best Web Development Company, Custom Software Development"
         canonicalUrl="/work"
       />
 
@@ -174,7 +174,7 @@ export default function OurWork() {
           </div>
           <span className="ow-eyebrow">
             <span className="ow-eyebrow-dot"></span>
-            Case Studies
+            Selected Works
           </span>
           <h1 className="ow-hero-title">
             We Let The <br />
@@ -184,14 +184,14 @@ export default function OurWork() {
             We build real-world AI systems and high-performance websites — from voice automation to conversion-focused platforms.
           </p>
           <div className="ow-hero-ctas">
-            <a href="/#contact" className="ow-cta ow-cta--primary">Start a Project ↗</a>
+            <a href="/contact" className="ow-cta ow-cta--primary">Start a Project ↗</a>
             <a href="https://projects.kesarixtechnology.com/" target="_blank" rel="noopener noreferrer" className="ow-cta ow-cta--secondary">View All Work ↗</a>
           </div>
         </div>
       </section>
 
-      {/* ── CASE STUDIES ── */}
-      <section className="ow-section ow-cases ow-dark" id="case-studies">
+      {/* ── PORTFOLIO ── */}
+      <section className="ow-section ow-cases ow-dark" id="portfolio">
         <div className="ow-cases__bg-dots"></div>
 
         {/* Section header */}
@@ -203,7 +203,7 @@ export default function OurWork() {
             </span>
           </h2>
           <p className="ow-section-desc">
-            Every case study below is a production system shipped to real clients — measured by real outcomes.
+            Every project below is a production system shipped to real clients — measured by tangible business outcomes.
           </p>
         </div>
 
@@ -246,7 +246,7 @@ export default function OurWork() {
                   <div className="ow-card__overlay"></div>
                   <span className="ow-card__tag">{project.category}</span>
                   <a href={project.link} target={project.previewUrl ? "_blank" : "_self"} rel={project.previewUrl ? "noopener noreferrer" : ""} className="ow-card__cta">
-                    {project.ctaText || 'View Case Study ↗'}
+                    {project.ctaText || 'View Project ↗'}
                   </a>
                   {project.previewUrl && (
                     <a href={project.link} target="_blank" rel="noopener noreferrer" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 1 }} aria-label={`Visit ${project.title}`}></a>
@@ -268,8 +268,8 @@ export default function OurWork() {
             ))
           ) : (
             <div className="ow-empty">
-              <span className="ow-empty__icon">◎</span>
-              <p>No case studies in this category yet — more coming soon.</p>
+              <div className="ow-empty__glow"></div>
+              <p className="ow-empty__text">No projects in this category yet — more coming soon.</p>
             </div>
           )}
         </div>

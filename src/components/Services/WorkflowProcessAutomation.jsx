@@ -1,7 +1,7 @@
 import { useRef, useLayoutEffect } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
-import './WorkflowEngines.css'
+import './WorkflowProcessAutomation.css'
 import SEO from '../SEO/SEO'
 
 const WE_FAQS = [
@@ -34,12 +34,12 @@ const WE_FAQS = [
 const WE_BREADCRUMBS = [
   { name: 'Home', url: '/' },
   { name: 'Services', url: '/#capabilities' },
-  { name: 'Workflow Automation & Business Process Engineering', url: '/service/workflow-engines' },
+  { name: 'Workflow & Process Automation', url: '/service/workflow-process-automation' },
 ]
 
 const WE_RATING = { ratingValue: '4.8', reviewCount: '31', bestRating: '5' }
 
-export default function WorkflowEngines() {
+export default function WorkflowProcessAutomation() {
   const sectionRef = useRef(null)
 
   useLayoutEffect(() => {
@@ -101,7 +101,7 @@ export default function WorkflowEngines() {
         title="Workflow Automation & Business Process Engineering India"
         description="KesariX Technology builds scalable workflow automation systems—n8n automation, Make (Integromat), Zapier, custom event-driven microservices, and AI-powered process orchestration. Eliminate repetitive tasks and accelerate your business."
         keywords="Workflow Automation India, Business Process Automation, n8n Automation Agency, Make Integromat Development, Zapier Integration India, AI Workflow Automation, Business Automation Company India, Process Orchestration, Event-Driven Architecture, CRM Automation, Lead Automation, Email Automation, WhatsApp Automation, Digital Transformation India, Distributed Systems, Enterprise Automation"
-        canonicalUrl="/service/workflow-engines"
+        canonicalUrl="/service/workflow-process-automation"
         isServicePage={true}
         breadcrumbs={WE_BREADCRUMBS}
         faqs={WE_FAQS}
@@ -118,11 +118,11 @@ export default function WorkflowEngines() {
             <span className="we-hero__breadcrumb-sep">/</span>
             <a href="/#capabilities">Services</a>
             <span className="we-hero__breadcrumb-sep">/</span>
-            <span>Workflow Engines</span>
+            <span>Workflow & Process Automation</span>
           </div>
           <span className="we-eyebrow">
             <span className="we-eyebrow-dot"></span>
-            Workflow Engines
+            Workflow & Process Automation
           </span>
           <h1 className="we-hero-title">
             Process <br /> <em className="we-italic">Automation.</em>

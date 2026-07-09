@@ -11,11 +11,11 @@ const CHECKLIST = [
 ]
 
 const FOOTER_SERVICES = [
-  { name: 'AI Solutions', link: '/service/neural-architecture' },
-  { name: 'Web Development', link: '/service/product-engineering' },
+  { name: 'Custom AI & RAG Solutions', link: '/service/custom-ai-rag-solutions' },
+  { name: 'Web & Mobile App Development', link: '/service/web-mobile-app-development' },
 
-  { name: 'AI Agents', link: '/service/agentic-systems' },
-  { name: 'Process Automation', link: '/service/workflow-engines' },
+  { name: 'Autonomous AI Agents', link: '/service/autonomous-ai-agents' },
+  { name: 'Workflow & Process Automation', link: '/service/workflow-process-automation' },
 ]
 const FOOTER_COMPANY = [
   { name: 'About KesariX', link: '/about' },

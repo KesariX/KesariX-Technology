@@ -11,13 +11,13 @@ const KNOWLEDGE = [
     quick: ['Our Services', 'Pricing', 'Get Started'],
   },
   {
-    patterns: ['service', 'offer', 'capabilities', 'build', 'neural', 'product engineering', 'agentic', 'workflow', 'what do'],
-    reply: 'We offer four specialized services:<br><br>🧠 <b>Neural Architecture</b> — Custom LLMs & RAG systems<br>⚙️ <b>Product Engineering</b> — React & Node.js platforms<br>🤖 <b>Agentic Systems</b> — Autonomous AI agents<br>🔄 <b>Workflow Engines</b> — Process automation<br><br>Which area interests you?',
-    quick: ['Agentic Systems', 'Neural Architecture', 'Pricing'],
+    patterns: ['service', 'offer', 'capabilities', 'build', 'custom ai', 'rag', 'web development', 'mobile development', 'app', 'agent', 'workflow', 'automation', 'what do'],
+    reply: 'We offer four specialized services:<br><br>🧠 <b>Custom AI & RAG Solutions</b> — Custom LLMs & knowledge bases<br>⚙️ <b>Web & Mobile App Development</b> — High-performance platforms<br>🤖 <b>Autonomous AI Agents</b> — Self-running digital workers<br>🔄 <b>Workflow & Process Automation</b> — Seamless tool integrations<br><br>Which area interests you?',
+    quick: ['AI Agents', 'AI & RAG Solutions', 'Pricing'],
   },
   {
-    patterns: ['agent', 'agentic', 'autonomous', 'chatbot', 'bot'],
-    reply: 'Our <b>Agentic Systems</b> service deploys intelligent agents that perceive, reason, and act within your ecosystem.<br><br>We build:<br>• Customer Support Bots<br>• Sales Intelligence Agents<br>• Knowledge Base Assistants<br>• E-commerce Concierges<br>• Custom multi-agent pipelines<br><br>Want to explore a specific use case?',
+    patterns: ['agent', 'agents', 'autonomous', 'chatbot', 'bot'],
+    reply: 'Our <b>Autonomous AI Agents</b> service deploys intelligent agents that perceive, reason, and act within your ecosystem.<br><br>We build:<br>• Customer Support Bots<br>• Sales Intelligence Agents<br>• Knowledge Base Assistants<br>• E-commerce Concierges<br>• Custom multi-agent pipelines<br><br>Want to explore a specific use case?',
     quick: ['Bot Types', 'Book a Call', 'Pricing'],
   },
   {
@@ -57,9 +57,9 @@ const FALLBACK_QUICK = ['Our Services', 'Pricing', 'Contact Us']
 
 const NAV_MAP = {
   'Our Services': '/#capabilities',
-  'Agentic Systems': '/service/agentic-systems',
-  'Neural Architecture': '/service/neural-architecture',
-  'Bot Types': '/service/agentic-systems',
+  'AI Agents': '/service/autonomous-ai-agents',
+  'AI & RAG Solutions': '/service/custom-ai-rag-solutions',
+  'Bot Types': '/service/autonomous-ai-agents',
   'View Pricing': '/pricing',
   'Pricing': '/pricing',
   'View Our Work': '/work',

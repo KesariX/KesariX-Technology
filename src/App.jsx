@@ -47,12 +47,11 @@ const BlogPost          = lazy(() => import('./components/BlogPost/BlogPost'))
 const PrivacyPolicy     = lazy(() => import('./components/PrivacyPolicy/PrivacyPolicy'))
 const Terms             = lazy(() => import('./components/Terms/Terms'))
 const CookiePolicy      = lazy(() => import('./components/CookiePolicy/CookiePolicy'))
-const NotFound          = lazy(() => import('./components/NotFound/NotFound'))
-const NeuralArchitecture = lazy(() => import('./components/Services/NeuralArchitecture'))
-const ProductEngineering = lazy(() => import('./components/Services/ProductEngineering'))
-
-const AgenticSystems     = lazy(() => import('./components/Services/AgenticSystems'))
-const WorkflowEngines    = lazy(() => import('./components/Services/WorkflowEngines'))
+const NotFound                 = lazy(() => import('./components/NotFound/NotFound'))
+const CustomAiRagSolutions     = lazy(() => import('./components/Services/CustomAiRagSolutions'))
+const WebMobileAppDevelopment = lazy(() => import('./components/Services/WebMobileAppDevelopment'))
+const AutonomousAiAgents       = lazy(() => import('./components/Services/AutonomousAiAgents'))
+const WorkflowProcessAutomation = lazy(() => import('./components/Services/WorkflowProcessAutomation'))
 
 /*
   Minimal fallback shown while a lazy page chunk downloads.
@@ -164,11 +163,11 @@ export default function App() {
               <Route path="/terms"         element={<><Nav /><Terms /><Contact /></>} />
               <Route path="/cookie-policy" element={<><Nav /><CookiePolicy /><Contact /></>} />
 
-              <Route path="/service/neural-architecture" element={<WithNav><NeuralArchitecture /></WithNav>} />
-              <Route path="/service/product-engineering" element={<WithNav><ProductEngineering /></WithNav>} />
+              <Route path="/service/custom-ai-rag-solutions" element={<WithNav><CustomAiRagSolutions /></WithNav>} />
+              <Route path="/service/web-mobile-app-development" element={<WithNav><WebMobileAppDevelopment /></WithNav>} />
 
-              <Route path="/service/agentic-systems"     element={<WithNav><AgenticSystems /></WithNav>} />
-              <Route path="/service/workflow-engines"    element={<WithNav><WorkflowEngines /></WithNav>} />
+              <Route path="/service/autonomous-ai-agents"     element={<WithNav><AutonomousAiAgents /></WithNav>} />
+              <Route path="/service/workflow-process-automation"    element={<WithNav><WorkflowProcessAutomation /></WithNav>} />
 
               <Route path="*" element={<><Nav /><NotFound /></>} />
             </Routes>

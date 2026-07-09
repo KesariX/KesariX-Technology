@@ -1,7 +1,7 @@
 import { useRef, useLayoutEffect } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
-import './ProductEngineering.css'
+import './WebMobileAppDevelopment.css'
 import SEO from '../SEO/SEO'
 
 const PE_FAQS = [
@@ -34,12 +34,12 @@ const PE_FAQS = [
 const PE_BREADCRUMBS = [
   { name: 'Home', url: '/' },
   { name: 'Services', url: '/#capabilities' },
-  { name: 'Product Engineering', url: '/service/product-engineering' },
+  { name: 'Web & Mobile App Development', url: '/service/web-mobile-app-development' },
 ]
 
 const PE_RATING = { ratingValue: '4.9', reviewCount: '42', bestRating: '5' }
 
-export default function ProductEngineering() {
+export default function WebMobileAppDevelopment() {
   const sectionRef = useRef(null)
 
   useLayoutEffect(() => {
@@ -97,7 +97,7 @@ export default function ProductEngineering() {
         title="Web Development & Product Engineering Company India"
         description="KesariX Technology builds scalable React, Next.js, and Node.js web platforms, iOS & Android mobile apps, SaaS products, CRM/ERP systems, and enterprise APIs. End-to-end product engineering from concept to production."
         keywords="Web Development Company India, React Development Company, Next.js Development, Full Stack Development India, MERN Stack Development, Node.js Development, Mobile App Development India, Flutter Development, React Native Development, SaaS Development India, CRM Development, ERP Development, Custom Software Development Gujarat, Web Developers Surat, Web Developers Ahmedabad, Web Developers Vadodara, Software Agency Rajkot, Enterprise Web Development"
-        canonicalUrl="/service/product-engineering"
+        canonicalUrl="/service/web-mobile-app-development"
         isServicePage={true}
         breadcrumbs={PE_BREADCRUMBS}
         faqs={PE_FAQS}
@@ -114,11 +114,11 @@ export default function ProductEngineering() {
             <span className="pe-hero__breadcrumb-sep">/</span>
             <a href="/#capabilities">Services</a>
             <span className="pe-hero__breadcrumb-sep">/</span>
-            <span>Product Engineering</span>
+            <span>Web & Mobile App Development</span>
           </div>
           <span className="pe-eyebrow">
             <span className="pe-eyebrow-dot"></span>
-            Product Engineering
+            Web & Mobile App Development
           </span>
           <h1 className="pe-hero-title">
             Products <br /> <em className="pe-italic">Built to Scale.</em>

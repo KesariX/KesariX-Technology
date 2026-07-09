@@ -1,7 +1,7 @@
 import { useRef, useLayoutEffect } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
-import './AgenticSystems.css'
+import './AutonomousAiAgents.css'
 import SEO from '../SEO/SEO'
 
 const BOT_TYPES = [
@@ -79,12 +79,12 @@ const AS_FAQS = [
 const AS_BREADCRUMBS = [
   { name: 'Home', url: '/' },
   { name: 'Services', url: '/#capabilities' },
-  { name: 'Agentic Systems & AI Automation', url: '/service/agentic-systems' },
+  { name: 'Autonomous AI Agents', url: '/service/autonomous-ai-agents' },
 ]
 
 const AS_RATING = { ratingValue: '4.9', reviewCount: '35', bestRating: '5' }
 
-export default function AgenticSystems() {
+export default function AutonomousAiAgents() {
   const sectionRef = useRef(null)
 
   useLayoutEffect(() => {
@@ -146,7 +146,7 @@ export default function AgenticSystems() {
         title="AI Agent Development Company India — Custom Autonomous AI Systems"
         description="KesariX Technology builds production AI agents that handle customer support, sales follow-up, lead qualification, HR automation, and complex multi-step workflows 24/7. Custom AI agent development using LangGraph, CrewAI, n8n, and OpenAI."
         keywords="AI Agent Development India, Custom AI Agents, AI Automation Agency India, Agentic Systems, LangGraph Development, CrewAI Development, n8n Automation, Make Automation, Zapier Integration, CRM Automation AI, Sales AI Agent, Customer Support AI, WhatsApp AI Bot, Multi-Agent System, Autonomous AI Workflow, AI Chatbot Development India, Workflow Automation India"
-        canonicalUrl="/service/agentic-systems"
+        canonicalUrl="/service/autonomous-ai-agents"
         isServicePage={true}
         breadcrumbs={AS_BREADCRUMBS}
         faqs={AS_FAQS}
@@ -163,11 +163,11 @@ export default function AgenticSystems() {
             <span className="as-hero__breadcrumb-sep">/</span>
             <a href="/#capabilities">Services</a>
             <span className="as-hero__breadcrumb-sep">/</span>
-            <span>Agentic Systems</span>
+            <span>Autonomous AI Agents</span>
           </div>
           <span className="as-eyebrow">
             <span className="as-eyebrow-dot"></span>
-            Agentic Systems
+            Autonomous AI Agents
           </span>
           <h1 className="as-hero-title">
             Autonomous <br /> <em className="as-italic">Workflows.</em>

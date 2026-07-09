@@ -163,10 +163,10 @@ export default function Blog() {
         </section>
       ) : (
         <section className="bl-compiling-section">
-          <div className="bl-compiling-card">
-            <span className="bl-compiling-icon" aria-hidden="true">◎</span>
+          <div className="bl-compiling-card bl-fade-up">
+            <div className="bl-compiling-glow"></div>
+            <h3 className="bl-compiling-sub">Compiling Insights</h3>
             <h2 className="bl-compiling-title">The KesariX Engineering Blog</h2>
-            <h3 className="bl-compiling-sub">We are currently compiling our best insights.</h3>
             <p className="bl-compiling-text">
               From deep dives into AI integrations to frontend performance breakdowns, we are preparing high-quality, technical content. Check back soon as we launch our bi-weekly updates on how we build scalable digital products.
             </p>

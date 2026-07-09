@@ -391,91 +391,99 @@
   }
 }
 
-/* ── Compiling State ── */
 .bl-compiling-section {
-  background: var(--bone);
-  padding: 6rem 5% 8rem;
+  background: var(--bg-void);
+  padding: 8rem 5% 10rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .bl-compiling-card {
-  max-width: 680px;
-  background: #ffffff;
-  border: 1px solid rgba(10, 23, 56, 0.07);
-  border-radius: 20px;
-  padding: 4rem 3rem;
+  max-width: 760px;
+  background: var(--ink-deep);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 5rem 4rem;
   text-align: center;
   box-shadow: 
-    0 4px 6px rgba(10, 23, 56, 0.02),
-    0 16px 48px rgba(10, 23, 56, 0.06);
+    0 24px 80px rgba(10, 23, 56, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.8rem;
+  position: relative;
+  overflow: hidden;
   opacity: 0;
   visibility: hidden;
 }
 
-.bl-compiling-icon {
-  font-size: 2.5rem;
-  color: var(--saffron);
-  animation: spinSlow 8s linear infinite;
-  display: inline-block;
-  margin-bottom: 0.5rem;
-}
-
-@keyframes spinSlow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.bl-compiling-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 50% 0%, rgba(255, 107, 0, 0.15), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .bl-compiling-title {
-  font-size: 2.2rem;
+  font-size: 2.6rem;
   font-weight: 600;
-  color: var(--ink-deep);
+  color: #ffffff;
   margin: 0;
   letter-spacing: -0.03em;
+  position: relative;
+  z-index: 1;
 }
 
 .bl-compiling-sub {
-  font-family: var(--f-serif);
-  font-style: italic;
-  font-size: 1.3rem;
+  font-family: var(--f-mono);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
   color: var(--saffron);
-  font-weight: 400;
-  margin: -0.5rem 0 0 0;
+  font-weight: 500;
+  margin: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .bl-compiling-text {
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: var(--ink);
-  opacity: 0.75;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.7);
   margin: 0;
-  max-width: 560px;
+  max-width: 600px;
+  position: relative;
+  z-index: 1;
 }
 
 .bl-compiling-ctas {
   display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
   justify-content: center;
   width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
 .bl-compiling-btn {
-  padding: 0.85rem 2rem;
+  padding: 1rem 2.25rem;
   border-radius: 999px;
   font-family: var(--f-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-weight: 600;
   text-decoration: none;
-  transition: background 0.25s, transform 0.25s, color 0.25s, border-color 0.25s;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   cursor: pointer;
+  backdrop-filter: blur(10px);
 }
 
 .bl-compiling-btn:active {
@@ -486,46 +494,52 @@
   background: var(--saffron);
   color: var(--ink-deep);
   border: 1px solid var(--saffron);
+  box-shadow: 0 8px 24px rgba(255, 107, 0, 0.25);
 }
 
 .bl-compiling-btn--primary:hover {
-  background: var(--ink-deep);
-  color: var(--bone);
-  border-color: var(--ink-deep);
+  background: #ff8533;
+  border-color: #ff8533;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(255, 107, 0, 0.35);
 }
 
 .bl-compiling-btn--secondary {
-  background: transparent;
-  color: var(--ink-deep);
-  border: 1px solid rgba(10, 23, 56, 0.18);
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .bl-compiling-btn--secondary:hover {
-  border-color: var(--saffron);
-  color: var(--saffron);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px);
 }
 
 @media (max-width: 720px) {
+  .bl-compiling-section {
+    padding: 6rem 5% 8rem;
+  }
   .bl-compiling-card {
-    padding: 3rem 1.5rem;
-    gap: 1.25rem;
+    padding: 4rem 2rem;
+    gap: 1.5rem;
   }
   .bl-compiling-title {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
   .bl-compiling-sub {
-    font-size: 1.15rem;
+    font-size: 0.8rem;
   }
   .bl-compiling-text {
-    font-size: 0.88rem;
+    font-size: 0.95rem;
   }
   .bl-compiling-ctas {
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 1rem;
   }
   .bl-compiling-btn {
     width: 100%;
     text-align: center;
-    padding: 0.8rem 1rem;
+    padding: 1rem 1.5rem;
   }
 }
