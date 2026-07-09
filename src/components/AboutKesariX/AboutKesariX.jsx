@@ -328,7 +328,7 @@ export default function AboutKesariX() {
       {/* ══════════════════════════════════════
           2. STATS
          ══════════════════════════════════════ */}
-      <section className="ab-section ab-stats-section ab-light">
+      <section className="ab-section ab-stats-section ab-dark">
         <div className="ab-stats-grid">
           {[
             { val: '5+',  label: 'Enterprise Clients' },
