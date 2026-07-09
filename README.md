@@ -129,7 +129,7 @@ src/
 |---|---|
 | Email | info@kesarixtechnology.com |
 | Phone | +91 92747 39361 |
-| Location | Vadodara, India |
+| Location | Gujarat, India |
 
 ---
 

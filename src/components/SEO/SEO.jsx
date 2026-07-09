@@ -16,16 +16,16 @@ export const siteMetadata = {
   twitterHandle: '@kesarixtechnology',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Vadodara',
-    addressLocality: 'Vadodara',
+    streetAddress: 'Remote Operations',
+    addressLocality: 'Gujarat',
     addressRegion: 'Gujarat',
-    postalCode: '395001',
+    postalCode: '390000',
     addressCountry: 'IN',
   },
   geo: {
     '@type': 'GeoCoordinates',
-    latitude: '21.1702',
-    longitude: '72.8311',
+    latitude: '22.2587',
+    longitude: '71.1924',
   },
   openingHours: ['Mo-Fr 09:00-19:00', 'Sa 10:00-16:00'],
   social: [
@@ -59,8 +59,33 @@ export const siteMetadata = {
     { '@type': 'Country', name: 'Japan' },
     { '@type': 'Country', name: 'South Korea' },
     { '@type': 'Country', name: 'Malaysia' },
-    { '@type': 'City', name: 'Vadodara' },
     { '@type': 'City', name: 'Ahmedabad' },
+    { '@type': 'City', name: 'Surat' },
+    { '@type': 'City', name: 'Vadodara' },
+    { '@type': 'City', name: 'Rajkot' },
+    { '@type': 'City', name: 'Bhavnagar' },
+    { '@type': 'City', name: 'Jamnagar' },
+    { '@type': 'City', name: 'Gandhinagar' },
+    { '@type': 'City', name: 'Junagadh' },
+    { '@type': 'City', name: 'Gandhidham' },
+    { '@type': 'City', name: 'Anand' },
+    { '@type': 'City', name: 'Navsari' },
+    { '@type': 'City', name: 'Morbi' },
+    { '@type': 'City', name: 'Nadiad' },
+    { '@type': 'City', name: 'Bharuch' },
+    { '@type': 'City', name: 'Porbandar' },
+    { '@type': 'City', name: 'Veraval' },
+    { '@type': 'City', name: 'Bhuj' },
+    { '@type': 'City', name: 'Valsad' },
+    { '@type': 'City', name: 'Vapi' },
+    { '@type': 'City', name: 'Godhra' },
+    { '@type': 'City', name: 'Palanpur' },
+    { '@type': 'City', name: 'Ankleshwar' },
+    { '@type': 'City', name: 'Patan' },
+    { '@type': 'City', name: 'Kalol' },
+    { '@type': 'City', name: 'Dahod' },
+    { '@type': 'City', name: 'Mehsana' },
+    { '@type': 'City', name: 'Surendranagar' },
     { '@type': 'City', name: 'Mumbai' },
     { '@type': 'City', name: 'Delhi' },
     { '@type': 'City', name: 'Bangalore' },
@@ -75,8 +100,6 @@ export const siteMetadata = {
     { '@type': 'City', name: 'Nagpur' },
     { '@type': 'City', name: 'Noida' },
     { '@type': 'City', name: 'Gurgaon' },
-    { '@type': 'City', name: 'Vadodara' },
-    { '@type': 'City', name: 'Rajkot' },
     { '@type': 'City', name: 'Chandigarh' },
     { '@type': 'City', name: 'Patna' },
     { '@type': 'City', name: 'Bhubaneswar' },
@@ -193,16 +216,16 @@ export default function SEO({
   /* ── Title ── */
   const fullTitle = title
     ? `${title} | ${companyName}`
-    : `${companyName} — AI Solutions, Web & Mobile Development | Vadodara, India`;
+    : `${companyName} — AI Solutions, Web & Mobile Development | Gujarat, India`;
 
   /* ── Description fallback ── */
   const finalDescription =
     description ||
-    `${companyName} builds production AI agents, enterprise web platforms, mobile apps & intelligent automation. 5+ projects shipped. 98% client satisfaction. Based in Vadodara, India.`;
+    `${companyName} builds production AI agents, enterprise web platforms, mobile apps & intelligent automation. 5+ projects shipped. 98% client satisfaction. Remote Operations | Based in Gujarat, India | Delivering Worldwide.`;
 
   /* ── Keywords ── */
   const baseKeywords =
-    'AI Development Company India, Web Development Company, Software Development India, AI Agency, Digital Transformation, React Development, Next.js, Mobile App Development, CRM Development, ERP Development, Vadodara, Gujarat, Mumbai, Delhi, Bangalore, Hyderabad, USA, UK, Canada, Australia, UAE';
+    'AI Development Company India, Web Development Company, Software Development India, AI Agency, Digital Transformation, React Development, Next.js, Mobile App Development, CRM Development, ERP Development, Gujarat, Ahmedabad, Surat, Vadodara, Rajkot, Gandhinagar, Bhavnagar, Jamnagar, Junagadh, Gandhidham, Anand, Bharuch, Navsari, Morbi, Nadiad, Mumbai, Delhi, Bangalore, Hyderabad, USA, UK, Canada, Australia, UAE';
   const finalKeywords = keywords ? `${keywords}, ${baseKeywords}` : baseKeywords;
 
   /* ── Canonical & full URL ── */
@@ -273,7 +296,7 @@ export default function SEO({
       priceRange: '$$',
       currenciesAccepted: 'INR, USD, GBP, EUR, AED',
       paymentAccepted: 'Bank Transfer, Credit Card, PayPal, UPI',
-      hasMap: `https://www.google.com/maps?q=Vadodara+Gujarat+India`,
+      hasMap: `https://www.google.com/maps?q=Gujarat+India`,
     };
 
     /* Add OfferCatalog on homepage */
@@ -479,9 +502,9 @@ export default function SEO({
 
       {/* ── Geo / Regional ── */}
       <meta name="geo.region" content="IN-GJ" />
-      <meta name="geo.placename" content="Vadodara, Gujarat, India" />
-      <meta name="geo.position" content="21.1702;72.8311" />
-      <meta name="ICBM" content="21.1702, 72.8311" />
+      <meta name="geo.placename" content="Gujarat, India" />
+      <meta name="geo.position" content="22.2587;71.1924" />
+      <meta name="ICBM" content="22.2587, 71.1924" />
 
       {/* ── Verification tags ── */}
       {/* Google: already via gtag in index.html */}

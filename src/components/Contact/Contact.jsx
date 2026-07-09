@@ -114,7 +114,7 @@ export default function Contact() {
               +91 92747 39361
             </a>
             <span className="contact__bar-sep">·</span>
-            <span className="contact__bar-item">Vadodara, India</span>
+            <span className="contact__bar-item">Gujarat, India</span>
             <span className="contact__bar-sep">·</span>
             <span className="contact__bar-item contact__bar-item--live">
               <span className="contact__live-dot" />
@@ -163,7 +163,10 @@ export default function Contact() {
               <div className="footer__col-head">Get in Touch</div>
               <a className="footer__col-link" href="mailto:info@kesarixtechnology.com">info@kesarixtechnology.com</a>
               <a className="footer__col-link" href="tel:+919274739361">+91 92747 39361</a>
-              <span className="footer__col-link">Vadodara, India</span>
+              <span className="footer__col-link" style={{ lineHeight: '1.4', marginTop: '4px' }}>
+                Remote Operations<br />
+                Based in Gujarat, India
+              </span>
             </div>
           </div>
         </div>

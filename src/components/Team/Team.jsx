@@ -19,15 +19,7 @@ const MEMBERS = [
     role: 'AI Engineering Lead',
     bio: 'Tech lead with a passion for architecting robust AI systems that just work.',
     tags: ['LLMs', 'Vision', 'MLOps'],
-    bg: 'avatar--blue',
-  },
-  {
-    initials: 'GM',
-    name: 'Govind Mishra',
-    role: 'CFO',
-    bio: 'Finance strategist ensuring sustainable growth and operational excellence.',
-    tags: ['Finance', 'Operations', 'Growth'],
-    bg: 'avatar--ink',
+    bg: 'avatar--indigo',
   },
   {
     initials: 'HP',
@@ -35,7 +27,15 @@ const MEMBERS = [
     role: 'Web Development Lead',
     bio: 'Frontend engineer building fast, beautiful web experiences with modern technologies.',
     tags: ['React', 'Next.js', 'UI/UX'],
-    bg: 'avatar--saffron',
+    bg: 'avatar--gold',
+  },
+  {
+    initials: 'OP',
+    name: 'Om Parmar',
+    role: 'Mobile App Development Lead',
+    bio: 'Mobile architect designing seamless cross-platform experiences that scale to millions of users.',
+    tags: ['React Native', 'iOS', 'Android'],
+    bg: 'avatar--purple',
   },
   {
     initials: 'PY',
@@ -48,21 +48,20 @@ const MEMBERS = [
   {
     initials: 'JP',
     name: 'Jay Padhiyar',
-    role: 'CMO',
-    bio: 'Growth specialist with expertise in digital campaigns and performance marketing.',
-    tags: ['Digital', 'Analytics', 'Growth'],
+    role: 'Head of Growth',
+    bio: 'Data-driven growth strategist accelerating client user acquisition through precision performance marketing.',
+    tags: ['Growth', 'Analytics', 'Performance'],
     bg: 'avatar--teal',
   },
   {
-    initials: 'OP',
-    name: 'Om Parmar',
-    role: 'Mobile App Development Lead',
-    bio: 'Mobile architect designing seamless cross-platform experiences that scale to millions of users.',
-    tags: ['React Native', 'iOS', 'Android'],
-    bg: 'avatar--blue',
-  },
+    initials: 'GM',
+    name: 'Govind Mishra',
+    role: 'CFO',
+    bio: 'Finance strategist ensuring sustainable growth and operational excellence.',
+    tags: ['Finance', 'Operations', 'Growth'],
+    bg: 'avatar--ink',
+  }
 ]
-
 export default function Team() {
   const sectionRef = useRef(null)
 

@@ -63,8 +63,8 @@ export default function Careers() {
     <div className="cr-page" ref={sectionRef}>
       <SEO 
         title="Careers at KesariX Technology — Software & AI Engineering Jobs India"
-        description="Join the KesariX Technology team. We're hiring talented software engineers, AI/ML developers, React developers, Flutter developers, DevOps engineers, and automation specialists. Remote-friendly roles based in Vadodara, India."
-        keywords="Software Engineer Jobs India, AI Developer Jobs India, React Developer Jobs Vadodara, Web Developer Jobs India, Machine Learning Jobs India, Full Stack Developer Jobs, Mobile App Developer Jobs, Flutter Developer Jobs, Tech Jobs Vadodara Gujarat, Software Company Jobs India, Startup Jobs India, Remote Developer Jobs India"
+        description="Join the KesariX Technology team. We're hiring talented software engineers, AI/ML developers, React developers, Flutter developers, DevOps engineers, and automation specialists. Remote-friendly roles based in Gujarat, India."
+        keywords="Software Engineer Jobs India, AI Developer Jobs India, React Developer Jobs Gujarat, Web Developer Jobs India, Machine Learning Jobs India, Full Stack Developer Jobs, Mobile App Developer Jobs, Flutter Developer Jobs, Tech Jobs Gujarat, Software Company Jobs India, Startup Jobs India, Remote Developer Jobs India, AI Developer Jobs Ahmedabad, Software Developer Jobs Surat"
         canonicalUrl="/careers"
         breadcrumbs={[
           { name: 'Home', url: '/' },

@@ -102,7 +102,7 @@ export default function NeuralArchitecture() {
       <SEO 
         title="AI Development Company India — LLM, RAG & Custom AI Solutions"
         description="KesariX Technology engineers production-grade AI systems — custom LLMs, RAG architectures, AI agents, GPT/Claude/Gemini integration, computer vision, and voice AI. Turn proprietary data into enterprise intelligence."
-        keywords="AI Development Company India, AI Development Company Vadodara, LLM Development, RAG Development Company, GPT Integration India, Claude Integration, Gemini API Integration, Custom AI Solutions, AI Chatbot Development, AI Agent Development, Vector Database, Pinecone Integration, OpenAI API, LangChain Development, LangGraph, Computer Vision AI, Document AI, Voice AI, Fine-tuning LLM, AI Automation India"
+        keywords="AI Development Company India, AI Development Company Gujarat, LLM Development, RAG Development Company, GPT Integration India, Claude Integration, Gemini API Integration, Custom AI Solutions, AI Chatbot Development, AI Agent Development, Vector Database, Pinecone Integration, OpenAI API, LangChain Development, LangGraph, Computer Vision AI, Document AI, Voice AI, Fine-tuning LLM, AI Automation India, AI Agency Ahmedabad, AI Engineers Surat, AI Agency Vadodara, AI Developers Rajkot"
         canonicalUrl="/service/neural-architecture"
         isServicePage={true}
         breadcrumbs={NA_BREADCRUMBS}

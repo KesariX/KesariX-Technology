@@ -126,9 +126,10 @@ export default function ContactPage() {
             "email": "info@kesarixtechnology.com",
             "address": {
               "@type": "PostalAddress",
-              "addressLocality": "Vadodara",
+              "streetAddress": "Remote Operations",
+              "addressLocality": "Gujarat",
               "addressRegion": "Gujarat",
-              "postalCode": "395001",
+              "postalCode": "390000",
               "addressCountry": "IN"
             },
             "openingHours": ["Mo-Fr 09:00-19:00", "Sa 10:00-16:00"]
@@ -399,10 +400,13 @@ export default function ContactPage() {
                     +91 92747 39361
                   </a>
                 </div>
-                <div className="cp-contact-row">
-                  <span className="cp-contact-label">Based in</span>
-                  <span className="cp-contact-value">Vadodara, India</span>
-                </div>
+                 <div className="cp-contact-row">
+                   <span className="cp-contact-label">Location</span>
+                   <span className="cp-contact-value">
+                     Remote Operations<br />
+                     Based in Gujarat, India | Delivering Worldwide
+                   </span>
+                 </div>
               </div>
 
               {/* Live status chip */}

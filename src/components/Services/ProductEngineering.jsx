@@ -96,7 +96,7 @@ export default function ProductEngineering() {
       <SEO 
         title="Web Development & Product Engineering Company India"
         description="KesariX Technology builds scalable React, Next.js, and Node.js web platforms, iOS & Android mobile apps, SaaS products, CRM/ERP systems, and enterprise APIs. End-to-end product engineering from concept to production."
-        keywords="Web Development Company India, React Development Company, Next.js Development, Full Stack Development India, MERN Stack Development, Node.js Development, Mobile App Development India, Flutter Development, React Native Development, SaaS Development India, CRM Development, ERP Development, Custom Software Development Vadodara, Enterprise Web Development"
+        keywords="Web Development Company India, React Development Company, Next.js Development, Full Stack Development India, MERN Stack Development, Node.js Development, Mobile App Development India, Flutter Development, React Native Development, SaaS Development India, CRM Development, ERP Development, Custom Software Development Gujarat, Web Developers Surat, Web Developers Ahmedabad, Web Developers Vadodara, Software Agency Rajkot, Enterprise Web Development"
         canonicalUrl="/service/product-engineering"
         isServicePage={true}
         breadcrumbs={PE_BREADCRUMBS}

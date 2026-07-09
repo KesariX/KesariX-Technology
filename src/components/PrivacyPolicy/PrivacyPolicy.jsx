@@ -128,7 +128,8 @@ export default function PrivacyPolicy() {
             <p>For any privacy-related questions or to exercise your rights:</p>
             <div className="legal-contact-block">
               <p><strong>KesariX Technology</strong></p>
-              <p>Vadodara, Gujarat, India — 395001</p>
+              <p>Remote Operations</p>
+              <p>Based in Gujarat, India — Delivering Worldwide</p>
               <p>Email: <a href="mailto:info@kesarixtechnology.com">info@kesarixtechnology.com</a></p>
               <p>Phone: <a href="tel:+919274739361">+91 92747 39361</a></p>
             </div>

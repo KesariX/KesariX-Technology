@@ -4,10 +4,10 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 import './Stats.css'
 
 const STATS = [
-  { count: 5,  suffix: '+',  prefix: '',  label: 'Projects Delivered',    sub: 'Successful scalable deployments serving businesses across 1+ countries globally.' },
-  { count: 2,  suffix: '+',  prefix: '',  label: 'AI Systems',             sub: 'Custom enterprise AI and ML models actively in production.' },
-  { count: 98,  suffix: '%',  prefix: '',  label: 'Client Satisfaction',    sub: 'Consistent client retention with repeat engagements and referrals.' },
-  { count: 20, suffix: 'K+', prefix: '₹', label: 'Value Generated',        sub: 'Direct measurable revenue and cost-savings created for our partners.' },
+  { count: 5,  suffix: '+',  prefix: '',  label: 'Enterprise Solutions',  sub: 'Successful production-grade deployments built for enterprise scale.' },
+  { count: 2,  suffix: '+',  prefix: '',  label: 'AI Integrations',       sub: 'Custom LLMs, RAG pipelines, and autonomous agents in active use.' },
+  { count: 40, suffix: '%',  prefix: '',  label: 'Performance Boost',     sub: 'Average optimization gain in system throughput and response times.' },
+  { count: 98, suffix: '%',  prefix: '',  label: 'Client Retention',      sub: 'Long-term partnership rate based on reliable, continuous delivery.' },
 ]
 
 export default function Stats() {

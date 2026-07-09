@@ -252,15 +252,15 @@ export default function AboutKesariX() {
     <div className="ab-page" ref={sectionRef}>
       <SEO 
         title="About KesariX Technology — AI Development & Software Company India"
-        description="KesariX Technology is a Vadodara-based AI development and software engineering company founded in 2023. We build production AI systems, enterprise web platforms, mobile apps, and automation solutions for clients across India, USA, UK, UAE, and 20+ countries."
-        keywords="About KesariX Technology, AI Company India, Software Development Company Vadodara, Tech Startup India, AI Agency About, Web Development Company About, KesariX Team, KesariX Founders, Digital Agency Vadodara Gujarat, Software Company India About"
+        description="KesariX Technology is an AI development and software engineering company based in Gujarat, India, operating remotely and serving clients globally. We build production AI systems, enterprise web platforms, mobile apps, and automation solutions for clients across India, USA, UK, UAE, and 20+ countries."
+        keywords="About KesariX Technology, AI Company India, Software Development Company Gujarat, Tech Startup India, AI Agency About, Web Development Company About, KesariX Team, KesariX Founders, Digital Agency Gujarat, Software Company India About, AI Development Ahmedabad, Web Developers Surat, App Development Vadodara"
         canonicalUrl="/about"
         breadcrumbs={[
           { name: 'Home', url: '/' },
           { name: 'About', url: '/about' },
         ]}
         faqs={[
-          { question: 'When was KesariX Technology founded?', answer: 'KesariX Technology was founded in 2023 in Vadodara, Gujarat, India with a mission to deliver enterprise-grade AI systems, web platforms, and automation solutions to businesses across India and globally.' },
+          { question: 'When was KesariX Technology founded?', answer: 'KesariX Technology was founded in 2023 in Gujarat, India with a mission to deliver enterprise-grade AI systems, web platforms, and automation solutions to businesses across India and globally.' },
           { question: 'What makes KesariX Technology different from other software companies?', answer: 'KesariX focuses exclusively on high-impact digital products — AI-first systems, scalable SaaS platforms, and automation pipelines. We ship production-ready code, not prototypes, and every project includes architecture review, performance optimization, and 30-day post-launch support.' },
           { question: 'How many projects has KesariX Technology delivered?', answer: 'KesariX Technology has shipped 5+ projects with a 98% client satisfaction rate across AI development, web applications, mobile apps, CRM/ERP systems, and automation workflows.' },
         ]}
@@ -271,7 +271,7 @@ export default function AboutKesariX() {
             "@type": "Organization",
             "name": "KesariX Technology",
             "foundingDate": "2023",
-            "description": "KesariX Technology is a premier AI development and digital transformation agency based in Vadodara, India.",
+            "description": "KesariX Technology is a premier AI development and digital transformation agency operating remotely from Gujarat, India.",
             "numberOfEmployees": { "@type": "QuantitativeValue", "minValue": 10, "maxValue": 50 }
           }
         }}
