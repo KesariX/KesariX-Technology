@@ -331,14 +331,15 @@ export default function AboutKesariX() {
       <section className="ab-section ab-stats-section ab-dark">
         <div className="ab-stats-grid">
           {[
-            { val: '5+',  label: 'Enterprise Clients' },
-            { val: '7+',  label: 'Core Team Members' },
-            { val: '98%', label: 'Client Satisfaction' },
-            { val: '5+',  label: 'Projects Delivered' },
-          ].map(({ val, label }) => (
+            { val: '5+',  label: 'Enterprise Clients', desc: 'Trusting us with their mission-critical digital infrastructure.' },
+            { val: '7+',  label: 'Core Team Members', desc: 'Elite engineers, AI researchers, and systems architects.' },
+            { val: '98%', label: 'Client Satisfaction', desc: 'Reflecting our unwavering commitment to deterministic results.' },
+            { val: '5+',  label: 'Projects Delivered', desc: 'Scalable production systems successfully deployed in the wild.' },
+          ].map(({ val, label, desc }) => (
             <div className="ab-stat ab-reveal" key={label}>
               <span className="ab-stat__num" data-target={val}>{val}</span>
               <span className="ab-stat__label">{label}</span>
+              <p className="ab-stat__desc">{desc}</p>
             </div>
           ))}
         </div>
