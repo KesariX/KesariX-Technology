@@ -1,6 +1,6 @@
 import './App.css'
 import { lazy, Suspense } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { ShaderProvider, useShader } from './context/ShaderContext'
 import { ThemeProvider } from './context/ThemeContext'
 import { useLenis } from './hooks/useLenis'
@@ -150,6 +150,10 @@ export default function App() {
             <Routes>
               {/* Home — eager, no Suspense penalty */}
               <Route path="/" element={<PageContent />} />
+
+              {/* Redirects for older/Google indexed URLs */}
+              <Route path="/company/work"  element={<Navigate to="/work" replace />} />
+              <Route path="/company/about" element={<Navigate to="/about" replace />} />
 
               {/* All other routes — lazy loaded */}
               <Route path="/work"          element={<WithNav><OurWork /></WithNav>} />
