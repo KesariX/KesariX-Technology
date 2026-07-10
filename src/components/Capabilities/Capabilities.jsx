@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import './CapabilitiesPremium.css'
@@ -121,7 +121,8 @@ const WHY_US = [
 
 export default function Capabilities() {
   const sectionRef = useRef(null)
-  const cardsRef = useRef([])
+  const [activeIndex, setActiveIndex] = useState(0)
+  const contentRef = useRef(null)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -165,24 +166,14 @@ export default function Capabilities() {
         "-=0.8"
       )
 
-      // Cards Reveal
-      cardsRef.current.forEach((card, index) => {
-        if (!card) return;
-
-        gsap.fromTo(card,
-          { opacity: 0, y: 100 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1.2,
-            ease: 'expo.out',
-            scrollTrigger: {
-              trigger: card,
-              start: 'top 85%',
-            }
-          }
-        )
-      })
+      // Split Showcase Reveal
+      gsap.fromTo('.cp-split-showcase',
+        { opacity: 0, y: 100 },
+        { 
+          opacity: 1, y: 0, duration: 1.2, ease: 'expo.out',
+          scrollTrigger: { trigger: '.cp-split-showcase', start: 'top 85%' }
+        }
+      )
 
       // Level 2 & 3 Reveals
       gsap.utils.toArray('.cp-fade-up').forEach(el => {
@@ -199,14 +190,18 @@ export default function Capabilities() {
     return () => ctx.revert()
   }, [])
 
-  const handleMouseMove = (e, cardElement) => {
-    if (!cardElement) return;
-    const rect = cardElement.getBoundingClientRect()
-    const x = e.clientX - rect.left
-    const y = e.clientY - rect.top
-    cardElement.style.setProperty('--mouse-x', `${x}px`)
-    cardElement.style.setProperty('--mouse-y', `${y}px`)
-  }
+  // Animate content change
+  useEffect(() => {
+    if (contentRef.current) {
+      gsap.fromTo(contentRef.current, 
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }
+      )
+    }
+  }, [activeIndex])
+
+  const activeService = SERVICES[activeIndex]
+  const ActiveIcon = activeService.icon
 
   return (
     <section className="capabilities-premium" id="capabilities" ref={sectionRef}>
@@ -236,75 +231,88 @@ export default function Capabilities() {
           </p>
         </div>
 
-        {/* Level 1: What You Need (Service Cards) */}
-        <div className="cp-level">
-          <h3 className="cp-level__title cp-fade-up">1. What You Need</h3>
-          <div className="cp-grid">
-            <div className="cp-grid__line cp-grid__line--v" aria-hidden="true" />
-            {SERVICES.map((s, i) => {
-              const Icon = s.icon;
-              return (
-                <div
-                  className={`cp-card-biz ${i % 2 !== 0 ? 'cp-card-biz--offset' : ''}`}
+        {/* Level 1: What You Need (Interactive Split Layout for Desktop) */}
+        <div className="cp-level cp-desktop-only">
+          <div className="cp-split-showcase">
+            <div className="cp-split-left">
+              {SERVICES.map((s, i) => (
+                <button 
                   key={i}
-                  ref={el => cardsRef.current[i] = el}
-                  onMouseMove={(e) => handleMouseMove(e, cardsRef.current[i])}
+                  className={`cp-split-tab ${activeIndex === i ? 'active' : ''}`}
+                  onClick={() => setActiveIndex(i)}
+                  onMouseEnter={() => setActiveIndex(i)}
+                  aria-selected={activeIndex === i}
                 >
-                  <div className="cp-card-biz__glow" aria-hidden="true" />
-                  
-                  <div className="cp-card-biz__inner">
-                    <div className="cp-card-biz__content">
-                      <div className="cp-card-biz__header">
-                        <div className="cp-card-biz__meta">
-                          <span className="cp-card-biz__category">{s.num}. {s.category}</span>
-                        </div>
-                      </div>
-                      
-                      <h4 className="cp-card-biz__headline">{s.headline}</h4>
-                      <p className="cp-card-biz__desc">{s.desc}</p>
-                      
-                      <div className="cp-card-biz__lists">
-                        <div className="cp-list-group">
-                          <h5>Business Problems We Solve</h5>
-                          <ul>
-                            {s.problems.map((prob, idx) => (
-                              <li key={idx}><Icons.Check /> {prob}</li>
-                            ))}
-                          </ul>
-                        </div>
-                        <div className="cp-list-group">
-                          <h5>Deliverables</h5>
-                          <ul>
-                            {s.deliverables.map((del, idx) => (
-                              <li key={idx}><span className="cp-bullet">•</span> {del}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-
-                      <div className="cp-card-biz__pills">
-                        <h5>Solutions & Technologies</h5>
-                        <div className="cp-pills-wrap">
-                          {s.benefits.map(tag => (
-                            <span className="cp-pill" key={tag}>{tag}</span>
-                          ))}
-                        </div>
-                      </div>
-
-                      <div className="cp-card-biz__results">
-                        <h5>Expected Results:</h5>
-                        <p>{s.results.join(' • ')}</p>
-                      </div>
-
-                      <a href={s.link} className="cp-card-biz__cta" aria-label={`Learn more about ${s.category}`}>
-                        <span>Let's Build This</span>
-                        <Icons.ArrowRight />
-                      </a>
-                    </div>
+                  <span className="cp-tab-num">{s.num}</span>
+                  <span className="cp-tab-label">{s.category}</span>
+                </button>
+              ))}
+            </div>
+            
+            <div className="cp-split-right" ref={contentRef}>
+              <div className="cp-sc-header">
+                <h3 className="cp-sc-headline">{activeService.headline}</h3>
+              </div>
+              <p className="cp-sc-desc">{activeService.desc}</p>
+              
+              <div className="cp-sc-details">
+                <div className="cp-sc-col">
+                  <h4 className="cp-sc-title">Solutions & Tech</h4>
+                  <div className="cp-sc-tags">
+                    {activeService.benefits.map((tag, idx) => (
+                      <span className="cp-sc-tag" key={idx}>{tag}</span>
+                    ))}
                   </div>
                 </div>
-              )
-            })}
+                
+                <div className="cp-sc-col">
+                  <h4 className="cp-sc-title">Expected Results</h4>
+                  <ul className="cp-sc-list">
+                    {activeService.results.map((res, idx) => (
+                      <li key={idx}><Icons.Check /> {res}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div className="cp-sc-action">
+                <a href={activeService.link} className="cp-sc-cta">
+                  <span>Explore {activeService.category}</span>
+                  <Icons.ArrowRight />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Level 1: What You Need (Simple Cards for Mobile) */}
+        <div className="cp-level cp-mobile-only">
+          <div className="cp-mobile-cards">
+            {SERVICES.map((s, i) => (
+              <div className="cp-mobile-card cp-fade-up" key={i}>
+                <div className="cp-mc-watermark" aria-hidden="true">{s.num}</div>
+                <div className="cp-mc-content">
+                  <div className="cp-mc-header">
+                    <span className="cp-mc-num">{s.num}</span>
+                    <span className="cp-mc-cat">{s.category}</span>
+                  </div>
+                  <h3 className="cp-mc-headline">{s.headline}</h3>
+                  <p className="cp-mc-desc">{s.desc}</p>
+                  
+                  <div className="cp-mc-tags">
+                    {s.benefits.slice(0, 3).map((tag, idx) => (
+                      <span className="cp-mc-tag" key={idx}>{tag}</span>
+                    ))}
+                    {s.benefits.length > 3 && <span className="cp-mc-tag">+{s.benefits.length - 3} more</span>}
+                  </div>
+
+                  <a href={s.link} className="cp-mc-cta">
+                    <span>Learn More</span>
+                    <Icons.ArrowRight />
+                  </a>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 

@@ -156,7 +156,7 @@ export default function CustomAiRagSolutions() {
           </h1>
           <div className="cine-hero-meta cine-hero-bottom">
             <span>Engineering bespoke RAG pipelines and foundation models.</span>
-            <a href="/#contact" className="cine-cta">Inquire Now ↗</a>
+            <a href="/contact" className="cine-cta">Inquire Now ↗</a>
           </div>
         </div>
       </section>

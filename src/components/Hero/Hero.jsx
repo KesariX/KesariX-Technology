@@ -149,43 +149,24 @@ export default function Hero() {
         }}>
 
           <span className="hero__line">
-            <span className="h-word"><span>We</span></span>
-            <span className="h-word h-word--accent"><span>Build</span></span>
+            <span className="h-word"><span className="inspire-text" data-text="We">We</span></span>
+            <span className="h-word"><span className="inspire-text" data-text="Build">Build</span></span>
           </span>
 
           <span className="hero__line hero__line--italic" style={{ paddingLeft: '5%' }}>
             <span className="h-word">
-              <span
-                className="text-gradient-flow"
-                style={{
-                  background: 'linear-gradient(90deg, #f97316 0%, #fb923c 30%, #fbbf24 55%, #fb923c 75%, #f97316 100%)',
-                  backgroundSize: '200% 100%',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  paddingRight: '0.1em',
-                  display: 'inline-block',
-                  filter: 'drop-shadow(0 0 32px rgba(249, 115, 22, 0.35))'
-                }}
-              >
-                EXTRAORDINARY
-              </span>
+              <span className="inspire-text" data-text="EXTRAORDINARY">EXTRAORDINARY</span>
             </span>
           </span>
 
           <span className="hero__line">
-            <span className="h-word"><span>Digital</span></span>
-            <span className="h-word"><span style={{ color: '#d1d5db', fontWeight: 400 }}>Experiences</span></span>
+            <span className="h-word"><span className="inspire-text" data-text="Digital">Digital</span></span>
+            <span className="h-word"><span className="inspire-text" data-text="Experiences">Experiences</span></span>
           </span>
 
-          <span className="hero__line hero__line--outline">
+          <span className="hero__line hero__line--inspire">
             <span className="h-word">
-              <span style={{
-                color: 'transparent',
-                WebkitTextStroke: '1.5px rgba(255, 255, 255, 0.5)',
-                transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
-                cursor: 'crosshair',
-                display: 'inline-block'
-              }}>
+              <span className="inspire-text" data-text="That Inspire.">
                 That Inspire.
               </span>
             </span>

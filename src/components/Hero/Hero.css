@@ -392,9 +392,59 @@
   line-height: 0.86;
 }
 
-.hero__line--outline .h-word > span {
-  -webkit-text-stroke: 2px rgba(239, 232, 216, 0.55);
+.hero__line--inspire {
+  padding-left: 15%; /* Indent to create an asymmetric, modern typographic layout */
+}
+
+.hero__line--inspire .inspire-text {
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-weight: 300;
+  text-transform: capitalize;
+  letter-spacing: -0.01em;
+}
+
+.inspire-text {
+  position: relative;
+  display: inline-block;
   color: transparent;
+  -webkit-text-stroke: 2px rgba(239, 232, 216, 0.4);
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  padding-right: 0.1em;
+}
+
+.inspire-text::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  color: transparent;
+  -webkit-text-stroke: 0px transparent;
+  background: linear-gradient(90deg, #f97316 0%, #38bdf8 33%, #c084fc 66%, #f97316 100%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  z-index: 1;
+}
+
+.inspire-text:hover {
+  -webkit-text-stroke: 2px transparent;
+  filter: drop-shadow(0 10px 40px rgba(56, 189, 248, 0.5));
+}
+
+.inspire-text:hover::before {
+  opacity: 1;
+  animation: inspireFlow 4s linear infinite;
+}
+
+@keyframes inspireFlow {
+  0% { background-position: 0% center; }
+  100% { background-position: 300% center; }
 }
 
 .hero__line .h-word + .h-word { margin-left: 0.24em; }
