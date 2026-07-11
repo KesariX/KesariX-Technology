@@ -135,7 +135,7 @@ export default function Blog() {
 
           <div className="bl-grid">
             {filtered.map(post => (
-              <a className="bl-card" key={post.id} href={`/blog/${post.id}`}>
+              <a className="bl-card" key={post.id} href={`/blog/${post.slug || post.id}`} target="_blank" rel="noopener noreferrer">
                 <div className="bl-card__image-wrap">
                   <img
                     src={post.image}
