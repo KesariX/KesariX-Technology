@@ -387,9 +387,11 @@
   font-weight: 400;
   font-size: 1.15em;
   color: var(--amber);
-  letter-spacing: -0.025em;
+  letter-spacing: 0.01em;
   text-transform: none;
   line-height: 0.86;
+  box-sizing: border-box;
+  margin-right: 0.1em;
 }
 
 .hero__line--inspire {
@@ -401,7 +403,8 @@
   font-style: italic;
   font-weight: 300;
   text-transform: capitalize;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.01em;
+  /* margin: 10px; */
 }
 
 .inspire-text {
@@ -434,7 +437,7 @@
 
 .inspire-text:hover {
   -webkit-text-stroke: 2px transparent;
-  filter: drop-shadow(0 10px 40px rgba(56, 189, 248, 0.5));
+  filter: drop-shadow(0 10px 40px rgba(56, 191, 248, 0));
 }
 
 .inspire-text:hover::before {
@@ -447,7 +450,7 @@
   100% { background-position: 300% center; }
 }
 
-.hero__line .h-word + .h-word { margin-left: 0.24em; }
+.hero__line .h-word + .h-word { margin-left: 0.20em; }
 
 
 /* === BOTTOM BAR === */

@@ -153,7 +153,7 @@ export default function Hero() {
             <span className="h-word"><span className="inspire-text" data-text="Build">Build</span></span>
           </span>
 
-          <span className="hero__line hero__line--italic" style={{ paddingLeft: '5%' }}>
+          <span className="hero__line hero__line--italic" style={{ paddingLeft: '5%',paddingRight: '5%' }}>
             <span className="h-word">
               <span className="inspire-text" data-text="EXTRAORDINARY">EXTRAORDINARY</span>
             </span>

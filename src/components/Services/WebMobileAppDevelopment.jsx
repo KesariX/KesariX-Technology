@@ -207,7 +207,7 @@ export default function WebMobileAppDevelopment() {
             </div>
             <div className="pe-step-image-wrap">
               {/* IMAGE CONTEXT: Needs wireframing, UX discovery, team brainstorming, or blueprint visuals */}
-              <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80&w=1200" alt="UX Discovery" className="pe-step-img" />
+              <img src="/web_mobile_app_development/discovery.png" alt="UX Discovery" className="pe-step-img" />
             </div>
           </div>
           {/* Step 2 */}
@@ -221,7 +221,7 @@ export default function WebMobileAppDevelopment() {
             </div>
             <div className="pe-step-image-wrap">
               {/* IMAGE CONTEXT: Needs code editor, system architecture diagram, or abstract structural tech */}
-              <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?auto=format&fit=crop&q=80&w=1200" alt="System Architecture" className="pe-step-img" />
+              <img src="/web_mobile_app_development/architecture.png" alt="System Architecture" className="pe-step-img" />
             </div>
           </div>
           {/* Step 3 */}
@@ -235,7 +235,7 @@ export default function WebMobileAppDevelopment() {
             </div>
             <div className="pe-step-image-wrap">
               {/* IMAGE CONTEXT: Needs agile development, sprint planning, or developers at work */}
-              <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=1200" alt="Agile Sprints" className="pe-step-img" />
+              <img src="/web_mobile_app_development/sprints.png" alt="Agile Sprints" className="pe-step-img" />
             </div>
           </div>
           {/* Step 4 */}
@@ -249,7 +249,7 @@ export default function WebMobileAppDevelopment() {
             </div>
             <div className="pe-step-image-wrap">
               {/* IMAGE CONTEXT: Needs rockets, deployment servers, live dashboards, or cloud infrastructure */}
-              <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200" alt="Product Launch" className="pe-step-img" />
+              <img src="/web_mobile_app_development/launch.png" alt="Product Launch" className="pe-step-img" />
             </div>
           </div>
         </div>
@@ -267,7 +267,7 @@ export default function WebMobileAppDevelopment() {
               </div>
               <div className="pe-uc-image-wrap">
                 {/* IMAGE CONTEXT: High-end visualization of a web application dashboard, React code, or modern browser UI */}
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="Full Stack Development" className="pe-uc-img" />
+                <img src="/web_mobile_app_development/full_stack.png" alt="Full Stack Development" className="pe-uc-img" />
               </div>
             </div>
             <div className="pe-uc-item">
@@ -277,7 +277,7 @@ export default function WebMobileAppDevelopment() {
               </div>
               <div className="pe-uc-image-wrap">
                 {/* IMAGE CONTEXT: High-end visualization of mobile phones, app interfaces, or mobile testing */}
-                <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=800" alt="Mobile App Development" className="pe-uc-img" />
+                <img src="/web_mobile_app_development/mobile_apps.png" alt="Mobile App Development" className="pe-uc-img" />
               </div>
             </div>
             <div className="pe-uc-item">
@@ -287,7 +287,7 @@ export default function WebMobileAppDevelopment() {
               </div>
               <div className="pe-uc-image-wrap">
                 {/* IMAGE CONTEXT: High-end visualization of server racks, database nodes, or glowing backend logic */}
-                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=800" alt="Backend Architecture" className="pe-uc-img" />
+                <img src="/web_mobile_app_development/backend_api.png" alt="Backend Architecture" className="pe-uc-img" />
               </div>
             </div>
           </div>

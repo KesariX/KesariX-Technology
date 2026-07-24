@@ -63,7 +63,7 @@
   font-family: var(--f-serif);
   font-size: clamp(36px, 5.2vw, 88px);
   line-height: 1.04;
-  letter-spacing: -0.025em;
+  letter-spacing: 0.025em;
   text-wrap: balance;
   color: var(--bone);
 }

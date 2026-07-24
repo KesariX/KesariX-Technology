@@ -209,7 +209,7 @@ export default function CustomAiRagSolutions() {
             </div>
             <div className="cine-step-image-wrap">
               {/* IMAGE CONTEXT: Needs abstract visualization of Data Analysis, glowing networks, or blueprints */}
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200" alt="Data Discovery" className="cine-step-img" />
+              <img src="/custom_rag_ai_solutions/discovery.png" alt="Data Discovery" className="cine-step-img" />
             </div>
           </div>
           {/* Step 2 */}
@@ -223,7 +223,7 @@ export default function CustomAiRagSolutions() {
             </div>
             <div className="cine-step-image-wrap">
               {/* IMAGE CONTEXT: Needs representation of vector embeddings, 3D grids, or database architecture */}
-              <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=1200" alt="Vectorization" className="cine-step-img" />
+              <img src="/custom_rag_ai_solutions/vectorization.png" alt="Vectorization" className="cine-step-img" />
             </div>
           </div>
           {/* Step 3 */}
@@ -237,7 +237,7 @@ export default function CustomAiRagSolutions() {
             </div>
             <div className="cine-step-image-wrap">
               {/* IMAGE CONTEXT: Needs glowing AI nodes orchestrating logic, connecting lines, code execution */}
-              <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=1200" alt="Orchestration" className="cine-step-img" />
+              <img src="/custom_rag_ai_solutions/orchestration.png" alt="Orchestration" className="cine-step-img" />
             </div>
           </div>
           {/* Step 4 */}
@@ -251,7 +251,7 @@ export default function CustomAiRagSolutions() {
             </div>
             <div className="cine-step-image-wrap">
               {/* IMAGE CONTEXT: Needs representation of server racks, continuous deployment, or live monitoring dashboards */}
-              <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=1200" alt="MLOps" className="cine-step-img" />
+              <img src="/custom_rag_ai_solutions/mlops.png" alt="MLOps" className="cine-step-img" />
             </div>
           </div>
         </div>
@@ -269,7 +269,7 @@ export default function CustomAiRagSolutions() {
               </div>
               <div className="cine-uc-image-wrap">
                 {/* IMAGE CONTEXT: High-end, dark visualization of global shipping, digital maps, or supply chains */}
-                <img src="https://images.unsplash.com/photo-1586528116311-ad8ed3c84a0c?auto=format&fit=crop&q=80&w=800" alt="Logistics AI" className="cine-uc-img" />
+                <img src="/custom_rag_ai_solutions/logistics.png" alt="Logistics AI" className="cine-uc-img" />
               </div>
             </div>
             <div className="cine-uc-item">
@@ -279,7 +279,7 @@ export default function CustomAiRagSolutions() {
               </div>
               <div className="cine-uc-image-wrap">
                 {/* IMAGE CONTEXT: High-end, dark visualization of financial data, stock tickers, or security lock icons */}
-                <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=800" alt="Fintech AI" className="cine-uc-img" />
+                <img src="/custom_rag_ai_solutions/fintech.png" alt="Fintech AI" className="cine-uc-img" />
               </div>
             </div>
             <div className="cine-uc-item">
@@ -289,7 +289,7 @@ export default function CustomAiRagSolutions() {
               </div>
               <div className="cine-uc-image-wrap">
                 {/* IMAGE CONTEXT: High-end, dark visualization of software interfaces, glowing UI components, or copilot nodes */}
-                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=800" alt="SaaS AI" className="cine-uc-img" />
+                <img src="/custom_rag_ai_solutions/saas.png" alt="SaaS AI" className="cine-uc-img" />
               </div>
             </div>
           </div>
